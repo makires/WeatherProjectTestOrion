@@ -9,22 +9,22 @@ import SwiftUI
 
 struct CurrentWeatherView: View {
     var body: some View {
-            //+16°
         HStack {
-            VStack {
-                Text("+16°")
-                    .font(.system(size: 80, weight: .thin))
-        //            .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-                .tracking(0.37)
-                //Cloudy, Feels like +20°
-                Text("Cloudy, Feels like +20°")
-                    .font(.system(size: 12, weight: .regular))
-//                    .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+            VStack(alignment: .leading, spacing: 4.0) {
+                CurrentTempView()
+                    .border(.red, width: 2)
+                DescriptionCurrentWeatherView()
+                    .border(.yellow, width: 2)
             }
-            
+            Spacer()
+            VStack {
+                Image("cloudy")
+            }
+            .frame(width: 80, height: 80)
+            .padding(.trailing, 16)
         }
         .frame(width: 375, height: 112)
-            
+        
     }
 }
 
@@ -33,7 +33,35 @@ struct CurrentWeatherView_Previews: PreviewProvider {
         Group {
             CurrentWeatherView()
                 .previewLayout(.fixed(width: 375, height: 112))
+            HeaderWeatherView()
+                .previewLayout(.fixed(width: 375, height: 320))
             
         }
+    }
+}
+
+struct CurrentTempView: View {
+    var body: some View {
+        VStack(spacing: 0) {
+            Text("+16°")
+                .font(.system(size: 80, weight: .thin))
+                .tracking(0.37)
+                .border(.green, width: 2)
+                .padding(.leading, 16)
+        }
+    }
+}
+
+struct DescriptionCurrentWeatherView: View {
+    var body: some View {
+        VStack(spacing: 0) {
+            Text("Cloudy, Feels like +20°")
+                .font(.system(size: 12, weight: .regular))
+                .border(.green, width: 2)
+                .padding(.leading, 16)
+                
+        }
+        
+
     }
 }
