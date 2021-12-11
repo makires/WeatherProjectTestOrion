@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HeaderWeatherView: View {
     var body: some View {
-        VStack {
+        VStack(spacing: 16) {
             CityTitleView()
             CurrentWeatherView()
             DetailsForCurrentWeatherView()
