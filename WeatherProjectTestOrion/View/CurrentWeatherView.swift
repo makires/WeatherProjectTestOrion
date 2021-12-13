@@ -25,6 +25,7 @@ struct CurrentWeatherView: View {
                 Image("Cloudy")
             }
             .frame(width: 80, height: 80)
+            .border(.black, width: 2)
             .padding(.trailing, 16)
         }
         .frame(width: 375, height: 112)
