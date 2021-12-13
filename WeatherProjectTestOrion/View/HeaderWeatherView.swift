@@ -9,21 +9,31 @@ import SwiftUI
 
 struct HeaderWeatherView: View {
     var body: some View {
-        VStack(spacing: 16) {
-            CityTitleView()
-            CurrentWeatherView()
-            DetailsForCurrentWeatherView()
+        ZStack {
+            Image("cloudyBackground")
+                .resizable()
+                .scaledToFill()
+            VStack(spacing: 16) {
+                CityTitleView()
+                CurrentWeatherView()
+                DetailsForCurrentWeatherView()
+                    .padding(.bottom, 5)
+            }
         }
+        .border(.red, width: 2)
         .frame(width: 375, height: 320)
-        .background(Image("cloudyBackground")
-                        .resizable()
-                        .scaledToFill())
-        
+        .padding(.top, -20)
+        .padding(.bottom, -10)
     }
 }
 
 struct HeaderWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderWeatherView()
+        Group {
+            HeaderWeatherView()
+                .previewLayout(.fixed(width: 375, height: 320))
+            MainView()
+            
+        }
     }
 }
