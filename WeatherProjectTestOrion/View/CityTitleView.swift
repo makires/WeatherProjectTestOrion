@@ -14,6 +14,7 @@ struct CityTitleView: View {
                 Text("Nizhny Novgorod")
                     .font(.largeTitle)
                     .lineSpacing(41)
+                    .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
             }
             .padding(.leading, 16)
             .padding(.top, 39)
@@ -25,6 +26,7 @@ struct CityTitleView: View {
                 }, label: {
                     Image(systemName: "list.bullet")
                         .font(.body)
+                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                 })
                     
                     .frame(width: 44, height: 44)
@@ -44,6 +46,7 @@ struct CityTitleView_Previews: PreviewProvider {
         Group {
             CityTitleView()
                 .previewLayout(.fixed(width: 375, height: 88))
+                .background(Color.gray)
             HeaderWeatherView()
                 .previewLayout(.fixed(width: 375, height: 320))
             
