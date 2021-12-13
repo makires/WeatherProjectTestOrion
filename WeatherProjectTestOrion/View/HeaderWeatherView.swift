@@ -13,6 +13,7 @@ struct HeaderWeatherView: View {
             Image("cloudyBackground")
                 .resizable()
                 .scaledToFill()
+                .edgesIgnoringSafeArea(.vertical)
             VStack(spacing: 16) {
                 CityTitleView()
                 CurrentWeatherView()
@@ -22,8 +23,8 @@ struct HeaderWeatherView: View {
         }
         //        .border(.red, width: 2)
         .frame(width: 375, height: 320)
-        .padding(.top, -20)
-        .padding(.bottom, -10)
+//        .padding(.top, -20)
+//        .padding(.bottom, -10)
     }
 }
 
