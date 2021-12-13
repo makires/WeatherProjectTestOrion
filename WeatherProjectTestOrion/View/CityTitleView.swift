@@ -28,7 +28,7 @@ struct CityTitleView: View {
                         .font(.body)
                         .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                 })
-                    
+                
                     .frame(width: 44, height: 44)
             }
             .padding(.top, 44)
@@ -37,7 +37,7 @@ struct CityTitleView: View {
             
         }
         .frame(width: 375, height: 88)
-
+        
     }
 }
 

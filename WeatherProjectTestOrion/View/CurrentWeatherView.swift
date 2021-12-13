@@ -15,7 +15,7 @@ struct CurrentWeatherView: View {
                 DescriptionCurrentWeatherView()
             }
             .frame(height: 92)
-//            .border(.black, width: 2)
+            //            .border(.black, width: 2)
             .padding(.leading, 16)
             .padding(.top, 12)
             .padding(.bottom, 8)
@@ -26,11 +26,11 @@ struct CurrentWeatherView: View {
                 
             }
             .frame(width: 80, height: 80)
-//            .border(.black, width: 2)
+            //            .border(.black, width: 2)
             .padding(.trailing, 16)
         }
         .frame(width: 375, height: 112)
-//        .border(.yellow, width: 2)
+        //        .border(.yellow, width: 2)
         
     }
 }
@@ -38,30 +38,30 @@ struct CurrentWeatherView: View {
 
 struct CurrentTempView: View {
     var body: some View {
-            Text("+16°")
-                .font(.system(size: 80, weight: .thin))
-                .tracking(0.37)
-                .frame(width: 154, height: 72)
-//                .border(.green, width: 2)
-                .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-//                .padding(.top, 12)
-//                .padding(.leading, 16)
+        Text("+16°")
+            .font(.system(size: 80, weight: .thin))
+            .tracking(0.37)
+            .frame(width: 154, height: 72)
+        //                .border(.green, width: 2)
+            .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+        //                .padding(.top, 12)
+        //                .padding(.leading, 16)
         
     }
 }
 
 struct DescriptionCurrentWeatherView: View {
     var body: some View {
-            Text("Cloudy, Feels like +20°")
+        Text("Cloudy, Feels like +20°")
             .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-                .font(.system(size: 12, weight: .regular))
-                .frame(width: 130, height: 16)
-//                .padding(.leading, 16)
-//                .padding(.bottom, 8)
-//                .border(.green, width: 2)
-            
+            .font(.system(size: 12, weight: .regular))
+            .frame(width: 130, height: 16)
+        //                .padding(.leading, 16)
+        //                .padding(.bottom, 8)
+        //                .border(.green, width: 2)
         
-
+        
+        
     }
 }
 

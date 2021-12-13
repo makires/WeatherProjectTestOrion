@@ -14,7 +14,7 @@ struct DetailsForCurrentWeatherView: View {
             HourlyCurrentWeatherView()
         }
         .frame(height: 88)
-//                .border(.red, width: 2)
+        //                .border(.red, width: 2)
     }
 }
 
@@ -30,7 +30,7 @@ struct HourlyCurrentWeatherView: View {
                             .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                             .padding(.top, 8)
                         
-//                            .border(.black, width: 1)
+                        //                            .border(.black, width: 1)
                         
                         Image(systemName: item.icon)
                             .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
@@ -38,21 +38,21 @@ struct HourlyCurrentWeatherView: View {
                         // если использовать offset, то удается выровнять на глаз
                             .offset(y:-2)
                             .frame(width: 24, height: 24)
-//                            .border(.red, width: 2)
+                        //                            .border(.red, width: 2)
                         Text(item.temp)
                             .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                             .font(.system(size: 12, weight: .regular))
                             .padding(.bottom, 8)
                         
                     }
-//                    .border(.green, width: 2)
+                    //                    .border(.green, width: 2)
                 }
             }
             
             
         }
         .frame(height: 88)
-//        .border(.yellow, width: 2)
+        //        .border(.yellow, width: 2)
     }
 }
 
@@ -66,7 +66,7 @@ struct DescriptionWithIconView: View {
             PressureIconWithDescriptionView()
             HumidityIconWithDescriptionView()
         }
-//        .border(.yellow, width: 2)
+        //        .border(.yellow, width: 2)
         //        .padding(.top, 0)
         .font(.system(size: 12, weight: .regular))
         
@@ -96,16 +96,16 @@ struct WindIconWithDescriptionView: View {
                     .padding(.leading, 18.25)
                     .padding(.top, 8.5)
                     .padding(.bottom, 13)
-//                    .border(.red, width: 2)
+                //                    .border(.red, width: 2)
                 HStack {
                     Text("10")
                         .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                     Text("km/h, SE")
                         .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.74)))
                 }
-                    .padding(.top, 8)
-                    .padding(.bottom, 12)
-//                    .border(.red, width: 2)
+                .padding(.top, 8)
+                .padding(.bottom, 12)
+                //                    .border(.red, width: 2)
             }
             
         }
@@ -128,7 +128,7 @@ struct PressureIconWithDescriptionView: View {
                 }
                 .padding(.bottom, 12)
             }
-//            .border(.green, width: 2)
+            //            .border(.green, width: 2)
         }
     }
 }

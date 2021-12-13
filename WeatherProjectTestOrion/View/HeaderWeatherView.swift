@@ -20,7 +20,7 @@ struct HeaderWeatherView: View {
                     .padding(.bottom, 5)
             }
         }
-//        .border(.red, width: 2)
+        //        .border(.red, width: 2)
         .frame(width: 375, height: 320)
         .padding(.top, -20)
         .padding(.bottom, -10)
