@@ -21,7 +21,6 @@ struct CurrentWeatherView: View {
             .frame(width: 80, height: 80)
             .padding(.trailing, 16)
         }
-        .border(.black, width: 2)
         .frame(width: 375, height: 112)
         
     }

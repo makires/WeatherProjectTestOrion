@@ -18,6 +18,7 @@ struct HeaderWeatherView: View {
         .background(Image("cloudyBackground")
                         .resizable()
                         .scaledToFill())
+        
     }
 }
 

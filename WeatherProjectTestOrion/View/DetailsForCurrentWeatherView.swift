@@ -9,12 +9,10 @@ import SwiftUI
 
 struct DetailsForCurrentWeatherView: View {
     var body: some View {
-        HStack {
+        HStack(spacing: 33) {
             DescriptionWithIconView()
             HourlyCurrentWeatherView()
         }
-        .border(.red, width: 2)
-        .padding(.bottom, 8)
         
     }
 }
@@ -32,24 +30,38 @@ struct DetailsForCurrentWeatherView_Previews: PreviewProvider {
 
 struct HourlyCurrentWeatherView: View {
     var body: some View {
-        VStack {
             ScrollView(.horizontal) {
-                HStack {
-                    ForEach(0...12, id: \.self) { item in
-                        VStack {
-                            Text("***")
-                            Text("***")
-                            Text("***")
+                    HStack {
+                        ForEach(hourlyCurrentWeather, id: \.self) { item in
+                            VStack {
+                                VStack {
+                                    Text(item.hour)
+                                    .font(.system(size: 12, weight: .regular))
+                                }
+                                VStack {
+                                    Image(systemName: item.icon)
+                                        
+                                        .frame(width: 24, height: 24)
+                                }
+                                VStack {
+                                    Text(item.temp)
+                                    .font(.system(size: 12, weight: .regular))
+                                }
+                                
+                                    
+                            }
+                            .padding(.top, 8)
+                            .padding(.bottom, 8)
                         }
                     }
+                    
+                    
                 }
-            }
-            
-            
-            
-        }
+
     }
 }
+
+
 
 
 struct DescriptionWithIconView: View {
@@ -66,7 +78,6 @@ struct DescriptionWithIconView: View {
                             .padding(.bottom, 12)
                 }
             }
-            .border(.yellow, width: 2)
             VStack {
                 HStack(spacing: 9.5) {
                         Image(systemName: "safari")
@@ -76,7 +87,7 @@ struct DescriptionWithIconView: View {
                         .padding(.bottom, 12)
                 }
             }
-            .border(.green, width: 2)
+            
             VStack {
                 HStack(spacing: 12.5) {
                         Image(systemName: "drop")
@@ -87,7 +98,9 @@ struct DescriptionWithIconView: View {
                     }
                 
             }
-            .border(.yellow, width: 2)
-        }.font(.system(size: 12, weight: .regular))
+        }
+        .padding(.top, 0)
+        .font(.system(size: 12, weight: .regular))
+        
     }
 }
