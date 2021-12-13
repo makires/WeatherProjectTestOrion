@@ -16,7 +16,7 @@ struct CurrentWeatherView: View {
             }
             Spacer()
             VStack {
-                Image("cloudy")
+                Image("Cloudy")
             }
             .frame(width: 80, height: 80)
             .padding(.trailing, 16)
