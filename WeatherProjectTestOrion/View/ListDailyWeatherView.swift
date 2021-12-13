@@ -15,76 +15,96 @@ struct ListDailyWeatherView: View {
             RowForListDailyWeather(dailyWeather: item)
                 .listRowInsets(EdgeInsets())
         }
-
         .listStyle(.plain)
     }
 }
-
-
 
 struct RowForListDailyWeather: View {
     let dailyWeather: DayWeather
     
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
-                Text(dailyWeather.date)
-                    .border(.red, width: 2)
-                    .padding(.leading, 16)
-                    .padding(.top, 12)
-                Text(dailyWeather.nameDay)
-                    .border(.red, width: 2)
-                    .padding(.leading, 16)
-                    .padding(.bottom, 12)
-            }
-            .border(.red, width: 2)
-
-
+            DateAndNameDayForDailyWeatherView(dailyWeather: dailyWeather)
             Spacer()
             HStack(spacing: 10) {
-                VStack {
-                    Image(systemName: dailyWeather.icon)
-                        .border(.red, width: 2)
-                        .foregroundColor(dailyWeather.colorIcon)
-                        .frame(width: 44, height: 44)
-                }
-                .border(.red, width: 2)
-                .padding(.top, 10)
-                .padding(.bottom, 10)
-                HStack {
-                    VStack {
-                        Text(dailyWeather.temp1)
-                            .font(.system(size: 22, weight: .regular))
-                            .tracking(0.35)
-
-                            .border(.red, width: 2)
-
-                    }
-                    .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 0))
-                    .frame(width: 52, height: 44)
-                    .border(.green, width: 2)
-                    VStack {
-                        Text(dailyWeather.temp2)
-                            .tracking(-0.32)
-                            .border(.red, width: 2)
-
-                        .font(.system(size: 16, weight: .regular))
-                    }
+                Image(systemName: dailyWeather.icon)
+                    .foregroundColor(dailyWeather.colorIcon)
                     .frame(width: 44, height: 44)
-//                    .padding(.leading, 0)
+                    .border(.red, width: 2)
                     .padding(.top, 10)
                     .padding(.bottom, 10)
-
-                    .padding(.trailing, 0)
-
+                HStack(spacing: 4) {
+                    Temp1ForDailyWeather(dailyWeather: dailyWeather)
+                    Temp2ForDailyWeather(dailyWeather: dailyWeather)
                 }
+                .frame(width: 100)
+                .border(.red, width: 2)
             }
-//            .padding(.trailing, 16)
+            .frame(width: 154)
+            .padding(.trailing, 16)
+            .border(.black, width: 2)
         }
-
+        
         
     }
 }
+
+struct DateAndNameDayForDailyWeatherView: View {
+    let dailyWeather: DayWeather
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(dailyWeather.date)
+                .border(.red, width: 2)
+                .padding(.leading, 16)
+                .padding(.top, 12)
+            Text(dailyWeather.nameDay)
+                .border(.red, width: 2)
+                .padding(.leading, 16)
+                .padding(.bottom, 12)
+        }
+        .border(.red, width: 2)
+    }
+}
+
+struct Temp2ForDailyWeather: View {
+    let dailyWeather: DayWeather
+    var body: some View {
+        VStack {
+            Text(dailyWeather.temp2)
+                .tracking(-0.32)
+                .border(.red, width: 2)
+            // padding по макету ломает макет
+                .padding(.leading, 16)
+                .padding(.trailing, 0)
+                .padding(.top, 12)
+                .padding(.bottom, 11)
+            // ==============================
+                .font(.system(size: 16, weight: .regular))
+        }
+        .frame(width: 44, height: 44)
+        .border(.green, width: 2)
+        .padding(.top, 10)
+        .padding(.bottom, 10)
+        .padding(.trailing, 0)
+    }
+}
+
+struct Temp1ForDailyWeather: View {
+    let dailyWeather: DayWeather
+    var body: some View {
+        VStack {
+            Text(dailyWeather.temp1)
+                .font(.system(size: 22, weight: .regular))
+                .tracking(0.35)
+                .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 0))
+        }
+        .frame(width: 52, height: 44)
+        .border(.green, width: 2)
+        .padding(.top, 10)
+        .padding(.bottom, 10)
+    }
+}
+
 
 struct ListDailyWeatherView_Previews: PreviewProvider {
     static var previews: some View {
