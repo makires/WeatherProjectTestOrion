@@ -11,11 +11,16 @@ import SwiftUI
 
 struct ListDailyWeatherView: View {
     var body: some View {
-        List(listDaily, id:\.self) { item in
-            RowForListDailyWeather(dailyWeather: item)
-                .listRowInsets(EdgeInsets())
+        
+        VStack {
+            ForEach(listDaily, id:\.self) { item in
+                RowForListDailyWeather(dailyWeather: item)
+                    .listRowInsets(EdgeInsets())
+                Divider()
+                    .padding(0)
+            }
         }
-        .listStyle(.plain)
+//        .listStyle(.plain)
     }
 }
 
@@ -44,6 +49,7 @@ struct RowForListDailyWeather: View {
             .padding(.trailing, 16)
             //            .border(.black, width: 2)
         }
+        
         
         
     }

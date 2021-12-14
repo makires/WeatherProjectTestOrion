@@ -10,6 +10,7 @@ import SwiftUI
 struct LayingOutUsingPhi: View {
     var body: some View {
         GeometryReader { geo in
+            ScrollView {
             VStack {
                 Rectangle()
                     .fill(Color.blue)
@@ -22,6 +23,7 @@ struct LayingOutUsingPhi: View {
                     .overlay(Text("Height: \(geo.size.height * 0.62)"))
                 }
             }
+        }
         }
         .edgesIgnoringSafeArea(.vertical)
     }

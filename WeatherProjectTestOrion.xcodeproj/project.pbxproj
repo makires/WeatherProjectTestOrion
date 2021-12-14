@@ -19,6 +19,11 @@
 		BCDDDCF12765405B005C81BC /* HourlyCurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCF02765405B005C81BC /* HourlyCurrentWeather.swift */; };
 		BCDDDCFC2765F7F5005C81BC /* ListDailyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCFB2765F7F5005C81BC /* ListDailyWeather.swift */; };
 		C6E76D0827687072009742EB /* LayingOutUsingPhi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E76D0727687072009742EB /* LayingOutUsingPhi.swift */; };
+		C6E76D0A276872FF009742EB /* ParallaxScrolling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E76D09276872FF009742EB /* ParallaxScrolling.swift */; };
+		C6E76D0F276873F2009742EB /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E76D0E276873F2009742EB /* TileView.swift */; };
+		C6E76D112768765E009742EB /* StickyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E76D102768765E009742EB /* StickyHeader.swift */; };
+		C6E76D1327688CC1009742EB /* ScrollViewReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E76D1227688CC1009742EB /* ScrollViewReader.swift */; };
+		C6E76D162768BFE2009742EB /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E76D152768BFE2009742EB /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +40,11 @@
 		BCDDDCF02765405B005C81BC /* HourlyCurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyCurrentWeather.swift; sourceTree = "<group>"; };
 		BCDDDCFB2765F7F5005C81BC /* ListDailyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDailyWeather.swift; sourceTree = "<group>"; };
 		C6E76D0727687072009742EB /* LayingOutUsingPhi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayingOutUsingPhi.swift; sourceTree = "<group>"; };
+		C6E76D09276872FF009742EB /* ParallaxScrolling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallaxScrolling.swift; sourceTree = "<group>"; };
+		C6E76D0E276873F2009742EB /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
+		C6E76D102768765E009742EB /* StickyHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeader.swift; sourceTree = "<group>"; };
+		C6E76D1227688CC1009742EB /* ScrollViewReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewReader.swift; sourceTree = "<group>"; };
+		C6E76D152768BFE2009742EB /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,9 +120,30 @@
 		C6E76D0627687012009742EB /* LearningTests */ = {
 			isa = PBXGroup;
 			children = (
+				C6E76D142768BFCE009742EB /* ViewTest */,
+				C6E76D0B276873B2009742EB /* ModelForLearning */,
 				C6E76D0727687072009742EB /* LayingOutUsingPhi.swift */,
+				C6E76D09276872FF009742EB /* ParallaxScrolling.swift */,
+				C6E76D0E276873F2009742EB /* TileView.swift */,
+				C6E76D102768765E009742EB /* StickyHeader.swift */,
+				C6E76D1227688CC1009742EB /* ScrollViewReader.swift */,
 			);
 			path = LearningTests;
+			sourceTree = "<group>";
+		};
+		C6E76D0B276873B2009742EB /* ModelForLearning */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ModelForLearning;
+			sourceTree = "<group>";
+		};
+		C6E76D142768BFCE009742EB /* ViewTest */ = {
+			isa = PBXGroup;
+			children = (
+				C6E76D152768BFE2009742EB /* Home.swift */,
+			);
+			path = ViewTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,11 +220,16 @@
 				BCDDDCFC2765F7F5005C81BC /* ListDailyWeather.swift in Sources */,
 				BCDDDCE62763A6CE005C81BC /* CityTitleView.swift in Sources */,
 				BCDDDCD92763A63F005C81BC /* MainView.swift in Sources */,
+				C6E76D1327688CC1009742EB /* ScrollViewReader.swift in Sources */,
 				BCDDDCF12765405B005C81BC /* HourlyCurrentWeather.swift in Sources */,
 				BCDDDCD72763A63F005C81BC /* WeatherProjectTestOrionApp.swift in Sources */,
+				C6E76D162768BFE2009742EB /* Home.swift in Sources */,
 				BCDDDCEE276498D7005C81BC /* HeaderWeatherView.swift in Sources */,
 				BCDDDCEA2763A976005C81BC /* CurrentWeatherView.swift in Sources */,
+				C6E76D0A276872FF009742EB /* ParallaxScrolling.swift in Sources */,
 				BCDDDCE82763A6F2005C81BC /* ListDailyWeatherView.swift in Sources */,
+				C6E76D0F276873F2009742EB /* TileView.swift in Sources */,
+				C6E76D112768765E009742EB /* StickyHeader.swift in Sources */,
 				C6E76D0827687072009742EB /* LayingOutUsingPhi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

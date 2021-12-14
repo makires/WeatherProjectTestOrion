@@ -19,7 +19,7 @@ struct CityTitleView: View {
                             .lineSpacing(41)
                             .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                     }
-                    .border(.red, width: 2)
+//                    .border(.red, width: 2)
                     .padding(.leading, 16)
                     .padding(.top, 39)
                     .padding(.bottom, 8)
@@ -35,7 +35,7 @@ struct CityTitleView: View {
                         
                             .frame(width: 44, height: 44)
                     }
-                    .border(.red, width: 2)
+//                    .border(.red, width: 2)
                     .padding(.top, 44)
                     .padding(.trailing, 10)
                     .padding(.bottom, 0)

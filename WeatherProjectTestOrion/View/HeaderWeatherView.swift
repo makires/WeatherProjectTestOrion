@@ -23,8 +23,9 @@ struct HeaderWeatherView: View {
         }
         //        .border(.red, width: 2)
         .frame(width: 375, height: 320)
+        
 //        .padding(.top, -20)
-//        .padding(.bottom, -10)
+//        .padding(.bottom, -200)
     }
 }
 

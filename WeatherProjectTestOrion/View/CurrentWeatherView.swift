@@ -9,30 +9,32 @@ import SwiftUI
 
 struct CurrentWeatherView: View {
     var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 4.0) {
-                CurrentTempView()
-                DescriptionCurrentWeatherView()
-            }
-            .frame(height: 92)
-            //            .border(.black, width: 2)
-            .padding(.leading, 16)
-            .padding(.top, 12)
-            .padding(.bottom, 8)
-            
-            Spacer()
-            VStack {
-                Image("Cloudy")
+//        GeometryReader { gr in
+            HStack {
+                VStack(alignment: .leading, spacing: 4.0) {
+                    CurrentTempView()
+                    DescriptionCurrentWeatherView()
+                }
+                .frame(height: 92)
+                //            .border(.black, width: 2)
+                .padding(.leading, 16)
+                .padding(.top, 12)
+                .padding(.bottom, 8)
                 
+                Spacer()
+                VStack {
+                    Image("Cloudy")
+                    
+                }
+                .frame(width: 80, height: 80)
+                //            .border(.black, width: 2)
+                .padding(.trailing, 16)
             }
-            .frame(width: 80, height: 80)
-            //            .border(.black, width: 2)
-            .padding(.trailing, 16)
+//            .frame(width: gr.size.width, height: 112)
         }
-        .frame(width: 375, height: 112)
-        //        .border(.yellow, width: 2)
+//                .border(.yellow, width: 2)
         
-    }
+//    }
 }
 
 
