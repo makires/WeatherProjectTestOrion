@@ -17,13 +17,7 @@
 		BCDDDCEC27649793005C81BC /* DetailsForCurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCEB27649793005C81BC /* DetailsForCurrentWeatherView.swift */; };
 		BCDDDCEE276498D7005C81BC /* HeaderWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCED276498D7005C81BC /* HeaderWeatherView.swift */; };
 		BCDDDCF12765405B005C81BC /* HourlyCurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCF02765405B005C81BC /* HourlyCurrentWeather.swift */; };
-		BCDDDCF32765F082005C81BC /* CityTitleViewTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCF22765F082005C81BC /* CityTitleViewTP.swift */; };
-		BCDDDCF62765F0FA005C81BC /* CurrentWeatherViewTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCF52765F0FA005C81BC /* CurrentWeatherViewTP.swift */; };
-		BCDDDCF82765F13D005C81BC /* HeaderWeatherViewTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCF72765F13D005C81BC /* HeaderWeatherViewTP.swift */; };
-		BCDDDCFA2765F17A005C81BC /* DetailsForCurrentWeatherViewTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCF92765F17A005C81BC /* DetailsForCurrentWeatherViewTP.swift */; };
 		BCDDDCFC2765F7F5005C81BC /* ListDailyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCFB2765F7F5005C81BC /* ListDailyWeather.swift */; };
-		C6E76D022767CAEC009742EB /* GettingSizeWithGeometryReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E76D012767CAEC009742EB /* GettingSizeWithGeometryReader.swift */; };
-		C6E76D052767CC58009742EB /* LayingOutUsingPhi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E76D042767CC58009742EB /* LayingOutUsingPhi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,13 +32,7 @@
 		BCDDDCEB27649793005C81BC /* DetailsForCurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsForCurrentWeatherView.swift; sourceTree = "<group>"; };
 		BCDDDCED276498D7005C81BC /* HeaderWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderWeatherView.swift; sourceTree = "<group>"; };
 		BCDDDCF02765405B005C81BC /* HourlyCurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyCurrentWeather.swift; sourceTree = "<group>"; };
-		BCDDDCF22765F082005C81BC /* CityTitleViewTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTitleViewTP.swift; sourceTree = "<group>"; };
-		BCDDDCF52765F0FA005C81BC /* CurrentWeatherViewTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewTP.swift; sourceTree = "<group>"; };
-		BCDDDCF72765F13D005C81BC /* HeaderWeatherViewTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderWeatherViewTP.swift; sourceTree = "<group>"; };
-		BCDDDCF92765F17A005C81BC /* DetailsForCurrentWeatherViewTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsForCurrentWeatherViewTP.swift; sourceTree = "<group>"; };
 		BCDDDCFB2765F7F5005C81BC /* ListDailyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDailyWeather.swift; sourceTree = "<group>"; };
-		C6E76D012767CAEC009742EB /* GettingSizeWithGeometryReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingSizeWithGeometryReader.swift; sourceTree = "<group>"; };
-		C6E76D042767CC58009742EB /* LayingOutUsingPhi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayingOutUsingPhi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +91,6 @@
 				BCDDDCE92763A976005C81BC /* CurrentWeatherView.swift */,
 				BCDDDCEB27649793005C81BC /* DetailsForCurrentWeatherView.swift */,
 				BCDDDCE72763A6F1005C81BC /* ListDailyWeatherView.swift */,
-				BCDDDCF42765F0D2005C81BC /* TestPluginView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -115,27 +102,6 @@
 				BCDDDCFB2765F7F5005C81BC /* ListDailyWeather.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		BCDDDCF42765F0D2005C81BC /* TestPluginView */ = {
-			isa = PBXGroup;
-			children = (
-				C6E76D032767CC2E009742EB /* TestSwiftUIPluginForFigma */,
-				C6E76D012767CAEC009742EB /* GettingSizeWithGeometryReader.swift */,
-				C6E76D042767CC58009742EB /* LayingOutUsingPhi.swift */,
-			);
-			path = TestPluginView;
-			sourceTree = "<group>";
-		};
-		C6E76D032767CC2E009742EB /* TestSwiftUIPluginForFigma */ = {
-			isa = PBXGroup;
-			children = (
-				BCDDDCF22765F082005C81BC /* CityTitleViewTP.swift */,
-				BCDDDCF52765F0FA005C81BC /* CurrentWeatherViewTP.swift */,
-				BCDDDCF72765F13D005C81BC /* HeaderWeatherViewTP.swift */,
-				BCDDDCF92765F17A005C81BC /* DetailsForCurrentWeatherViewTP.swift */,
-			);
-			path = TestSwiftUIPluginForFigma;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,18 +176,12 @@
 			files = (
 				BCDDDCEC27649793005C81BC /* DetailsForCurrentWeatherView.swift in Sources */,
 				BCDDDCFC2765F7F5005C81BC /* ListDailyWeather.swift in Sources */,
-				C6E76D022767CAEC009742EB /* GettingSizeWithGeometryReader.swift in Sources */,
 				BCDDDCE62763A6CE005C81BC /* CityTitleView.swift in Sources */,
-				C6E76D052767CC58009742EB /* LayingOutUsingPhi.swift in Sources */,
 				BCDDDCD92763A63F005C81BC /* MainView.swift in Sources */,
-				BCDDDCF82765F13D005C81BC /* HeaderWeatherViewTP.swift in Sources */,
-				BCDDDCF32765F082005C81BC /* CityTitleViewTP.swift in Sources */,
 				BCDDDCF12765405B005C81BC /* HourlyCurrentWeather.swift in Sources */,
-				BCDDDCF62765F0FA005C81BC /* CurrentWeatherViewTP.swift in Sources */,
 				BCDDDCD72763A63F005C81BC /* WeatherProjectTestOrionApp.swift in Sources */,
 				BCDDDCEE276498D7005C81BC /* HeaderWeatherView.swift in Sources */,
 				BCDDDCEA2763A976005C81BC /* CurrentWeatherView.swift in Sources */,
-				BCDDDCFA2765F17A005C81BC /* DetailsForCurrentWeatherViewTP.swift in Sources */,
 				BCDDDCE82763A6F2005C81BC /* ListDailyWeatherView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
