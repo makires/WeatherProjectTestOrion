@@ -20,10 +20,8 @@ struct CurrentWeatherView: View {
                 Text(descriptionCurrentWeather)
                     .font(.system(size: 12, weight: .regular))
             }
-            .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
             Spacer()
             Image(currentWeatherIcon)
-            
         }
     }
 }

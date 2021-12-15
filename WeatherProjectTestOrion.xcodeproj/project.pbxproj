@@ -11,7 +11,7 @@
 		BCDDDCD92763A63F005C81BC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCD82763A63F005C81BC /* MainView.swift */; };
 		BCDDDCDB2763A641005C81BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCDDDCDA2763A641005C81BC /* Assets.xcassets */; };
 		BCDDDCDE2763A641005C81BC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCDDDCDD2763A641005C81BC /* Preview Assets.xcassets */; };
-		BCDDDCE82763A6F2005C81BC /* ListDailyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCE72763A6F1005C81BC /* ListDailyWeatherView.swift */; };
+		BCDDDCE82763A6F2005C81BC /* DailyWeatherListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCE72763A6F1005C81BC /* DailyWeatherListView.swift */; };
 		BCDDDCEA2763A976005C81BC /* CurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCE92763A976005C81BC /* CurrentWeatherView.swift */; };
 		BCDDDCEC27649793005C81BC /* DetailsForCurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCEB27649793005C81BC /* DetailsForCurrentWeatherView.swift */; };
 		BCDDDCEE276498D7005C81BC /* HeaderWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCED276498D7005C81BC /* HeaderWeatherView.swift */; };
@@ -31,7 +31,7 @@
 		BCDDDCD82763A63F005C81BC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		BCDDDCDA2763A641005C81BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCDDDCDD2763A641005C81BC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BCDDDCE72763A6F1005C81BC /* ListDailyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDailyWeatherView.swift; sourceTree = "<group>"; };
+		BCDDDCE72763A6F1005C81BC /* DailyWeatherListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherListView.swift; sourceTree = "<group>"; };
 		BCDDDCE92763A976005C81BC /* CurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherView.swift; sourceTree = "<group>"; };
 		BCDDDCEB27649793005C81BC /* DetailsForCurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsForCurrentWeatherView.swift; sourceTree = "<group>"; };
 		BCDDDCED276498D7005C81BC /* HeaderWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderWeatherView.swift; sourceTree = "<group>"; };
@@ -56,24 +56,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BCCA998C2769E754009E692D /* HeaderMainView */ = {
-			isa = PBXGroup;
-			children = (
-				BCDDDCED276498D7005C81BC /* HeaderWeatherView.swift */,
-				BCDDDCE92763A976005C81BC /* CurrentWeatherView.swift */,
-				BCDDDCEB27649793005C81BC /* DetailsForCurrentWeatherView.swift */,
-			);
-			path = HeaderMainView;
-			sourceTree = "<group>";
-		};
-		BCCA998D2769E77C009E692D /* BodyMainView */ = {
-			isa = PBXGroup;
-			children = (
-				BCDDDCE72763A6F1005C81BC /* ListDailyWeatherView.swift */,
-			);
-			path = BodyMainView;
-			sourceTree = "<group>";
-		};
 		BCDDDCCA2763A63F005C81BC = {
 			isa = PBXGroup;
 			children = (
@@ -114,8 +96,10 @@
 			isa = PBXGroup;
 			children = (
 				BCDDDCD82763A63F005C81BC /* MainView.swift */,
-				BCCA998C2769E754009E692D /* HeaderMainView */,
-				BCCA998D2769E77C009E692D /* BodyMainView */,
+				BCDDDCED276498D7005C81BC /* HeaderWeatherView.swift */,
+				BCDDDCE92763A976005C81BC /* CurrentWeatherView.swift */,
+				BCDDDCEB27649793005C81BC /* DetailsForCurrentWeatherView.swift */,
+				BCDDDCE72763A6F1005C81BC /* DailyWeatherListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -247,7 +231,7 @@
 				BCDDDCEE276498D7005C81BC /* HeaderWeatherView.swift in Sources */,
 				BCDDDCEA2763A976005C81BC /* CurrentWeatherView.swift in Sources */,
 				C6E76D0A276872FF009742EB /* ParallaxScrolling.swift in Sources */,
-				BCDDDCE82763A6F2005C81BC /* ListDailyWeatherView.swift in Sources */,
+				BCDDDCE82763A6F2005C81BC /* DailyWeatherListView.swift in Sources */,
 				C6E76D0F276873F2009742EB /* TileView.swift in Sources */,
 				C6E76D112768765E009742EB /* StickyHeader.swift in Sources */,
 				C6E76D0827687072009742EB /* LayingOutUsingPhi.swift in Sources */,

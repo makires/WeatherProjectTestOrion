@@ -25,7 +25,7 @@ struct Home: View {
                         }
                     
                 }
-               ListDailyWeatherView()
+               DailyWeatherListView()
             }
             .ignoresSafeArea()
     }

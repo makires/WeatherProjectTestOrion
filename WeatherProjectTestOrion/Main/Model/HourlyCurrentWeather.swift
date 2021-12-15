@@ -22,4 +22,8 @@ let hourlyCurrentWeather = [
     HourlyWeather(hour: "22:00", icon: "cloud", temp: "+16º"),
     HourlyWeather(hour: "23:00", icon: "cloud", temp: "+16º"),
     HourlyWeather(hour: "00:00", icon: "cloud", temp: "+16º"),
+    HourlyWeather(hour: "00:00", icon: "cloud", temp: "+16º"),
+    HourlyWeather(hour: "00:00", icon: "cloud", temp: "+16º"),
+    HourlyWeather(hour: "00:00", icon: "cloud", temp: "+16º"),
+    HourlyWeather(hour: "00:00", icon: "cloud", temp: "+16º")
 ]

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HeaderWeatherView: View {
+    var backgroundHeaderWeatherView = "cloudyBackground"
     var cityTitle = "Nizhny Novgorod"
     var currentWeatherIcon = "Cloudy"
     var currentTemperature = "+16°"
@@ -15,7 +16,7 @@ struct HeaderWeatherView: View {
     
     var body: some View {
         ZStack {
-            Image("cloudyBackground")
+            Image(backgroundHeaderWeatherView)
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.vertical)
@@ -23,7 +24,7 @@ struct HeaderWeatherView: View {
                 HStack {
                     Text(cityTitle)
                         .font(.largeTitle)
-                        .lineSpacing(41)
+                        .tracking(0.37)
                     Spacer()
                     Button(action: {
                         print("")
@@ -32,17 +33,22 @@ struct HeaderWeatherView: View {
                             .font(.body)
                     })
                 }
-                .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-                .padding(EdgeInsets(top: 39, leading: 16, bottom: 0, trailing: 10))
+                .padding(.leading, 16)
+                .padding(.trailing, 10)
                 
-                CurrentWeatherView(currentTemperature: currentTemperature, descriptionCurrentWeather: descriptionCurrentWeather, currentWeatherIcon: currentWeatherIcon)
+                CurrentWeatherView(currentTemperature: currentTemperature,
+                                   descriptionCurrentWeather: descriptionCurrentWeather,
+                                   currentWeatherIcon: currentWeatherIcon)
                     .padding(.horizontal, 16)
                 DetailsForCurrentWeatherView()
-                    .border(.red, width: 2)
+                    .font(.system(size: 12, weight: .regular))
+                    .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 0))
                 
             }
         }
+        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
         .frame(height: 320)
+        
         
         
         
