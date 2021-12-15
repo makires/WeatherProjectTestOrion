@@ -10,11 +10,9 @@ import SwiftUI
 struct DetailsForCurrentWeatherView: View {
     var body: some View {
         HStack(spacing: 33) {
-            DescriptionWithIconView()
+            MeteorologicalDataView()
             HourlyCurrentWeatherView()
         }
-        .frame(height: 88)
-        //                .border(.red, width: 2)
     }
 }
 
@@ -59,7 +57,7 @@ struct HourlyCurrentWeatherView: View {
 
 
 
-struct DescriptionWithIconView: View {
+struct MeteorologicalDataView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             WindIconWithDescriptionView()
@@ -80,78 +78,74 @@ struct DetailsForCurrentWeatherView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             DetailsForCurrentWeatherView()
-                .previewLayout(.fixed(width: 498, height: 88))
-            HeaderWeatherView()
-                .previewLayout(.fixed(width: 375, height: 320))
+                .previewLayout(.sizeThatFits)
+                .background(Color.gray)
+            MainView()
+                .previewLayout(.sizeThatFits)
         }
     }
 }
 
 struct WindIconWithDescriptionView: View {
     var body: some View {
-        VStack {
-            HStack(spacing: 9.5) {
-                Image(systemName: "wind")
+        HStack(spacing: 9.5) {
+            Image(systemName: "wind")
+                .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                .padding(.leading, 18.25)
+                .padding(.top, 8.5)
+                .padding(.bottom, 13)
+            //                    .border(.red, width: 2)
+            HStack {
+                Text("10")
                     .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-                    .padding(.leading, 18.25)
-                    .padding(.top, 8.5)
-                    .padding(.bottom, 13)
-                //                    .border(.red, width: 2)
-                HStack {
-                    Text("10")
-                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-                    Text("km/h, SE")
-                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.74)))
-                }
-                .padding(.top, 8)
-                .padding(.bottom, 12)
-                //                    .border(.red, width: 2)
+                Text("km/h, SE")
+                    .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.74)))
             }
-            
+            .padding(.top, 8)
+            .padding(.bottom, 12)
+            //                    .border(.red, width: 2)
         }
+        
+        
     }
 }
 
 struct PressureIconWithDescriptionView: View {
     var body: some View {
-        VStack {
-            HStack(spacing: 9.5) {
-                Image(systemName: "safari")
+        HStack(spacing: 9.5) {
+            Image(systemName: "safari")
+                .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                .padding(.leading, 17.5)
+                .padding(.bottom, 14.33)
+            HStack {
+                Text("983")
                     .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-                    .padding(.leading, 17.5)
-                    .padding(.bottom, 14.33)
-                HStack {
-                    Text("983")
-                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-                    Text(" hPa")
-                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.74)))
-                }
-                .padding(.bottom, 12)
+                Text(" hPa")
+                    .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.74)))
             }
-            //            .border(.green, width: 2)
+            .padding(.bottom, 12)
         }
+        
     }
 }
 
 struct HumidityIconWithDescriptionView: View {
     var body: some View {
-        VStack {
-            HStack(spacing: 12.5) {
-                Image(systemName: "drop")
+        HStack(spacing: 12.5) {
+            Image(systemName: "drop")
+                .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                .padding(.leading, 20.25)
+                .padding(.bottom, 9.83)
+            HStack {
+                Text("83")
                     .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-                    .padding(.leading, 20.25)
-                    .padding(.bottom, 9.83)
-                HStack {
-                    Text("83")
-                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-                    // по макету символ процента должен быть вплотную к числу
-                    // ?? пробле добавляется автоматически
-                    Text("%")
-                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.74)))
-                }
-                .padding(.bottom, 8)
+                // по макету символ процента должен быть вплотную к числу
+                // ?? пробле добавляется автоматически
+                Text("%")
+                    .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.74)))
             }
-            
+            .padding(.bottom, 8)
         }
+        
     }
 }
