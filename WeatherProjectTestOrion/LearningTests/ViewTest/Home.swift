@@ -19,8 +19,8 @@ struct Home: View {
                     }
                     .border(.purple, width: 2)
                         VStack {
-                            CityTitleView()
-                            CurrentWeatherView()
+//                            CityTitleView()
+                            CurrentWeatherView(currentTemperature: "+16°", descriptionCurrentWeather: "Cloudy, Feels like +20°", currentWeatherIcon: "Cloudy")
                             DetailsForCurrentWeatherView()
                         }
                     

@@ -11,7 +11,6 @@
 		BCDDDCD92763A63F005C81BC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCD82763A63F005C81BC /* MainView.swift */; };
 		BCDDDCDB2763A641005C81BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCDDDCDA2763A641005C81BC /* Assets.xcassets */; };
 		BCDDDCDE2763A641005C81BC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCDDDCDD2763A641005C81BC /* Preview Assets.xcassets */; };
-		BCDDDCE62763A6CE005C81BC /* CityTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCE52763A6CE005C81BC /* CityTitleView.swift */; };
 		BCDDDCE82763A6F2005C81BC /* ListDailyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCE72763A6F1005C81BC /* ListDailyWeatherView.swift */; };
 		BCDDDCEA2763A976005C81BC /* CurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCE92763A976005C81BC /* CurrentWeatherView.swift */; };
 		BCDDDCEC27649793005C81BC /* DetailsForCurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCEB27649793005C81BC /* DetailsForCurrentWeatherView.swift */; };
@@ -32,7 +31,6 @@
 		BCDDDCD82763A63F005C81BC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		BCDDDCDA2763A641005C81BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCDDDCDD2763A641005C81BC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BCDDDCE52763A6CE005C81BC /* CityTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTitleView.swift; sourceTree = "<group>"; };
 		BCDDDCE72763A6F1005C81BC /* ListDailyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDailyWeatherView.swift; sourceTree = "<group>"; };
 		BCDDDCE92763A976005C81BC /* CurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherView.swift; sourceTree = "<group>"; };
 		BCDDDCEB27649793005C81BC /* DetailsForCurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsForCurrentWeatherView.swift; sourceTree = "<group>"; };
@@ -58,6 +56,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BCCA998C2769E754009E692D /* HeaderMainView */ = {
+			isa = PBXGroup;
+			children = (
+				BCDDDCED276498D7005C81BC /* HeaderWeatherView.swift */,
+				BCDDDCE92763A976005C81BC /* CurrentWeatherView.swift */,
+				BCDDDCEB27649793005C81BC /* DetailsForCurrentWeatherView.swift */,
+			);
+			path = HeaderMainView;
+			sourceTree = "<group>";
+		};
+		BCCA998D2769E77C009E692D /* BodyMainView */ = {
+			isa = PBXGroup;
+			children = (
+				BCDDDCE72763A6F1005C81BC /* ListDailyWeatherView.swift */,
+			);
+			path = BodyMainView;
+			sourceTree = "<group>";
+		};
 		BCDDDCCA2763A63F005C81BC = {
 			isa = PBXGroup;
 			children = (
@@ -98,11 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				BCDDDCD82763A63F005C81BC /* MainView.swift */,
-				BCDDDCED276498D7005C81BC /* HeaderWeatherView.swift */,
-				BCDDDCE52763A6CE005C81BC /* CityTitleView.swift */,
-				BCDDDCE92763A976005C81BC /* CurrentWeatherView.swift */,
-				BCDDDCEB27649793005C81BC /* DetailsForCurrentWeatherView.swift */,
-				BCDDDCE72763A6F1005C81BC /* ListDailyWeatherView.swift */,
+				BCCA998C2769E754009E692D /* HeaderMainView */,
+				BCCA998D2769E77C009E692D /* BodyMainView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -226,7 +239,6 @@
 			files = (
 				BCDDDCEC27649793005C81BC /* DetailsForCurrentWeatherView.swift in Sources */,
 				BCDDDCFC2765F7F5005C81BC /* ListDailyWeather.swift in Sources */,
-				BCDDDCE62763A6CE005C81BC /* CityTitleView.swift in Sources */,
 				BCDDDCD92763A63F005C81BC /* MainView.swift in Sources */,
 				C6E76D1327688CC1009742EB /* ScrollViewReader.swift in Sources */,
 				BCDDDCF12765405B005C81BC /* HourlyCurrentWeather.swift in Sources */,
