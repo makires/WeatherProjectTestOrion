@@ -77,8 +77,7 @@
 		BCDDDCD52763A63F005C81BC /* WeatherProjectTestOrion */ = {
 			isa = PBXGroup;
 			children = (
-				BCDDDCEF27654045005C81BC /* Model */,
-				BCDDDCE42763A6A5005C81BC /* View */,
+				C6E76D1A2769D43A009742EB /* Main */,
 				BCDDDCD62763A63F005C81BC /* WeatherProjectTestOrionApp.swift */,
 				C6E76D0627687012009742EB /* LearningTests */,
 				BCDDDCDA2763A641005C81BC /* Assets.xcassets */,
@@ -144,6 +143,15 @@
 				C6E76D152768BFE2009742EB /* Home.swift */,
 			);
 			path = ViewTest;
+			sourceTree = "<group>";
+		};
+		C6E76D1A2769D43A009742EB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				BCDDDCE42763A6A5005C81BC /* View */,
+				BCDDDCEF27654045005C81BC /* Model */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
