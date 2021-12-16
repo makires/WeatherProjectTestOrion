@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC25CF0E276B4F950076C7C2 /* SV.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25CF0D276B4F950076C7C2 /* SV.swift */; };
 		BCDDDCD72763A63F005C81BC /* WeatherProjectTestOrionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCD62763A63F005C81BC /* WeatherProjectTestOrionApp.swift */; };
 		BCDDDCD92763A63F005C81BC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCD82763A63F005C81BC /* MainView.swift */; };
 		BCDDDCDB2763A641005C81BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCDDDCDA2763A641005C81BC /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC25CF0D276B4F950076C7C2 /* SV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SV.swift; sourceTree = "<group>"; };
 		BCDDDCD32763A63F005C81BC /* WeatherProjectTestOrion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherProjectTestOrion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCDDDCD62763A63F005C81BC /* WeatherProjectTestOrionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherProjectTestOrionApp.swift; sourceTree = "<group>"; };
 		BCDDDCD82763A63F005C81BC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				C6E76D0E276873F2009742EB /* TileView.swift */,
 				C6E76D102768765E009742EB /* StickyHeader.swift */,
 				C6E76D1227688CC1009742EB /* ScrollViewReader.swift */,
+				BC25CF0D276B4F950076C7C2 /* SV.swift */,
 			);
 			path = LearningTests;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				BCDDDCD72763A63F005C81BC /* WeatherProjectTestOrionApp.swift in Sources */,
 				C6E76D162768BFE2009742EB /* Home.swift in Sources */,
 				BCDDDCEE276498D7005C81BC /* HeaderWeatherView.swift in Sources */,
+				BC25CF0E276B4F950076C7C2 /* SV.swift in Sources */,
 				BCDDDCEA2763A976005C81BC /* CurrentWeatherView.swift in Sources */,
 				C6E76D0A276872FF009742EB /* ParallaxScrolling.swift in Sources */,
 				BCDDDCE82763A6F2005C81BC /* DailyWeatherListView.swift in Sources */,

@@ -33,8 +33,7 @@ struct HeaderWeatherView: View {
                             .font(.body)
                     })
                 }
-                .padding(.leading, 16)
-                .padding(.trailing, 10)
+                .padding(.horizontal, 16)
                 
                 CurrentWeatherView(currentTemperature: currentTemperature,
                                    descriptionCurrentWeather: descriptionCurrentWeather,
