@@ -13,6 +13,9 @@ struct MainView: View {
             HeaderWeatherView()
             DailyWeatherListView()
         }
+        .onAppear {
+            testRequest()
+        }
     }
 }
 

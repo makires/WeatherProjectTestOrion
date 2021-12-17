@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6B0961CBF4211A51AA13C6D6 /* Pods_WeatherProjectTestOrion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE214F57A7AFA981D4CA08F /* Pods_WeatherProjectTestOrion.framework */; };
 		BC25CF0E276B4F950076C7C2 /* SV.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25CF0D276B4F950076C7C2 /* SV.swift */; };
+		BC25CF12276C60CB0076C7C2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25CF11276C60CB0076C7C2 /* API.swift */; };
 		BCDDDCD72763A63F005C81BC /* WeatherProjectTestOrionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCD62763A63F005C81BC /* WeatherProjectTestOrionApp.swift */; };
 		BCDDDCD92763A63F005C81BC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCD82763A63F005C81BC /* MainView.swift */; };
 		BCDDDCDB2763A641005C81BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCDDDCDA2763A641005C81BC /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		5FE214F57A7AFA981D4CA08F /* Pods_WeatherProjectTestOrion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherProjectTestOrion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80EFA469B82866319E359713 /* Pods-WeatherProjectTestOrion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherProjectTestOrion.debug.xcconfig"; path = "Target Support Files/Pods-WeatherProjectTestOrion/Pods-WeatherProjectTestOrion.debug.xcconfig"; sourceTree = "<group>"; };
 		BC25CF0D276B4F950076C7C2 /* SV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SV.swift; sourceTree = "<group>"; };
+		BC25CF11276C60CB0076C7C2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		BCDDDCD32763A63F005C81BC /* WeatherProjectTestOrion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherProjectTestOrion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCDDDCD62763A63F005C81BC /* WeatherProjectTestOrionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherProjectTestOrionApp.swift; sourceTree = "<group>"; };
 		BCDDDCD82763A63F005C81BC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -69,8 +71,23 @@
 				80EFA469B82866319E359713 /* Pods-WeatherProjectTestOrion.debug.xcconfig */,
 				52EC6476F35278F27A25F90B /* Pods-WeatherProjectTestOrion.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		BC25CF0F276C600D0076C7C2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BC25CF10276C60160076C7C2 /* Network */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		BC25CF10276C60160076C7C2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BC25CF11276C60CB0076C7C2 /* API.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		BCDDDCCA2763A63F005C81BC = {
@@ -94,6 +111,7 @@
 		BCDDDCD52763A63F005C81BC /* WeatherProjectTestOrion */ = {
 			isa = PBXGroup;
 			children = (
+				BC25CF0F276C600D0076C7C2 /* Services */,
 				C6E76D1A2769D43A009742EB /* Main */,
 				BCDDDCD62763A63F005C81BC /* WeatherProjectTestOrionApp.swift */,
 				C6E76D0627687012009742EB /* LearningTests */,
@@ -307,6 +325,7 @@
 				BCDDDCE82763A6F2005C81BC /* DailyWeatherListView.swift in Sources */,
 				C6E76D0F276873F2009742EB /* TileView.swift in Sources */,
 				C6E76D112768765E009742EB /* StickyHeader.swift in Sources */,
+				BC25CF12276C60CB0076C7C2 /* API.swift in Sources */,
 				C6E76D0827687072009742EB /* LayingOutUsingPhi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
