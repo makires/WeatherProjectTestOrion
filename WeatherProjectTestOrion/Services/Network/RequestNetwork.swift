@@ -11,8 +11,11 @@ import Alamofire
 func testRequest() {
     print(testUrl)
     let request = AF.request(testUrl)
-    request.responseDecodable(of: Weather.self) { response in
-        guard let weather = response.value else { return }
+    request.responseDecodable(of: Weather.self) { (response) in
+        guard let weather = response.value else {
+            print("не удалось распарсить данные")
+            return
+        }
         print(weather.current.temperature)
     }
 }
