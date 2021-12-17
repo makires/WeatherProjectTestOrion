@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6B0961CBF4211A51AA13C6D6 /* Pods_WeatherProjectTestOrion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE214F57A7AFA981D4CA08F /* Pods_WeatherProjectTestOrion.framework */; };
 		BC25CF0E276B4F950076C7C2 /* SV.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25CF0D276B4F950076C7C2 /* SV.swift */; };
-		BC25CF12276C60CB0076C7C2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25CF11276C60CB0076C7C2 /* API.swift */; };
+		BC25CF12276C60CB0076C7C2 /* APIFromWeatherstack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25CF11276C60CB0076C7C2 /* APIFromWeatherstack.swift */; };
 		BCDDDCD72763A63F005C81BC /* WeatherProjectTestOrionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCD62763A63F005C81BC /* WeatherProjectTestOrionApp.swift */; };
 		BCDDDCD92763A63F005C81BC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCD82763A63F005C81BC /* MainView.swift */; };
 		BCDDDCDB2763A641005C81BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCDDDCDA2763A641005C81BC /* Assets.xcassets */; };
@@ -20,6 +20,9 @@
 		BCDDDCEE276498D7005C81BC /* HeaderWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCED276498D7005C81BC /* HeaderWeatherView.swift */; };
 		BCDDDCF12765405B005C81BC /* HourlyCurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCF02765405B005C81BC /* HourlyCurrentWeather.swift */; };
 		BCDDDCFC2765F7F5005C81BC /* ListDailyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCFB2765F7F5005C81BC /* ListDailyWeather.swift */; };
+		C698E9A3276C749600FEDEAA /* APIFromWeatherapi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698E9A2276C749600FEDEAA /* APIFromWeatherapi.swift */; };
+		C698E9A5276C759600FEDEAA /* RequestNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698E9A4276C759600FEDEAA /* RequestNetwork.swift */; };
+		C698E9A9276C90E400FEDEAA /* ModelWeatherapi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698E9A8276C90E400FEDEAA /* ModelWeatherapi.swift */; };
 		C6E76D0827687072009742EB /* LayingOutUsingPhi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E76D0727687072009742EB /* LayingOutUsingPhi.swift */; };
 		C6E76D0A276872FF009742EB /* ParallaxScrolling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E76D09276872FF009742EB /* ParallaxScrolling.swift */; };
 		C6E76D0F276873F2009742EB /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E76D0E276873F2009742EB /* TileView.swift */; };
@@ -33,7 +36,7 @@
 		5FE214F57A7AFA981D4CA08F /* Pods_WeatherProjectTestOrion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherProjectTestOrion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80EFA469B82866319E359713 /* Pods-WeatherProjectTestOrion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherProjectTestOrion.debug.xcconfig"; path = "Target Support Files/Pods-WeatherProjectTestOrion/Pods-WeatherProjectTestOrion.debug.xcconfig"; sourceTree = "<group>"; };
 		BC25CF0D276B4F950076C7C2 /* SV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SV.swift; sourceTree = "<group>"; };
-		BC25CF11276C60CB0076C7C2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		BC25CF11276C60CB0076C7C2 /* APIFromWeatherstack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFromWeatherstack.swift; sourceTree = "<group>"; };
 		BCDDDCD32763A63F005C81BC /* WeatherProjectTestOrion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherProjectTestOrion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCDDDCD62763A63F005C81BC /* WeatherProjectTestOrionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherProjectTestOrionApp.swift; sourceTree = "<group>"; };
 		BCDDDCD82763A63F005C81BC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -45,6 +48,9 @@
 		BCDDDCED276498D7005C81BC /* HeaderWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderWeatherView.swift; sourceTree = "<group>"; };
 		BCDDDCF02765405B005C81BC /* HourlyCurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyCurrentWeather.swift; sourceTree = "<group>"; };
 		BCDDDCFB2765F7F5005C81BC /* ListDailyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDailyWeather.swift; sourceTree = "<group>"; };
+		C698E9A2276C749600FEDEAA /* APIFromWeatherapi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFromWeatherapi.swift; sourceTree = "<group>"; };
+		C698E9A4276C759600FEDEAA /* RequestNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNetwork.swift; sourceTree = "<group>"; };
+		C698E9A8276C90E400FEDEAA /* ModelWeatherapi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelWeatherapi.swift; sourceTree = "<group>"; };
 		C6E76D0727687072009742EB /* LayingOutUsingPhi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayingOutUsingPhi.swift; sourceTree = "<group>"; };
 		C6E76D09276872FF009742EB /* ParallaxScrolling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallaxScrolling.swift; sourceTree = "<group>"; };
 		C6E76D0E276873F2009742EB /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
@@ -85,7 +91,9 @@
 		BC25CF10276C60160076C7C2 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				BC25CF11276C60CB0076C7C2 /* API.swift */,
+				C698E9A7276C90C100FEDEAA /* Weatherstack */,
+				C698E9A6276C90B100FEDEAA /* Weatherapi */,
+				C698E9A4276C759600FEDEAA /* RequestNetwork.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -148,6 +156,23 @@
 				BCDDDCFB2765F7F5005C81BC /* ListDailyWeather.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C698E9A6276C90B100FEDEAA /* Weatherapi */ = {
+			isa = PBXGroup;
+			children = (
+				C698E9A2276C749600FEDEAA /* APIFromWeatherapi.swift */,
+				C698E9A8276C90E400FEDEAA /* ModelWeatherapi.swift */,
+			);
+			path = Weatherapi;
+			sourceTree = "<group>";
+		};
+		C698E9A7276C90C100FEDEAA /* Weatherstack */ = {
+			isa = PBXGroup;
+			children = (
+				BC25CF11276C60CB0076C7C2 /* APIFromWeatherstack.swift */,
+			);
+			path = Weatherstack;
 			sourceTree = "<group>";
 		};
 		C6E76D0627687012009742EB /* LearningTests */ = {
@@ -317,6 +342,7 @@
 				C6E76D1327688CC1009742EB /* ScrollViewReader.swift in Sources */,
 				BCDDDCF12765405B005C81BC /* HourlyCurrentWeather.swift in Sources */,
 				BCDDDCD72763A63F005C81BC /* WeatherProjectTestOrionApp.swift in Sources */,
+				C698E9A3276C749600FEDEAA /* APIFromWeatherapi.swift in Sources */,
 				C6E76D162768BFE2009742EB /* Home.swift in Sources */,
 				BCDDDCEE276498D7005C81BC /* HeaderWeatherView.swift in Sources */,
 				BC25CF0E276B4F950076C7C2 /* SV.swift in Sources */,
@@ -324,8 +350,10 @@
 				C6E76D0A276872FF009742EB /* ParallaxScrolling.swift in Sources */,
 				BCDDDCE82763A6F2005C81BC /* DailyWeatherListView.swift in Sources */,
 				C6E76D0F276873F2009742EB /* TileView.swift in Sources */,
+				C698E9A5276C759600FEDEAA /* RequestNetwork.swift in Sources */,
 				C6E76D112768765E009742EB /* StickyHeader.swift in Sources */,
-				BC25CF12276C60CB0076C7C2 /* API.swift in Sources */,
+				BC25CF12276C60CB0076C7C2 /* APIFromWeatherstack.swift in Sources */,
+				C698E9A9276C90E400FEDEAA /* ModelWeatherapi.swift in Sources */,
 				C6E76D0827687072009742EB /* LayingOutUsingPhi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

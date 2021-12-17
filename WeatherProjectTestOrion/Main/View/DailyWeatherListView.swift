@@ -29,7 +29,7 @@ struct DailyWeatherListView: View {
         .listStyle(.plain)
         
         .onPreferenceChange(FrameOriginYPreferenceKey.self) { newSize in
-            print("The new child size is: \(newSize)")
+            print("The new child frame Y is: \(newSize)")
         }
         // как List разместить в ScrollView
         ////        GeometryReader { g in
