@@ -14,6 +14,8 @@ struct HeaderWeatherView: View {
     var currentTemperature = "+16°"
     var descriptionCurrentWeather = "Cloudy, Feels like +20°"
     
+    @ObservedObject var weatherVM = WeatherViewModel(weatherService: WeatherService() )
+    
     var body: some View {
         ZStack {
             Image(backgroundHeaderWeatherView)
@@ -35,8 +37,8 @@ struct HeaderWeatherView: View {
                 }
                 .padding(.horizontal, 16)
                 
-                CurrentWeatherView(currentTemperature: currentTemperature,
-                                   descriptionCurrentWeather: descriptionCurrentWeather,
+                CurrentWeatherView(currentTemperature: weatherVM.currentTemperatute,
+                                   descriptionCurrentTemperature: weatherVM.feelsLikeTemperature,
                                    currentWeatherIcon: currentWeatherIcon)
                     .padding(.horizontal, 16)
                 DetailsForCurrentWeatherView()
@@ -48,7 +50,9 @@ struct HeaderWeatherView: View {
         .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
         .frame(height: 320)
         
-        
+        .onAppear {
+            weatherVM.getCurrentWeather(for: cityTitle)
+        }
         
         
     }

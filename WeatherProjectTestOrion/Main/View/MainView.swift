@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    
     var body: some View {
         VStack {
             HeaderWeatherView()
             DailyWeatherListView()
         }
-        .onAppear {
-            testRequest()
-        }
+        
     }
 }
 
