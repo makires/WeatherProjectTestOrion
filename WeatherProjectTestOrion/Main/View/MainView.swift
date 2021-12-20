@@ -11,9 +11,15 @@ struct MainView: View {
     
     
     var body: some View {
-        VStack {
-            HeaderWeatherView()
-            DailyWeatherListView()
+        GeometryReader { geoProxyMainView in
+            VStack {
+                HeaderWeatherView()
+                    
+                DailyWeatherListView()
+            }
+            .onAppear {
+                print("высота MainView = \(geoProxyMainView.frame(in: .global).size.height)")
+            }
         }
         
     }

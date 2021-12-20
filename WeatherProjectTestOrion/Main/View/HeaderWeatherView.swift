@@ -17,6 +17,7 @@ struct HeaderWeatherView: View {
     @ObservedObject var weatherVM = WeatherViewModel(weatherService: WeatherService() )
     
     var body: some View {
+        
         ZStack {
             Image(backgroundHeaderWeatherView)
                 .resizable()
@@ -41,9 +42,21 @@ struct HeaderWeatherView: View {
                                    descriptionCurrentTemperature: weatherVM.feelsLikeTemperature,
                                    currentWeatherIcon: currentWeatherIcon)
                     .padding(.horizontal, 16)
-                DetailsForCurrentWeatherView()
-                    .font(.system(size: 12, weight: .regular))
-                    .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 0))
+//                GeometryReader { geoProxyDetailsCurrentWeather in
+                    
+                    DetailsForCurrentWeatherView()
+                        .font(.system(size: 12, weight: .regular))
+                        .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 0))
+                        .background(
+                            GeometryReader { geoProxyDetailsCurrentWeather in
+                                Color.clear
+                                    .onAppear {
+                                        print("высота DetailsForCurrentWeatherView = \(geoProxyDetailsCurrentWeather.frame(in: .global).size.height)")
+                                    }
+                               
+                            }
+                        )
+//                }
                 
             }
         }
