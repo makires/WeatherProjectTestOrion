@@ -13,110 +13,44 @@ struct OffsetPreferenceKey: PreferenceKey {
 }
 
 struct DailyWeatherListView: View {
-    @State var height: CGFloat = .zero
+    @Binding var startLeftTopPointY: CGFloat
+    @Binding var leftTopPointY: CGFloat
     
     var body: some View {
-//        GeometryReader { geoProxyList in
+        GeometryReader { geoProxyOutside in
             ScrollView {
-                Color.clear
-                    .background(
-                        GeometryReader { geometryProxy in
-                            Color.clear
-                                .preference(key: OffsetPreferenceKey.self, value: geometryProxy.frame(in: .global).minY)
-                                .onAppear {
-                                    height = geometryProxy.frame(in: .global).minY
-                                    print("координата Clear into ScrollView в глобал = \(height)")
-                                }
-                        })
+                Color.yellow
+                    .opacity(0.4)
+                    .frame(height: 100)
+.background(
+    GeometryReader { geometryProxyBackground in
+        Color.clear
+            .preference(key: OffsetPreferenceKey.self, value: geometryProxyBackground.frame(in: .global).minY)
+            .onAppear {
+                startLeftTopPointY = geometryProxyBackground.frame(in: .global).minY
+            }
+    })
                     ForEach(listDaily, id:\.self) { item in
                         DailyWeatherRow(dailyWeather: item)
                         Divider()
                             .padding(0)
                     }
-                    .listRowInsets(EdgeInsets())
                     
                 }
-            .onPreferenceChange(OffsetPreferenceKey.self) { newY in
-                        print("The new child frame Y is: \(newY)")
+            .border(.red, width: 2)
+//
+//.frame(height: leftTopPointY < startLeftTopPointY ? geoProxyOutside.size.height + leftTopPointY : geoProxyOutside.size.height)
+//.offset(y: leftTopPointY < startLeftTopPointY ? -110 : 0)
+                        .offset(y: -191)
+                        .frame(height: geoProxyOutside.size.height + 191)
+.onPreferenceChange(OffsetPreferenceKey.self) { newLeftTopPintY in
+     leftTopPointY = newLeftTopPintY
+     print("Координата верхней ячейки Y changed, it is: \(newLeftTopPintY)")
                     }
-            .coordinateSpace(name: "Scroll")
-                .border(.red, width: 2)
-    //            .frame(height: geoProxyList.frame(in: .global).size.height+145)
-    //            .offset(y: -145)
-                .listStyle(.plain)
-                .onAppear {
-    //                print("высота List = \(geoProxyList.frame(in: .global).size.height)")
-            }
-//        }
-     
-//
-//        .onPreferenceChange(FrameOriginYPreferenceKey.self) { newSize in
-//            print("The new child frame Y is: \(newSize)")
-//        }
-//        GeometryReader { proxyOutside in
-//            ScrollView {
-//                ForEach(listDaily, id: \.self) { item in
-//                    DailyWeatherRow(dailyWeather: item)
-//                    Divider()
-//                        .padding(0)
-//                }
-//                .background(
-//                    GeometryReader { proxyInside in
-//                        Color.yellow
-//                            .preference(key: OffsetPreferenceKey.self, value: proxyInside.frame(in: .local).size.height)
-//
-//
-//                    }
-//                )
-//            }
-//            .onAppear(perform: {
-//                height = proxyOutside.frame(in: .local).size.height
-//                print(height)
-//            })
-////            .onPreferenceChange(OffsetPreferenceKey.self, perform: { <#Equatable#> in
-////                <#code#>
-////            })
-//            .coordinateSpace(name: "frameLayer")
-//        }
-        
-        
-        
-        // ===============================================================
-        /*
-        List {
-            ForEach(listDaily, id:\.self) { item in
-                DailyWeatherRow(dailyWeather: item)
-            }
-            .listRowInsets(EdgeInsets())
-            .background(
-                GeometryReader { geometryProxy in
-                    Color.clear
-                        .preference(key: FrameOriginYPreferenceKey.self, value: geometryProxy.frame(in: .global).origin.y)
-                })
+                
         }
-        .listStyle(.plain)
-        
-        .onPreferenceChange(FrameOriginYPreferenceKey.self) { newSize in
-            print("The new child frame Y is: \(newSize)")
-        }
-         */
-        // ===============================================================
-        // как List разместить в ScrollView
-        ////        GeometryReader { g in
-        //        ScrollView {
-        ////            List {
-        //                    ForEach(listDaily, id:\.self) { item in
-        //                        DailyWeatherRow(dailyWeather: item)
-        //                        Divider()
-        ////                    }
-        ////                    .listRowInsets(EdgeInsets())
-        //
-        //                    // попробовать через жест?
-        //            }        .listStyle(.plain)
-        ////                .frame(width: g.size.width-0, height: g.size.height-0)
-        //        }
-        ////    }
-        //
+            
+
     }
 }
 
@@ -154,11 +88,11 @@ struct DailyWeatherRow: View {
 }
 
 
-struct DailyWeatherListView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            DailyWeatherListView()
-            MainView()
-        }
-    }
-}
+//struct DailyWeatherListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            DailyWeatherListView()
+//            MainView()
+//        }
+//    }
+//}

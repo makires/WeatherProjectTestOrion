@@ -8,19 +8,23 @@
 import SwiftUI
 
 struct MainView: View {
+    @State var leftTopPointY: CGFloat = .zero
+    @State var startLeftTopPointY: CGFloat = .zero
     
     
     var body: some View {
-        GeometryReader { geoProxyMainView in
-            VStack {
-                HeaderWeatherView()
+//        GeometryReader { geoProxyMainView in
+            VStack(spacing: 0) {
+                HeaderWeatherView(leftTopPointY: $leftTopPointY, startLeftTopPointY: $startLeftTopPointY)
                     
-                DailyWeatherListView()
+                DailyWeatherListView(startLeftTopPointY: $startLeftTopPointY, leftTopPointY: $leftTopPointY)
             }
             .onAppear {
-                print("высота MainView = \(geoProxyMainView.frame(in: .global).size.height)")
+                print("появилась координата верхней ячейки startLeftTopPointY = \(startLeftTopPointY)")
+                print("появилась NEW координата верхней ячейки leftTopPointY = \(leftTopPointY)")
+//                print("высота MainView = \(geoProxyMainView.frame(in: .global).size.height)")
             }
-        }
+//        }
         
     }
 }

@@ -13,59 +13,90 @@ struct HeaderWeatherView: View {
     var currentWeatherIcon = "Cloudy"
     var currentTemperature = "+16°"
     var descriptionCurrentWeather = "Cloudy, Feels like +20°"
+    @Binding var leftTopPointY: CGFloat
+    @Binding var startLeftTopPointY: CGFloat
+    
+    // передать высоту details в иерархии для падиинга(или offset) в dailyWeather list
     
     @ObservedObject var weatherVM = WeatherViewModel(weatherService: WeatherService() )
     
     var body: some View {
         
-        ZStack {
-            Image(backgroundHeaderWeatherView)
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.vertical)
-            VStack {
-                HStack {
-                    Text(cityTitle)
-                        .font(.largeTitle)
-                        .tracking(0.37)
-                    Spacer()
-                    Button(action: {
-                        print("")
-                    }, label: {
-                        Image(systemName: "list.bullet")
-                            .font(.body)
-                    })
-                }
-                .padding(.horizontal, 16)
-                
-                CurrentWeatherView(currentTemperature: weatherVM.currentTemperatute,
-                                   descriptionCurrentTemperature: weatherVM.feelsLikeTemperature,
-                                   currentWeatherIcon: currentWeatherIcon)
+        GeometryReader { geoProxyHeader in
+            ZStack {
+                Image(backgroundHeaderWeatherView)
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.vertical)
+                    .frame(height: geoProxyHeader.size.height/3)
+                VStack {
+                    HStack {
+//                        Text(cityTitle )
+                        Text("\(startLeftTopPointY)" )
+                            .font(.largeTitle)
+                            .tracking(0.37)
+                        Spacer()
+                        Button(action: {
+                            print("")
+                        }, label: {
+                            Image(systemName: "list.bullet")
+                                .font(.body)
+                        })
+                    }
                     .padding(.horizontal, 16)
-//                GeometryReader { geoProxyDetailsCurrentWeather in
                     
-                    DetailsForCurrentWeatherView()
-                        .font(.system(size: 12, weight: .regular))
-                        .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 0))
+                    CurrentWeatherView(currentTemperature: weatherVM.currentTemperatute,
+                                       descriptionCurrentTemperature: weatherVM.feelsLikeTemperature,
+                                       currentWeatherIcon: currentWeatherIcon)
+                        .padding(.horizontal, 16)
+    //                GeometryReader { geoProxyDetailsCurrentWeather in
+                        
+       DetailsForCurrentWeatherView()
+                    // изменение прозрачности
+                        .opacity(leftTopPointY < startLeftTopPointY ? 0 : 1)
                         .background(
-                            GeometryReader { geoProxyDetailsCurrentWeather in
+                            GeometryReader { geoProxyDetails in
                                 Color.clear
                                     .onAppear {
-                                        print("высота DetailsForCurrentWeatherView = \(geoProxyDetailsCurrentWeather.frame(in: .global).size.height)")
+                                        <#code#>
                                     }
-                               
-                            }
-                        )
-//                }
+                            })
+                    
+//    .frame(height: geoProxyHeader.size.height/4)
+    .font(.system(size: 12, weight: .regular))
+    .padding(EdgeInsets(top: 8, leading: 16, bottom: 30, trailing: 0))
+    .background(
+        GeometryReader { geoProxyDetailsCurrentWeather in
+            //изменение цвета на Color.white
+//            Color.gray
+            if leftTopPointY < 237 {
+                Color.white
+                    .onAppear {
+                        print("высота серой DetailsForCurrentWeatherView = \(geoProxyDetailsCurrentWeather.frame(in: .global).size.height) and header/4 = \(geoProxyHeader.size.height/4)")
+                    }
+            } else {
+            Color.clear
+                    .onAppear {
+                        print("высота чистой DetailsForCurrentWeatherView = \(geoProxyDetailsCurrentWeather.frame(in: .global).size.height) and header/4 = \(geoProxyHeader.size.height/4)")
+                    }
+            }
+            
+            
+                                   
+                                }
+                            )
+                    
+                }
                 
             }
+            
+            .coordinateSpace(name: "HeaderZStack")
+            .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+            .onAppear {
+                weatherVM.getCurrentWeather(for: cityTitle)
         }
-        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-        .frame(height: 320)
-        
-        .onAppear {
-            weatherVM.getCurrentWeather(for: cityTitle)
         }
+        .border(.green, width: 2)
         
         
     }
@@ -74,8 +105,8 @@ struct HeaderWeatherView: View {
 struct HeaderWeatherView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HeaderWeatherView()
-                .previewLayout(.sizeThatFits)
+//            HeaderWeatherView()
+//                .previewLayout(.sizeThatFits)
             MainView()
             
         }
