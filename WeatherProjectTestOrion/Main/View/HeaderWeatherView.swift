@@ -16,6 +16,8 @@ struct HeaderWeatherView: View {
     @Binding var leftTopPointY: CGFloat
     @Binding var startLeftTopPointY: CGFloat
     
+    @Binding var heightDetailsCurrentWeatherView: CGFloat
+    
     // передать высоту details в иерархии для падиинга(или offset) в dailyWeather list
     
     @ObservedObject var weatherVM = WeatherViewModel(weatherService: WeatherService() )
@@ -52,16 +54,10 @@ struct HeaderWeatherView: View {
     //                GeometryReader { geoProxyDetailsCurrentWeather in
                         
        DetailsForCurrentWeatherView()
+                        
                     // изменение прозрачности
                         .opacity(leftTopPointY < startLeftTopPointY ? 0 : 1)
-                        .background(
-                            GeometryReader { geoProxyDetails in
-                                Color.clear
-                                    .onAppear {
-                                        <#code#>
-                                    }
-                            })
-                    
+                        .animation(.easeInOut)
 //    .frame(height: geoProxyHeader.size.height/4)
     .font(.system(size: 12, weight: .regular))
     .padding(EdgeInsets(top: 8, leading: 16, bottom: 30, trailing: 0))
@@ -69,17 +65,26 @@ struct HeaderWeatherView: View {
         GeometryReader { geoProxyDetailsCurrentWeather in
             //изменение цвета на Color.white
 //            Color.gray
-            if leftTopPointY < 237 {
+                
+            if leftTopPointY < startLeftTopPointY {
+            
                 Color.white
+                    .opacity(leftTopPointY < startLeftTopPointY ? 1 : 0)
+                    .animation(.easeInOut)
                     .onAppear {
-                        print("высота серой DetailsForCurrentWeatherView = \(geoProxyDetailsCurrentWeather.frame(in: .global).size.height) and header/4 = \(geoProxyHeader.size.height/4)")
+                        print("высота серой DetailsForCurrentWeatherView = \(geoProxyDetailsCurrentWeather.frame(in: .global).size.height)")
+                        heightDetailsCurrentWeatherView = geoProxyDetailsCurrentWeather.frame(in: .global).size.height
                     }
             } else {
             Color.clear
+                    .opacity(leftTopPointY < startLeftTopPointY ? 0 : 1)
+                    .animation(.easeInOut)
                     .onAppear {
-                        print("высота чистой DetailsForCurrentWeatherView = \(geoProxyDetailsCurrentWeather.frame(in: .global).size.height) and header/4 = \(geoProxyHeader.size.height/4)")
+                        print("высота чистой DetailsForCurrentWeatherView = \(geoProxyDetailsCurrentWeather.frame(in: .global).size.height)")
+                        heightDetailsCurrentWeatherView = geoProxyDetailsCurrentWeather.frame(in: .global).size.height
                     }
             }
+        
             
             
                                    

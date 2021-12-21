@@ -13,15 +13,20 @@ struct OffsetPreferenceKey: PreferenceKey {
 }
 
 struct DailyWeatherListView: View {
+    
     @Binding var startLeftTopPointY: CGFloat
     @Binding var leftTopPointY: CGFloat
+    @Binding var heightDetailsCurrentWeatherView: CGFloat
     
     var body: some View {
         GeometryReader { geoProxyOutside in
             ScrollView {
                 Color.yellow
                     .opacity(0.4)
-                    .frame(height: 100)
+                //§§§§§§§§§§§§§§§§§§§§§§
+                    .frame(height: 105)
+                    
+                    
 .background(
     GeometryReader { geometryProxyBackground in
         Color.clear
@@ -38,9 +43,7 @@ struct DailyWeatherListView: View {
                     
                 }
             .border(.red, width: 2)
-//
-//.frame(height: leftTopPointY < startLeftTopPointY ? geoProxyOutside.size.height + leftTopPointY : geoProxyOutside.size.height)
-//.offset(y: leftTopPointY < startLeftTopPointY ? -110 : 0)
+                        // передать значение высоты Details == offset
                         .offset(y: -191)
                         .frame(height: geoProxyOutside.size.height + 191)
 .onPreferenceChange(OffsetPreferenceKey.self) { newLeftTopPintY in

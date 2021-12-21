@@ -10,14 +10,15 @@ import SwiftUI
 struct MainView: View {
     @State var leftTopPointY: CGFloat = .zero
     @State var startLeftTopPointY: CGFloat = .zero
-    
+    @State var heightDetailsCurrentWeatherView: CGFloat = .zero
     
     var body: some View {
 //        GeometryReader { geoProxyMainView in
             VStack(spacing: 0) {
-                HeaderWeatherView(leftTopPointY: $leftTopPointY, startLeftTopPointY: $startLeftTopPointY)
+                HeaderWeatherView(leftTopPointY: $leftTopPointY, startLeftTopPointY: $startLeftTopPointY, heightDetailsCurrentWeatherView: $heightDetailsCurrentWeatherView)
                     
-                DailyWeatherListView(startLeftTopPointY: $startLeftTopPointY, leftTopPointY: $leftTopPointY)
+                DailyWeatherListView(startLeftTopPointY: $startLeftTopPointY, leftTopPointY: $leftTopPointY, heightDetailsCurrentWeatherView: $heightDetailsCurrentWeatherView)
+                    
             }
             .onAppear {
                 print("появилась координата верхней ячейки startLeftTopPointY = \(startLeftTopPointY)")
