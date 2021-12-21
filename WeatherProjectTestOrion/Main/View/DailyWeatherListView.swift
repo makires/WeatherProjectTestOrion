@@ -21,9 +21,7 @@ struct DailyWeatherListView: View {
     var body: some View {
         GeometryReader { geoProxyOutside in
             ScrollView {
-                Color.yellow
-                    .opacity(0.4)
-                //§§§§§§§§§§§§§§§§§§§§§§
+                Color.clear
                     .frame(height: 105)
                     
                     
@@ -42,9 +40,7 @@ struct DailyWeatherListView: View {
                     }
                     
                 }
-            .border(.red, width: 2)
-                        // передать значение высоты Details == offset
-                        .offset(y: -191)
+                        .offset(y: -178)
                         .frame(height: geoProxyOutside.size.height + 191)
 .onPreferenceChange(OffsetPreferenceKey.self) { newLeftTopPintY in
      leftTopPointY = newLeftTopPintY
