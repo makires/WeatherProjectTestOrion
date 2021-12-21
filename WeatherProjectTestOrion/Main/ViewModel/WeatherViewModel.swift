@@ -10,9 +10,7 @@ import SwiftUI
 
 class WeatherViewModel: ObservableObject {
     
-    @Published var currentTemperatute = ""
-    @Published var feelsLikeTemperature = ""
-  
+    @Published var weatherCurrent = Weather()
     
     let weatherService: WeatherRepositoryProtocol
     
@@ -22,9 +20,12 @@ class WeatherViewModel: ObservableObject {
     
     func getCurrentWeather(for city: String) {
         weatherService.fetchCurrentWeather(for: city) { apiWeatherModel in
-            self.currentTemperatute = String(apiWeatherModel.current.temperatureCurrent)
-            self.feelsLikeTemperature = String(apiWeatherModel.current.feelsLikeTemperature)
+            self.weatherCurrent = Weather(response: apiWeatherModel)
         }
+    }
+    
+    func getHourlyWeather(for city: String) {
+        
     }
     
 }

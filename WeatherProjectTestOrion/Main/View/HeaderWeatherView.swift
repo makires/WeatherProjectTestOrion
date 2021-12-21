@@ -13,6 +13,7 @@ struct HeaderWeatherView: View {
     var currentWeatherIcon = "Cloudy"
     var currentTemperature = "+16°"
     var descriptionCurrentWeather = "Cloudy, Feels like +20°"
+    
     @Binding var leftTopPointY: CGFloat
     @Binding var startLeftTopPointY: CGFloat
     
@@ -44,11 +45,9 @@ struct HeaderWeatherView: View {
                     }
                     .padding(.horizontal, 16)
                     
-                    CurrentWeatherView(currentTemperature: weatherVM.currentTemperatute,
-                                       descriptionCurrentTemperature: weatherVM.feelsLikeTemperature,
-                                       currentWeatherIcon: currentWeatherIcon)
+                    CurrentWeatherView(currentWeatherIcon: "Cloudy", weather: weatherVM.weatherCurrent)
                         .padding(.horizontal, 16)
-                    DetailsForCurrentWeatherView()
+                    DetailsForCurrentWeatherView(weather: weatherVM.weatherCurrent)
                         .opacity(leftTopPointY < startLeftTopPointY ? 0 : 1)
                         .animation(.easeOut(duration: 1))
                         .font(.system(size: 12, weight: .regular))
@@ -69,7 +68,6 @@ struct HeaderWeatherView: View {
                         .animation(.easeOut(duration: 1.5))
                 }
             }
-            .coordinateSpace(name: "HeaderZStack")
             .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
             .onAppear {
                 weatherVM.getCurrentWeather(for: cityTitle)
@@ -81,8 +79,8 @@ struct HeaderWeatherView: View {
 struct HeaderWeatherView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            //            HeaderWeatherView()
-            //                .previewLayout(.sizeThatFits)
+            HeaderWeatherView(leftTopPointY: .constant(236), startLeftTopPointY: .constant(236), heightDetailsCurrentWeatherView: .constant(.zero))
+                .previewLayout(.sizeThatFits)
             MainView()
             
         }

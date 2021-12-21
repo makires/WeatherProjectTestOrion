@@ -8,22 +8,27 @@
 import SwiftUI
 
 struct CurrentWeatherView: View {
-    var currentTemperature: String
-    var descriptionCurrentTemperature: String
     var currentWeatherIcon: String
     
-    
+    var weather: Weather
+    var dataIcon: Data? = nil
     
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(currentTemperature + "°")
+                Text(weather.temperatureCurrent + "°")
                     .font(.system(size: 80, weight: .thin))
-                Text("Cloudy, Feels like \(descriptionCurrentTemperature)°")
+                Text("\(weather.text), Feels like \(weather.feelsLikeTemperature)°")
                     .font(.system(size: 12, weight: .regular))
             }
             Spacer()
-            Image(currentWeatherIcon)
+            AsyncImage(url: URL(string: weather.icon)) { image in
+                image.resizable()
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(width: 60, height: 60)
+            
         }
     }
 }
@@ -34,7 +39,7 @@ struct CurrentWeatherView: View {
 struct CurrentWeatherView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CurrentWeatherView(currentTemperature: "+16°", descriptionCurrentTemperature: "Cloudy, Feels like +20°", currentWeatherIcon: "Cloudy")
+            CurrentWeatherView(currentWeatherIcon: "Cloudy", weather: Weather())
                 .previewLayout(.sizeThatFits)
                 .background(Color.gray)
             MainView()
