@@ -14,7 +14,6 @@ struct Weather {
     var windDirection = ""
     var humidity  = ""
     var feelsLikeTemperature  = ""
-    
     var text = ""
     var icon = ""
     
@@ -36,7 +35,7 @@ struct Weather {
 struct HourlyCurrentWeather {
     var hours: [Hour] = []
     init() { }
-    init(response: APIHourlyCurrentWeatherModel) {
+    init(response: APIForecastWeatherModel) {
         hours = response.forecast.forecastday[0].hour
     }
 }
@@ -44,7 +43,7 @@ struct HourlyCurrentWeather {
 struct DailyForecats {
     var days: [Forecastday] = []
     init() {}
-    init(response: APIDailyForecastWeatherModel) {
+    init(response: APIForecastWeatherModel) {
         days = response.forecast.forecastday
     }
 }

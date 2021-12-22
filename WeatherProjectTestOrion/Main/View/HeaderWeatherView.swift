@@ -10,10 +10,6 @@ import SwiftUI
 struct HeaderWeatherView: View {
     var backgroundHeaderWeatherView = "cloudyBackground"
 
-    var currentWeatherIcon = "Cloudy"
-    var currentTemperature = "+16°"
-    var descriptionCurrentWeather = "Cloudy, Feels like +20°"
-    
     @Binding var leftTopPointY: CGFloat
     @Binding var startLeftTopPointY: CGFloat
     

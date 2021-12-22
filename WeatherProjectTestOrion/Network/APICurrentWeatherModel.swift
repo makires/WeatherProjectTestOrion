@@ -10,6 +10,7 @@ import Foundation
 
 struct APICurrentWeatherModel: Decodable {
     let current: APICurrentWeather
+    
 }
 
 struct APICurrentWeather: Decodable {
@@ -37,18 +38,29 @@ struct ConditionWeather: Decodable {
     let icon: String
 }
 
-// MARK: - часовой прогноз текущего дня
-struct APIHourlyCurrentWeatherModel: Decodable {
-    let forecast: APIHourlyForecastWeather
+
+struct APIForecastWeatherModel: Decodable {
+    let forecast: APIForecastWeather
+    
 }
 
-struct APIHourlyForecastWeather: Decodable {
-    let forecastday: [ForecastdayHourly]
+struct APIForecastWeather: Decodable {
+    let forecastday: [Forecastday]
 }
 
-struct ForecastdayHourly: Decodable {
+struct Forecastday: Decodable {
+    let id = UUID()
+    let dateEpoch: Int
+    let day: Day
     let hour: [Hour]
+    
+    enum CodingKeys: String, CodingKey {
+        case dateEpoch = "date_epoch"
+        case day
+        case hour
+    }
 }
+
 struct Hour: Decodable, Identifiable {
     let id = UUID()
     let timeEpoch: Int
@@ -65,24 +77,6 @@ struct Hour: Decodable, Identifiable {
     }
 }
 
-//MARK: - ежедневный прогноз
-struct APIDailyForecastWeatherModel: Decodable {
-    let forecast: Forecast
-}
-
-struct Forecast: Decodable {
-    let forecastday: [Forecastday]
-}
-struct Forecastday: Decodable, Identifiable {
-    let id = UUID()
-    let dateEpoch: Int
-    let day: Day
-    
-    enum CodingKeys: String, CodingKey {
-        case dateEpoch = "date_epoch"
-        case day
-    }
-}
 struct Day: Decodable {
     let maxTemperatureCelcius: Double
     let minTemperatureCelcius: Double
