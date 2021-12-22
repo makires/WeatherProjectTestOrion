@@ -20,6 +20,7 @@ struct MainView: View {
                     
                 DailyWeatherListView(weatherVM: weatherVM, startLeftTopPointY: $startLeftTopPointY, leftTopPointY: $leftTopPointY, heightDetailsCurrentWeatherView: $heightDetailsCurrentWeatherView)
             }
+            .border(.green, width: 2)
             .onAppear {
                 weatherVM.getCurrentWeather(for: weatherVM.cityTitleStatic)
                 weatherVM.getHourlyWeather(for: weatherVM.cityTitleStatic)

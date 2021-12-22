@@ -35,11 +35,7 @@ struct Weather {
 
 struct HourlyCurrentWeather {
     var hours: [Hour] = []
-    
-//    var icon = ""
-//    var temperatureCelcius = ""
     init() { }
-    
     init(response: APIHourlyCurrentWeatherModel) {
         hours = response.forecast.forecastday[0].hour
     }

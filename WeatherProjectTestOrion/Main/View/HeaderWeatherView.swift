@@ -28,7 +28,8 @@ struct HeaderWeatherView: View {
                     .resizable()
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.top)
-//                    .frame(height: geoProxyHeader.size.height/3)
+                    .border(.red, width: 2)
+                    .frame(height: geoProxyHeader.size.height/3)
                 VStack {
                     HStack {
                         Text(weatherVM.cityTitleStatic)
@@ -66,7 +67,7 @@ struct HeaderWeatherView: View {
                         )
                         .animation(.easeOut(duration: 1.5))
                 }
-                .border(.red, width: 2)
+                
             }
             
             .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
