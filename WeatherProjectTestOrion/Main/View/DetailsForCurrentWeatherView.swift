@@ -9,25 +9,27 @@ import SwiftUI
 
 struct DetailsForCurrentWeatherView: View {
     var weather: Weather
-    
+    var hourlyCurrentWeather: HourlyCurrentWeather
     var body: some View {
         HStack(spacing: 33) {
             MeteorologicalDataView(weather: weather)
-            HourlyCurrentWeatherView()
+            HourlyCurrentWeatherView(hourlyCurrentWeather: hourlyCurrentWeather)
         }
         
     }
 }
 
 struct HourlyCurrentWeatherView: View {
+    var hourlyCurrentWeather: HourlyCurrentWeather
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(hourlyCurrentWeather, id: \.self) { item in
+                ForEach(hourlyCurrentWeather.hours) { hourItem in
                     VStack(spacing: 13.5) {
-                        Text(item.hour)
-                        Image(systemName: item.icon)
-                        Text(item.temp)
+                        Text(hourItem.time)
+                        
+//                        Image(systemName: item.icon)
+                        Text("\(hourItem.temperatureCelcius)")
                     }
                 }
             }

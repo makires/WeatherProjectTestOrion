@@ -13,6 +13,6 @@ import Foundation
 
 protocol WeatherRepositoryProtocol {
     
-    func fetchCurrentWeather(for city: String, completionHandler: @escaping (APIWeatherModel) -> () )
+    func fetchCurrentWeather(for city: String, completionHandler: @escaping (APICurrentWeatherModel) -> () )
     
 }

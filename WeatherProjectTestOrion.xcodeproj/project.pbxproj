@@ -12,7 +12,6 @@
 		BC25CF1A276E74930076C7C2 /* WeatherRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25CF19276E74930076C7C2 /* WeatherRepositoryProtocol.swift */; };
 		BC25CF2B2771D1460076C7C2 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25CF2A2771D1460076C7C2 /* Weather.swift */; };
 		BC25CF2D2772702B0076C7C2 /* Hourly.json in Resources */ = {isa = PBXBuildFile; fileRef = BC25CF2C2772702A0076C7C2 /* Hourly.json */; };
-		BC25CF3127727A2A0076C7C2 /* APIHourly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25CF3027727A2A0076C7C2 /* APIHourly.swift */; };
 		BCDDDCD72763A63F005C81BC /* WeatherProjectTestOrionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCD62763A63F005C81BC /* WeatherProjectTestOrionApp.swift */; };
 		BCDDDCD92763A63F005C81BC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCD82763A63F005C81BC /* MainView.swift */; };
 		BCDDDCDB2763A641005C81BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCDDDCDA2763A641005C81BC /* Assets.xcassets */; };
@@ -24,7 +23,7 @@
 		BCDDDCF12765405B005C81BC /* HourlyCurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCF02765405B005C81BC /* HourlyCurrentWeather.swift */; };
 		BCDDDCFC2765F7F5005C81BC /* ListDailyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCFB2765F7F5005C81BC /* ListDailyWeather.swift */; };
 		C698E9A5276C759600FEDEAA /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698E9A4276C759600FEDEAA /* WeatherService.swift */; };
-		C698E9A9276C90E400FEDEAA /* APIWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698E9A8276C90E400FEDEAA /* APIWeatherModel.swift */; };
+		C698E9A9276C90E400FEDEAA /* APICurrentWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698E9A8276C90E400FEDEAA /* APICurrentWeatherModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		BC25CF19276E74930076C7C2 /* WeatherRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepositoryProtocol.swift; sourceTree = "<group>"; };
 		BC25CF2A2771D1460076C7C2 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		BC25CF2C2772702A0076C7C2 /* Hourly.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Hourly.json; sourceTree = "<group>"; };
-		BC25CF3027727A2A0076C7C2 /* APIHourly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHourly.swift; sourceTree = "<group>"; };
 		BCDDDCD32763A63F005C81BC /* WeatherProjectTestOrion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherProjectTestOrion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCDDDCD62763A63F005C81BC /* WeatherProjectTestOrionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherProjectTestOrionApp.swift; sourceTree = "<group>"; };
 		BCDDDCD82763A63F005C81BC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -48,7 +46,7 @@
 		BCDDDCF02765405B005C81BC /* HourlyCurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyCurrentWeather.swift; sourceTree = "<group>"; };
 		BCDDDCFB2765F7F5005C81BC /* ListDailyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDailyWeather.swift; sourceTree = "<group>"; };
 		C698E9A4276C759600FEDEAA /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
-		C698E9A8276C90E400FEDEAA /* APIWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWeatherModel.swift; sourceTree = "<group>"; };
+		C698E9A8276C90E400FEDEAA /* APICurrentWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICurrentWeatherModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +81,8 @@
 		BC25CF26276F79160076C7C2 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				BC25CF3027727A2A0076C7C2 /* APIHourly.swift */,
 				BC25CF19276E74930076C7C2 /* WeatherRepositoryProtocol.swift */,
-				C698E9A8276C90E400FEDEAA /* APIWeatherModel.swift */,
+				C698E9A8276C90E400FEDEAA /* APICurrentWeatherModel.swift */,
 				C698E9A4276C759600FEDEAA /* WeatherService.swift */,
 				BC25CF2C2772702A0076C7C2 /* Hourly.json */,
 			);
@@ -297,8 +294,7 @@
 				BCDDDCE82763A6F2005C81BC /* DailyWeatherListView.swift in Sources */,
 				BC25CF1A276E74930076C7C2 /* WeatherRepositoryProtocol.swift in Sources */,
 				C698E9A5276C759600FEDEAA /* WeatherService.swift in Sources */,
-				C698E9A9276C90E400FEDEAA /* APIWeatherModel.swift in Sources */,
-				BC25CF3127727A2A0076C7C2 /* APIHourly.swift in Sources */,
+				C698E9A9276C90E400FEDEAA /* APICurrentWeatherModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

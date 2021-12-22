@@ -4,14 +4,15 @@
 //
 //  Created by Tatyana Ilvutikova on 17.12.2021.
 //
+//
 
 import Foundation
 
 
-struct APIWeatherModel: Decodable {
+struct APICurrentWeatherModel: Decodable {
     let current: APICurrentWeather
-    let forecast: APIForecastWeather
 }
+
 
 struct APICurrentWeather: Decodable {
     let temperatureCurrent: Double
@@ -21,7 +22,7 @@ struct APICurrentWeather: Decodable {
     let humidity: Int
     let feelsLikeTemperature: Double
     let condition: ConditionWeather
-    
+
     enum CodingKeys: String, CodingKey {
         case temperatureCurrent = "temp_c"
         case pressureHPa = "pressure_mb"
@@ -38,22 +39,30 @@ struct ConditionWeather: Decodable {
     let icon: String
 }
 
+
+struct APIHourlyCurrentWeatherModel: Decodable {
+    let forecast: APIForecastWeather
+}
 struct APIForecastWeather: Decodable {
     let forecastday: [Forecastday]
 }
 
-struct Forecastday: Decodable {
-    
+struct Forecastday: Decodable, Identifiable {
+    let id = UUID()
     let hour: [Hour]
     // время
 }
-struct Hour: Decodable {
+
+struct Hour: Decodable, Identifiable {
+    let id = UUID()
+    let timeEpoch: Int
     let time: String
     let temperatureCelcius: Double
     let condition: ConditionWeather
-    
+
 
     enum CodingKeys: String, CodingKey {
+        case timeEpoch = "time_epoch"
         case time
         case temperatureCelcius = "temp_c"
         case condition

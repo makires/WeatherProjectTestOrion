@@ -17,7 +17,7 @@ struct WeatherService: WeatherRepositoryProtocol {
     private let currentWeatherAPIMethod = "/current.json?"
     private let forecastWeatherAPIMethod = "/forecast.json"
 
-    func fetchCurrentWeather(for city: String, completionHandler: @escaping (APIWeatherModel) -> ()) {
+    func fetchCurrentWeather(for city: String, completionHandler: @escaping (APICurrentWeatherModel) -> ()) {
         // статичный город
         let url = baseURL + currentWeatherAPIMethod
         let parameters = [
@@ -27,7 +27,7 @@ struct WeatherService: WeatherRepositoryProtocol {
         print(url)
         AF.request(url, parameters: parameters)
             .validate()
-            .responseDecodable(of: APIWeatherModel.self) { (response) in
+            .responseDecodable(of: APICurrentWeatherModel.self) { (response) in
                 // необходимо APIWeatherModel преобразовать в модель типа Weather,
                 // которая используется на уровне бизнес-логики в слое domain
                 // как это сделать правильно?
@@ -39,16 +39,32 @@ struct WeatherService: WeatherRepositoryProtocol {
                 print("запрос")
                 print(weather.current.temperatureCurrent)
                 print(weather.current.feelsLikeTemperature)
-                print(weather.current.condition.text)
+//                print(weather.current.condition.text)
                 
                 completionHandler(weather)
             }
     }
     
     
-    func fetchHourlyWeather(for city: String, completionHandler: @escaping (APIWeatherModel) -> ()) {
-        
-    }
+//    func fetchHourlyWeather(for city: String, completionHandler: @escaping (APIHourlyCurrentWeatherModel) -> ()) {
+//        let url = baseURL + forecastWeatherAPIMethod
+//        let parameters = [
+//            "q": city,
+//            "key": keyAPI,
+//            "days": ""
+//        ]
+//        print("прогноз на текущий день по часам", url)
+//        AF.request(url, parameters: parameters)
+//            .validate()
+//            .responseDecodable(of: APIWeatherModel.self) { (response) in
+//                guard let forecastHourly = response.value else {
+//                    print("не удалось распарсить прогноз по часам")
+//                    return
+//                }
+//                print("запрос часового прогноза")
+////                print(forecastHourly.forecast.forecastday[0].hour[0].temperatureCelcius)
+//            }
+//    }
 }
 
 

@@ -18,11 +18,9 @@ struct Weather {
     var text = ""
     var icon = ""
     
-    var hour = ""
-    
     init() { }
     
-    init(response: APIWeatherModel) {
+    init(response: APICurrentWeatherModel) {
         temperatureCurrent = String(format: "%.0f", response.current.temperatureCurrent)
         pressureHPa = String(response.current.pressureHPa)
         windKph = String(response.current.windKph)
@@ -31,9 +29,19 @@ struct Weather {
         feelsLikeTemperature = String(format: "%.0f", response.current.feelsLikeTemperature)
         text = response.current.condition.text
         icon = "https:" + response.current.condition.icon
-        hour = ""
     }
     
+}
+
+struct HourlyCurrentWeather {
+    var hours: [Hour] = []
+    var time = ""
+    var icon = ""
+    var temperatureCelcius = ""
+    init() { }
+    init(response: APIHourlyCurrentWeatherModel) {
+        icon = response.forecast
+    }
 }
 
 
