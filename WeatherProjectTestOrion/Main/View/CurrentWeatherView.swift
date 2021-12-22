@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CurrentWeatherView: View {
-    var currentWeatherIcon: String
     
     var weather: Weather
     var dataIcon: Data? = nil
@@ -39,7 +38,7 @@ struct CurrentWeatherView: View {
 struct CurrentWeatherView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CurrentWeatherView(currentWeatherIcon: "Cloudy", weather: Weather())
+            CurrentWeatherView(weather: Weather())
                 .previewLayout(.sizeThatFits)
                 .background(Color.gray)
             MainView()

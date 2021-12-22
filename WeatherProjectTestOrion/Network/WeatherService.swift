@@ -28,15 +28,11 @@ struct WeatherService: WeatherRepositoryProtocol {
         AF.request(url, parameters: parameters)
             .validate()
             .responseDecodable(of: APICurrentWeatherModel.self) { (response) in
-                // необходимо APIWeatherModel преобразовать в модель типа Weather,
-                // которая используется на уровне бизнес-логики в слое domain
-                // как это сделать правильно?
-                
                 guard let weather = response.value else {
                     print("не удалось распарсить данные, проверить тип данных")
                     return
                 }
-                print("запрос")
+                print("текущая погода")
                 print(weather.current.temperatureCurrent)
                 print(weather.current.feelsLikeTemperature)
 //                print(weather.current.condition.text)
@@ -46,25 +42,44 @@ struct WeatherService: WeatherRepositoryProtocol {
     }
     
     
-//    func fetchHourlyWeather(for city: String, completionHandler: @escaping (APIHourlyCurrentWeatherModel) -> ()) {
-//        let url = baseURL + forecastWeatherAPIMethod
-//        let parameters = [
-//            "q": city,
-//            "key": keyAPI,
-//            "days": ""
-//        ]
-//        print("прогноз на текущий день по часам", url)
-//        AF.request(url, parameters: parameters)
-//            .validate()
-//            .responseDecodable(of: APIWeatherModel.self) { (response) in
-//                guard let forecastHourly = response.value else {
-//                    print("не удалось распарсить прогноз по часам")
-//                    return
-//                }
-//                print("запрос часового прогноза")
-////                print(forecastHourly.forecast.forecastday[0].hour[0].temperatureCelcius)
-//            }
-//    }
+    func fetchHourlyWeather(for city: String, completionHandler: @escaping (APIHourlyCurrentWeatherModel) -> ()) {
+        let url = baseURL + forecastWeatherAPIMethod
+        let parameters: [String: Any] = [
+            "q": city,
+            "key": keyAPI,
+            "days": ""
+        ]
+        AF.request(url, parameters: parameters)
+            .validate()
+            .responseDecodable(of: APIHourlyCurrentWeatherModel.self) { (response) in
+                print(AF.request(url, parameters: parameters))
+                guard let forecastHourly = response.value else {
+                    print("не удалось распарсить hourly прогноз по часам")
+                    return
+                }
+                
+                completionHandler(forecastHourly)
+            }
+    }
+    
+    func fetchDailyWeather(for city: String, completionHandler: @escaping (APIDailyForecastWeatherModel) -> ()) {
+        let url = baseURL + forecastWeatherAPIMethod
+        let parameters: [String: Any] = [
+            "q": city,
+            "key": keyAPI,
+            "days": 5
+        ]
+        AF.request(url, parameters: parameters)
+            .validate()
+            .responseDecodable(of: APIDailyForecastWeatherModel.self) { (response) in
+                guard let forecastDaily = response.value else {
+                    print("не удалось распарсить daily прогноз ")
+                    return
+                }
+                
+                completionHandler(forecastDaily)
+            }
+    }
 }
 
 

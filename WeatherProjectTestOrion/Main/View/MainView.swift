@@ -12,11 +12,18 @@ struct MainView: View {
     @State var startLeftTopPointY: CGFloat = .zero
     @State var heightDetailsCurrentWeatherView: CGFloat = .zero
     
+    @ObservedObject var weatherVM = WeatherViewModel(weatherService: WeatherService() )
+    
     var body: some View {
             VStack(spacing: 0) {
-                HeaderWeatherView(leftTopPointY: $leftTopPointY, startLeftTopPointY: $startLeftTopPointY, heightDetailsCurrentWeatherView: $heightDetailsCurrentWeatherView)
+                HeaderWeatherView(leftTopPointY: $leftTopPointY, startLeftTopPointY: $startLeftTopPointY, heightDetailsCurrentWeatherView: $heightDetailsCurrentWeatherView, weatherVM: weatherVM)
                     
-                DailyWeatherListView(startLeftTopPointY: $startLeftTopPointY, leftTopPointY: $leftTopPointY, heightDetailsCurrentWeatherView: $heightDetailsCurrentWeatherView)
+                DailyWeatherListView(weatherVM: weatherVM, startLeftTopPointY: $startLeftTopPointY, leftTopPointY: $leftTopPointY, heightDetailsCurrentWeatherView: $heightDetailsCurrentWeatherView)
+            }
+            .onAppear {
+                weatherVM.getCurrentWeather(for: weatherVM.cityTitleStatic)
+                weatherVM.getHourlyWeather(for: weatherVM.cityTitleStatic)
+                weatherVM.getDailyWeather(for: weatherVM.cityTitleStatic)
             }
     }
 }

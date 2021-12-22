@@ -9,8 +9,13 @@ import Foundation
 import SwiftUI
 
 class WeatherViewModel: ObservableObject {
-    
+    var cityTitleStatic = "Nizhny Novgorod"
+   
     @Published var weatherCurrent = Weather()
+    
+    @Published var weatherHourlyCurrent = HourlyCurrentWeather()
+    
+    @Published var weatherDailyForecast = DailyForecats()
     
     let weatherService: WeatherRepositoryProtocol
     
@@ -25,7 +30,15 @@ class WeatherViewModel: ObservableObject {
     }
     
     func getHourlyWeather(for city: String) {
-        
+        weatherService.fetchHourlyWeather(for: city) { apiHourlyCurrentWeatherModel in
+            self.weatherHourlyCurrent = HourlyCurrentWeather(response: apiHourlyCurrentWeatherModel)
+        }
+    }
+    
+    func getDailyWeather(for city: String) {
+        weatherService.fetchDailyWeather(for: city) { apiDailyWeatherModel in
+            self.weatherDailyForecast = DailyForecats(response: apiDailyWeatherModel)
+        }
     }
     
 }

@@ -15,4 +15,7 @@ protocol WeatherRepositoryProtocol {
     
     func fetchCurrentWeather(for city: String, completionHandler: @escaping (APICurrentWeatherModel) -> () )
     
+    func fetchHourlyWeather(for city: String, completionHandler: @escaping (APIHourlyCurrentWeatherModel) -> ())
+    
+    func fetchDailyWeather(for city: String, completionHandler: @escaping (APIDailyForecastWeatherModel) -> ())
 }

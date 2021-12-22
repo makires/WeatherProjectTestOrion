@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HeaderWeatherView: View {
     var backgroundHeaderWeatherView = "cloudyBackground"
-    var cityTitle = "Nizhny Novgorod"
+
     var currentWeatherIcon = "Cloudy"
     var currentTemperature = "+16°"
     var descriptionCurrentWeather = "Cloudy, Feels like +20°"
@@ -18,8 +18,7 @@ struct HeaderWeatherView: View {
     @Binding var startLeftTopPointY: CGFloat
     
     @Binding var heightDetailsCurrentWeatherView: CGFloat
-    
-    @ObservedObject var weatherVM = WeatherViewModel(weatherService: WeatherService() )
+    @ObservedObject var weatherVM: WeatherViewModel
     
     var body: some View {
         
@@ -28,11 +27,11 @@ struct HeaderWeatherView: View {
                 Image(backgroundHeaderWeatherView)
                     .resizable()
                     .scaledToFill()
-                    .edgesIgnoringSafeArea(.vertical)
-                    .frame(height: geoProxyHeader.size.height/3)
+                    .edgesIgnoringSafeArea(.top)
+//                    .frame(height: geoProxyHeader.size.height/3)
                 VStack {
                     HStack {
-                        Text(cityTitle )
+                        Text(weatherVM.cityTitleStatic)
                             .font(.largeTitle)
                             .tracking(0.37)
                         Spacer()
@@ -45,9 +44,9 @@ struct HeaderWeatherView: View {
                     }
                     .padding(.horizontal, 16)
                     
-                    CurrentWeatherView(currentWeatherIcon: "Cloudy", weather: weatherVM.weatherCurrent)
+                    CurrentWeatherView(weather: weatherVM.weatherCurrent)
                         .padding(.horizontal, 16)
-                    DetailsForCurrentWeatherView(weather: weatherVM.weatherCurrent)
+                    DetailsForCurrentWeatherView(weather: weatherVM.weatherCurrent, hourlyCurrentWeather: weatherVM.weatherHourlyCurrent)
                         .opacity(leftTopPointY < startLeftTopPointY ? 0 : 1)
                         .animation(.easeOut(duration: 1))
                         .font(.system(size: 12, weight: .regular))
@@ -67,11 +66,11 @@ struct HeaderWeatherView: View {
                         )
                         .animation(.easeOut(duration: 1.5))
                 }
+                .border(.red, width: 2)
             }
+            
             .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-            .onAppear {
-                weatherVM.getCurrentWeather(for: cityTitle)
-            }
+            
         }
     }
 }
@@ -79,7 +78,7 @@ struct HeaderWeatherView: View {
 struct HeaderWeatherView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HeaderWeatherView(leftTopPointY: .constant(236), startLeftTopPointY: .constant(236), heightDetailsCurrentWeatherView: .constant(.zero))
+            HeaderWeatherView(leftTopPointY: .constant(236), startLeftTopPointY: .constant(236), heightDetailsCurrentWeatherView: .constant(.zero), weatherVM: WeatherViewModel(weatherService: WeatherService()))
                 .previewLayout(.sizeThatFits)
             MainView()
             

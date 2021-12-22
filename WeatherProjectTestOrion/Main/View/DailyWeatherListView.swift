@@ -14,6 +14,8 @@ struct OffsetPreferenceKey: PreferenceKey {
 
 struct DailyWeatherListView: View {
     
+    @ObservedObject var weatherVM: WeatherViewModel
+    
     @Binding var startLeftTopPointY: CGFloat
     @Binding var leftTopPointY: CGFloat
     @Binding var heightDetailsCurrentWeatherView: CGFloat
@@ -22,7 +24,8 @@ struct DailyWeatherListView: View {
         GeometryReader { geoProxyOutside in
             ScrollView {
                 Color.clear
-                    .frame(height: 105)
+                // ?????????
+//                    .frame(height: 0)
                     
                     
 .background(
@@ -33,15 +36,16 @@ struct DailyWeatherListView: View {
                 startLeftTopPointY = geometryProxyBackground.frame(in: .global).minY
             }
     })
-                    ForEach(listDaily, id:\.self) { item in
-                        DailyWeatherRow(dailyWeather: item)
+                ForEach(weatherVM.weatherDailyForecast.days, id: \.id) { day in
+                        DailyWeatherRow(dailyForecast: day)
                         Divider()
                             .padding(0)
                     }
                     
                 }
-                        .offset(y: -178)
-                        .frame(height: geoProxyOutside.size.height + 191)
+//                        .offset(y: -178)
+//                        .offset(y: 0)
+//                        .frame(height: geoProxyOutside.size.height + 191)
 .onPreferenceChange(OffsetPreferenceKey.self) { newLeftTopPintY in
      leftTopPointY = newLeftTopPintY
      print("Координата верхней ячейки Y changed, it is: \(newLeftTopPintY)")
@@ -54,14 +58,14 @@ struct DailyWeatherListView: View {
 }
 
 struct DailyWeatherRow: View {
-    let dailyWeather: DayWeather
+    let dailyForecast: Forecastday
     
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(dailyWeather.date)
+                Text(dailyForecast.dateEpoch.formattedDay)
                     .foregroundColor(Color(#colorLiteral(red: 0.24, green: 0.24, blue: 0.26, alpha: 0.6)))
-                Text(dailyWeather.nameDay)
+                Text(dailyForecast.dateEpoch.formattedNameDay)
                     .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
             }
             Spacer()
@@ -70,13 +74,17 @@ struct DailyWeatherRow: View {
             
             HStack {
                 LazyVGrid(columns: gridItems) {
-                    Image(systemName: dailyWeather.icon)
-                        .foregroundColor(dailyWeather.colorIcon)
-                    Text(dailyWeather.temp1)
+                    AsyncImage(url: URL(string: "https:" + dailyForecast.day.condition.icon)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: 44, height: 44)
+                    Text("\(dailyForecast.day.maxTemperatureCelcius, specifier: "%.0f")")
                         .tracking(0.35)
                         .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
                         .font(.system(size: 22, weight: .regular))
-                    Text(dailyWeather.temp2)
+                    Text("\(dailyForecast.day.minTemperatureCelcius, specifier: "%.0f")")
                         .foregroundColor(Color(#colorLiteral(red: 0.24, green: 0.24, blue: 0.26, alpha: 0.6)))
                 }
             }

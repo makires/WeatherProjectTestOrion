@@ -8,11 +8,9 @@
 
 import Foundation
 
-
 struct APICurrentWeatherModel: Decodable {
     let current: APICurrentWeather
 }
-
 
 struct APICurrentWeather: Decodable {
     let temperatureCurrent: Double
@@ -39,20 +37,18 @@ struct ConditionWeather: Decodable {
     let icon: String
 }
 
-
+// MARK: - часовой прогноз текущего дня
 struct APIHourlyCurrentWeatherModel: Decodable {
-    let forecast: APIForecastWeather
-}
-struct APIForecastWeather: Decodable {
-    let forecastday: [Forecastday]
+    let forecast: APIHourlyForecastWeather
 }
 
-struct Forecastday: Decodable, Identifiable {
-    let id = UUID()
+struct APIHourlyForecastWeather: Decodable {
+    let forecastday: [ForecastdayHourly]
+}
+
+struct ForecastdayHourly: Decodable {
     let hour: [Hour]
-    // время
 }
-
 struct Hour: Decodable, Identifiable {
     let id = UUID()
     let timeEpoch: Int
@@ -66,6 +62,65 @@ struct Hour: Decodable, Identifiable {
         case time
         case temperatureCelcius = "temp_c"
         case condition
+    }
+}
+
+//MARK: - ежедневный прогноз
+struct APIDailyForecastWeatherModel: Decodable {
+    let forecast: Forecast
+}
+
+struct Forecast: Decodable {
+    let forecastday: [Forecastday]
+}
+struct Forecastday: Decodable, Identifiable {
+    let id = UUID()
+    let dateEpoch: Int
+    let day: Day
+    
+    enum CodingKeys: String, CodingKey {
+        case dateEpoch = "date_epoch"
+        case day
+    }
+}
+struct Day: Decodable {
+    let maxTemperatureCelcius: Double
+    let minTemperatureCelcius: Double
+    let condition: ConditionWeather
+    
+    enum CodingKeys: String, CodingKey {
+        case maxTemperatureCelcius = "maxtemp_c"
+        case minTemperatureCelcius = "mintemp_c"
+        case condition
+    }
+    
+}
+
+
+extension Int {
+    var formattedHour: String {
+        let date = Date(timeIntervalSince1970: TimeInterval(self))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.string(from: date)
+    }
+}
+
+extension Int {
+    var formattedDay: String {
+        let date = Date(timeIntervalSince1970: TimeInterval(self))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d MMMM"
+        return dateFormatter.string(from: date)
+    }
+}
+
+extension Int {
+    var formattedNameDay: String {
+        let date = Date(timeIntervalSince1970: TimeInterval(self))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: date)
     }
 }
 
