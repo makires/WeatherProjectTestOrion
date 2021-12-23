@@ -1,11 +1,2 @@
-/* 
-  Localizable.strings
-  WeatherProjectTestOrion
-
-  Created by Tatiana Ilvutikova on 23.12.2021.
-  
-*/
-
-"hello" = "привет";
-"%@, Feels like %@°" = "%@, Ощущается как %@°";
-
+", Feels like" = ", Feels like";
+"hello" = "hello";

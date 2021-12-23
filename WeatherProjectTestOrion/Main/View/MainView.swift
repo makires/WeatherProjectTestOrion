@@ -24,11 +24,8 @@ struct MainView: View {
                                      heightDetailsCurrentWeatherView: $heightDetailsCurrentWeatherView)
             }
             .border(.green, width: 2)
-        // в одну функцию
             .onAppear {
-                weatherVM.getCurrentWeather(for: weatherVM.cityTitleStatic)
-                weatherVM.getHourlyWeather(for: weatherVM.cityTitleStatic)
-                weatherVM.getDailyWeather(for: weatherVM.cityTitleStatic)
+                weatherVM.getAllWeather(for: weatherVM.cityTitleStatic)
             }
     }
 }

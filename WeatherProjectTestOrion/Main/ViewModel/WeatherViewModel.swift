@@ -19,6 +19,12 @@ class WeatherViewModel: ObservableObject {
     init(weatherService: WeatherRepositoryProtocol) {
         self.weatherService = weatherService
     }
+    func getAllWeather(for city: String) {
+        getCurrentWeather(for: city)
+        getHourlyWeather(for: city)
+        getDailyWeather(for: city)
+    }
+    // async - await чтобы исключить closure hell
     func getCurrentWeather(for city: String) {
         weatherService.fetchCurrentWeather(for: city) { apiWeatherModel in
             self.weatherCurrent = Weather(response: apiWeatherModel)

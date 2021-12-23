@@ -7,18 +7,29 @@
 
 import SwiftUI
 
+let celsius: LocalizedStringKey = "°"
+let feelsLike: LocalizedStringKey = ", Feels like"
+let hello: LocalizedStringKey = "hello"
+
 struct CurrentWeatherView: View {
     var weather: Weather
-    var dataIcon: Data?
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("hello")
-                Text(weather.temperatureCurrent + "°")
-                    .font(.system(size: 80, weight: .thin))
-//                Text("\(weather.text), Feels like \(weather.feelsLikeTemperature)°")
-                Text("\(weather.text), Feels like \(weather.feelsLikeTemperature)°")
-                    .font(.system(size: 12, weight: .regular))
+                Text(hello)
+                HStack {
+                    Text(weather.temperatureCurrent)
+                    Text(celsius)
+                }
+                .font(.system(size: 80, weight: .thin))
+                HStack(spacing: 0) {
+                    Text(weather.text)
+                    Text(feelsLike)
+                    Text(weather.feelsLikeTemperature)
+                    Text(celsius)
+                }
+                .padding(0)
+                .font(.system(size: 12, weight: .regular))
             }
             Spacer()
             // !! Enum
