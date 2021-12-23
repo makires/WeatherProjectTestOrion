@@ -16,11 +16,15 @@ struct MainView: View {
     
     var body: some View {
             VStack(spacing: 0) {
-                HeaderWeatherView(leftTopPointY: $leftTopPointY, startLeftTopPointY: $startLeftTopPointY, heightDetailsCurrentWeatherView: $heightDetailsCurrentWeatherView, weatherVM: weatherVM)
+                HeaderWeatherView(leftTopPointY: $leftTopPointY,
+                                  startLeftTopPointY: $startLeftTopPointY,
+                                  heightDetailsCurrentWeatherView: $heightDetailsCurrentWeatherView,
+                                  weatherVM: weatherVM)
                     
                 DailyWeatherListView(weatherVM: weatherVM, startLeftTopPointY: $startLeftTopPointY, leftTopPointY: $leftTopPointY, heightDetailsCurrentWeatherView: $heightDetailsCurrentWeatherView)
             }
             .border(.green, width: 2)
+        // в одну функцию
             .onAppear {
                 weatherVM.getCurrentWeather(for: weatherVM.cityTitleStatic)
                 weatherVM.getHourlyWeather(for: weatherVM.cityTitleStatic)

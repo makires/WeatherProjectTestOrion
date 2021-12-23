@@ -23,6 +23,7 @@ struct CurrentWeatherView: View {
                     .font(.system(size: 12, weight: .regular))
             }
             Spacer()
+            // !! Enum
             AsyncImage(url: URL(string: weather.icon)) { image in
                 image.resizable()
             } placeholder: {

@@ -11,7 +11,6 @@
 		BC25CF15276E5A030076C7C2 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25CF14276E5A030076C7C2 /* WeatherViewModel.swift */; };
 		BC25CF1A276E74930076C7C2 /* WeatherRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25CF19276E74930076C7C2 /* WeatherRepositoryProtocol.swift */; };
 		BC25CF2B2771D1460076C7C2 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25CF2A2771D1460076C7C2 /* Weather.swift */; };
-		BC29CDAC27744B3C006254AC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC29CDAB27744B3C006254AC /* Localizable.strings */; };
 		BC29CDAE27744CF1006254AC /* LocalizableEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC29CDAD27744CF1006254AC /* LocalizableEnum.swift */; };
 		BCDDDCD72763A63F005C81BC /* WeatherProjectTestOrionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCD62763A63F005C81BC /* WeatherProjectTestOrionApp.swift */; };
 		BCDDDCD92763A63F005C81BC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCD82763A63F005C81BC /* MainView.swift */; };
@@ -23,6 +22,7 @@
 		BCDDDCEE276498D7005C81BC /* HeaderWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCED276498D7005C81BC /* HeaderWeatherView.swift */; };
 		BCDDDCF12765405B005C81BC /* HourlyCurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCF02765405B005C81BC /* HourlyCurrentWeather.swift */; };
 		BCDDDCFC2765F7F5005C81BC /* ListDailyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCFB2765F7F5005C81BC /* ListDailyWeather.swift */; };
+		C649DB79277453A8007A0A87 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C649DB7B277453A8007A0A87 /* Localizable.strings */; };
 		C698E9A5276C759600FEDEAA /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698E9A4276C759600FEDEAA /* WeatherService.swift */; };
 		C698E9A9276C90E400FEDEAA /* APICurrentWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698E9A8276C90E400FEDEAA /* APICurrentWeatherModel.swift */; };
 /* End PBXBuildFile section */
@@ -34,7 +34,6 @@
 		BC25CF14276E5A030076C7C2 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		BC25CF19276E74930076C7C2 /* WeatherRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepositoryProtocol.swift; sourceTree = "<group>"; };
 		BC25CF2A2771D1460076C7C2 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
-		BC29CDAB27744B3C006254AC /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		BC29CDAD27744CF1006254AC /* LocalizableEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableEnum.swift; sourceTree = "<group>"; };
 		BCDDDCD32763A63F005C81BC /* WeatherProjectTestOrion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherProjectTestOrion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCDDDCD62763A63F005C81BC /* WeatherProjectTestOrionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherProjectTestOrionApp.swift; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		BCDDDCED276498D7005C81BC /* HeaderWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderWeatherView.swift; sourceTree = "<group>"; };
 		BCDDDCF02765405B005C81BC /* HourlyCurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyCurrentWeather.swift; sourceTree = "<group>"; };
 		BCDDDCFB2765F7F5005C81BC /* ListDailyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDailyWeather.swift; sourceTree = "<group>"; };
+		C649DB7A277453A8007A0A87 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C698E9A4276C759600FEDEAA /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		C698E9A8276C90E400FEDEAA /* APICurrentWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICurrentWeatherModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,7 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				BC29CDAD27744CF1006254AC /* LocalizableEnum.swift */,
-				BC29CDAB27744B3C006254AC /* Localizable.strings */,
+				C649DB7B277453A8007A0A87 /* Localizable.strings */,
 				BCDDDCD52763A63F005C81BC /* WeatherProjectTestOrion */,
 				BCDDDCD42763A63F005C81BC /* Products */,
 				345B1B8289D02E64ACD0B2AC /* Pods */,
@@ -134,10 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				BCDDDCD82763A63F005C81BC /* MainView.swift */,
-				BCDDDCED276498D7005C81BC /* HeaderWeatherView.swift */,
-				BCDDDCE92763A976005C81BC /* CurrentWeatherView.swift */,
-				BCDDDCEB27649793005C81BC /* DetailsForCurrentWeatherView.swift */,
-				BCDDDCE72763A6F1005C81BC /* DailyWeatherListView.swift */,
+				C649DB7C27746821007A0A87 /* SubView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -150,6 +147,17 @@
 				BC25CF2A2771D1460076C7C2 /* Weather.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C649DB7C27746821007A0A87 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				BCDDDCED276498D7005C81BC /* HeaderWeatherView.swift */,
+				BCDDDCE92763A976005C81BC /* CurrentWeatherView.swift */,
+				BCDDDCEB27649793005C81BC /* DetailsForCurrentWeatherView.swift */,
+				BCDDDCE72763A6F1005C81BC /* DailyWeatherListView.swift */,
+			);
+			path = SubView;
 			sourceTree = "<group>";
 		};
 		C6E76D1A2769D43A009742EB /* Main */ = {
@@ -231,7 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCDDDCDE2763A641005C81BC /* Preview Assets.xcassets in Resources */,
-				BC29CDAC27744B3C006254AC /* Localizable.strings in Resources */,
+				C649DB79277453A8007A0A87 /* Localizable.strings in Resources */,
 				BCDDDCDB2763A641005C81BC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +311,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C649DB7B277453A8007A0A87 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C649DB7A277453A8007A0A87 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BCDDDCDF2763A641005C81BC /* Debug */ = {
