@@ -6,6 +6,6 @@ target 'WeatherProjectTestOrion' do
   use_frameworks!
 
   # Pods for WeatherProjectTestOrion
-pod 'Alamofire', '~> 5.5'
-pod 'SwiftLint'
+  pod 'Alamofire', '~> 5.5'
+  pod 'SwiftLint'
 end
