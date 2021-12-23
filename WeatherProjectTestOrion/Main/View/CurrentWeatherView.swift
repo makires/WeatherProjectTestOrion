@@ -15,8 +15,10 @@ struct CurrentWeatherView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
+                Text("hello")
                 Text(weather.temperatureCurrent + "°")
                     .font(.system(size: 80, weight: .thin))
+//                Text("\(weather.text), Feels like \(weather.feelsLikeTemperature)°")
                 Text("\(weather.text), Feels like \(weather.feelsLikeTemperature)°")
                     .font(.system(size: 12, weight: .regular))
             }
@@ -44,5 +46,6 @@ struct CurrentWeatherView_Previews: PreviewProvider {
             MainView()
             
         }
+//        .environment(\.locale, .init(identifier: "ru"))
     }
 }

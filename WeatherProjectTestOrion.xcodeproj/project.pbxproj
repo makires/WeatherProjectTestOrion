@@ -11,6 +11,8 @@
 		BC25CF15276E5A030076C7C2 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25CF14276E5A030076C7C2 /* WeatherViewModel.swift */; };
 		BC25CF1A276E74930076C7C2 /* WeatherRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25CF19276E74930076C7C2 /* WeatherRepositoryProtocol.swift */; };
 		BC25CF2B2771D1460076C7C2 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC25CF2A2771D1460076C7C2 /* Weather.swift */; };
+		BC29CDAC27744B3C006254AC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC29CDAB27744B3C006254AC /* Localizable.strings */; };
+		BC29CDAE27744CF1006254AC /* LocalizableEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC29CDAD27744CF1006254AC /* LocalizableEnum.swift */; };
 		BCDDDCD72763A63F005C81BC /* WeatherProjectTestOrionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCD62763A63F005C81BC /* WeatherProjectTestOrionApp.swift */; };
 		BCDDDCD92763A63F005C81BC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDDCD82763A63F005C81BC /* MainView.swift */; };
 		BCDDDCDB2763A641005C81BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCDDDCDA2763A641005C81BC /* Assets.xcassets */; };
@@ -32,6 +34,8 @@
 		BC25CF14276E5A030076C7C2 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		BC25CF19276E74930076C7C2 /* WeatherRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepositoryProtocol.swift; sourceTree = "<group>"; };
 		BC25CF2A2771D1460076C7C2 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		BC29CDAB27744B3C006254AC /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		BC29CDAD27744CF1006254AC /* LocalizableEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableEnum.swift; sourceTree = "<group>"; };
 		BCDDDCD32763A63F005C81BC /* WeatherProjectTestOrion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherProjectTestOrion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCDDDCD62763A63F005C81BC /* WeatherProjectTestOrionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherProjectTestOrionApp.swift; sourceTree = "<group>"; };
 		BCDDDCD82763A63F005C81BC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -89,6 +93,8 @@
 		BCDDDCCA2763A63F005C81BC = {
 			isa = PBXGroup;
 			children = (
+				BC29CDAD27744CF1006254AC /* LocalizableEnum.swift */,
+				BC29CDAB27744B3C006254AC /* Localizable.strings */,
 				BCDDDCD52763A63F005C81BC /* WeatherProjectTestOrion */,
 				BCDDDCD42763A63F005C81BC /* Products */,
 				345B1B8289D02E64ACD0B2AC /* Pods */,
@@ -225,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCDDDCDE2763A641005C81BC /* Preview Assets.xcassets in Resources */,
+				BC29CDAC27744B3C006254AC /* Localizable.strings in Resources */,
 				BCDDDCDB2763A641005C81BC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,6 +288,7 @@
 				BCDDDCEC27649793005C81BC /* DetailsForCurrentWeatherView.swift in Sources */,
 				BCDDDCFC2765F7F5005C81BC /* ListDailyWeather.swift in Sources */,
 				BCDDDCD92763A63F005C81BC /* MainView.swift in Sources */,
+				BC29CDAE27744CF1006254AC /* LocalizableEnum.swift in Sources */,
 				BCDDDCF12765405B005C81BC /* HourlyCurrentWeather.swift in Sources */,
 				BC25CF15276E5A030076C7C2 /* WeatherViewModel.swift in Sources */,
 				BCDDDCD72763A63F005C81BC /* WeatherProjectTestOrionApp.swift in Sources */,
