@@ -16,7 +16,7 @@ struct WeatherService: WeatherRepositoryProtocol {
     private let currentWeatherAPIMethod = "/current.json?"
     private let forecastWeatherAPIMethod = "/forecast.json"
 
-    func fetchCurrentWeather(for city: String, completionHandler: @escaping (APICurrentWeatherModel) -> ()) {
+    func fetchCurrentWeather(for city: String, completionHandler: @escaping (APICurrentWeatherModel) -> Void) {
         let url = baseURL + currentWeatherAPIMethod
         let parameters = [
             "q": city,
@@ -32,9 +32,7 @@ struct WeatherService: WeatherRepositoryProtocol {
                 completionHandler(weather)
             }
     }
-    
-    
-    func fetchHourlyWeather(for city: String, completionHandler: @escaping (APIForecastWeatherModel) -> ()) {
+    func fetchHourlyWeather(for city: String, completionHandler: @escaping (APIForecastWeatherModel) -> Void) {
         let url = baseURL + forecastWeatherAPIMethod
         let parameters: [String: Any] = [
             "q": city,
@@ -51,8 +49,7 @@ struct WeatherService: WeatherRepositoryProtocol {
                 completionHandler(forecastHourly)
             }
     }
-    
-    func fetchDailyWeather(for city: String, completionHandler: @escaping (APIForecastWeatherModel) -> ()) {
+    func fetchDailyWeather(for city: String, completionHandler: @escaping (APIForecastWeatherModel) -> Void) {
         let url = baseURL + forecastWeatherAPIMethod
         let parameters: [String: Any] = [
             "q": city,
@@ -70,5 +67,3 @@ struct WeatherService: WeatherRepositoryProtocol {
             }
     }
 }
-
-

@@ -16,9 +16,7 @@ struct Weather {
     var feelsLikeTemperature  = ""
     var text = ""
     var icon = ""
-    
     init() { }
-    
     init(response: APICurrentWeatherModel) {
         temperatureCurrent = String(format: "%.0f", response.current.temperatureCurrent)
         pressureHPa = String(response.current.pressureHPa)
@@ -29,7 +27,6 @@ struct Weather {
         text = response.current.condition.text
         icon = "https:" + response.current.condition.icon
     }
-    
 }
 
 struct HourlyCurrentWeather {
@@ -47,7 +44,3 @@ struct DailyForecats {
         days = response.forecast.forecastday
     }
 }
-
-
-
-

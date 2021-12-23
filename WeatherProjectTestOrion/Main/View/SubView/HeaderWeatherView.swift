@@ -9,15 +9,11 @@ import SwiftUI
 
 struct HeaderWeatherView: View {
     var backgroundHeaderWeatherView = "cloudyBackground"
-
     @Binding var leftTopPointY: CGFloat
     @Binding var startLeftTopPointY: CGFloat
-    
     @Binding var heightDetailsCurrentWeatherView: CGFloat
     @ObservedObject var weatherVM: WeatherViewModel
-    
     var body: some View {
-        
         GeometryReader { geoProxyHeader in
             ZStack {
                 Image(backgroundHeaderWeatherView)
@@ -40,10 +36,10 @@ struct HeaderWeatherView: View {
                         })
                     }
                     .padding(.horizontal, 16)
-                    
                     CurrentWeatherView(weather: weatherVM.weatherCurrent)
                         .padding(.horizontal, 16)
-                    DetailsForCurrentWeatherView(weather: weatherVM.weatherCurrent, hourlyCurrentWeather: weatherVM.weatherHourlyCurrent)
+                    DetailsForCurrentWeatherView(weather: weatherVM.weatherCurrent,
+                                                 hourlyCurrentWeather: weatherVM.weatherHourlyCurrent)
                         .opacity(leftTopPointY < startLeftTopPointY ? 0 : 1)
                         .animation(.easeOut(duration: 1))
                         .font(.system(size: 12, weight: .regular))
@@ -55,19 +51,16 @@ struct HeaderWeatherView: View {
                                 } else {
                                     Color.clear
                                         .onAppear {
-                                            print("высота чистой DetailsForCurrentWeatherView = \(geoProxyDetailsCurrentWeather.frame(in: .global).size.height)")
-                                            heightDetailsCurrentWeatherView = geoProxyDetailsCurrentWeather.frame(in: .global).size.height
+print("высота чистой DetailsForCurrentWeatherView = \(geoProxyDetailsCurrentWeather.frame(in: .global).size.height)")
+heightDetailsCurrentWeatherView = geoProxyDetailsCurrentWeather.frame(in: .global).size.height
                                         }
                                 }
                             }
                         )
                         .animation(.easeOut(duration: 1.5))
                 }
-                
             }
-            
             .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-            
         }
     }
 }
@@ -75,10 +68,12 @@ struct HeaderWeatherView: View {
 struct HeaderWeatherView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HeaderWeatherView(leftTopPointY: .constant(236), startLeftTopPointY: .constant(236), heightDetailsCurrentWeatherView: .constant(.zero), weatherVM: WeatherViewModel(weatherService: WeatherService()))
+            HeaderWeatherView(leftTopPointY: .constant(236),
+                              startLeftTopPointY: .constant(236),
+                              heightDetailsCurrentWeatherView: .constant(.zero),
+                              weatherVM: WeatherViewModel(weatherService: WeatherService()))
                 .previewLayout(.sizeThatFits)
             MainView()
-            
         }
     }
 }

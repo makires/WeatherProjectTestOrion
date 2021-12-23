@@ -10,7 +10,6 @@ import Foundation
 
 struct APICurrentWeatherModel: Decodable {
     let current: APICurrentWeather
-    
 }
 
 struct APICurrentWeather: Decodable {
@@ -38,10 +37,8 @@ struct ConditionWeather: Decodable {
     let icon: String
 }
 
-
 struct APIForecastWeatherModel: Decodable {
     let forecast: APIForecastWeather
-    
 }
 
 struct APIForecastWeather: Decodable {
@@ -53,7 +50,6 @@ struct Forecastday: Decodable {
     let dateEpoch: Int
     let day: Day
     let hour: [Hour]
-    
     enum CodingKeys: String, CodingKey {
         case dateEpoch = "date_epoch"
         case day
@@ -68,7 +64,6 @@ struct Hour: Decodable, Identifiable {
     let temperatureCelcius: Double
     let condition: ConditionWeather
 
-
     enum CodingKeys: String, CodingKey {
         case timeEpoch = "time_epoch"
         case time
@@ -81,15 +76,12 @@ struct Day: Decodable {
     let maxTemperatureCelcius: Double
     let minTemperatureCelcius: Double
     let condition: ConditionWeather
-    
     enum CodingKeys: String, CodingKey {
         case maxTemperatureCelcius = "maxtemp_c"
         case minTemperatureCelcius = "mintemp_c"
         case condition
     }
-    
 }
-
 
 extension Int {
     var formattedHour: String {
@@ -117,4 +109,3 @@ extension Int {
         return dateFormatter.string(from: date)
     }
 }
-

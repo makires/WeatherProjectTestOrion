@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct DetailsForCurrentWeatherView: View {
-    
     var weather: Weather
     var hourlyCurrentWeather: HourlyCurrentWeather
-    
     var body: some View {
         HStack(spacing: 33) {
             MeteorologicalDataView(weather: weather)
@@ -28,13 +26,12 @@ struct HourlyCurrentWeatherView: View {
                 ForEach(hourlyCurrentWeather.hours, id: \.id) { hourItem in
                     VStack(spacing: 13.5) {
                         Text("\(hourItem.timeEpoch.formattedHour)")
-                        
                         AsyncImage(url: URL(string: "https:" + hourItem.condition.icon)) { image in
                                 image.resizable()
                             } placeholder: {
                                 ProgressView()
                             }
-                            .frame(width: 24, height: 24) 
+                            .frame(width: 24, height: 24)
                         Text("\(hourItem.temperatureCelcius, specifier: "%.0f")")
                     }
                 }
@@ -45,7 +42,6 @@ struct HourlyCurrentWeatherView: View {
 
 struct MeteorologicalDataView: View {
     let weather: Weather
-    
     var body: some View {
         HStack {
             VStack(spacing: 12) {
@@ -73,4 +69,3 @@ struct DetailsForCurrentWeatherView_Previews: PreviewProvider {
         }
     }
 }
-

@@ -13,21 +13,16 @@ struct OffsetPreferenceKey: PreferenceKey {
 }
 
 struct DailyWeatherListView: View {
-    
     @ObservedObject var weatherVM: WeatherViewModel
-    
     @Binding var startLeftTopPointY: CGFloat
     @Binding var leftTopPointY: CGFloat
     @Binding var heightDetailsCurrentWeatherView: CGFloat
-    
     var body: some View {
-        GeometryReader { geoProxyOutside in
+        GeometryReader { _ in
             ScrollView {
                 Color.clear
                 // ?????????
 //                    .frame(height: 0)
-                    
-                    
 .background(
     GeometryReader { geometryProxyBackground in
         Color.clear
@@ -41,7 +36,6 @@ struct DailyWeatherListView: View {
                         Divider()
                             .padding(0)
                     }
-                    
                 }
 //                        .offset(y: -178)
 //                        .offset(y: 0)
@@ -50,16 +44,12 @@ struct DailyWeatherListView: View {
      leftTopPointY = newLeftTopPintY
      print("Координата верхней ячейки Y changed, it is: \(newLeftTopPintY)")
                     }
-                
         }
-            
-
     }
 }
 
 struct DailyWeatherRow: View {
     let dailyForecast: Forecastday
-    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -69,9 +59,7 @@ struct DailyWeatherRow: View {
                     .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
             }
             Spacer()
-            
             let gridItems = [GridItem(spacing: 10), GridItem( spacing: 4), GridItem(alignment: .trailing)]
-            
             HStack {
                 LazyVGrid(columns: gridItems) {
                     AsyncImage(url: URL(string: "https:" + dailyForecast.day.condition.icon)) { image in
@@ -93,13 +81,11 @@ struct DailyWeatherRow: View {
         .padding(.horizontal, 16)
     }
 }
-
-
-//struct DailyWeatherListView_Previews: PreviewProvider {
+// struct DailyWeatherListView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        Group {
 //            DailyWeatherListView()
 //            MainView()
 //        }
 //    }
-//}
+// }

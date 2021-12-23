@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct CurrentWeatherView: View {
-    
     var weather: Weather
-    var dataIcon: Data? = nil
-    
+    var dataIcon: Data?
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -30,13 +28,9 @@ struct CurrentWeatherView: View {
                 ProgressView()
             }
             .frame(width: 60, height: 60)
-            
-        }
+           }
     }
 }
-
-
-
 
 struct CurrentWeatherView_Previews: PreviewProvider {
     static var previews: some View {
@@ -45,8 +39,7 @@ struct CurrentWeatherView_Previews: PreviewProvider {
                 .previewLayout(.sizeThatFits)
                 .background(Color.gray)
             MainView()
-            
         }
-//        .environment(\.locale, .init(identifier: "ru"))
+        //        .environment(\.locale, .init(identifier: "ru"))
     }
 }

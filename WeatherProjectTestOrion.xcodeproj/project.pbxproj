@@ -186,6 +186,7 @@
 			buildConfigurationList = BCDDDCE12763A641005C81BC /* Build configuration list for PBXNativeTarget "WeatherProjectTestOrion" */;
 			buildPhases = (
 				05C3D466BDE1F233D5392DBA /* [CP] Check Pods Manifest.lock */,
+				C649DB7D2774A28B007A0A87 /* Run SwiftLint */,
 				BCDDDCCF2763A63F005C81BC /* Sources */,
 				BCDDDCD02763A63F005C81BC /* Frameworks */,
 				BCDDDCD12763A63F005C81BC /* Resources */,
@@ -285,6 +286,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeatherProjectTestOrion/Pods-WeatherProjectTestOrion-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		C649DB7D2774A28B007A0A87 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
