@@ -7,4 +7,5 @@ target 'WeatherProjectTestOrion' do
 
   # Pods for WeatherProjectTestOrion
 pod 'Alamofire', '~> 5.5'
+pod 'SwiftLint'
 end
