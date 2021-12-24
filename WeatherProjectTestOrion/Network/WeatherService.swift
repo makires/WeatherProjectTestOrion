@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import SwiftUI
 
 // Weatherapi.com
 
@@ -15,7 +16,7 @@ struct WeatherService: WeatherRepositoryProtocol {
     private let baseURL = "https://api.weatherapi.com/v1"
     private let currentWeatherAPIMethod = "/current.json?"
     private let forecastWeatherAPIMethod = "/forecast.json"
-
+    @Environment(\.locale) var locale
     func fetchCurrentWeather(for city: String, completionHandler: @escaping (APICurrentWeatherModel) -> Void) {
         let url = baseURL + currentWeatherAPIMethod
         let parameters = [
