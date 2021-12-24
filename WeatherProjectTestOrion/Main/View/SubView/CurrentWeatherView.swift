@@ -13,11 +13,12 @@ let hello: LocalizedStringKey = "hello"
 
 struct CurrentWeatherView: View {
     @Environment(\.locale) var locale
+    @ObservedObject var weatherVM: WeatherViewModel
     var weather: Weather
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(locale.description)
+                Text("\(weatherVM.leftTopPointScroll)")
                 HStack {
                     Text(weather.temperatureCurrent)
                     Text(celsius)
@@ -50,7 +51,7 @@ struct CurrentWeatherView: View {
 struct CurrentWeatherView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CurrentWeatherView(weather: Weather())
+            CurrentWeatherView(weatherVM: WeatherViewModel(weatherService: WeatherService()), weather: Weather())
                 .previewLayout(.sizeThatFits)
                 .background(Color.gray)
             MainView()

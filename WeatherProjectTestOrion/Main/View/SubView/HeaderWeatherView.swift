@@ -9,19 +9,15 @@ import SwiftUI
 
 struct HeaderWeatherView: View {
     var backgroundHeaderWeatherView = "cloudyBackground"
-    @Binding var leftTopPointY: CGFloat
-    @Binding var startLeftTopPointY: CGFloat
-    @Binding var heightDetailsCurrentWeatherView: CGFloat
     @ObservedObject var weatherVM: WeatherViewModel
     var body: some View {
-        GeometryReader { geoProxyHeader in
+        GeometryReader { geoProzyOutside in
             ZStack {
                 Image(backgroundHeaderWeatherView)
                     .resizable()
-                    .scaledToFill()
-                    .edgesIgnoringSafeArea(.top)
-                    .border(.red, width: 2)
-                    .frame(height: geoProxyHeader.size.height/3)
+//                    .scaledToFill()
+                    .ignoresSafeArea()
+//                    .ignoresSafeArea(edges: .top)
                 VStack {
                     HStack {
                         Text(weatherVM.cityTitleStatic)
@@ -36,42 +32,54 @@ struct HeaderWeatherView: View {
                         })
                     }
                     .padding(.horizontal, 16)
-                    CurrentWeatherView(weather: weatherVM.weatherCurrent)
+                    CurrentWeatherView(weatherVM: weatherVM, weather: weatherVM.weatherCurrent)
                         .padding(.horizontal, 16)
                     DetailsForCurrentWeatherView(weather: weatherVM.weatherCurrent,
                                                  hourlyCurrentWeather: weatherVM.weatherHourlyCurrent)
-                        .opacity(leftTopPointY < startLeftTopPointY ? 0 : 1)
-                        .animation(.easeOut(duration: 1))
                         .font(.system(size: 12, weight: .regular))
                         .padding(EdgeInsets(top: 8, leading: 16, bottom: 30, trailing: 0))
+                    // необходимо изменить прозрачность до 0
+                        .opacity(0)
+                    // AND
+                    // необходимо добавлять при изменении фрэйма
                         .background(
-                            GeometryReader { geoProxyDetailsCurrentWeather in
-                                if leftTopPointY < startLeftTopPointY {
-                                    Color.white
-                                } else {
-                                    Color.clear
-                                        .onAppear {
-print("высота чистой DetailsForCurrentWeatherView = \(geoProxyDetailsCurrentWeather.frame(in: .global).size.height)")
-heightDetailsCurrentWeatherView = geoProxyDetailsCurrentWeather.frame(in: .global).size.height
-                                        }
-                                }
-                            }
+                           // по умолчанию он белый
+//                            Color.clear
+                            Color.white
                         )
-                        .animation(.easeOut(duration: 1.5))
+                    
+                    
                 }
-            }
+            } // end ZStack
+            .background(
+                GeometryReader { gpZStackOutside in
+                    Color.clear
+                        .preference(key: SizeHeaderPreferenceKey.self, value: gpZStackOutside.size.height)
+                }
+                
+            )
+    } // end GeoReader
+        // необходимо поменять высоту с 320 до 210
+                .frame(height: 210)
+                .border(.red, width: 2)
+//                .offset(y: 0)
             .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-        }
+            .onPreferenceChange(SizeHeaderPreferenceKey.self) { newValue in
+                print("в ZStack (Header CurrentView) изменилось значение высоты = ", newValue)
+            }
     }
+}
+
+struct SizeHeaderPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = .zero
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {}
 }
 
 struct HeaderWeatherView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HeaderWeatherView(leftTopPointY: .constant(236),
-                              startLeftTopPointY: .constant(236),
-                              heightDetailsCurrentWeatherView: .constant(.zero),
-                              weatherVM: WeatherViewModel(weatherService: WeatherService()))
+            HeaderWeatherView(
+                weatherVM: WeatherViewModel(weatherService: WeatherService()))
                 .previewLayout(.sizeThatFits)
             MainView()
         }

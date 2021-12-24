@@ -14,6 +14,7 @@ class WeatherViewModel: ObservableObject {
     @Published var weatherCurrent = Weather()
     @Published var weatherHourlyCurrent = HourlyCurrentWeather()
     @Published var weatherDailyForecast = DailyForecats()
+    @Published var leftTopPointScroll: CGFloat = .zero
     let weatherService: WeatherRepositoryProtocol
     init(weatherService: WeatherRepositoryProtocol) {
         self.weatherService = weatherService

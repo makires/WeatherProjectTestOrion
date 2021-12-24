@@ -14,36 +14,31 @@ struct OffsetPreferenceKey: PreferenceKey {
 
 struct DailyWeatherListView: View {
     @ObservedObject var weatherVM: WeatherViewModel
-    @Binding var startLeftTopPointY: CGFloat
-    @Binding var leftTopPointY: CGFloat
-    @Binding var heightDetailsCurrentWeatherView: CGFloat
     var body: some View {
         GeometryReader { _ in
             ScrollView {
                 Color.clear
-                // ?????????
-//                    .frame(height: 0)
-.background(
-    GeometryReader { geometryProxyBackground in
-        Color.clear
-            .preference(key: OffsetPreferenceKey.self, value: geometryProxyBackground.frame(in: .global).minY)
-            .onAppear {
-                startLeftTopPointY = geometryProxyBackground.frame(in: .global).minY
-            }
-    })
+                    .background(
+                        GeometryReader { geometryProxyBackground in
+                            Color.clear
+                                .preference(key: OffsetPreferenceKey.self, value: geometryProxyBackground.frame(in: .global).minY)
+                                .onAppear {
+                                }
+                        })
                 ForEach(weatherVM.weatherDailyForecast.days, id: \.id) { day in
-                        DailyWeatherRow(dailyForecast: day)
-                        Divider()
-                            .padding(0)
-                    }
+                    DailyWeatherRow(dailyForecast: day)
+                    Divider()
+                        .padding(0)
                 }
-//                        .offset(y: -178)
-//                        .offset(y: 0)
-//                        .frame(height: geoProxyOutside.size.height + 191)
-.onPreferenceChange(OffsetPreferenceKey.self) { newLeftTopPintY in
-     leftTopPointY = newLeftTopPintY
-     print("Координата верхней ячейки Y changed, it is: \(newLeftTopPintY)")
-                    }
+                
+                ForEach(listDaily, id: \.self) { _ in
+                    Text("sdsd")
+                    Divider()
+                }
+            }
+            .onPreferenceChange(OffsetPreferenceKey.self) { newLeftTopPointY in
+                weatherVM.leftTopPointScroll = newLeftTopPointY
+            }
         }
     }
 }
@@ -81,11 +76,12 @@ struct DailyWeatherRow: View {
         .padding(.horizontal, 16)
     }
 }
-// struct DailyWeatherListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            DailyWeatherListView()
-//            MainView()
-//        }
-//    }
-// }
+
+ struct DailyWeatherListView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            DailyWeatherListView(weatherVM: WeatherViewModel(weatherService: WeatherService()))
+            MainView()
+        }
+    }
+ }
