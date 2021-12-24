@@ -12,11 +12,12 @@ let feelsLike: LocalizedStringKey = ", Feels like"
 let hello: LocalizedStringKey = "hello"
 
 struct CurrentWeatherView: View {
+    @Environment(\.locale) var locale
     var weather: Weather
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(hello)
+                Text(locale.description)
                 HStack {
                     Text(weather.temperatureCurrent)
                     Text(celsius)
@@ -40,6 +41,9 @@ struct CurrentWeatherView: View {
             }
             .frame(width: 60, height: 60)
            }
+        .onAppear {
+            print("локаль из вью", locale.identifier)
+        }
     }
 }
 

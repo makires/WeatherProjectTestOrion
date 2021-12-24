@@ -16,13 +16,17 @@ struct WeatherService: WeatherRepositoryProtocol {
     private let baseURL = "https://api.weatherapi.com/v1"
     private let currentWeatherAPIMethod = "/current.json?"
     private let forecastWeatherAPIMethod = "/forecast.json"
-    @Environment(\.locale) var locale
-    func fetchCurrentWeather(for city: String, completionHandler: @escaping (APICurrentWeatherModel) -> Void) {
+
+    func fetchCurrentWeather(for city: String,
+                             locale: String,
+                             completionHandler: @escaping (APICurrentWeatherModel) -> Void) {
         let url = baseURL + currentWeatherAPIMethod
         let parameters = [
             "q": city,
-            "key": keyAPI
+            "key": keyAPI,
+            "lang": locale
         ]
+        print(parameters)
         AF.request(url, parameters: parameters)
             .validate()
             .responseDecodable(of: APICurrentWeatherModel.self) { (response) in
@@ -33,12 +37,15 @@ struct WeatherService: WeatherRepositoryProtocol {
                 completionHandler(weather)
             }
     }
-    func fetchHourlyWeather(for city: String, completionHandler: @escaping (APIForecastWeatherModel) -> Void) {
+    func fetchHourlyWeather(for city: String,
+                            locale: String,
+                            completionHandler: @escaping (APIForecastWeatherModel) -> Void) {
         let url = baseURL + forecastWeatherAPIMethod
         let parameters: [String: Any] = [
             "q": city,
             "key": keyAPI,
-            "days": ""
+            "days": "",
+            "lang": locale
         ]
         AF.request(url, parameters: parameters)
             .validate()
@@ -50,12 +57,15 @@ struct WeatherService: WeatherRepositoryProtocol {
                 completionHandler(forecastHourly)
             }
     }
-    func fetchDailyWeather(for city: String, completionHandler: @escaping (APIForecastWeatherModel) -> Void) {
+    func fetchDailyWeather(for city: String,
+                           locale: String,
+                           completionHandler: @escaping (APIForecastWeatherModel) -> Void) {
         let url = baseURL + forecastWeatherAPIMethod
         let parameters: [String: Any] = [
             "q": city,
             "key": keyAPI,
-            "days": 5
+            "days": 5,
+            "lang": locale
         ]
         AF.request(url, parameters: parameters)
             .validate()

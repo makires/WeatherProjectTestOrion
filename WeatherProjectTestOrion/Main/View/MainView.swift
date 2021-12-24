@@ -11,6 +11,7 @@ struct MainView: View {
     @State var leftTopPointY: CGFloat = .zero
     @State var startLeftTopPointY: CGFloat = .zero
     @State var heightDetailsCurrentWeatherView: CGFloat = .zero
+    @Environment(\.locale.identifier) var locale
     @ObservedObject var weatherVM = WeatherViewModel(weatherService: WeatherService() )
     var body: some View {
             VStack(spacing: 0) {
@@ -25,7 +26,7 @@ struct MainView: View {
             }
             .border(.green, width: 2)
             .onAppear {
-                weatherVM.getAllWeather(for: weatherVM.cityTitleStatic)
+                weatherVM.getAllWeather(for: weatherVM.cityTitleStatic, locale: locale)
             }
     }
 }

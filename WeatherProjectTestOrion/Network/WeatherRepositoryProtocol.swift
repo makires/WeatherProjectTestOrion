@@ -12,7 +12,13 @@ import Foundation
 // а не сам источник данных
 
 protocol WeatherRepositoryProtocol {
-    func fetchCurrentWeather(for city: String, completionHandler: @escaping (APICurrentWeatherModel) -> Void)
-    func fetchHourlyWeather(for city: String, completionHandler: @escaping (APIForecastWeatherModel) -> Void)
-    func fetchDailyWeather(for city: String, completionHandler: @escaping (APIForecastWeatherModel) -> Void)
+    func fetchCurrentWeather(for city: String,
+                             locale: String,
+                             completionHandler: @escaping (APICurrentWeatherModel) -> Void)
+    func fetchHourlyWeather(for city: String,
+                            locale: String,
+                            completionHandler: @escaping (APIForecastWeatherModel) -> Void)
+    func fetchDailyWeather(for city: String,
+                           locale: String,
+                           completionHandler: @escaping (APIForecastWeatherModel) -> Void)
 }

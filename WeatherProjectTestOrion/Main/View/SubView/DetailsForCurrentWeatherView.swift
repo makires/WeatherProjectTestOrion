@@ -50,9 +50,20 @@ struct MeteorologicalDataView: View {
                 Image(systemName: "drop")
             }
             VStack(alignment: .leading, spacing: 12) {
-                Text("\(weather.windKph)") + Text(" km/h, \(weather.windDirection)").foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.74)))
-                Text("\(weather.pressureHPa)") + Text(" hPa").foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.74)))
-                Text("\(weather.humidity)") + Text("%").foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.74)))
+                HStack(spacing: 0) {
+                    Text(weather.windKph)
+                    Text(" km/h ")
+                    Text(weather.windDirection)
+                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.74)))
+                }
+                HStack(spacing: 0) {
+                    Text(weather.pressureHPa)
+                    Text(" hPa").foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.74)))
+                }
+                HStack(spacing: 0) {
+                    Text(weather.humidity)
+                    Text("%").foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.74)))
+                }
             }
         }
     }
