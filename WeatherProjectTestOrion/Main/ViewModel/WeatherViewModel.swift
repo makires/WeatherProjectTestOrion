@@ -9,8 +9,15 @@ import Foundation
 import SwiftUI
 
 class WeatherViewModel: ObservableObject {
-//    var cityTitleStatic = "Nizhny Novgorod"
-    var cityTitleStatic = "Sochi"
+    var cityTitleStatic = "Nizhny Novgorod"
+//    var cityTitleStatic = "Novokuznetsk"
+//    var cityTitleStatic = "Prokopyevsk"
+    // поведение с разными часовыми поясами и отображение с текущим
+    // массивом часов (логика с отбрасыванием лишнего часа)
+    // при разниице запроса в другой часовой пояс текущее время для
+    // отображения массива часов вычисляется на основе Date().
+    // на границе полночи отображение другого часов другого часового пояса спешит, следовательно первый элемент повторяет значениие первого элемента другого массива с отброшенным первым значением.
+//    var cityTitleStatic = "Sochi"
     @Published var weatherCurrent = Weather()
     @Published var weatherHourlyCurrent = HourlyCurrentWeather()
     @Published var weatherDailyForecast = DailyForecats()

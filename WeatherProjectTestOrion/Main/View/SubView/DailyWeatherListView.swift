@@ -57,12 +57,16 @@ struct DailyWeatherRow: View {
             let gridItems = [GridItem(spacing: 10), GridItem( spacing: 4), GridItem(alignment: .trailing)]
             HStack {
                 LazyVGrid(columns: gridItems) {
-                    AsyncImage(url: URL(string: "https:" + dailyForecast.day.condition.icon)) { image in
-                        image.resizable()
-                    } placeholder: {
-                        ProgressView()
-                    }
-                    .frame(width: 44, height: 44)
+//                    AsyncImage(url: URL(string: "https:" + dailyForecast.day.condition.iconURL)) { image in
+//                        image.resizable()
+//                    } placeholder: {
+//                        ProgressView()
+//                    }
+//                    .frame(width: 44, height: 44)
+                    Image(systemName: dailyForecast.day.condition.iconName)
+//                        .symbolRenderingMode(.multicolor)
+                        .foregroundStyle(.blue, .yellow, .blue)
+//                        .renderingMode(.original)
                     Text("\(dailyForecast.day.maxTemperatureCelcius, specifier: "%.0f")")
                         .tracking(0.35)
                         .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))

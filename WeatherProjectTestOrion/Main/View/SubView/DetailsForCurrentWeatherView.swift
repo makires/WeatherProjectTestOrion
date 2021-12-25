@@ -28,23 +28,18 @@ struct HourlyCurrentWeatherView: View {
                 
                     VStack(spacing: 13.5) {
                         Text("Now")
-                        AsyncImage(url: URL(string: "https:" + (hourlyCurrentWeather.hours.first?.condition.icon ?? "") )) { image in
-                                image.resizable()
-                            } placeholder: {
-                                ProgressView()
-                            }
-                            .frame(width: 24, height: 24)
+                        // получать доступ к часу через vm? но уже есть отдельная model  специально для погоды 🤔хм
+                        // если облако снегом или дождем то картинка увеличивается и отображение съезжает
+                        // подкмать что исправить
+                        Image(systemName: hourlyCurrentWeather.hours.first?.condition.iconName ?? "")
                         Text("\(hourlyCurrentWeather.hours.first?.temperatureCelcius ?? 0, specifier: "%.0f")")
+                        // стоит НОЛЬ заменить на что-то другое,
+                        // когда наступает 23 -00 отображать нечего, массив пустой и первый элемент оказывается nil
                     }
                 ForEach(hourlyCurrentWeather.hours.dropFirst(), id: \.id) { hourItem in
                     VStack(spacing: 13.5) {
                         Text("\(hourItem.timeEpoch.formattedHour)")
-                        AsyncImage(url: URL(string: "https:" + hourItem.condition.icon)) { image in
-                                image.resizable()
-                            } placeholder: {
-                                ProgressView()
-                            }
-                            .frame(width: 24, height: 24)
+                        Image(systemName: hourItem.condition.iconName)
                         Text("\(hourItem.temperatureCelcius, specifier: "%.0f")")
                     }
                 }
@@ -66,7 +61,7 @@ struct MeteorologicalDataView: View {
                 HStack(spacing: 0) {
                     Text(weather.windKph)
                     Text(" km/h ")
-                    Text(weather.windDirection)
+                    Text(LocalizedStringKey(weather.windDirection))
                         .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.74)))
                 }
                 HStack(spacing: 0) {

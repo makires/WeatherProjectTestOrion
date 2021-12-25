@@ -27,7 +27,7 @@ struct Weather {
         humidity = String(response.current.humidity)
         feelsLikeTemperature = String(format: "%.0f", response.current.feelsLikeTemperature)
         text = response.current.condition.text
-        icon = "https:" + response.current.condition.icon
+        icon = "https:" + response.current.condition.iconURL
     }
 }
 
@@ -38,7 +38,11 @@ struct HourlyCurrentWeather {
         hours = createCurrentHours(response: response)
     }
     func createCurrentHours(response: APIForecastWeatherModel) -> [Hour] {
-        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        // при отсутствии ответа по текущему времени по умолчанию встанет текущая дата
+        // возможно что-то надо с этим сделать
+        let currentDate = dateFormatter.date(from: response.location.currentLocalTime) ?? Date()
         var arrayHoursAll: [Hour] = []
         var arrayHoursPublic: [Hour] = []
         arrayHoursAll = response.forecast.forecastday[0].hour
@@ -60,3 +64,4 @@ struct DailyForecats {
         days = response.forecast.forecastday
     }
 }
+
