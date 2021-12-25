@@ -26,7 +26,6 @@ struct WeatherService: WeatherRepositoryProtocol {
             "key": keyAPI,
             "lang": locale
         ]
-        print(parameters)
         AF.request(url, parameters: parameters)
             .validate()
             .responseDecodable(of: APICurrentWeatherModel.self) { (response) in

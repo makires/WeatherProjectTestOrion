@@ -23,7 +23,20 @@ struct HourlyCurrentWeatherView: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(hourlyCurrentWeather.hours, id: \.id) { hourItem in
+                // создать отдельный элемент для первого часа с названием Now + Localization
+                // применить функцию dropFirt() для ForEach
+                
+                    VStack(spacing: 13.5) {
+                        Text("Now")
+                        AsyncImage(url: URL(string: "https:" + (hourlyCurrentWeather.hours.first?.condition.icon ?? "") )) { image in
+                                image.resizable()
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .frame(width: 24, height: 24)
+                        Text("\(hourlyCurrentWeather.hours.first?.temperatureCelcius ?? 0, specifier: "%.0f")")
+                    }
+                ForEach(hourlyCurrentWeather.hours.dropFirst(), id: \.id) { hourItem in
                     VStack(spacing: 13.5) {
                         Text("\(hourItem.timeEpoch.formattedHour)")
                         AsyncImage(url: URL(string: "https:" + hourItem.condition.icon)) { image in

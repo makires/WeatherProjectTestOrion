@@ -15,7 +15,7 @@ struct HeaderWeatherView: View {
             ZStack {
                 Image(backgroundHeaderWeatherView)
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
+//                    .aspectRatio(contentMode: .fill)
                 // разрешения картинки не хватает для высоты
                 // внизу белая полоска и вверху сдвиг по safe area
                 // подумать как?

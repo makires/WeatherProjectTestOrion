@@ -35,8 +35,21 @@ struct HourlyCurrentWeather {
     var hours: [Hour] = []
     init() { }
     init(response: APIForecastWeatherModel) {
-        hours = response.forecast.forecastday[0].hour
-        print("количество элементов часов = ", hours.count)
+        hours = createCurrentHours(response: response)
+    }
+    func createCurrentHours(response: APIForecastWeatherModel) -> [Hour] {
+        let currentDate = Date()
+        var arrayHoursAll: [Hour] = []
+        var arrayHoursPublic: [Hour] = []
+        arrayHoursAll = response.forecast.forecastday[0].hour
+        for hour in arrayHoursAll {
+            if Date(timeIntervalSince1970: TimeInterval(hour.timeEpoch)) < currentDate {
+                // nothing do, next iteration
+            } else if Date(timeIntervalSince1970: TimeInterval(hour.timeEpoch)) >= currentDate {
+                arrayHoursPublic.append(hour)
+            }
+        }
+        return arrayHoursPublic
     }
 }
 

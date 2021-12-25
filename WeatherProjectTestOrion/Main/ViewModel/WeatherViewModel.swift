@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 class WeatherViewModel: ObservableObject {
-    var cityTitleStatic = "Nizhny Novgorod"
-//    var cityTitleStatic = "Sochi"
+//    var cityTitleStatic = "Nizhny Novgorod"
+    var cityTitleStatic = "Sochi"
     @Published var weatherCurrent = Weather()
     @Published var weatherHourlyCurrent = HourlyCurrentWeather()
     @Published var weatherDailyForecast = DailyForecats()
