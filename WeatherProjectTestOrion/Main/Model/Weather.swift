@@ -8,6 +8,7 @@
 import Foundation
 
 struct Weather {
+    var cityName = ""
     var temperatureCurrent = ""
     var pressureHPa  = ""
     var windKph  = ""
@@ -18,6 +19,7 @@ struct Weather {
     var icon = ""
     init() { }
     init(response: APICurrentWeatherModel) {
+        cityName = response.location.cityName
         temperatureCurrent = String(format: "%.0f", response.current.temperatureCurrent)
         pressureHPa = String(response.current.pressureHPa)
         windKph = String(response.current.windKph)
@@ -34,6 +36,7 @@ struct HourlyCurrentWeather {
     init() { }
     init(response: APIForecastWeatherModel) {
         hours = response.forecast.forecastday[0].hour
+        print("количество элементов часов = ", hours.count)
     }
 }
 

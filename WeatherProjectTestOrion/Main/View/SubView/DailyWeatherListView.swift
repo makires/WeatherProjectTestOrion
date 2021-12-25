@@ -17,20 +17,20 @@ struct DailyWeatherListView: View {
     var body: some View {
         GeometryReader { _ in
             ScrollView {
-                Color.clear
+                Color.yellow
+                    .opacity(0.5)
+                    .frame(width: 0, height: 0)
                     .background(
                         GeometryReader { geometryProxyBackground in
                             Color.clear
                                 .preference(key: OffsetPreferenceKey.self, value: geometryProxyBackground.frame(in: .global).minY)
-                                .onAppear {
-                                }
                         })
                 ForEach(weatherVM.weatherDailyForecast.days, id: \.id) { day in
                     DailyWeatherRow(dailyForecast: day)
                     Divider()
                         .padding(0)
                 }
-                
+
                 ForEach(listDaily, id: \.self) { _ in
                     Text("sdsd")
                     Divider()

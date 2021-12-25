@@ -18,7 +18,7 @@ struct CurrentWeatherView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("\(weatherVM.leftTopPointScroll)")
+//                Text("\(weatherVM.leftTopPointScroll)")
                 HStack {
                     Text(weather.temperatureCurrent)
                     Text(celsius)
@@ -42,9 +42,6 @@ struct CurrentWeatherView: View {
             }
             .frame(width: 60, height: 60)
            }
-        .onAppear {
-            print("локаль из вью", locale.identifier)
-        }
     }
 }
 

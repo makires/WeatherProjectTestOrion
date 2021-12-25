@@ -9,9 +9,16 @@
 import Foundation
 
 struct APICurrentWeatherModel: Decodable {
+    let location: Location
     let current: APICurrentWeather
 }
-
+struct Location: Decodable {
+    let cityName: String
+    
+    enum CodingKeys: String, CodingKey {
+        case cityName = "name"
+    }
+}
 struct APICurrentWeather: Decodable {
     let temperatureCurrent: Double
     let pressureHPa: Int
