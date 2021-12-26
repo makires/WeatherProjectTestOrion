@@ -31,10 +31,10 @@ struct DailyWeatherListView: View {
                     Divider()
                         .padding(0)
                 }
-                ForEach(listDaily, id: \.self) { _ in
-                    Text("sdsd")
-                    Divider()
-                }
+//                ForEach(listDaily, id: \.self) { _ in
+//                    Text("sdsd")
+//                    Divider()
+//                }
             }
             .onPreferenceChange(OffsetPreferenceKey.self) { newLeftTopPointY in
                 weatherVM.leftTopPointScroll = newLeftTopPointY

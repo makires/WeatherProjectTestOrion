@@ -23,10 +23,19 @@ struct CurrentWeatherView: View {
                     Text(weather.temperatureCurrent)
                 }
                 .font(.system(size: 80, weight: .thin))
-                HStack(spacing: 0) {
-                    Text(weather.text)
-                    Text(feelsLike)
-                    Text(weather.feelsLikeTemperature)
+                // выравнивание по верху, так как weather.text может прийти
+                // очень длинным и будет коряво отображаться
+                //                  ⬇︎
+                HStack(alignment: .top, spacing: 0) {
+                    VStack {
+                        Text(weather.text)
+                    }
+                    VStack {
+                        Text(feelsLike)
+                    }
+                    VStack {
+                        Text(weather.feelsLikeTemperature)
+                    }
                 }
                 .padding(0)
                 .font(.system(size: 12, weight: .regular))

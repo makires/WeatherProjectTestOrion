@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct APICurrentWeatherModel: Decodable {
     let location: Location
@@ -67,7 +68,7 @@ extension ConditionWeather {
         case 1009:
             return "smoke.fill"
         case 1030, 1135, 1147:
-            return "cloud.fog"
+            return "cloud.fog.fill"
         case 1063, 1180, 1186, 1192, 1240, 1243:
             return "cloud.sun.rain.fill"
         case 1066, 1210, 1213, 1216, 1219, 1222, 1225, 1237, 1255, 1258:
@@ -154,7 +155,6 @@ extension Int {
     var formattedDay: String {
         let date = Date(timeIntervalSince1970: TimeInterval(self))
         let dateFormatter = DateFormatter()
-        
         dateFormatter.dateFormat = "d MMMM"
         return dateFormatter.string(from: date)
     }
@@ -164,17 +164,30 @@ extension Int {
     var formattedNameDay: String {
         let date = Date(timeIntervalSince1970: TimeInterval(self))
         let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "EEEE"
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
         dateFormatter.doesRelativeDateFormatting = true
-                dateFormatter.timeStyle = .none
-                dateFormatter.dateStyle = .medium
-//
-//
-//        dateFormatter.setLocalizedDateFormatFromTemplate("EEEE")
-        print("это вывод по строке", dateFormatter.string(from: date))
-        return dateFormatter.string(from: date)
+        if dateFormatter.string(from: date) == "Today" ||
+            dateFormatter.string(from: date) == "Tomorrow" ||
+            dateFormatter.string(from: date) == "Сегодня" ||
+            dateFormatter.string(from: date) == "Завтра" {
+            return dateFormatter.string(from: date)
+        } else {
+            let newFormatter = DateFormatter()
+            newFormatter.dateFormat = "EEEE"
+            return newFormatter.string(from: date)
+        }
     }
 }
+extension Int {
+    var relativeFormatted: String {
+        let formatter = RelativeDateTimeFormatter()
+        let date = Date(timeIntervalSince1970: TimeInterval(self))
+        formatter.dateTimeStyle = .named
+        let relativeDate = formatter.localizedString(for: date, relativeTo: Date())
+        return relativeDate
+    }
+ }
 
 extension Double {
     var temperatureConverter: String {
