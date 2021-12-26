@@ -71,8 +71,9 @@ struct HeaderWeatherView: View {
         // необходимо поменять высоту с 320 до 210
 //                .frame(height: 210)
 //                .frame(height: 324)
-                .frame(height: weatherVM.leftTopPointScroll > 324 ? 324 : 210)
-                .border(.red, width: 2)
+                .frame(height: weatherVM.leftTopPointScroll > 320 ? 320 : 220)
+                .animation(.easeOut(duration: 0.3))
+//                .border(.green, width: 2)
 //                .offset(y: 0)
         // конец / итоговый вариант
             .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))

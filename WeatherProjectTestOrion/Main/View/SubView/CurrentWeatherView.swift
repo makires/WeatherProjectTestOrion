@@ -8,7 +8,7 @@
 import SwiftUI
 
 let celsius: LocalizedStringKey = "°"
-let feelsLike: LocalizedStringKey = ", Feels like"
+let feelsLike: LocalizedStringKey = ", Feels like "
 let hello: LocalizedStringKey = "hello"
 
 struct CurrentWeatherView: View {
@@ -21,20 +21,17 @@ struct CurrentWeatherView: View {
 //                Text("\(weatherVM.leftTopPointScroll)")
                 HStack {
                     Text(weather.temperatureCurrent)
-                    Text(celsius)
                 }
                 .font(.system(size: 80, weight: .thin))
                 HStack(spacing: 0) {
                     Text(weather.text)
                     Text(feelsLike)
                     Text(weather.feelsLikeTemperature)
-                    Text(celsius)
                 }
                 .padding(0)
                 .font(.system(size: 12, weight: .regular))
             }
             Spacer()
-            // !! Enum
             AsyncImage(url: URL(string: weather.icon)) { image in
                 image.resizable()
             } placeholder: {
@@ -53,6 +50,5 @@ struct CurrentWeatherView_Previews: PreviewProvider {
                 .background(Color.gray)
             MainView()
         }
-        //        .environment(\.locale, .init(identifier: "ru"))
     }
 }

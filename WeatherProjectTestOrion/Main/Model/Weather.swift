@@ -20,12 +20,12 @@ struct Weather {
     init() { }
     init(response: APICurrentWeatherModel) {
         cityName = response.location.cityName
-        temperatureCurrent = String(format: "%.0f", response.current.temperatureCurrent)
+        temperatureCurrent = response.current.temperatureCurrent.temperatureConverter
         pressureHPa = String(response.current.pressureHPa)
         windKph = String(response.current.windKph)
         windDirection = response.current.windDirection
         humidity = String(response.current.humidity)
-        feelsLikeTemperature = String(format: "%.0f", response.current.feelsLikeTemperature)
+        feelsLikeTemperature = response.current.feelsLikeTemperature.temperatureConverter
         text = response.current.condition.text
         icon = "https:" + response.current.condition.iconURL
     }
@@ -64,4 +64,3 @@ struct DailyForecats {
         days = response.forecast.forecastday
     }
 }
-

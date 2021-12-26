@@ -12,6 +12,7 @@ struct APICurrentWeatherModel: Decodable {
     let location: Location
     let current: APICurrentWeather
 }
+
 struct Location: Decodable {
     let cityName: String
     let currentLocalTime: String
@@ -20,6 +21,7 @@ struct Location: Decodable {
         case currentLocalTime = "localtime"
     }
 }
+
 struct APICurrentWeather: Decodable {
     let temperatureCurrent: Double
     let pressureHPa: Int
@@ -46,13 +48,13 @@ struct ConditionWeather: Decodable {
     let text: String
     let iconURL: String
     let code: Int
-    
     enum CodingKeys: String, CodingKey {
         case text
         case iconURL = "icon"
         case code
     }
 }
+
 extension ConditionWeather {
     var iconName: String {
         switch code {
@@ -152,6 +154,7 @@ extension Int {
     var formattedDay: String {
         let date = Date(timeIntervalSince1970: TimeInterval(self))
         let dateFormatter = DateFormatter()
+        
         dateFormatter.dateFormat = "d MMMM"
         return dateFormatter.string(from: date)
     }
@@ -161,7 +164,25 @@ extension Int {
     var formattedNameDay: String {
         let date = Date(timeIntervalSince1970: TimeInterval(self))
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE"
+//        dateFormatter.dateFormat = "EEEE"
+        dateFormatter.doesRelativeDateFormatting = true
+                dateFormatter.timeStyle = .none
+                dateFormatter.dateStyle = .medium
+//
+//
+//        dateFormatter.setLocalizedDateFormatFromTemplate("EEEE")
+        print("это вывод по строке", dateFormatter.string(from: date))
         return dateFormatter.string(from: date)
+    }
+}
+
+extension Double {
+    var temperatureConverter: String {
+        if Int(self) > 0 {
+            let plusTemperature = "+\(Int(self))°"
+            return plusTemperature
+        } else {
+            return "\(Int(self))°"
+        }
     }
 }

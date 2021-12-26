@@ -23,24 +23,21 @@ struct HourlyCurrentWeatherView: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                // создать отдельный элемент для первого часа с названием Now + Localization
-                // применить функцию dropFirt() для ForEach
-                
                     VStack(spacing: 13.5) {
                         Text("Now")
                         // получать доступ к часу через vm? но уже есть отдельная model  специально для погоды 🤔хм
-                        // если облако снегом или дождем то картинка увеличивается и отображение съезжает
-                        // подкмать что исправить
+                        // если облако со снегом или дождем то картинка увеличивается и отображение съезжает
+                        // подумать что исправить
                         Image(systemName: hourlyCurrentWeather.hours.first?.condition.iconName ?? "")
-                        Text("\(hourlyCurrentWeather.hours.first?.temperatureCelcius ?? 0, specifier: "%.0f")")
-                        // стоит НОЛЬ заменить на что-то другое,
-                        // когда наступает 23 -00 отображать нечего, массив пустой и первый элемент оказывается nil
+                        Text(hourlyCurrentWeather.hours.first?.temperatureCelcius.temperatureConverter ?? "")
+                        // когда наступает 23 -00 отображать нечего,
+                        // массив пустой и первый элемент оказывается nil, что надо делать с этим?
                     }
                 ForEach(hourlyCurrentWeather.hours.dropFirst(), id: \.id) { hourItem in
                     VStack(spacing: 13.5) {
                         Text("\(hourItem.timeEpoch.formattedHour)")
                         Image(systemName: hourItem.condition.iconName)
-                        Text("\(hourItem.temperatureCelcius, specifier: "%.0f")")
+                        Text(hourItem.temperatureCelcius.temperatureConverter)
                     }
                 }
             }

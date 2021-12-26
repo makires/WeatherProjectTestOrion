@@ -17,20 +17,20 @@ struct DailyWeatherListView: View {
     var body: some View {
         GeometryReader { _ in
             ScrollView {
-                Color.yellow
-                    .opacity(0.5)
-                    .frame(width: 0, height: 0)
+                Color.clear
+                    .opacity(0)
+//                    .frame(width: 0, height: 10)
                     .background(
                         GeometryReader { geometryProxyBackground in
                             Color.clear
-                                .preference(key: OffsetPreferenceKey.self, value: geometryProxyBackground.frame(in: .global).minY)
+                                .preference(key: OffsetPreferenceKey.self,
+                                            value: geometryProxyBackground.frame(in: .global).minY)
                         })
                 ForEach(weatherVM.weatherDailyForecast.days, id: \.id) { day in
                     DailyWeatherRow(dailyForecast: day)
                     Divider()
                         .padding(0)
                 }
-
                 ForEach(listDaily, id: \.self) { _ in
                     Text("sdsd")
                     Divider()
@@ -40,6 +40,7 @@ struct DailyWeatherListView: View {
                 weatherVM.leftTopPointScroll = newLeftTopPointY
             }
         }
+//        .border(.red, width: 2)
     }
 }
 
@@ -47,6 +48,7 @@ struct DailyWeatherRow: View {
     let dailyForecast: Forecastday
     var body: some View {
         HStack {
+            
             VStack(alignment: .leading) {
                 Text(dailyForecast.dateEpoch.formattedDay)
                     .foregroundColor(Color(#colorLiteral(red: 0.24, green: 0.24, blue: 0.26, alpha: 0.6)))
@@ -57,21 +59,15 @@ struct DailyWeatherRow: View {
             let gridItems = [GridItem(spacing: 10), GridItem( spacing: 4), GridItem(alignment: .trailing)]
             HStack {
                 LazyVGrid(columns: gridItems) {
-//                    AsyncImage(url: URL(string: "https:" + dailyForecast.day.condition.iconURL)) { image in
-//                        image.resizable()
-//                    } placeholder: {
-//                        ProgressView()
-//                    }
-//                    .frame(width: 44, height: 44)
                     Image(systemName: dailyForecast.day.condition.iconName)
 //                        .symbolRenderingMode(.multicolor)
                         .foregroundStyle(.blue, .yellow, .blue)
 //                        .renderingMode(.original)
-                    Text("\(dailyForecast.day.maxTemperatureCelcius, specifier: "%.0f")")
+                    Text(dailyForecast.day.maxTemperatureCelcius.temperatureConverter)
                         .tracking(0.35)
                         .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
                         .font(.system(size: 22, weight: .regular))
-                    Text("\(dailyForecast.day.minTemperatureCelcius, specifier: "%.0f")")
+                    Text(dailyForecast.day.minTemperatureCelcius.temperatureConverter)
                         .foregroundColor(Color(#colorLiteral(red: 0.24, green: 0.24, blue: 0.26, alpha: 0.6)))
                 }
             }
