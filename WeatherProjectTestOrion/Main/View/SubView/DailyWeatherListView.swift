@@ -48,7 +48,6 @@ struct DailyWeatherRow: View {
     let dailyForecast: Forecastday
     var body: some View {
         HStack {
-            
             VStack(alignment: .leading) {
                 Text(dailyForecast.dateEpoch.formattedDay)
                     .foregroundColor(Color(#colorLiteral(red: 0.24, green: 0.24, blue: 0.26, alpha: 0.6)))

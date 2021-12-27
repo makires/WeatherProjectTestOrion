@@ -38,6 +38,7 @@ struct HourlyCurrentWeatherView: View {
                         Text("\(hourItem.timeEpoch.formattedHour)")
                         Image(systemName: hourItem.condition.iconName)
                         Text(hourItem.temperatureCelcius.temperatureConverter)
+                            
                     }
                 }
             }
@@ -49,12 +50,12 @@ struct MeteorologicalDataView: View {
     let weather: Weather
     var body: some View {
         HStack {
-            VStack(spacing: 12) {
+            VStack(spacing: 13) {
                 Image(systemName: "wind")
                 Image(systemName: "safari")
                 Image(systemName: "drop")
             }
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 13) {
                 HStack(spacing: 0) {
                     Text(weather.windKph)
                     Text(" km/h ")
