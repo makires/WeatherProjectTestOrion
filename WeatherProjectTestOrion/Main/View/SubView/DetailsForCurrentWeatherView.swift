@@ -38,7 +38,6 @@ struct HourlyCurrentWeatherView: View {
                         Text("\(hourItem.timeEpoch.formattedHour)")
                         Image(systemName: hourItem.condition.iconName)
                         Text(hourItem.temperatureCelcius.temperatureConverter)
-                            
                     }
                 }
             }

@@ -173,9 +173,8 @@ extension Int {
             dateFormatter.string(from: date) == "Завтра" {
             return dateFormatter.string(from: date)
         } else {
-            let newFormatter = DateFormatter()
-            newFormatter.dateFormat = "EEEE"
-            return newFormatter.string(from: date)
+            dateFormatter.dateFormat = "EEEE"
+            return dateFormatter.string(from: date)
         }
     }
 }
