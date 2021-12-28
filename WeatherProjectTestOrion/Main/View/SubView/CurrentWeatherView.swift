@@ -46,14 +46,3 @@ struct CurrentWeatherView: View {
            }
     }
 }
-
-struct CurrentWeatherView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            CurrentWeatherView(weatherVM: WeatherViewModel(weatherService: WeatherService()), weather: Weather())
-                .previewLayout(.sizeThatFits)
-                .background(Color.gray)
-            MainView()
-        }
-    }
-}

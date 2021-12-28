@@ -68,15 +68,3 @@ struct MeteorologicalDataView: View {
         }
     }
 }
-
-struct DetailsForCurrentWeatherView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            DetailsForCurrentWeatherView(weather: Weather(), hourlyCurrentWeather: HourlyCurrentWeather())
-                .previewLayout(.sizeThatFits)
-                .background(Color.gray)
-            MainView()
-                .previewLayout(.sizeThatFits)
-        }
-    }
-}

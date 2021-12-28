@@ -65,14 +65,3 @@ struct SizeHeaderPreferenceKey: PreferenceKey {
     static var defaultValue: CGFloat = .zero
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {}
 }
-
-struct HeaderWeatherView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            HeaderWeatherView(
-                weatherVM: WeatherViewModel(weatherService: WeatherService()))
-                .previewLayout(.sizeThatFits)
-            MainView()
-        }
-    }
-}
