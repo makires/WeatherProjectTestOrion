@@ -17,7 +17,8 @@ struct Weather {
     var feelsLikeTemperature  = ""
     var text = ""
     var icon = ""
-    init() { }
+}
+extension Weather {
     init(response: APICurrentWeatherModel) {
         cityName = response.location.cityName
         temperatureCurrent = response.current.temperatureCurrent.temperatureConverter

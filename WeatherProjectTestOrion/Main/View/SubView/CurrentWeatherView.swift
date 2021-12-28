@@ -12,7 +12,6 @@ let feelsLike: LocalizedStringKey = ", Feels like "
 let hello: LocalizedStringKey = "hello"
 
 struct CurrentWeatherView: View {
-    @Environment(\.locale) var locale
     @ObservedObject var weatherVM: WeatherViewModel
     var weather: Weather
     var body: some View {
