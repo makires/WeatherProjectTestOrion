@@ -27,7 +27,7 @@ struct APICurrentWeather: Decodable {
     let temperatureCurrent: Double
     let pressureHPa: Int
     let windKph: Double
-    let windDirection: String
+    let windDirection: WindDirection
     let humidity: Int
     let feelsLikeTemperature: Double
     let isDay: Int
@@ -43,6 +43,25 @@ struct APICurrentWeather: Decodable {
         case isDay = "is_day"
         case condition
     }
+}
+
+enum WindDirection: String, Decodable {
+    case north = "N"
+    case south = "S"
+    case west = "W"
+    case east = "E"
+    case northEast = "NE"
+    case northWest = "NW"
+    case southEast = "SE"
+    case southWest = "SW"
+    case westNorthWest = "WNW"
+    case northNorthWest = "NNW"
+    case northNorthEast = "NNE"
+    case eastNorthEast = "ENE"
+    case eastSouthEast = "ESE"
+    case southSouthEast = "SSE"
+    case southSouthWest = "SSW"
+    case westSouthWest = "WSW"
 }
 
 struct ConditionWeather: Decodable {

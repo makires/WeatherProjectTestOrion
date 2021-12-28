@@ -24,15 +24,13 @@ extension Weather {
         temperatureCurrent = response.current.temperatureCurrent.temperatureConverter
         pressureHPa = String(response.current.pressureHPa)
         windKph = String(response.current.windKph)
-        windDirection = response.current.windDirection
+        windDirection = response.current.windDirection.rawValue
         humidity = String(response.current.humidity)
         feelsLikeTemperature = response.current.feelsLikeTemperature.temperatureConverter
         textWeatherCondition = response.current.condition.text
         icon = "https:" + response.current.condition.iconURL
     }
 }
-
-
 
 struct DailyForecats {
     var days: [Forecastday] = []
