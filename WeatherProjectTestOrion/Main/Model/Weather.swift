@@ -34,10 +34,6 @@ extension Weather {
 
 struct HourlyCurrentWeather {
     var hours: [Hour] = []
-    init() { }
-    init(response: APIForecastWeatherModel) {
-        hours = createCurrentHours(response: response)
-    }
     func createCurrentHours(response: APIForecastWeatherModel) -> [Hour] {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
@@ -55,10 +51,16 @@ struct HourlyCurrentWeather {
         return arrayHoursPublic
     }
 }
+extension HourlyCurrentWeather {
+    init(response: APIForecastWeatherModel) {
+        hours = createCurrentHours(response: response)
+    }
+}
 
 struct DailyForecats {
     var days: [Forecastday] = []
-    init() {}
+}
+extension DailyForecats {
     init(response: APIForecastWeatherModel) {
         days = response.forecast.forecastday
     }
