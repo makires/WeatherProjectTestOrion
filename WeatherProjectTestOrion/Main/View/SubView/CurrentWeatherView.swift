@@ -23,7 +23,7 @@ struct CurrentWeatherView: View {
                 .font(.system(size: 80, weight: .thin))
                 HStack(alignment: .top, spacing: 0) {
                     VStack {
-                        Text(weather.text)
+                        Text(weather.textWeatherCondition)
                     }
                     VStack {
                         Text(feelsLike)

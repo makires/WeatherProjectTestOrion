@@ -15,7 +15,7 @@ struct Weather {
     var windDirection = ""
     var humidity  = ""
     var feelsLikeTemperature  = ""
-    var text = ""
+    var textWeatherCondition = ""
     var icon = ""
 }
 extension Weather {
@@ -27,7 +27,7 @@ extension Weather {
         windDirection = response.current.windDirection
         humidity = String(response.current.humidity)
         feelsLikeTemperature = response.current.feelsLikeTemperature.temperatureConverter
-        text = response.current.condition.text
+        textWeatherCondition = response.current.condition.text
         icon = "https:" + response.current.condition.iconURL
     }
 }
