@@ -15,14 +15,8 @@ struct HeaderWeatherView: View {
             ZStack {
                 Image(backgroundHeaderWeatherView)
                     .resizable()
-//                    .aspectRatio(contentMode: .fill)
-                // разрешения картинки не хватает для высоты
-                // внизу белая полоска и вверху сдвиг по safe area
-                // подумать как?
                     .frame(height: 365)
-//                    .scaledToFill()
                     .ignoresSafeArea()
-//                    .ignoresSafeArea(edges: .top)
                 VStack {
                     // cityTitle
                     HStack {
@@ -44,18 +38,9 @@ struct HeaderWeatherView: View {
                                                  hourlyCurrentWeather: weatherVM.weatherHourlyCurrent)
                         .font(.system(size: 12, weight: .regular))
                         .padding(EdgeInsets(top: 8, leading: 16, bottom: 30, trailing: 0))
-                    // итоговый вариант
-                    // необходимо изменить прозрачность до 0
-//                        .opacity(0)
                         .opacity(weatherVM.leftTopPointScroll > 324 ? 1 : 0)
-                    // AND
-                    // необходимо добавлять при изменении фрэйма
                         .background( weatherVM.leftTopPointScroll > 324 ? Color.clear : Color.white
-                           // по умолчанию он белый
-//                            Color.clear
-//                            Color.white
                         )
-                    // конец / итоговый вариант
 
                 }
             } // end ZStack
@@ -66,16 +51,9 @@ struct HeaderWeatherView: View {
                 }
 
             )
-    } // end GeoReader
-        // итоговый вариант
-        // необходимо поменять высоту с 320 до 210
-//                .frame(height: 210)
-//                .frame(height: 324)
+    }
                 .frame(height: weatherVM.leftTopPointScroll > 320 ? 320 : 220)
                 .animation(.easeOut(duration: 0.3))
-//                .border(.green, width: 2)
-//                .offset(y: 0)
-        // конец / итоговый вариант
             .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
             .onPreferenceChange(SizeHeaderPreferenceKey.self) { newValue in
                 print("в ZStack (Header CurrentView) изменилось значение высоты = ", newValue)

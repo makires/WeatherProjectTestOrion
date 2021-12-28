@@ -25,13 +25,8 @@ struct HourlyCurrentWeatherView: View {
             HStack(alignment: .top) {
                     VStack(spacing: 13) {
                         Text("Now")
-                        // получать доступ к часу через vm? но уже есть отдельная model  специально для погоды 🤔хм
-                        // если облако со снегом или дождем то картинка увеличивается и отображение съезжает
-                        // подумать что исправить
                         Image(systemName: hourlyCurrentWeather.hours.first?.condition.iconName ?? "")
                         Text(hourlyCurrentWeather.hours.first?.temperatureCelcius.temperatureConverter ?? "")
-                            // когда наступает 23 -00 отображать нечего,
-                            // массив пустой и первый элемент оказывается nil, что надо делать с этим?
                     }
                 ForEach(hourlyCurrentWeather.hours.dropFirst(), id: \.id) { hourItem in
                     VStack(spacing: 13) {

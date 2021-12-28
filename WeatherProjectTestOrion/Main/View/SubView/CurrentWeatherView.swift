@@ -18,14 +18,10 @@ struct CurrentWeatherView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-//                Text("\(weatherVM.leftTopPointScroll)")
                 HStack {
                     Text(weather.temperatureCurrent)
                 }
                 .font(.system(size: 80, weight: .thin))
-                // выравнивание по верху, так как weather.text может прийти
-                // очень длинным и будет коряво отображаться
-                //                  ⬇︎
                 HStack(alignment: .top, spacing: 0) {
                     VStack {
                         Text(weather.text)

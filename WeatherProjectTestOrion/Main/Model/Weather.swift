@@ -40,8 +40,6 @@ struct HourlyCurrentWeather {
     func createCurrentHours(response: APIForecastWeatherModel) -> [Hour] {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        // при отсутствии ответа от сервера по текущему времени по умолчанию встанет текущая дата
-        // возможно, что-то надо с этим сделать, но тогда и в целом модель полетит
         let currentDate = dateFormatter.date(from: response.location.currentLocalTime) ?? Date()
         var arrayHoursAll: [Hour] = []
         var arrayHoursPublic: [Hour] = []

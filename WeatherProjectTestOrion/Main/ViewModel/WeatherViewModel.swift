@@ -10,9 +10,6 @@ import SwiftUI
 
 class WeatherViewModel: ObservableObject {
     var cityTitleStatic = "Nizhny Novgorod"
-//    var cityTitleStatic = "Sochi"
-//    var cityTitleStatic = "Novokuznetsk"
-//    var cityTitleStatic = "Prokopyevsk"
     @Published var weatherCurrent = Weather()
     @Published var weatherHourlyCurrent = HourlyCurrentWeather()
     @Published var weatherDailyForecast = DailyForecats()
@@ -26,7 +23,6 @@ class WeatherViewModel: ObservableObject {
         getHourlyWeather(for: city, locale: locale)
         getDailyWeather(for: city, locale: locale)
     }
-    // async - await чтобы исключить closure hell
     func getCurrentWeather(for city: String, locale: String) {
         weatherService.fetchCurrentWeather(for: city, locale: locale) { apiWeatherModel in
             self.weatherCurrent = Weather(response: apiWeatherModel)

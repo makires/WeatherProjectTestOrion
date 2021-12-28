@@ -18,8 +18,6 @@ struct DailyWeatherListView: View {
         GeometryReader { _ in
             ScrollView {
                 Color.clear
-                    .opacity(0)
-//                    .frame(width: 0, height: 10)
                     .background(
                         GeometryReader { geometryProxyBackground in
                             Color.clear
@@ -31,21 +29,17 @@ struct DailyWeatherListView: View {
                     Divider()
                         .padding(0)
                 }
-//                ForEach(listDaily, id: \.self) { _ in
-//                    Text("sdsd")
-//                    Divider()
-//                }
             }
             .onPreferenceChange(OffsetPreferenceKey.self) { newLeftTopPointY in
                 weatherVM.leftTopPointScroll = newLeftTopPointY
             }
         }
-//        .border(.red, width: 2)
     }
 }
 
 struct DailyWeatherRow: View {
     let dailyForecast: Forecastday
+    let gridItems = [GridItem(spacing: 10), GridItem( spacing: 4), GridItem(alignment: .trailing)]
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -55,13 +49,10 @@ struct DailyWeatherRow: View {
                     .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
             }
             Spacer()
-            let gridItems = [GridItem(spacing: 10), GridItem( spacing: 4), GridItem(alignment: .trailing)]
             HStack {
                 LazyVGrid(columns: gridItems) {
                     Image(systemName: dailyForecast.day.condition.iconName)
-//                        .symbolRenderingMode(.multicolor)
                         .foregroundStyle(.blue, .yellow, .blue)
-//                        .renderingMode(.original)
                     Text(dailyForecast.day.maxTemperatureCelcius.temperatureConverter)
                         .tracking(0.35)
                         .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))

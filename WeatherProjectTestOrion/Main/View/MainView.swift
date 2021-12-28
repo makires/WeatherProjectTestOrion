@@ -15,7 +15,6 @@ struct MainView: View {
                 HeaderWeatherView( weatherVM: weatherVM)
                 DailyWeatherListView(weatherVM: weatherVM)
             }
-//            .border(.green, width: 2)
             .onAppear {
                 weatherVM.getAllWeather(for: weatherVM.cityTitleStatic, locale: locale)
             }
