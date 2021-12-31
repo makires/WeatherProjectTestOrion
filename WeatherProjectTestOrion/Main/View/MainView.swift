@@ -17,6 +17,7 @@ struct MainView: View {
             }
             .onAppear {
                 weatherVM.getAllWeather(for: weatherVM.cityTitleStatic, locale: locale)
+                print("start")
             }
     }
 }
