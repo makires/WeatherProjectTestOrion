@@ -14,9 +14,9 @@ struct DailyWeatherRow: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(dailyForecast.dateEpoch.formattedDay)
-                    .foregroundColor(Color(#colorLiteral(red: 0.24, green: 0.24, blue: 0.26, alpha: 0.6)))
+                    .foregroundColor(Color("subText"))
                 Text(dailyForecast.dateEpoch.formattedNameDay)
-                    .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
+                    .foregroundColor(Color("mainText"))
             }
             Spacer()
             HStack {
@@ -25,10 +25,10 @@ struct DailyWeatherRow: View {
                         .foregroundStyle(.blue, .yellow, .blue)
                     Text(dailyForecast.day.maxTemperatureCelcius.temperatureConverter)
                         .tracking(0.35)
-                        .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
-                        .font(.system(size: 22, weight: .regular))
+                        .foregroundColor(Color("mainText"))
+                        .fontDailyWeatherRow()
                     Text(dailyForecast.day.minTemperatureCelcius.temperatureConverter)
-                        .foregroundColor(Color(#colorLiteral(red: 0.24, green: 0.24, blue: 0.26, alpha: 0.6)))
+                        .foregroundColor(Color("subText"))
                 }
             }
         }

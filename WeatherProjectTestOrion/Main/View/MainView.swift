@@ -11,13 +11,15 @@ struct MainView: View {
     @Environment(\.locale.identifier) var locale
     @ObservedObject var weatherVM = WeatherViewModel(weatherService: WeatherService() )
     var body: some View {
+        NavigationView {
             VStack(spacing: 0) {
                 HeaderWeatherView( weatherVM: weatherVM)
                 DailyWeatherListView(weatherVM: weatherVM)
             }
             .onAppear {
                 weatherVM.getAllWeather(for: weatherVM.cityTitleStatic, locale: locale)
-                print("start")
             }
+            .navigationBarHidden(true)
+        }
     }
 }

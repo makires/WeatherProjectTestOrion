@@ -54,15 +54,15 @@ struct MeteorologicalDataView: View {
                     Text(weather.windKph)
                     Text(" km/h ")
                     Text(LocalizedStringKey(weather.windDirection))
-                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.74)))
+                        .foregroundColor(Color("measure"))
                 }
                 HStack(spacing: 0) {
                     Text(weather.pressureHPa)
-                    Text(" hPa").foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.74)))
+                    Text(" hPa").foregroundColor(Color("measure"))
                 }
                 HStack(spacing: 0) {
                     Text(weather.humidity)
-                    Text("%").foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.74)))
+                    Text("%").foregroundColor(Color("measure"))
                 }
             }
         }

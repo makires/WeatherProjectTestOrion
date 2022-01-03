@@ -20,7 +20,7 @@ struct CurrentWeatherView: View {
                 HStack {
                     Text(weather.temperatureCurrent)
                 }
-                .font(.system(size: 80, weight: .thin))
+                .fontTitleCity()
                 HStack(alignment: .top, spacing: 0) {
                     VStack {
                         Text(weather.textWeatherCondition)
@@ -33,7 +33,7 @@ struct CurrentWeatherView: View {
                     }
                 }
                 .padding(0)
-                .font(.system(size: 12, weight: .regular))
+                .fontDesciprion()
             }
             Spacer()
             AsyncImage(url: URL(string: weather.icon)) { image in
