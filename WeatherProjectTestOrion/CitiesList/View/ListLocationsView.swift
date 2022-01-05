@@ -8,21 +8,29 @@
 import SwiftUI
 
 struct ListLocationsView: View {
-    @AppStorage("cities") var citiesDataStorage = CitiesListDataStorage(cities:
-                                                  ["Nizhny Novgorod", "Sochi"]).encode()!
-    @State var citiesList: [String] = []
-    @State var editList = false
+    
+    @StateObject var citiesVM = CitiesListViewModel(weatherService: WeatherService())
     @Environment(\.presentationMode) var presentationMode
-    var weather: Weather
+    @Environment(\.locale.identifier) var locale
+    @State var editList = false
     var body: some View {
         ScrollView {
-            Button("Refresh") {
-                citiesDataStorage = CitiesListDataStorage(cities:
-                                                              ["Nizhny Novgorod", "Sochi"]).encode()!
+// temporary ========================
+Button("Refresh") {
+    citiesVM.citiesData = ["Nizhny Novgorod", "Sochi"].encodeArray()!
+    let decoder = JSONDecoder()
+    if let citiesFromAppStorage = try? decoder.decode([String].self, from: citiesVM.citiesData) {
+        citiesVM.citiesList = citiesFromAppStorage
+    }
+}
+Button("Addcity") {
+    citiesVM.citiesList.append("Kazan")
+}
+// temporary ========================
+            ForEach(citiesVM.citiesList, id: \.self) { cityName in
+                CityRowView(cityName: cityName, editList: $editList, citiesVM: citiesVM)
+//
             }
-            ForEach(citiesList, id: \.self) { cityName in
-                CityRowView(cityName: cityName, weather: weather, editList: $editList, citiesList: $citiesList)
-        }
         }
         .toolbar {
             ToolbarItem(placement: .navigation) {
@@ -46,26 +54,18 @@ struct ListLocationsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(Text("Locations"))
         .onAppear {
-            getAppStorageData()
-            if citiesDataStorage.isEmpty {
-                citiesDataStorage = CitiesListDataStorage(cities:
-                                                              ["Nizhny Novgorod", "Sochi"]).encode()!
-            }
+            citiesVM.getCitiesFromAppStorage()
         }
     }
+    
+    
+}
 
-    func getAppStorageData() {
-        if let appStorageCities = CitiesListDataStorage.decode(citiesListData: citiesDataStorage) {
-            citiesList = appStorageCities.cities
+struct ListLocationsView_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        NavigationView {
+            ListLocationsView()
         }
     }
 }
-
- struct ListLocationsView_Previews: PreviewProvider {
-
-    static var previews: some View {
-        NavigationView {
-            ListLocationsView(weather: Weather())
-        }
-    }
- }

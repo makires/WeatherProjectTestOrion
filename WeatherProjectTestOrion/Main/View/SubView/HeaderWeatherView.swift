@@ -24,7 +24,7 @@ struct HeaderWeatherView: View {
                             .font(.largeTitle)
                             .tracking(0.37)
                         Spacer()
-                        NavigationLink(destination: ListLocationsView( weather: weatherVM.weatherCurrent)) {
+                        NavigationLink(destination: ListLocationsView()) {
                             Image(systemName: "list.bullet")
                         }
                     }

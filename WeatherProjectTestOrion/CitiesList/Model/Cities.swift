@@ -7,9 +7,8 @@
 
 import Foundation
 
-struct CitiesListDataStorage: Codable {
-    var cities: [String] = []
-    func encode() -> Data? {
+extension Array where Element == String {
+    func encodeArray() -> Data? {
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(self) {
             return encoded
@@ -17,12 +16,5 @@ struct CitiesListDataStorage: Codable {
             return nil
         }
     }
-    static func decode(citiesListData: Data) -> CitiesListDataStorage? {
-        let decoder = JSONDecoder()
-        if let cities = try? decoder.decode(CitiesListDataStorage.self, from: citiesListData) {
-            return cities
-        } else {
-            return nil
-        }
-    }
 }
+

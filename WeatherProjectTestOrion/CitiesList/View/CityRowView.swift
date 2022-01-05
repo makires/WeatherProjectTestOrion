@@ -8,16 +8,24 @@
 import SwiftUI
 var minTemperature = "+16º"
 var maxTemperature = "15º"
-
+class CityRowViewModel: ObservableObject {
+    let weatherService: WeatherRepositoryProtocol
+    init(weatherService: WeatherRepositoryProtocol) {
+        self.weatherService = weatherService
+    }
+    @Published var weatherCurrent = Weather()
+    func getCurrentWeather(for city: String, locale: String) {
+        weatherService.fetchCurrentWeather(for: city, locale: locale) { apiWeatherModel in
+            self.weatherCurrent = Weather(response: apiWeatherModel)
+        }
+    }
+}
 struct CityRowView: View {
+//    @State var cityName: String = ""
     var cityName: String
-    var weather: Weather
     @Binding var editList: Bool
-    @Binding var citiesList: [String]
-    @Environment(\.locale.identifier) var locale
-    @AppStorage("cities") var citiesDataStorage: Data!
-    @ObservedObject var cityVM = CityViewModel(weatherService: WeatherService())
-
+    @ObservedObject var citiesVM: CitiesListViewModel
+    @ObservedObject var cityRowVM = CityRowViewModel(weatherService: WeatherService())
     var body: some View {
         VStack {
             if editList {
@@ -27,18 +35,7 @@ struct CityRowView: View {
                     }
                     Spacer()
                     Button {
-                        print("deleted city")
-                        if let firstIndex = citiesList.firstIndex(of: cityName) {
-                            citiesList.remove(at: firstIndex)
-                            let newCitiesDataStorage = CitiesListDataStorage(cities: citiesList).encode()
-                            guard newCitiesDataStorage != nil else {
-                                print("не удалось закодировать список городов в Data")
-                                return
-                            }
-                            citiesDataStorage = newCitiesDataStorage
-                        } else {
-print("удалится первый совпадающий по названию город, если городов будет несколько одинаковых? - тест ")
-                        }
+                        citiesVM.remove(cityName: cityName)
                     } label: {
                         Image(systemName: "plus")
                             .foregroundColor(.red)
@@ -58,7 +55,10 @@ print("удалится первый совпадающий по названи�
             }
         }
         .onAppear(perform: {
-            cityVM.getCurrentWeather(for: cityName, locale: locale)
+            #warning("viewModel должна быть одна, у тебя отдельная для ячейки")
+            print("появилась ячейка \(cityName)")
+            cityRowVM.getCurrentWeather(for: cityName, locale: "en")
+            
         })
         .overlay(RoundedRectangle(cornerRadius: 4).strokeBorder(Color("borderCityRow"))
                     )
@@ -89,7 +89,7 @@ print("удалится первый совпадающий по названи�
     var iconAndCurrentTemperature: some View {
         HStack(spacing: 16) {
             Image(systemName: "cloud")
-            Text(weather.temperatureCurrent)
+            Text("\(cityRowVM.weatherCurrent.temperatureCurrent)")
                 .padding(EdgeInsets(top: 10, leading: 0, bottom: 4.5, trailing: 0))
         }
         .fontCurrentTemperatureRowListCities()
@@ -118,23 +118,17 @@ print("удалится первый совпадающий по названи�
     }
 }
 
-struct CityRowView_Previews: PreviewProvider {
-    @State static var cities = [""]
-    static var previews: some View {
-
-            ScrollView {
-                CityRowView(cityName: "Kemerovo",
-                            weather: Weather(),
-                            editList: .constant(false),
-                            citiesList: $cities,
-                            cityVM: CityViewModel(weatherService: WeatherService()))
-                CityRowView(cityName: "Kemerovo",
-                            weather: Weather(),
-                            editList: .constant(false),
-                            citiesList: $cities,
-                            cityVM: CityViewModel(weatherService: WeatherService()))
-            }
-            .previewLayout(.sizeThatFits)
-
-    }
-}
+//struct CityRowView_Previews: PreviewProvider {
+//    @State static var cities = [""]
+//    static var previews: some View {
+//
+//            ScrollView {
+//                CityRowView(cityName: "Kemerovo",
+//                            editList: .constant(false), citiesVM: CitiesListViewModel(weatherService: WeatherService()))
+//                CityRowView(cityName: "Kemerovo",
+//                            editList: .constant(false), citiesVM: CitiesListViewModel(weatherService: WeatherService()))
+//            }
+//            .previewLayout(.sizeThatFits)
+//
+//    }
+//}
