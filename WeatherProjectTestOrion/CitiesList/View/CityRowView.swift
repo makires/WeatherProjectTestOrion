@@ -55,7 +55,7 @@ struct CityRowView: View {
             }
         }
         .onAppear(perform: {
-            #warning("viewModel должна быть одна, у тебя отдельная для ячейки")
+            #warning("viewModel должна быть одна, а у тебя отдельная для ячейки")
             print("появилась ячейка \(cityName)")
             cityRowVM.getCurrentWeather(for: cityName, locale: "en")
             
@@ -69,7 +69,7 @@ struct CityRowView: View {
     var cityAndRegionName: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(cityName)
+                Text(LocalizedStringKey(cityName))
                 Image("mappin")
                     .resizable()
                     .scaledToFit()
@@ -98,12 +98,12 @@ struct CityRowView: View {
     var descriptionWeather: some View {
         HStack {
             HStack {
-                Text("Humidity")
+                Text(Localization.humidity.localized)
                 Text("83%")
                 Text("|")
                 Text("Southeast")
                 Text("|")
-                Text("10") + Text(" km/h")
+                Text("10") + Text(Localization.kmH.localized)
             }
             Spacer()
             HStack {

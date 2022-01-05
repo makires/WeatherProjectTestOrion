@@ -23,9 +23,11 @@ Button("Refresh") {
         citiesVM.citiesList = citiesFromAppStorage
     }
 }
-Button("Addcity") {
+            #warning("эту кнопку потом надо оставить")
+            Button(Localization.addLocation.localized) {
     citiesVM.citiesList.append("Kazan")
-}
+            }
+
 // temporary ========================
             ForEach(citiesVM.citiesList, id: \.self) { cityName in
                 CityRowView(cityName: cityName, editList: $editList, citiesVM: citiesVM)
@@ -52,7 +54,8 @@ Button("Addcity") {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle(Text("Locations"))
+        .navigationTitle(Localization.locations.localized)
+
         .onAppear {
             citiesVM.getCitiesFromAppStorage()
         }

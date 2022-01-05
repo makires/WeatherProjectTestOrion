@@ -24,7 +24,7 @@ struct HourlyCurrentWeatherView: View {
         ScrollView(.horizontal) {
             HStack(alignment: .top) {
                     VStack(spacing: 13) {
-                        Text("Now")
+                        Text(Localization.now.localized)
                         Image(systemName: hourlyCurrentWeather.hours.first?.condition.iconName ?? "")
                         Text(hourlyCurrentWeather.hours.first?.temperatureCelcius.temperatureConverter ?? "")
                     }
@@ -52,13 +52,13 @@ struct MeteorologicalDataView: View {
             VStack(alignment: .leading, spacing: 13) {
                 HStack(spacing: 0) {
                     Text(weather.windKph)
-                    Text(" km/h ")
+                    Text(Localization.kmH.localized)
                     Text(LocalizedStringKey(weather.windDirection))
                         .foregroundColor(Color("measure"))
                 }
                 HStack(spacing: 0) {
                     Text(weather.pressureHPa)
-                    Text(" hPa").foregroundColor(Color("measure"))
+                    Text(Localization.hPa.localized).foregroundColor(Color("measure"))
                 }
                 HStack(spacing: 0) {
                     Text(weather.humidity)

@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-let celsius: LocalizedStringKey = "°"
-let feelsLike: LocalizedStringKey = ", Feels like "
-let hello: LocalizedStringKey = "hello"
-
 struct CurrentWeatherView: View {
     @ObservedObject var weatherVM: WeatherViewModel
     var weather: Weather
@@ -26,7 +22,7 @@ struct CurrentWeatherView: View {
                         Text(weather.textWeatherCondition)
                     }
                     VStack {
-                        Text(feelsLike)
+                        Text(Localization.feelsLike.localized)
                     }
                     VStack {
                         Text(weather.feelsLikeTemperature)
