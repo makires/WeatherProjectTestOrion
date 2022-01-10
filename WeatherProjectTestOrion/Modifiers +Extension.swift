@@ -60,3 +60,11 @@ struct DescriptionWeatherRowListCities: ViewModifier {
             .font(.system(size: 16, weight: .regular))
     }
 }
+
+extension String {
+    var languageResponse: String {
+        let firstDash = self.firstIndex(of: "_") ?? self.endIndex
+        let firstSymbolsLanguage = self[..<firstDash]
+        return String(firstSymbolsLanguage)
+    }
+}

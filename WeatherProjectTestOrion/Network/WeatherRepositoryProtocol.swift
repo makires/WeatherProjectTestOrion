@@ -8,13 +8,7 @@
 import Foundation
 
 protocol WeatherRepositoryProtocol {
-    func fetchCurrentWeather(for city: String,
-                             locale: String,
-                             completionHandler: @escaping (APICurrentWeatherModel) -> Void)
-    func fetchHourlyWeather(for city: String,
-                            locale: String,
-                            completionHandler: @escaping (APIForecastWeatherModel) -> Void)
-    func fetchDailyWeather(for city: String,
-                           locale: String,
-                           completionHandler: @escaping (APIForecastWeatherModel) -> Void)
+    func fetchCurrentWeather(for city: String, locale: String) async -> APICurrentWeatherModel?
+    func fetchHourlyWeather(for city: String, locale: String) async -> APIForecastWeatherModel?
+    func fetchDailyWeather(for city: String, locale: String) async -> APIForecastWeatherModel?
 }

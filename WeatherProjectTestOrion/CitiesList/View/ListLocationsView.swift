@@ -25,13 +25,29 @@ Button("Refresh") {
 }
             #warning("эту кнопку потом надо оставить")
             Button(Localization.addLocation.localized) {
-    citiesVM.citiesList.append("Kazan")
+                Task {
+    citiesVM.citiesList.append("Moscow")
+                    guard let weather = await citiesVM.weatherService.fetchCurrentWeather(for: "Moscow", locale: locale) else {
+                    print("не удалось получить текущую погоду для списка городов")
+                    return
+                }
+                     let newWeatherModel = Weather(response: weather)
+                    citiesVM.arrayWeather.append(newWeatherModel)
+                    citiesVM.citiesList.append(newWeatherModel.cityName)
+                    guard let newCitiesList = citiesVM.citiesList.encodeArray() else {
+                        print("не удалось закодировать новый список городов")
+                        return
+                    }
+                    citiesVM.citiesData = newCitiesList
+            }
             }
 
 // temporary ========================
-            ForEach(citiesVM.citiesList, id: \.self) { cityName in
-                CityRowView(cityName: cityName, editList: $editList, citiesVM: citiesVM)
-//
+//            ForEach(citiesVM.citiesList, id: \.self) { cityName in
+//                CityRowView(cityName: cityName, editList: $editList, citiesVM: citiesVM)
+//            }
+            ForEach(citiesVM.arrayWeather) { weather in
+                CityRowView(cityName: weather.cityName, weather: weather, editList: $editList, citiesVM: citiesVM)
             }
         }
         .toolbar {
@@ -57,7 +73,10 @@ Button("Refresh") {
         .navigationTitle(Localization.locations.localized)
 
         .onAppear {
-            citiesVM.getCitiesFromAppStorage()
+            print(locale)
+            Task {
+                await citiesVM.getCitiesFromAppStorage()
+            }
         }
     }
     

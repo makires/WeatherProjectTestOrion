@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class WeatherViewModel: ObservableObject {
+@MainActor class WeatherViewModel: ObservableObject {
     var cityTitleStatic = "Nizhny Novgorod"
     //    var cityTitleStatic = "Sochi"
     //    var cityTitleStatic = "Novokuznetsk"
@@ -21,24 +21,33 @@ class WeatherViewModel: ObservableObject {
     init(weatherService: WeatherRepositoryProtocol) {
         self.weatherService = weatherService
     }
-    func getAllWeather(for city: String, locale: String) {
-        getCurrentWeather(for: city, locale: locale)
-        getHourlyWeather(for: city, locale: locale)
-        getDailyWeather(for: city, locale: locale)
+    func getAllWeather(for city: String, locale: String) async {
+        await getCurrentWeather(for: city, locale: locale)
+        await getHourlyWeather(for: city, locale: locale)
+        await getDailyWeather(for: city, locale: locale)
+        
     }
-    func getCurrentWeather(for city: String, locale: String) {
-        weatherService.fetchCurrentWeather(for: city, locale: locale) { apiWeatherModel in
-            self.weatherCurrent = Weather(response: apiWeatherModel)
+    
+    func getCurrentWeather(for city: String, locale: String) async {
+        guard let currentWeather = await weatherService.fetchCurrentWeather(for: city, locale: locale) else {
+            print("не удалось получить текущую погоду для города в главнвом экране")
+            return
         }
+             self.weatherCurrent = Weather(response: currentWeather)
+            
     }
-    func getHourlyWeather(for city: String, locale: String) {
-        weatherService.fetchHourlyWeather(for: city, locale: locale) { apiHourlyCurrentWeatherModel in
-            self.weatherHourlyCurrent = HourlyCurrentWeather(response: apiHourlyCurrentWeatherModel)
+    func getHourlyWeather(for city: String, locale: String) async {
+        guard let hourlyWeather = await weatherService.fetchHourlyWeather(for: city, locale: locale) else {
+            print("не удалось получить часовой прогноз для города в главнвом экране")
+            return
         }
+            self.weatherHourlyCurrent = HourlyCurrentWeather(response: hourlyWeather)
     }
-    func getDailyWeather(for city: String, locale: String) {
-        weatherService.fetchDailyWeather(for: city, locale: locale) { apiDailyWeatherModel in
-            self.weatherDailyForecast = DailyForecats(response: apiDailyWeatherModel)
+    func getDailyWeather(for city: String, locale: String) async {
+        guard let dailyWeather = await weatherService.fetchDailyWeather(for: city, locale: locale) else {
+            print("не удалось получить прогноз по дням для города в главнвом экране")
+            return
         }
+            self.weatherDailyForecast = DailyForecats(response: dailyWeather)
     }
 }

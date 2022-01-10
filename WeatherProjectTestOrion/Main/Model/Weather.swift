@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Weather {
+struct Weather: Identifiable {
+    let id = UUID()
     var cityName = ""
     var temperatureCurrent = ""
     var pressureHPa  = ""

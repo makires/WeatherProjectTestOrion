@@ -12,33 +12,34 @@ import SwiftUI
 // Weatherapi.com
 
 struct WeatherService: WeatherRepositoryProtocol {
+    
     private let keyAPI = "5bfb01e8559d40ac92672846211712"
     private let baseURL = "https://api.weatherapi.com/v1"
     private let currentWeatherAPIMethod = "/current.json?"
     private let forecastWeatherAPIMethod = "/forecast.json"
-
+    
     func fetchCurrentWeather(for city: String,
-                             locale: String,
-                             completionHandler: @escaping (APICurrentWeatherModel) -> Void) {
+                             locale: String) async -> APICurrentWeatherModel? {
         let url = baseURL + currentWeatherAPIMethod
         let parameters = [
             "q": city,
             "key": keyAPI,
             "lang": locale
         ]
-        AF.request(url, parameters: parameters)
-            .validate()
-            .responseDecodable(of: APICurrentWeatherModel.self) { (response) in
-                guard let weather = response.value else {
-                    print("не удалось распарсить Current Weather")
-                    return
-                }
-                completionHandler(weather)
-            }
+        do {
+            let weather = try await AF.request(url, method: .get, parameters: parameters)
+                .validate()
+                .serializingDecodable(APICurrentWeatherModel.self).value
+            return weather
+        } catch {
+#warning("надо обработать возрат ошибки nil?")
+            print("погода вернулась nil")
+            return nil
+        }
     }
+    
     func fetchHourlyWeather(for city: String,
-                            locale: String,
-                            completionHandler: @escaping (APIForecastWeatherModel) -> Void) {
+                            locale: String) async -> APIForecastWeatherModel? {
         let url = baseURL + forecastWeatherAPIMethod
         let parameters: [String: Any] = [
             "q": city,
@@ -46,19 +47,19 @@ struct WeatherService: WeatherRepositoryProtocol {
             "days": "",
             "lang": locale
         ]
-        AF.request(url, parameters: parameters)
-            .validate()
-            .responseDecodable(of: APIForecastWeatherModel.self) { (response) in
-                guard let forecastHourly = response.value else {
-                    print("не удалось распарсить hourly прогноз по часам")
-                    return
-                }
-                completionHandler(forecastHourly)
-            }
+        do {
+            let forecast = try await AF.request(url, method: .get, parameters: parameters)
+                .validate()
+                .serializingDecodable(APIForecastWeatherModel.self).value
+            return forecast
+        } catch {
+#warning("надо обработать возрат ошибки nil?")
+            print("погода вернулась nil")
+            return nil
+        }
     }
     func fetchDailyWeather(for city: String,
-                           locale: String,
-                           completionHandler: @escaping (APIForecastWeatherModel) -> Void) {
+                           locale: String) async -> APIForecastWeatherModel? {
         let url = baseURL + forecastWeatherAPIMethod
         let parameters: [String: Any] = [
             "q": city,
@@ -66,14 +67,15 @@ struct WeatherService: WeatherRepositoryProtocol {
             "days": 5,
             "lang": locale
         ]
-        AF.request(url, parameters: parameters)
-            .validate()
-            .responseDecodable(of: APIForecastWeatherModel.self) { (response) in
-                guard let forecastDaily = response.value else {
-                    print("не удалось распарсить daily прогноз ")
-                    return
-                }
-                completionHandler(forecastDaily)
-            }
+        do {
+            let forecastDaily = try await AF.request(url, method: .get, parameters: parameters)
+                .validate()
+                .serializingDecodable(APIForecastWeatherModel.self).value
+            return forecastDaily
+        } catch {
+#warning("надо обработать возрат ошибки nil?")
+            print("погода вернулась nil")
+            return nil
+        }
     }
 }

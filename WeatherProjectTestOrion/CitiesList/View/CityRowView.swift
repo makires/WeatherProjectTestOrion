@@ -8,24 +8,14 @@
 import SwiftUI
 var minTemperature = "+16º"
 var maxTemperature = "15º"
-class CityRowViewModel: ObservableObject {
-    let weatherService: WeatherRepositoryProtocol
-    init(weatherService: WeatherRepositoryProtocol) {
-        self.weatherService = weatherService
-    }
-    @Published var weatherCurrent = Weather()
-    func getCurrentWeather(for city: String, locale: String) {
-        weatherService.fetchCurrentWeather(for: city, locale: locale) { apiWeatherModel in
-            self.weatherCurrent = Weather(response: apiWeatherModel)
-        }
-    }
-}
+
 struct CityRowView: View {
 //    @State var cityName: String = ""
     var cityName: String
+    var weather: Weather
+    let gridItems = [ GridItem(.fixed(50), spacing: 14), GridItem(.fixed(80))]
     @Binding var editList: Bool
     @ObservedObject var citiesVM: CitiesListViewModel
-    @ObservedObject var cityRowVM = CityRowViewModel(weatherService: WeatherService())
     var body: some View {
         VStack {
             if editList {
@@ -54,12 +44,7 @@ struct CityRowView: View {
                 descriptionWeather
             }
         }
-        .onAppear(perform: {
-            #warning("viewModel должна быть одна, а у тебя отдельная для ячейки")
-            print("появилась ячейка \(cityName)")
-            cityRowVM.getCurrentWeather(for: cityName, locale: "en")
-            
-        })
+        
         .overlay(RoundedRectangle(cornerRadius: 4).strokeBorder(Color("borderCityRow"))
                     )
         .padding(.horizontal, 16)
@@ -86,11 +71,15 @@ struct CityRowView: View {
         }
         .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 0))
     }
+    
     var iconAndCurrentTemperature: some View {
-        HStack(spacing: 16) {
-            Image(systemName: "cloud")
-            Text("\(cityRowVM.weatherCurrent.temperatureCurrent)")
-                .padding(EdgeInsets(top: 10, leading: 0, bottom: 4.5, trailing: 0))
+        HStack {
+            LazyVGrid(columns: gridItems, alignment: .trailing) {
+                Image(systemName: "cloud")
+                Text(weather.temperatureCurrent)
+//                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 4.5, trailing: 0))
+
+            }
         }
         .fontCurrentTemperatureRowListCities()
         .padding(.trailing, 8)
@@ -99,14 +88,16 @@ struct CityRowView: View {
         HStack {
             HStack {
                 Text(Localization.humidity.localized)
-                Text("83%")
+                Text(weather.humidity)
                 Text("|")
-                Text("Southeast")
+                #warning("в макете ветер с полным наименованием, с сервера всегда короткий")
+                Text(LocalizedStringKey(weather.windDirection))
                 Text("|")
-                Text("10") + Text(Localization.kmH.localized)
+                Text(weather.windKph) + Text(Localization.kmH.localized)
             }
             Spacer()
             HStack {
+                #warning("макс и мин температуру запрашивать через другую модель")
                 Text(minTemperature) + Text("/") + Text(maxTemperature)
             }
             .fontDescriptionWeatherRowListCities()

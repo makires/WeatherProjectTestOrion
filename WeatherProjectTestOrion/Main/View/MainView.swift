@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
-    @Environment(\.locale.identifier) var locale
+    #warning("если переместить во вьюМодель пересттает считываться локаль, пчм?")
+    @Environment(\.locale) var locale
     @ObservedObject var weatherVM = WeatherViewModel(weatherService: WeatherService() )
     var body: some View {
         NavigationView {
@@ -17,7 +18,11 @@ struct MainView: View {
                 DailyWeatherListView(weatherVM: weatherVM)
             }
             .onAppear {
-                weatherVM.getAllWeather(for: weatherVM.cityTitleStatic, locale: locale)
+                print(locale.identifier)
+                Task {
+                    #warning("если регион стоит как en_RU, то какой запрос делать?")
+                    await weatherVM.getAllWeather(for: weatherVM.cityTitleStatic, locale: locale.identifier.languageResponse)
+                }
             }
             .navigationBarHidden(true)
         }
