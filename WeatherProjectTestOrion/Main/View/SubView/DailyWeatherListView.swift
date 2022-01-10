@@ -11,28 +11,26 @@ struct OffsetPreferenceKey: PreferenceKey {
     static var defaultValue: CGFloat = .zero
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {}
 }
-
 struct DailyWeatherListView: View {
     @ObservedObject var weatherVM: WeatherViewModel
     var body: some View {
-        GeometryReader { _ in
-            ScrollView {
-                Color.clear
-                    .background(
-                        GeometryReader { geometryProxyBackground in
-                            Color.clear
-                                .preference(key: OffsetPreferenceKey.self,
-                                            value: geometryProxyBackground.frame(in: .global).minY)
-                        })
-                ForEach(weatherVM.weatherDailyForecast.days, id: \.id) { day in
-                    DailyWeatherRow(dailyForecast: day)
-                    Divider()
-                        .padding(0)
+        ScrollView {
+            ForEach(weatherVM.weatherDailyForecast.days, id: \.id) { day in
+                DailyWeatherRow(dailyForecast: day)
+                Divider()
+                    .padding(0)
+            }
+            .background(
+                GeometryReader { geometry in
+                    Color.clear
+                        .preference(key: OffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin.y)
                 }
-            }
-            .onPreferenceChange(OffsetPreferenceKey.self) { newLeftTopPointY in
-                weatherVM.leftTopPointScroll = newLeftTopPointY
-            }
+            )
+        }
+        .coordinateSpace(name: "scroll")
+        .onPreferenceChange(OffsetPreferenceKey.self) { value in
+            weatherVM.isScrolled = value < .zero ? true : false
+            print(value)
         }
     }
 }

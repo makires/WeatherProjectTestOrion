@@ -13,6 +13,7 @@ import SwiftUI
     //    var cityTitleStatic = "Sochi"
     //    var cityTitleStatic = "Novokuznetsk"
     //    var cityTitleStatic = "Prokopyevsk"
+    @Published var isScrolled = false
     @Published var weatherCurrent = Weather()
     @Published var weatherHourlyCurrent = HourlyCurrentWeather()
     @Published var weatherDailyForecast = DailyForecats()
