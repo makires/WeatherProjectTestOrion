@@ -29,7 +29,7 @@ extension Weather {
         humidity = String(response.current.humidity)
         feelsLikeTemperature = response.current.feelsLikeTemperature.temperatureConverter
         textWeatherCondition = response.current.condition.text
-        icon = "https:" + response.current.condition.iconURL
+        icon = response.current.condition.iconName
     }
 }
 

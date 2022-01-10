@@ -13,32 +13,18 @@ struct CurrentWeatherView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                HStack {
-                    Text(weather.temperatureCurrent)
-                }
-                .fontTitleCity()
+                Text(weather.temperatureCurrent)
+                    .fontTitleCity()
                 HStack(alignment: .top, spacing: 0) {
-                    VStack {
-                        Text(weather.textWeatherCondition)
-                    }
-                    VStack {
-                        Text(Localization.feelsLike.localized)
-                    }
-                    VStack {
-                        Text(weather.feelsLikeTemperature)
-                    }
+                    Text(weather.textWeatherCondition)
+                    Text(Localization.feelsLike.localized)
+                    Text(weather.feelsLikeTemperature)
                 }
-                .padding(0)
                 .fontDesciprion()
             }
             Spacer()
-            #warning("добавить через енум")
-            AsyncImage(url: URL(string: weather.icon)) { image in
-                image.resizable()
-            } placeholder: {
-                ProgressView()
-            }
-            .frame(width: 60, height: 60)
-           }
+            Image(systemName: weather.icon)
+                .fontCurrentIcon()
+        }
     }
 }

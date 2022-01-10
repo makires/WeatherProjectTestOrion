@@ -76,7 +76,7 @@ struct CityRowView: View {
     var iconAndCurrentTemperature: some View {
         HStack {
             LazyVGrid(columns: gridItems, alignment: .trailing) {
-                Image(systemName: "cloud")
+                Image(systemName: weather.icon)
                 Text(weather.temperatureCurrent)
 //                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 4.5, trailing: 0))
 

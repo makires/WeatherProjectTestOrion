@@ -13,10 +13,18 @@ struct TitleCity: ViewModifier {
             .font(.system(size: 80, weight: .thin))
     }
 }
-
+struct CurrentIcon: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 78))
+    }
+}
 extension View {
     func fontTitleCity() -> some View {
         modifier(TitleCity())
+    }
+    func fontCurrentIcon() -> some View {
+        modifier(CurrentIcon())
     }
     
     func fontDesciprion() -> some View {
