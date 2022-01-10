@@ -30,9 +30,12 @@ import SwiftUI
         print("текущий список городов из хранилища", citiesList)
         await getWeather(for: citiesList)
     }
+    
+    
+    
     func getWeather(for cities: [String]) async {
         print("request несколько вызовов в сеть по городам", cities)
-        #warning("почитать про AsyncSequence?")
+        #warning("почитать про AsyncSequence добавить неработающий город?")
         for city in cities {
             guard let apiCurrentWeatherModel = await weatherService.fetchCurrentWeather(for: city, locale: locale.languageResponse) else { print("не удалось получитть текущую погоду от сервера в цикле городов")
                 return

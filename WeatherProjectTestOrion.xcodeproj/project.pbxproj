@@ -112,15 +112,15 @@
 		BC0C49D5277E58250050E93F /* WeatherProjectTestOrion */ = {
 			isa = PBXGroup;
 			children = (
+				BCE2406D2785B61100BDE7D6 /* Localizable.strings */,
 				BCE240662785AA1500BDE7D6 /* Helpers */,
 				BC0C49D6277E58250050E93F /* Network */,
 				BC0C49DA277E58250050E93F /* Assets.xcassets */,
 				BC0C49DB277E58250050E93F /* Preview Content */,
-				BC0C49DD277E58250050E93F /* WeatherProjectTestOrionApp.swift */,
 				C6D64A69277EF5B2009C908E /* CitiesList */,
 				BC0C49DE277E58250050E93F /* Main */,
 				C6D64A75277F205B009C908E /* Modifiers +Extension.swift */,
-				BCE2406D2785B61100BDE7D6 /* Localizable.strings */,
+				BC0C49DD277E58250050E93F /* WeatherProjectTestOrionApp.swift */,
 			);
 			path = WeatherProjectTestOrion;
 			sourceTree = "<group>";

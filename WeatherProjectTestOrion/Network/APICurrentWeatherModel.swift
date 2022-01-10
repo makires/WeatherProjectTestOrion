@@ -75,41 +75,60 @@ struct ConditionWeather: Decodable {
     }
 }
 
+enum WeatherIcon: String {
+    case clearDay = "sun.max.fill"
+    case partlyCloudy = "cloud.sun.fill"
+    case cloudy = "cloud.fill"
+    case overcast = "smoke.fill"
+    case fog = "cloud.fog.fill"
+    case rain = "cloud.sun.rain.fill"
+    case moderateRain = "cloud.rain.fill"
+    case heavyRain = "cloud.heavyrain.fill"
+    case drizzle = "cloud.drizzle.fill"
+    case snow = "cloud.snow.fill"
+    case sleet = "cloud.sleet.fill"
+    case windSnow = "wind.snow"
+    case hail = "cloud.hail.fill"
+    case bolt = "cloud.bolt.fill"
+    case boltDay = "cloud.sun.bolt.fill"
+    case other = "thermometer"
+}
+#warning("сделать через енум")
 extension ConditionWeather {
     var iconName: String {
         switch code {
         case 1000:
-            return "sun.max.fill"
+            return WeatherIcon.clearDay.rawValue
         case 1003:
-            return "cloud.sun.fill"
+            return WeatherIcon.partlyCloudy.rawValue
         case 1006:
-            return "cloud.fill"
+            return WeatherIcon.cloudy.rawValue
         case 1009:
-            return "smoke.fill"
+            return WeatherIcon.overcast.rawValue
         case 1030, 1135, 1147:
-            return "cloud.fog.fill"
+            return WeatherIcon.fog.rawValue
         case 1063, 1180, 1186, 1192, 1240, 1243:
-            return "cloud.sun.rain.fill"
+            return WeatherIcon.rain.rawValue
         case 1066, 1210, 1213, 1216, 1219, 1222, 1225, 1237, 1255, 1258:
-            return "cloud.snow.fill"
+            return WeatherIcon.snow.rawValue
         case 1069, 1072, 1204, 1207, 1249, 1252:
-            return "cloud.sleet.fill"
+            return WeatherIcon.sleet.rawValue
         case 1087, 1276:
-            return "cloud.bolt.fill"
+            return WeatherIcon.bolt.rawValue
         case 1114, 1117:
-            return "wind.snow"
+            return WeatherIcon.windSnow.rawValue
         case 1150, 1153, 1168, 1171, 1198, 1201:
-            return "cloud.drizzle.fill"
+            return WeatherIcon.drizzle.rawValue
         case 1183, 1189:
-            return "cloud.rain.fill"
+            return WeatherIcon.moderateRain.rawValue
         case 1195, 1246:
-            return "cloud.heavyrain.fill"
+            return WeatherIcon.heavyRain.rawValue
         case 1261, 1264:
-            return "cloud.hail.fill"
+            return WeatherIcon.hail.rawValue
         case 1273, 1279, 1282:
-            return "cloud.sun.bolt.fill"
+            return WeatherIcon.boltDay.rawValue
         default:
-            return "thermometer"
+            return WeatherIcon.other.rawValue
         }
     }
 }

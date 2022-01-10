@@ -32,6 +32,7 @@ struct CurrentWeatherView: View {
                 .fontDesciprion()
             }
             Spacer()
+            #warning("добавить через енум")
             AsyncImage(url: URL(string: weather.icon)) { image in
                 image.resizable()
             } placeholder: {

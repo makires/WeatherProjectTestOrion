@@ -27,6 +27,7 @@ struct CityRowView: View {
                     Button {
                         citiesVM.remove(cityName: cityName)
                     } label: {
+                        #warning("изменить на константу в енум")
                         Image(systemName: "plus")
                             .foregroundColor(.red)
                             .rotationEffect(Angle(degrees: 45))
