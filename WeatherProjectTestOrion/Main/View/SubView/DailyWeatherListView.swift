@@ -11,7 +11,6 @@ struct OffsetPreferenceKey: PreferenceKey {
     static var defaultValue: CGFloat = .zero
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {}
 }
-
 struct DailyWeatherListView: View {
     @ObservedObject var weatherVM: WeatherViewModel
     var body: some View {
@@ -25,7 +24,7 @@ struct DailyWeatherListView: View {
                 GeometryReader { geometry in
                     let offset = geometry.frame(in: .named("scroll")).origin.y
                     Color.clear
-                        .preference(key: OffsetPreferenceKey.self, value: offset)
+                        .preference(key: OffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin.y)
                 }
             )
 
@@ -34,6 +33,7 @@ struct DailyWeatherListView: View {
         .coordinateSpace(name: "scroll")
         .onPreferenceChange(OffsetPreferenceKey.self) { value in
             weatherVM.isScrolled = value < .zero ? true : false
+            print(value)
         }
     }
 }
