@@ -10,15 +10,10 @@ import SwiftUI
 
 @MainActor class WeatherViewModel: ObservableObject {
     var cityTitleStatic = "Nizhny Novgorod"
-    //    var cityTitleStatic = "Sochi"
-    //    var cityTitleStatic = "Novokuznetsk"
-    //    var cityTitleStatic = "Prokopyevsk"
     @Published var isScrolled = false
     @Published var weatherCurrent = Weather()
     @Published var weatherHourlyCurrent = HourlyCurrentWeather()
     @Published var weatherDailyForecast = DailyForecats()
-    @Published var leftTopPointScroll: CGFloat = 374
-    @Published var isScrolled = false
     let weatherService: WeatherRepositoryProtocol
     init(weatherService: WeatherRepositoryProtocol) {
         self.weatherService = weatherService

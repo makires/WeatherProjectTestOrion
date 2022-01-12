@@ -22,7 +22,6 @@ struct DailyWeatherListView: View {
             }
             .background(
                 GeometryReader { geometry in
-                    let offset = geometry.frame(in: .named("scroll")).origin.y
                     Color.clear
                         .preference(key: OffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin.y)
                 }
@@ -33,7 +32,6 @@ struct DailyWeatherListView: View {
         .coordinateSpace(name: "scroll")
         .onPreferenceChange(OffsetPreferenceKey.self) { value in
             weatherVM.isScrolled = value < .zero ? true : false
-            print(value)
         }
     }
 }
