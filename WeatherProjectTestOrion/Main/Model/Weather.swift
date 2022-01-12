@@ -18,6 +18,10 @@ struct Weather: Identifiable {
     var feelsLikeTemperature  = ""
     var textWeatherCondition = ""
     var icon = ""
+    var region = ""
+    var country = ""
+    var minTemperatureCelcius = ""
+    var maxTemperatureCelcius = ""
 }
 extension Weather {
     init(response: APICurrentWeatherModel) {
@@ -30,14 +34,26 @@ extension Weather {
         feelsLikeTemperature = response.current.feelsLikeTemperature.temperatureConverter
         textWeatherCondition = response.current.condition.text
         icon = response.current.condition.iconName
+        region = response.location.region
+        country = response.location.country
     }
 }
-
-struct DailyForecats {
-    var days: [Forecastday] = []
-}
-extension DailyForecats {
-    init(response: APIForecastWeatherModel) {
-        days = response.forecast.forecastday
+extension Weather {
+    init(responseWeather: APICurrentWeatherModel, responseForecast: APIForecastWeatherModel) {
+        cityName = responseWeather.location.cityName
+        temperatureCurrent = responseWeather.current.temperatureCurrent.temperatureConverter
+        pressureHPa = String(responseWeather.current.pressureHPa)
+        windKph = String(responseWeather.current.windKph)
+        windDirection = responseWeather.current.windDirection.rawValue
+        humidity = String(responseWeather.current.humidity)
+        feelsLikeTemperature = responseWeather.current.feelsLikeTemperature.temperatureConverter
+        textWeatherCondition = responseWeather.current.condition.text
+        icon = responseWeather.current.condition.iconName
+        region = responseWeather.location.region
+        country = responseWeather.location.country
+        minTemperatureCelcius =
+            responseForecast.forecast.forecastday.first?.day.minTemperatureCelcius.temperatureConverter ?? ""
+        maxTemperatureCelcius =
+            responseForecast.forecast.forecastday.first?.day.maxTemperatureCelcius.temperatureConverterNotSign ?? ""
     }
 }

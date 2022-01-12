@@ -8,16 +8,21 @@
 import SwiftUI
 
 struct HeaderWeatherView: View {
-    var backgroundHeaderWeatherView = "cloudyBackground"
     @ObservedObject var weatherVM: WeatherViewModel
+    @State var showListCities = false
     var body: some View {
-        GeometryReader { _ in
-            ZStack {
+        ZStack {
+            // image background
+            GeometryReader { _ in
                 Image(backgroundHeaderWeatherView)
                     .resizable()
-                    .frame(height: 365)
                     .ignoresSafeArea()
-                VStack {
+//    .frame(height: weatherVM.isScrolled ? 180 : 290)
+                    .frame(height: 280)
+            }
+            // other
+            GeometryReader { _ in
+                VStack(spacing: spacingItemsHeaderWeatherView) {
                     // cityTitle
                     HStack {
                         Text(LocalizedStringKey(weatherVM.weatherCurrent.cityName))
@@ -25,36 +30,37 @@ struct HeaderWeatherView: View {
                             .tracking(0.37)
                         Spacer()
                         NavigationLink(destination: ListLocationsView()) {
-                            Image(systemName: "list.bullet")
+
                         }
+                        Button {
+                            showListCities.toggle()
+                        } label: {
+                            Image(systemName: iconButtonListBullet)
+                        }
+
                     }
-                    .padding(.horizontal, 16)
+                        .padding(.horizontal, 16)
+                    //  HStack - CurrentWeather
                     CurrentWeatherView(weatherVM: weatherVM, weather: weatherVM.weatherCurrent)
                         .padding(.horizontal, 16)
-                    DetailsForCurrentWeatherView(weather: weatherVM.weatherCurrent,
-                                                 hourlyCurrentWeather: weatherVM.weatherHourlyCurrent)
-                        .fontDesciprion()
-                        .padding(EdgeInsets(top: 8, leading: 16, bottom: 30, trailing: 0))
-                        .opacity(weatherVM.leftTopPointScroll > 324 ? 1 : 0)
-                        .background( weatherVM.leftTopPointScroll > 324 ? Color.clear : Color.white
-                        )
+                    // HStack - Details Current Weather
+                    Spacer()
+                            DetailsForCurrentWeatherView(
+                                weather: weatherVM.weatherCurrent,
+                                hourlyCurrentWeather: weatherVM.weatherHourlyCurrent)
+                        .fontDesciprionConditionWeather()
+                                .opacity(weatherVM.isScrolled ? 0 : 1)
+                                .background(weatherVM.isScrolled ? Color.white : Color.clear)
+                                .offset(y: weatherVM.isScrolled ? 0 : -24)
+                                .padding(.leading, weatherVM.isScrolled ? 0 : 16)
 
                 }
-            } // end ZStack
-            .background(
-                GeometryReader { gpZStackOutside in
-                    Color.clear
-                        .preference(key: SizeHeaderPreferenceKey.self, value: gpZStackOutside.size.height)
-                }
-
-            )
-    }
-                .frame(height: weatherVM.leftTopPointScroll > 320 ? 320 : 220)
-                .animation(.easeOut(duration: 0.3))
-            .foregroundColor(Color("mainTextWhite"))
-            .onPreferenceChange(SizeHeaderPreferenceKey.self) { newValue in
-                print("в ZStack (Header CurrentView) изменилось значение высоты = ", newValue)
             }
+        }
+        .foregroundColor(Color.mainTextWhite)
+        .fullScreenCover(isPresented: $showListCities) {
+            ListLocationsView()
+        }
     }
 }
 

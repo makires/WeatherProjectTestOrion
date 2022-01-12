@@ -12,12 +12,12 @@ import SwiftUI
 // Weatherapi.com
 
 struct WeatherService: WeatherRepositoryProtocol {
-    
+
     private let keyAPI = "5bfb01e8559d40ac92672846211712"
     private let baseURL = "https://api.weatherapi.com/v1"
     private let currentWeatherAPIMethod = "/current.json?"
     private let forecastWeatherAPIMethod = "/forecast.json"
-    
+
     func fetchCurrentWeather(for city: String,
                              locale: String) async -> APICurrentWeatherModel? {
         let url = baseURL + currentWeatherAPIMethod
@@ -32,12 +32,11 @@ struct WeatherService: WeatherRepositoryProtocol {
                 .serializingDecodable(APICurrentWeatherModel.self).value
             return weather
         } catch {
-#warning("надо обработать возрат ошибки nil?")
             print("погода вернулась nil")
             return nil
         }
     }
-    
+
     func fetchHourlyWeather(for city: String,
                             locale: String) async -> APIForecastWeatherModel? {
         let url = baseURL + forecastWeatherAPIMethod
@@ -53,7 +52,6 @@ struct WeatherService: WeatherRepositoryProtocol {
                 .serializingDecodable(APIForecastWeatherModel.self).value
             return forecast
         } catch {
-#warning("надо обработать возрат ошибки nil?")
             print("погода вернулась nil")
             return nil
         }
@@ -73,7 +71,6 @@ struct WeatherService: WeatherRepositoryProtocol {
                 .serializingDecodable(APIForecastWeatherModel.self).value
             return forecastDaily
         } catch {
-#warning("надо обработать возрат ошибки nil?")
             print("погода вернулась nil")
             return nil
         }

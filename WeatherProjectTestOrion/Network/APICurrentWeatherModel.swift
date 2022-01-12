@@ -17,9 +17,12 @@ struct APICurrentWeatherModel: Decodable {
 struct Location: Decodable {
     let cityName: String
     let currentLocalTime: String
+    let region: String
+    let country: String
     enum CodingKeys: String, CodingKey {
         case cityName = "name"
         case currentLocalTime = "localtime"
+        case region, country
     }
 }
 
@@ -93,7 +96,6 @@ enum WeatherIcon: String {
     case boltDay = "cloud.sun.bolt.fill"
     case other = "thermometer"
 }
-#warning("сделать через енум")
 extension ConditionWeather {
     var iconName: String {
         switch code {
@@ -177,62 +179,5 @@ struct Day: Decodable {
         case maxTemperatureCelcius = "maxtemp_c"
         case minTemperatureCelcius = "mintemp_c"
         case condition
-    }
-}
-
-extension Int {
-    var formattedHour: String {
-        let date = Date(timeIntervalSince1970: TimeInterval(self))
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        return dateFormatter.string(from: date)
-    }
-}
-
-extension Int {
-    var formattedDay: String {
-        let date = Date(timeIntervalSince1970: TimeInterval(self))
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d MMMM"
-        return dateFormatter.string(from: date)
-    }
-}
-
-extension Int {
-    var formattedNameDay: String {
-        let date = Date(timeIntervalSince1970: TimeInterval(self))
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        dateFormatter.doesRelativeDateFormatting = true
-        if dateFormatter.string(from: date) == "Today" ||
-            dateFormatter.string(from: date) == "Tomorrow" ||
-            dateFormatter.string(from: date) == "Сегодня" ||
-            dateFormatter.string(from: date) == "Завтра" {
-            return dateFormatter.string(from: date)
-        } else {
-            dateFormatter.dateFormat = "EEEE"
-            return dateFormatter.string(from: date)
-        }
-    }
-}
-extension Int {
-    var relativeFormatted: String {
-        let formatter = RelativeDateTimeFormatter()
-        let date = Date(timeIntervalSince1970: TimeInterval(self))
-        formatter.dateTimeStyle = .named
-        let relativeDate = formatter.localizedString(for: date, relativeTo: Date())
-        return relativeDate
-    }
- }
-
-extension Double {
-    var temperatureConverter: String {
-        if Int(self) > 0 {
-            let plusTemperature = "+\(Int(self))°"
-            return plusTemperature
-        } else {
-            return "\(Int(self))°"
-        }
     }
 }

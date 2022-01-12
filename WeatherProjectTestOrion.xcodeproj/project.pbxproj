@@ -25,6 +25,10 @@
 		BC0C4A04277E58250050E93F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C49F1277E58250050E93F /* MainView.swift */; };
 		BCE240682785AA3000BDE7D6 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE240672785AA3000BDE7D6 /* Localization.swift */; };
 		BCE2406B2785B61100BDE7D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCE2406D2785B61100BDE7D6 /* Localizable.strings */; };
+		C600602E278EB298008E8D36 /* DailyForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600602D278EB298008E8D36 /* DailyForecast.swift */; };
+		C6006031278EE4BE008E8D36 /* SearchCitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6006030278EE4BE008E8D36 /* SearchCitiesView.swift */; };
+		C6006034278EE77F008E8D36 /* ConstantsItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6006033278EE77F008E8D36 /* ConstantsItems.swift */; };
+		C6006036278EF9BF008E8D36 /* SearchCitiesOnMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6006035278EF9BF008E8D36 /* SearchCitiesOnMapView.swift */; };
 		C6D64A6E277EF643009C908E /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D64A6D277EF643009C908E /* Cities.swift */; };
 		C6D64A70277EF688009C908E /* CitiesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D64A6F277EF688009C908E /* CitiesListViewModel.swift */; };
 		C6D64A72277EF6C7009C908E /* ListLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D64A71277EF6C7009C908E /* ListLocationsView.swift */; };
@@ -54,6 +58,10 @@
 		BCE240672785AA3000BDE7D6 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		BCE2406C2785B61100BDE7D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BCE2406E2785B61300BDE7D6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C600602D278EB298008E8D36 /* DailyForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecast.swift; sourceTree = "<group>"; };
+		C6006030278EE4BE008E8D36 /* SearchCitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCitiesView.swift; sourceTree = "<group>"; };
+		C6006033278EE77F008E8D36 /* ConstantsItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsItems.swift; sourceTree = "<group>"; };
+		C6006035278EF9BF008E8D36 /* SearchCitiesOnMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCitiesOnMapView.swift; sourceTree = "<group>"; };
 		C6D64A6D277EF643009C908E /* Cities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
 		C6D64A6F277EF688009C908E /* CitiesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitiesListViewModel.swift; sourceTree = "<group>"; };
 		C6D64A71277EF6C7009C908E /* ListLocationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListLocationsView.swift; sourceTree = "<group>"; };
@@ -117,9 +125,9 @@
 				BC0C49D6277E58250050E93F /* Network */,
 				BC0C49DA277E58250050E93F /* Assets.xcassets */,
 				BC0C49DB277E58250050E93F /* Preview Content */,
+				C600602F278EE493008E8D36 /* SearchCities */,
 				C6D64A69277EF5B2009C908E /* CitiesList */,
 				BC0C49DE277E58250050E93F /* Main */,
-				C6D64A75277F205B009C908E /* Modifiers +Extension.swift */,
 				BC0C49DD277E58250050E93F /* WeatherProjectTestOrionApp.swift */,
 			);
 			path = WeatherProjectTestOrion;
@@ -166,6 +174,7 @@
 			children = (
 				BC0C49E2277E58250050E93F /* HourlyCurrentWeather.swift */,
 				BC0C49E3277E58250050E93F /* Weather.swift */,
+				C600602D278EB298008E8D36 /* DailyForecast.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,11 +191,11 @@
 		BC0C49EB277E58250050E93F /* SubView */ = {
 			isa = PBXGroup;
 			children = (
-				BC0C49EC277E58250050E93F /* DailyWeatherListView.swift */,
-				BC0C49ED277E58250050E93F /* DetailsForCurrentWeatherView.swift */,
 				BC0C49EE277E58250050E93F /* HeaderWeatherView.swift */,
-				BC0C49EF277E58250050E93F /* DailyWeatherRow.swift */,
 				BC0C49F0277E58250050E93F /* CurrentWeatherView.swift */,
+				BC0C49ED277E58250050E93F /* DetailsForCurrentWeatherView.swift */,
+				BC0C49EC277E58250050E93F /* DailyWeatherListView.swift */,
+				BC0C49EF277E58250050E93F /* DailyWeatherRow.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -194,9 +203,28 @@
 		BCE240662785AA1500BDE7D6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C6D64A75277F205B009C908E /* Modifiers +Extension.swift */,
 				BCE240672785AA3000BDE7D6 /* Localization.swift */,
+				C6006033278EE77F008E8D36 /* ConstantsItems.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C600602F278EE493008E8D36 /* SearchCities */ = {
+			isa = PBXGroup;
+			children = (
+				C6006032278EE4C9008E8D36 /* View */,
+			);
+			path = SearchCities;
+			sourceTree = "<group>";
+		};
+		C6006032278EE4C9008E8D36 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C6006030278EE4BE008E8D36 /* SearchCitiesView.swift */,
+				C6006035278EF9BF008E8D36 /* SearchCitiesOnMapView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C6D64A69277EF5B2009C908E /* CitiesList */ = {
@@ -242,6 +270,7 @@
 			buildConfigurationList = BC0C49D2277E57EC0050E93F /* Build configuration list for PBXNativeTarget "WeatherProjectTestOrion" */;
 			buildPhases = (
 				B16711F0DAC4057230FCDD5E /* [CP] Check Pods Manifest.lock */,
+				C6006037278F5653008E8D36 /* ShellScript */,
 				BC0C49C0277E57EA0050E93F /* Sources */,
 				BC0C49C1277E57EA0050E93F /* Frameworks */,
 				BC0C49C2277E57EA0050E93F /* Resources */,
@@ -343,6 +372,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C6006037278F5653008E8D36 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -352,11 +398,14 @@
 			files = (
 				BC0C4A03277E58250050E93F /* CurrentWeatherView.swift in Sources */,
 				BCE240682785AA3000BDE7D6 /* Localization.swift in Sources */,
+				C6006036278EF9BF008E8D36 /* SearchCitiesOnMapView.swift in Sources */,
 				BC0C49F8277E58250050E93F /* WeatherViewModel.swift in Sources */,
 				BC0C49F7277E58250050E93F /* WeatherProjectTestOrionApp.swift in Sources */,
+				C600602E278EB298008E8D36 /* DailyForecast.swift in Sources */,
 				BC0C49FF277E58250050E93F /* DailyWeatherListView.swift in Sources */,
 				C6D64A76277F205B009C908E /* Modifiers +Extension.swift in Sources */,
 				BC0C4A01277E58250050E93F /* HeaderWeatherView.swift in Sources */,
+				C6006034278EE77F008E8D36 /* ConstantsItems.swift in Sources */,
 				C6D64A74277EF6CF009C908E /* CityRowView.swift in Sources */,
 				C6D64A6E277EF643009C908E /* Cities.swift in Sources */,
 				BC0C4A02277E58250050E93F /* DailyWeatherRow.swift in Sources */,
@@ -364,6 +413,7 @@
 				C6D64A72277EF6C7009C908E /* ListLocationsView.swift in Sources */,
 				BC0C49F9277E58250050E93F /* HourlyCurrentWeather.swift in Sources */,
 				BC0C49F3277E58250050E93F /* WeatherService.swift in Sources */,
+				C6006031278EE4BE008E8D36 /* SearchCitiesView.swift in Sources */,
 				BC0C49F2277E58250050E93F /* WeatherRepositoryProtocol.swift in Sources */,
 				BC0C4A04277E58250050E93F /* MainView.swift in Sources */,
 				BC0C4A00277E58250050E93F /* DetailsForCurrentWeatherView.swift in Sources */,

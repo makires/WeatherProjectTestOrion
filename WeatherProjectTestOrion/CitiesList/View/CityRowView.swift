@@ -6,31 +6,30 @@
 //
 
 import SwiftUI
-var minTemperature = "+16º"
-var maxTemperature = "15º"
 
 struct CityRowView: View {
-//    @State var cityName: String = ""
     var cityName: String
     var weather: Weather
-    let gridItems = [ GridItem(.fixed(50), spacing: 14), GridItem(.fixed(80))]
-    @Binding var editList: Bool
+    let gridItems = [
+        GridItem(.fixed(70), alignment: .trailing),
+        GridItem(alignment: .trailing)]
+    @Binding var editListCities: Bool
     @ObservedObject var citiesVM: CitiesListViewModel
+    // MARK: - запрос текущего города по геопозиции
+    @ObservedObject var weatherVM = WeatherViewModel(weatherService: WeatherService())
     var body: some View {
         VStack {
-            if editList {
+            if editListCities {
                 HStack {
-                    VStack(spacing: 2) {
-                        cityAndRegionName
-                    }
+                    cityAndRegionName
                     Spacer()
                     Button {
                         citiesVM.remove(cityName: cityName)
                     } label: {
-                        #warning("изменить на константу в енум")
-                        Image(systemName: "plus")
+                        Image(systemName: iconButtonDelete)
                             .foregroundColor(.red)
-                            .rotationEffect(Angle(degrees: 45))
+
+                            .rotationEffect(Angle(degrees: rotationEffectForButtonDeleteCity))
                             .frame(width: 44, height: 44)
                             .padding(EdgeInsets(top: 6, leading: 0, bottom: 6, trailing: 8))
                     }
@@ -41,47 +40,47 @@ struct CityRowView: View {
                     Spacer()
                     iconAndCurrentTemperature
                 }
+                .padding(.bottom, -8)
                 Divider()
+                    .padding(.horizontal, 8)
                 descriptionWeather
             }
         }
-        
-        .overlay(RoundedRectangle(cornerRadius: 4).strokeBorder(Color("borderCityRow"))
-                    )
+        .overlay(
+            RoundedRectangle(cornerRadius: cornerRadiusCityRowOverlay)
+                .strokeBorder(Color.borderCityRow))
         .padding(.horizontal, 16)
         .padding(.vertical, 4)
-
     }
     var cityAndRegionName: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 2) {
             HStack {
                 Text(LocalizedStringKey(cityName))
-                Image("mappin")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 10.5, height: 15)
+                if cityName == weatherVM.cityTitleStatic {
+                    Image(imageMapPin)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: heightMappin)
+                }
             }
             HStack {
-//                Text(weather.region)
-                Text("Субъект рф")
-//                Text(weather.country)
-                Text("Страна")
+                Text(weather.region + ", " + weather.country)
             }
-            .foregroundColor(Color("subText"))
-            .fontDesciprion()
+            .foregroundColor(Color.subText)
+            .fontDesciprionConditionWeather()
         }
         .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 0))
     }
-    
-    var iconAndCurrentTemperature: some View {
-        HStack {
-            LazyVGrid(columns: gridItems, alignment: .trailing) {
-                Image(systemName: weather.icon)
-                Text(weather.temperatureCurrent)
-//                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 4.5, trailing: 0))
 
-            }
+    var iconAndCurrentTemperature: some View {
+        LazyVGrid(columns: gridItems, alignment: .leading) {
+            Image(systemName: weather.icon)
+                .font(.title)
+                .foregroundColor(Color.iconWeatherCityRow)
+                .frame(width: 44, height: 44)
+            Text(weather.temperatureCurrent)
         }
+
         .fontCurrentTemperatureRowListCities()
         .padding(.trailing, 8)
     }
@@ -89,38 +88,22 @@ struct CityRowView: View {
         HStack {
             HStack {
                 Text(Localization.humidity.localized)
-                Text(weather.humidity)
-                Text("|")
-                #warning("в макете ветер с полным наименованием, с сервера всегда короткий")
+                Text(weather.humidity + symbolPercentage + " |")
+                // MARK: - "в макете ветер с полным наименованием, с сервера всегда короткий")
                 Text(LocalizedStringKey(weather.windDirection))
                 Text("|")
                 Text(weather.windKph) + Text(Localization.kmH.localized)
             }
             Spacer()
             HStack {
-                #warning("макс и мин температуру запрашивать через другую модель")
-                Text(minTemperature) + Text("/") + Text(maxTemperature)
+                Text(weather.minTemperatureCelcius + "/" + weather.maxTemperatureCelcius)
+                    .tracking(-0.32)
             }
             .fontDescriptionWeatherRowListCities()
         }
         .padding(.horizontal, 8)
         .padding(.bottom, 11)
-        .font(.system(size: 12, weight: .regular))
-        .foregroundColor(Color("subText"))
+        .fontDesciprionConditionWeather()
+        .foregroundColor(Color.subText)
     }
 }
-
-//struct CityRowView_Previews: PreviewProvider {
-//    @State static var cities = [""]
-//    static var previews: some View {
-//
-//            ScrollView {
-//                CityRowView(cityName: "Kemerovo",
-//                            editList: .constant(false), citiesVM: CitiesListViewModel(weatherService: WeatherService()))
-//                CityRowView(cityName: "Kemerovo",
-//                            editList: .constant(false), citiesVM: CitiesListViewModel(weatherService: WeatherService()))
-//            }
-//            .previewLayout(.sizeThatFits)
-//
-//    }
-//}

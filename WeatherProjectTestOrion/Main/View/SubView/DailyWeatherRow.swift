@@ -9,35 +9,42 @@ import SwiftUI
 
 struct DailyWeatherRow: View {
     let dailyForecast: Forecastday
-#warning("через константу спэйсинг")
-    let gridItems = [GridItem(spacing: 10), GridItem( spacing: 4), GridItem(alignment: .trailing)]
+    let gridItems = [
+        GridItem(.fixed(8)),
+        GridItem(),
+        GridItem(.flexible(minimum: widthGridItemMaxTemperature)),
+        GridItem(alignment: .trailing)]
     var body: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: spacingDateAndNameDayInDailyWeather) {
                 Text(dailyForecast.dateEpoch.formattedDay)
-                    .foregroundColor(Color("subText"))
+                    .tracking(-0.08)
+                    .fontDateWeather()
+                    .foregroundColor(Color.subText)
                 Text(dailyForecast.dateEpoch.formattedNameDay)
-                    .foregroundColor(Color("mainText"))
+                    .tracking(-0.41)
+                    .foregroundColor(Color.mainText)
+                    .fontNameDateWeather()
             }
             Spacer()
-            HStack {
                 LazyVGrid(columns: gridItems) {
+                    Spacer()
                     Image(systemName: dailyForecast.day.condition.iconName)
-//                    #warning("тернарный оператор")
-                        .foregroundStyle(.blue, .yellow, .blue)
+                        .foregroundStyle(
+                            dailyForecast.day.condition.iconName == WeatherIcon.clearDay.rawValue ? .yellow : .blue)
+                        .font(.system(size: 17))
+ // MARK: - через модификатор все tracking"
                     Text(dailyForecast.day.maxTemperatureCelcius.temperatureConverter)
-//#warning("через модификатор")
                         .tracking(0.35)
-//#warning("через енум")
-                        .foregroundColor(Color("mainText"))
+                        .foregroundColor(Color.mainText)
                         .fontDailyWeatherRow()
                     Text(dailyForecast.day.minTemperatureCelcius.temperatureConverter)
-                        .foregroundColor(Color("subText"))
+                        .tracking(-0.32)
+                        .foregroundColor(Color.subText)
+                        .fontDescriptionWeatherRowListCities()
                 }
-            }
         }
         .padding(.vertical, 8)
-//        кратно 8
         .padding(.horizontal, 16)
     }
 }

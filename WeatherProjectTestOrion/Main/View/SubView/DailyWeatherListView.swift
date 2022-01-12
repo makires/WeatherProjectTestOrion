@@ -15,24 +15,25 @@ struct OffsetPreferenceKey: PreferenceKey {
 struct DailyWeatherListView: View {
     @ObservedObject var weatherVM: WeatherViewModel
     var body: some View {
-        GeometryReader { _ in
-            ScrollView {
-                Color.clear
-                    .background(
-                        GeometryReader { geometryProxyBackground in
-                            Color.clear
-                                .preference(key: OffsetPreferenceKey.self,
-                                            value: geometryProxyBackground.frame(in: .global).minY)
-                        })
-                ForEach(weatherVM.weatherDailyForecast.days, id: \.id) { day in
-                    DailyWeatherRow(dailyForecast: day)
-                    Divider()
-                        .padding(0)
+        ScrollView {
+            ForEach(weatherVM.weatherDailyForecast.days, id: \.id) { day in
+                DailyWeatherRow(dailyForecast: day)
+                Divider()
+                    .padding(0)
+            }
+            .background(
+                GeometryReader { geometry in
+                    let offset = geometry.frame(in: .named("scroll")).origin.y
+                    Color.clear
+                        .preference(key: OffsetPreferenceKey.self, value: offset)
                 }
-            }
-            .onPreferenceChange(OffsetPreferenceKey.self) { newLeftTopPointY in
-                weatherVM.leftTopPointScroll = newLeftTopPointY
-            }
+            )
+
+        }
+        .offset(y: weatherVM.isScrolled ? -86 : 0)
+        .coordinateSpace(name: "scroll")
+        .onPreferenceChange(OffsetPreferenceKey.self) { value in
+            weatherVM.isScrolled = value < .zero ? true : false
         }
     }
 }

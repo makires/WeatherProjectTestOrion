@@ -10,13 +10,11 @@ import SwiftUI
 
 @MainActor class WeatherViewModel: ObservableObject {
     var cityTitleStatic = "Nizhny Novgorod"
-    //    var cityTitleStatic = "Sochi"
-    //    var cityTitleStatic = "Novokuznetsk"
-    //    var cityTitleStatic = "Prokopyevsk"
     @Published var weatherCurrent = Weather()
     @Published var weatherHourlyCurrent = HourlyCurrentWeather()
     @Published var weatherDailyForecast = DailyForecats()
     @Published var leftTopPointScroll: CGFloat = 374
+    @Published var isScrolled = false
     let weatherService: WeatherRepositoryProtocol
     init(weatherService: WeatherRepositoryProtocol) {
         self.weatherService = weatherService
@@ -25,16 +23,16 @@ import SwiftUI
         await getCurrentWeather(for: city, locale: locale)
         await getHourlyWeather(for: city, locale: locale)
         await getDailyWeather(for: city, locale: locale)
-        
+
     }
-    
+
     func getCurrentWeather(for city: String, locale: String) async {
         guard let currentWeather = await weatherService.fetchCurrentWeather(for: city, locale: locale) else {
             print("не удалось получить текущую погоду для города в главнвом экране")
             return
         }
              self.weatherCurrent = Weather(response: currentWeather)
-            
+
     }
     func getHourlyWeather(for city: String, locale: String) async {
         guard let hourlyWeather = await weatherService.fetchHourlyWeather(for: city, locale: locale) else {
