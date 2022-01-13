@@ -10,7 +10,7 @@ import SwiftUI
 
 @MainActor class WeatherViewModel: ObservableObject {
     var cityTitleStatic = "Nizhny Novgorod"
-    @Published var isScrolled = false
+//    @Published var isScrolled = false
     @Published var weatherCurrent = Weather()
     @Published var weatherHourlyCurrent = HourlyCurrentWeather()
     @Published var weatherDailyForecast = DailyForecats()

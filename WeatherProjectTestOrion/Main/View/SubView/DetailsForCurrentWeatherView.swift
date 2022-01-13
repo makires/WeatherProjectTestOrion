@@ -66,7 +66,7 @@ struct MeteorologicalDataView: View {
                 }
                 HStack(spacing: spacingItemsMeteorologicalDataView) {
                     Text(weather.humidity)
-                    Text(symbolPercentage).foregroundColor(Color.measure)
+                    Text("%").foregroundColor(Color.measure)
                 }
             }
         }

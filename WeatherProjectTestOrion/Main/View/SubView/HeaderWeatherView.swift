@@ -10,20 +10,17 @@ import SwiftUI
 struct HeaderWeatherView: View {
     @ObservedObject var weatherVM: WeatherViewModel
     @State var showListCities = false
+    @Binding var isScrolled: Bool
     var body: some View {
         ZStack {
-            // image background
             GeometryReader { _ in
                 Image(backgroundHeaderWeatherView)
                     .resizable()
                     .ignoresSafeArea()
-//    .frame(height: weatherVM.isScrolled ? 180 : 290)
-                    .frame(height: 280)
+                    .frame(height: 290)
             }
-            // other
             GeometryReader { _ in
                 VStack(spacing: spacingItemsHeaderWeatherView) {
-                    // cityTitle
                     HStack {
                         Text(LocalizedStringKey(weatherVM.weatherCurrent.cityName))
                             .font(.largeTitle)
@@ -39,21 +36,20 @@ struct HeaderWeatherView: View {
                         }
 
                     }
+                    .padding(.horizontal, 16)
+                    CurrentWeatherView(
+                        weatherVM: weatherVM,
+                        weather: weatherVM.weatherCurrent)
                         .padding(.horizontal, 16)
-                    //  HStack - CurrentWeather
-                    CurrentWeatherView(weatherVM: weatherVM, weather: weatherVM.weatherCurrent)
-                        .padding(.horizontal, 16)
-                    // HStack - Details Current Weather
                     Spacer()
-                            DetailsForCurrentWeatherView(
-                                weather: weatherVM.weatherCurrent,
-                                hourlyCurrentWeather: weatherVM.weatherHourlyCurrent)
-                        .fontDesciprionConditionWeather()
-                                .opacity(weatherVM.isScrolled ? 0 : 1)
-                                .background(weatherVM.isScrolled ? Color.white : Color.clear)
-                                .offset(y: weatherVM.isScrolled ? 0 : -24)
-                                .padding(.leading, weatherVM.isScrolled ? 0 : 16)
-
+                    if !isScrolled {
+                        DetailsForCurrentWeatherView(
+                            weather: weatherVM.weatherCurrent,
+                            hourlyCurrentWeather: weatherVM.weatherHourlyCurrent)
+                            .fontDesciprionConditionWeather()
+                            .offset(y: -16)
+                            .padding(.leading, 16)
+                    }
                 }
             }
         }
@@ -62,9 +58,4 @@ struct HeaderWeatherView: View {
             ListLocationsView()
         }
     }
-}
-
-struct SizeHeaderPreferenceKey: PreferenceKey {
-    static var defaultValue: CGFloat = .zero
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {}
 }

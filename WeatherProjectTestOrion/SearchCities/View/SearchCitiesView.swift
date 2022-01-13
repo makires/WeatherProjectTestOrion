@@ -97,9 +97,7 @@ struct SearchFieldView: View {
                 Image(systemName: iconButtonDelete)
                     .frame(width: 44, height: 44)
                     .editListCitiesButton()
-                    .rotationEffect(Angle(degrees: rotationEffectForButtonDeleteCity))
             }
-
         }
     }
 }

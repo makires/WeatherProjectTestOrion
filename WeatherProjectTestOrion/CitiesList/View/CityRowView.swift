@@ -11,8 +11,8 @@ struct CityRowView: View {
     var cityName: String
     var weather: Weather
     let gridItems = [
-        GridItem(.fixed(70), alignment: .trailing),
-        GridItem(alignment: .trailing)]
+        GridItem(),
+        GridItem(alignment: .leading)]
     @Binding var editListCities: Bool
     @ObservedObject var citiesVM: CitiesListViewModel
     // MARK: - запрос текущего города по геопозиции
@@ -28,8 +28,6 @@ struct CityRowView: View {
                     } label: {
                         Image(systemName: iconButtonDelete)
                             .foregroundColor(.red)
-
-                            .rotationEffect(Angle(degrees: rotationEffectForButtonDeleteCity))
                             .frame(width: 44, height: 44)
                             .padding(EdgeInsets(top: 6, leading: 0, bottom: 6, trailing: 8))
                     }
@@ -73,22 +71,22 @@ struct CityRowView: View {
     }
 
     var iconAndCurrentTemperature: some View {
-        LazyVGrid(columns: gridItems, alignment: .leading) {
+        LazyVGrid(columns: gridItems, alignment: .trailing, spacing: 2) {
             Image(systemName: weather.icon)
                 .font(.title)
                 .foregroundColor(Color.iconWeatherCityRow)
                 .frame(width: 44, height: 44)
             Text(weather.temperatureCurrent)
-        }
 
+        }
         .fontCurrentTemperatureRowListCities()
-        .padding(.trailing, 8)
+        .padding(.trailing, 4)
     }
     var descriptionWeather: some View {
         HStack {
             HStack {
                 Text(Localization.humidity.localized)
-                Text(weather.humidity + symbolPercentage + " |")
+                Text(weather.humidity + "%" + " |")
                 // MARK: - "в макете ветер с полным наименованием, с сервера всегда короткий")
                 Text(LocalizedStringKey(weather.windDirection))
                 Text("|")
@@ -96,7 +94,7 @@ struct CityRowView: View {
             }
             Spacer()
             HStack {
-                Text(weather.minTemperatureCelcius + "/" + weather.maxTemperatureCelcius)
+                Text(weather.minTemperatureCelcius + " / " + weather.maxTemperatureCelcius)
                     .tracking(-0.32)
             }
             .fontDescriptionWeatherRowListCities()
@@ -105,5 +103,28 @@ struct CityRowView: View {
         .padding(.bottom, 11)
         .fontDesciprionConditionWeather()
         .foregroundColor(Color.subText)
+    }
+}
+
+struct CityRowView_Previews: PreviewProvider {
+    static var previews: some View {
+        CityRowView(cityName: "Санкт-Петербург",
+                    weather: Weather(
+                        cityName: "Санкт-Петербург",
+                        temperatureCurrent: "+29º",
+                        pressureHPa: "1012",
+                        windKph: "12",
+                        windDirection: "E",
+                        humidity: "12º",
+                        feelsLikeTemperature: "-23",
+                        textWeatherCondition: "Wind snow",
+                        icon: "cloud.fill",
+                        region: "Moscow",
+                        country: " Russia",
+                        minTemperatureCelcius: "-12º",
+                        maxTemperatureCelcius: "-23º"),
+                    editListCities: .constant(false),
+                    citiesVM: CitiesListViewModel(
+                        weatherService: WeatherService()))
     }
 }

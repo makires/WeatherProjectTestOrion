@@ -54,6 +54,6 @@ extension Weather {
         minTemperatureCelcius =
             responseForecast.forecast.forecastday.first?.day.minTemperatureCelcius.temperatureConverter ?? ""
         maxTemperatureCelcius =
-            responseForecast.forecast.forecastday.first?.day.maxTemperatureCelcius.temperatureConverterNotSign ?? ""
+            responseForecast.forecast.forecastday.first?.day.maxTemperatureCelcius.temperatureConverter ?? ""
     }
 }

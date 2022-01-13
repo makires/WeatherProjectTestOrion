@@ -7,25 +7,7 @@
 
 import Foundation
 import SwiftUI
-// MARK: - images
-let backgroundHeaderWeatherView = "cloudyBackground"
-let imageMapPin = "mappin"
-let heightMappin: CGFloat = 16
-// MARK: - icons
-let iconButtonListBullet = "list.bullet"
-let iconButtonBackToView = "chevron.left"
-let iconButtonActivEditList = "checkmark"
-let iconButtonNotActivEditList = "square.and.pencil"
-let iconButtonAddLocation = "plus.circle.fill"
-let iconButtonDelete = "plus"
-let iconWind = "wind"
-let iconSafari = "safari"
-let iconDrop = "drop"
-// MARK: - styles icon
-let rotationEffectForButtonDeleteCity: CGFloat = 45
-let rotationEffectForButtonDeleteText: CGFloat = 45
-// MARK: - symbols
-let symbolPercentage = "%"
+
 // MARK: - spacing
 let spacingGridItemIconForDailyWeatherRow: CGFloat = 10
 let spacingGridItemMaxTemperature: CGFloat = 4

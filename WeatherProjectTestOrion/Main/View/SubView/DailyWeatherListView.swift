@@ -7,31 +7,35 @@
 
 import SwiftUI
 
-struct OffsetPreferenceKey: PreferenceKey {
-    static var defaultValue: CGFloat = .zero
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {}
-}
 struct DailyWeatherListView: View {
+    @Binding var isScrolled: Bool
     @ObservedObject var weatherVM: WeatherViewModel
     var body: some View {
         ScrollView {
-            ForEach(weatherVM.weatherDailyForecast.days, id: \.id) { day in
-                DailyWeatherRow(dailyForecast: day)
-                Divider()
-                    .padding(0)
-            }
-            .background(
+            ZStack {
+                VStack {
+                    ForEach(weatherVM.weatherDailyForecast.days, id: \.id) { day in
+                        DailyWeatherRow(dailyForecast: day)
+                        Divider()
+                    }
+                }
+                .background(.white)
                 GeometryReader { geometry in
                     Color.clear
                         .preference(key: OffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin.y)
                 }
-            )
-
+            }
         }
-        .offset(y: weatherVM.isScrolled ? -86 : 0)
         .coordinateSpace(name: "scroll")
         .onPreferenceChange(OffsetPreferenceKey.self) { value in
-            weatherVM.isScrolled = value < .zero ? true : false
+            print(value)
+            isScrolled = value < .zero ? true : false
         }
+    }
+}
+struct OffsetPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = .zero
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value += nextValue()
     }
 }
