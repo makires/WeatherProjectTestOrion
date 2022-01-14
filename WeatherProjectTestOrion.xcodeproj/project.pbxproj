@@ -34,6 +34,7 @@
 		C600603E27904D41008E8D36 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600603D27904D41008E8D36 /* Views.swift */; };
 		C600604027904D77008E8D36 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600603F27904D77008E8D36 /* Strings.swift */; };
 		C600604227904E3B008E8D36 /* Icons+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600604127904E3B008E8D36 /* Icons+Images.swift */; };
+		C6910C902791BDC0009DE6C8 /* CitiesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6910C8F2791BDC0009DE6C8 /* CitiesStorage.swift */; };
 		C6D64A6E277EF643009C908E /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D64A6D277EF643009C908E /* Cities.swift */; };
 		C6D64A70277EF688009C908E /* CitiesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D64A6F277EF688009C908E /* CitiesListViewModel.swift */; };
 		C6D64A72277EF6C7009C908E /* ListLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D64A71277EF6C7009C908E /* ListLocationsView.swift */; };
@@ -72,6 +73,7 @@
 		C600603D27904D41008E8D36 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		C600603F27904D77008E8D36 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		C600604127904E3B008E8D36 /* Icons+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Icons+Images.swift"; sourceTree = "<group>"; };
+		C6910C8F2791BDC0009DE6C8 /* CitiesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesStorage.swift; sourceTree = "<group>"; };
 		C6D64A6D277EF643009C908E /* Cities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
 		C6D64A6F277EF688009C908E /* CitiesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitiesListViewModel.swift; sourceTree = "<group>"; };
 		C6D64A71277EF6C7009C908E /* ListLocationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListLocationsView.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				C600603F27904D77008E8D36 /* Strings.swift */,
 				C600604127904E3B008E8D36 /* Icons+Images.swift */,
 				C6006033278EE77F008E8D36 /* ConstantsItems.swift */,
+				C6910C8F2791BDC0009DE6C8 /* CitiesStorage.swift */,
 			);
 			path = "Extensions+Constants";
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				BC0C49F7277E58250050E93F /* WeatherProjectTestOrionApp.swift in Sources */,
 				C600602E278EB298008E8D36 /* DailyForecast.swift in Sources */,
 				C600604227904E3B008E8D36 /* Icons+Images.swift in Sources */,
+				C6910C902791BDC0009DE6C8 /* CitiesStorage.swift in Sources */,
 				C600603E27904D41008E8D36 /* Views.swift in Sources */,
 				C600603C27904CF8008E8D36 /* Colors.swift in Sources */,
 				BC0C49FF277E58250050E93F /* DailyWeatherListView.swift in Sources */,

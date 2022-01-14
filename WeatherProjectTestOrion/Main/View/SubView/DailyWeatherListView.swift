@@ -28,7 +28,6 @@ struct DailyWeatherListView: View {
         }
         .coordinateSpace(name: "scroll")
         .onPreferenceChange(OffsetPreferenceKey.self) { value in
-            print(value)
             isScrolled = value < .zero ? true : false
         }
     }
