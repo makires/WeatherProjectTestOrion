@@ -11,8 +11,7 @@ struct CityRowView: View {
     var cityName: String
     var weather: Weather
     let gridItems = [
-        GridItem(),
-        GridItem(alignment: .leading)]
+        GridItem()]
     @Binding var editListCities: Bool
     @ObservedObject var citiesVM: CitiesListViewModel
     // MARK: - запрос текущего города по геопозиции
@@ -71,14 +70,15 @@ struct CityRowView: View {
     }
 
     var iconAndCurrentTemperature: some View {
-        LazyVGrid(columns: gridItems, alignment: .trailing, spacing: 2) {
-            Image(systemName: weather.icon)
+        LazyHGrid(rows: gridItems, spacing: 8) {
+
+        Image(systemName: weather.icon)
                 .font(.title)
                 .foregroundColor(Color.iconWeatherCityRow)
                 .frame(width: 44, height: 44)
             Text(weather.temperatureCurrent)
-
         }
+        .frame(width: 120, alignment: .leading)
         .fontCurrentTemperatureRowListCities()
         .padding(.trailing, 4)
     }
@@ -108,23 +108,27 @@ struct CityRowView: View {
 
 struct CityRowView_Previews: PreviewProvider {
     static var previews: some View {
-        CityRowView(cityName: "Санкт-Петербург",
-                    weather: Weather(
-                        cityName: "Санкт-Петербург",
-                        temperatureCurrent: "+29º",
-                        pressureHPa: "1012",
-                        windKph: "12",
-                        windDirection: "E",
-                        humidity: "12º",
-                        feelsLikeTemperature: "-23",
-                        textWeatherCondition: "Wind snow",
-                        icon: "cloud.fill",
-                        region: "Moscow",
-                        country: " Russia",
-                        minTemperatureCelcius: "-12º",
-                        maxTemperatureCelcius: "-23º"),
-                    editListCities: .constant(false),
-                    citiesVM: CitiesListViewModel(
-                        weatherService: WeatherService()))
+        VStack {
+            ForEach(0..<10) { _ in
+                CityRowView(cityName: "Санкт-Петербург",
+                            weather: Weather(
+                                cityName: "Санкт-Петербург",
+                                temperatureCurrent: "+36º",
+                                pressureHPa: "1012",
+                                windKph: "12",
+                                windDirection: "E",
+                                humidity: "12º",
+                                feelsLikeTemperature: "-23",
+                                textWeatherCondition: "Wind snow",
+                                icon: "cloud.fill",
+                                region: "Moscow",
+                                country: " Russia",
+                                minTemperatureCelcius: "-12º",
+                                maxTemperatureCelcius: "-23º"),
+                            editListCities: .constant(false),
+                            citiesVM: CitiesListViewModel(
+                                weatherService: WeatherService()))
+            }
+        }
     }
 }
