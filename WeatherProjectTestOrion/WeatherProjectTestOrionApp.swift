@@ -12,6 +12,7 @@ struct WeatherProjectTestOrionApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environmentObject(WeatherViewModel(weatherService: WeatherService()))
         }
     }
 }

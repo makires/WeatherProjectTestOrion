@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ListLocationsView: View {
     @StateObject var citiesVM = CitiesListViewModel(weatherService: WeatherService())
+    @EnvironmentObject var weatherVM: WeatherViewModel
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.locale.identifier) var locale
     @State var editList = false
@@ -57,7 +58,7 @@ struct ListLocationsView: View {
                 }
             }
             .fullScreenCover(isPresented: $showSearchCities) {
-                SearchCitiesView(cityVM: citiesVM)
+                SearchCitiesView(cityVM: citiesVM, weatherVM: _weatherVM)
             }
             .navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.inline)
@@ -73,9 +74,11 @@ struct ListLocationsView: View {
 }
 
 struct ListLocationsView_Previews: PreviewProvider {
+    @EnvironmentObject static var weatherVM: WeatherViewModel
     static var previews: some View {
         NavigationView {
-            ListLocationsView()
+            ListLocationsView(weatherVM: _weatherVM)
+                .environmentObject(WeatherViewModel(weatherService: WeatherService()))
         }
     }
 }

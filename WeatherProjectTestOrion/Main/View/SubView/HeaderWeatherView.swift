@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HeaderWeatherView: View {
-    @ObservedObject var weatherVM: WeatherViewModel
+    @EnvironmentObject var weatherVM: WeatherViewModel
     @State var showListCities = false
     @Binding var isScrolled: Bool
     var body: some View {
@@ -26,7 +26,7 @@ struct HeaderWeatherView: View {
                             .font(.largeTitle)
                             .tracking(0.37)
                         Spacer()
-                        NavigationLink(destination: ListLocationsView()) {
+                        NavigationLink(destination: ListLocationsView( weatherVM: _weatherVM)) {
 
                         }
                         Button {
@@ -38,7 +38,7 @@ struct HeaderWeatherView: View {
                     }
                     .padding(.horizontal, 16)
                     CurrentWeatherView(
-                        weatherVM: weatherVM,
+                        weatherVM: _weatherVM,
                         weather: weatherVM.weatherCurrent)
                         .padding(.horizontal, 16)
                     Spacer()
@@ -55,7 +55,8 @@ struct HeaderWeatherView: View {
         }
         .foregroundColor(Color.mainTextWhite)
         .fullScreenCover(isPresented: $showListCities) {
-            ListLocationsView()
+            ListLocationsView(
+                weatherVM: _weatherVM)
         }
     }
 }

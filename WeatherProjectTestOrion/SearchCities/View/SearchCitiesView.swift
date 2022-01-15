@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SearchCitiesView: View {
     @ObservedObject var cityVM: CitiesListViewModel
+    @EnvironmentObject var weatherVM: WeatherViewModel
     @State var searchCity = ""
     @State var showMap = false
     @State var isEditing = false
@@ -75,6 +76,7 @@ struct SearchCitiesView: View {
                         .listRowSeparator(.hidden)
                         .onTapGesture {
                             print("отправить запрос и сделать город текущим")
+                            weatherVM.currentCity = city
                             isShowMainView.toggle()
                         }
                 }
@@ -119,9 +121,11 @@ struct SearchFieldView: View {
 }
 struct SearchCitiesView_Previews: PreviewProvider {
     @State static var searchCity = ""
+    @EnvironmentObject static var weatherVM: WeatherViewModel
     static var previews: some View {
         NavigationView {
-            SearchCitiesView(cityVM: CitiesListViewModel(weatherService: WeatherService()))
+            SearchCitiesView(cityVM: CitiesListViewModel(weatherService: WeatherService()), weatherVM: _weatherVM)
+                .environmentObject(WeatherViewModel(weatherService: WeatherService()))
         }
     }
 }

@@ -35,4 +35,10 @@ extension Color {
     static var popularCitiesOverlay: Color {
         return Color("popularCitiesOverlay")
     }
+    static var buttonDeleteTextField: Color {
+        return Color("buttonDeleteTextField")
+    }
+    static var searchBackground: Color {
+        return Color("searchBackground")
+    }
 }

@@ -9,22 +9,24 @@ import SwiftUI
 struct MainView: View {
     @Environment(\.locale) var locale
     @State var isScrolled = false
-    @ObservedObject var weatherVM = WeatherViewModel(weatherService: WeatherService() )
+    @EnvironmentObject var weatherVM: WeatherViewModel
     var body: some View {
         VStack(spacing: spacingItemsMainView) {
             HeaderWeatherView(
-                weatherVM: weatherVM,
+                weatherVM: _weatherVM,
                 isScrolled: $isScrolled)
                 .frame(height: isScrolled ? 180 : 280)
             DailyWeatherListView(
                 isScrolled: $isScrolled,
-                weatherVM: weatherVM)
+                weatherVM: _weatherVM)
         }
         .onAppear {
+            print("MAIN VIEW")
+            print("город", weatherVM.currentCity)
             Task {
                 // MARK: - "если регион стоит как en_RU, то какой запрос делать?"
                 await weatherVM.getAllWeather(
-                    for: weatherVM.cityTitleStatic,
+                    for: weatherVM.currentCity,
                        locale: locale.identifier.languageResponse)
             }
         }

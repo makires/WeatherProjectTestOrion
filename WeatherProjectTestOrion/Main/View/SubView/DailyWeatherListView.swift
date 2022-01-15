@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DailyWeatherListView: View {
     @Binding var isScrolled: Bool
-    @ObservedObject var weatherVM: WeatherViewModel
+    @EnvironmentObject var weatherVM: WeatherViewModel
     var body: some View {
         ScrollView {
             ZStack {

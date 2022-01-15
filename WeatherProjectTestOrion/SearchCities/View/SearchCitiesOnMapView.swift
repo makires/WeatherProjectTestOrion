@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 struct SearchCitiesOnMapView: View {
     @State var searchTextFeild = ""
+    @State var searchIsEditing = false
     @Environment(\.presentationMode) var presentationMode
     @State var coordinateRegion = MKCoordinateRegion(
         center: CLLocationCoordinate2D(
@@ -18,65 +19,99 @@ struct SearchCitiesOnMapView: View {
             latitudeDelta: 0.2,
             longitudeDelta: 0.2))
     var body: some View {
-        VStack {
-            HStack {
-                Button {
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    Image(systemName: iconButtonBackToView)
-                        .backToViewButton()
+            VStack {
+                if !searchIsEditing {
+                HStack {
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Image(systemName: iconButtonBackToView)
+                            .backToViewButton()
 
+                    }
+                    Text(Localization.locations.localized)
+                    Spacer()
+                    Button {
+                        print("plus")
+                    } label: {
+                        Image(systemName: iconButtonAdd)
+                            .editListCitiesButton()
+                    }
                 }
-                Text(Localization.locations.localized)
-                Spacer()
-                Button {
-                    print("plus")
-                } label: {
-                    Image(systemName: iconButtonAdd)
-                        .editListCitiesButton()
+                .padding(.leading, 6)
+                .padding(.trailing, 16)
                 }
-            }
-            .padding(.leading, 6)
-            .padding(.trailing, 16)
-            HStack(alignment: .center) {
-                Image(systemName: "magnifyingglass")
-                TextField(Localization.search.localized, text: $searchTextFeild)
-            }
-            .padding(.leading, 4)
-            .padding(.vertical, 8)
-            .background(
-                RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor((Color(red: 0.46, green: 0.46, blue: 0.50, opacity: 0.12))))
-            .padding(.horizontal, 16)
-            ZStack(alignment: .trailing) {
-                Map(coordinateRegion: $coordinateRegion)
-                    .ignoresSafeArea(edges: .bottom)
-                VStack(spacing: 4) {
-                    Group {
+                HStack {
+                    HStack(alignment: .center) {
+                        Image(systemName: iconMagnifyingglass)
+                        TextField(Localization.search.localized, text: $searchTextFeild)
+                            .onTapGesture {
+                                searchIsEditing.toggle()
+                            }
+                        if searchIsEditing {
                         Button {
-                            print("увеличить")
+                            searchTextFeild = ""
+                            searchIsEditing = false
                         } label: {
-                            Image(systemName: "plus.circle.fill")
+                            Image(systemName: iconButtonDeleteText)
+                                .foregroundColor((Color.buttonDeleteTextField))
                         }
-                        Button {
-                            print("уменьшить")
-                        } label: {
-                            Image(systemName: "minus.circle.fill")
-                        }
-                        Button {
-                            print("текущая геопозиция")
-                        } label: {
-                            Image(systemName: "paperplane.circle.fill")
+                        .padding(.trailing, 6)
                         }
                     }
-                    .font(.largeTitle)
-                    .symbolRenderingMode(.palette)
-                    .foregroundStyle(.black, .white)
-                    .shadow(radius: 2)
+                    .padding(.leading, 4)
+                    .padding(.vertical, 8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor((Color.searchBackground)))
+                .padding(.horizontal, 16)
+                    if searchIsEditing {
+                    Button {
+                        searchTextFeild = ""
+                        searchIsEditing = false
+                    } label: {
+                        Text(Localization.cancel.localized)
+                    }
+                    .padding(.trailing, 16)
+                    }
                 }
-                .padding(.trailing, 16)
+                if !searchIsEditing {
+
+                    ZStack(alignment: .trailing) {
+                        Map(coordinateRegion: $coordinateRegion)
+                            .ignoresSafeArea(edges: .bottom)
+                            .searchable(text: $searchTextFeild)
+                        VStack(spacing: 4) {
+                            Group {
+                                Button {
+                                    print("увеличить")
+                                } label: {
+                                    Image(systemName: iconPlusCircle)
+                                }
+                                Button {
+                                    print("уменьшить")
+                                } label: {
+                                    Image(systemName: iconMinusCircle)
+                                }
+                                Button {
+                                    print("текущая геопозиция")
+                                } label: {
+                                    Image(systemName: iconCurrentLocation)
+                                }
+                            }
+                            .font(.largeTitle)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.black, .white)
+                            .shadow(radius: 2)
+                        }
+                        .padding(.trailing, 16)
+                    }
+                }
+                if searchIsEditing {
+                    Spacer()
+                }
+
             }
-        }
     }
 }
 

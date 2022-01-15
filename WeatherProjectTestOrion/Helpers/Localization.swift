@@ -30,6 +30,8 @@ enum Localization: String {
     case popularCities = "POPULAR CITIES"
     case showMap = "SHOW_MAP"
     case search = "SEARCH"
+    // MARK: - Buttons
+    case cancel = "CANCEL"
 }
 extension Localization {
     var localized: String {

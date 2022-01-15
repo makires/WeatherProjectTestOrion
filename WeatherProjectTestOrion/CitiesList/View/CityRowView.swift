@@ -53,7 +53,7 @@ struct CityRowView: View {
         VStack(alignment: .leading, spacing: 2) {
             HStack {
                 Text(LocalizedStringKey(cityName))
-                if cityName == weatherVM.cityTitleStatic {
+                if cityName == weatherVM.currentCity {
                     Image(imageMapPin)
                         .resizable()
                         .aspectRatio(contentMode: .fit)

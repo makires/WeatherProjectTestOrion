@@ -19,7 +19,6 @@ import SwiftUI
         "Omsk",
         "Moscow",
         "Saint Petersburg"].encodeArray()!
-
     let weatherService: WeatherRepositoryProtocol
     init(weatherService: WeatherRepositoryProtocol) {
         self.weatherService = weatherService

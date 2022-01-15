@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CurrentWeatherView: View {
-    @ObservedObject var weatherVM: WeatherViewModel
+    @EnvironmentObject var weatherVM: WeatherViewModel
     var weather: Weather
     var body: some View {
         HStack {
