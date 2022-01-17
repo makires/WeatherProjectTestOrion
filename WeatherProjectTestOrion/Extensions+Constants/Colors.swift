@@ -8,9 +8,9 @@
 import SwiftUI
 
 extension Color {
-    static var mainText: Color {
-        return Color("mainText")
-    }
+    // 
+    static let mainText = Color("mainText")
+
     static var mainTextWhite: Color {
         return Color("mainTextWhite")
     }

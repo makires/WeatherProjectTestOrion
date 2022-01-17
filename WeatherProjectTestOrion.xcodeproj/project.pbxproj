@@ -32,9 +32,10 @@
 		C600603A27904CA8008E8D36 /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600603927904CA8008E8D36 /* Numbers.swift */; };
 		C600603C27904CF8008E8D36 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600603B27904CF8008E8D36 /* Colors.swift */; };
 		C600603E27904D41008E8D36 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600603D27904D41008E8D36 /* Views.swift */; };
-		C600604027904D77008E8D36 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600603F27904D77008E8D36 /* Strings.swift */; };
+		C600604027904D77008E8D36 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600603F27904D77008E8D36 /* String+.swift */; };
 		C600604227904E3B008E8D36 /* Icons+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600604127904E3B008E8D36 /* Icons+Images.swift */; };
 		C6910C902791BDC0009DE6C8 /* CitiesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6910C8F2791BDC0009DE6C8 /* CitiesStorage.swift */; };
+		C6910C932794364E009DE6C8 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6910C922794364E009DE6C8 /* MapViewModel.swift */; };
 		C6D64A6E277EF643009C908E /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D64A6D277EF643009C908E /* Cities.swift */; };
 		C6D64A70277EF688009C908E /* CitiesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D64A6F277EF688009C908E /* CitiesListViewModel.swift */; };
 		C6D64A72277EF6C7009C908E /* ListLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D64A71277EF6C7009C908E /* ListLocationsView.swift */; };
@@ -71,9 +72,10 @@
 		C600603927904CA8008E8D36 /* Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
 		C600603B27904CF8008E8D36 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C600603D27904D41008E8D36 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
-		C600603F27904D77008E8D36 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		C600603F27904D77008E8D36 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		C600604127904E3B008E8D36 /* Icons+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Icons+Images.swift"; sourceTree = "<group>"; };
 		C6910C8F2791BDC0009DE6C8 /* CitiesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesStorage.swift; sourceTree = "<group>"; };
+		C6910C922794364E009DE6C8 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		C6D64A6D277EF643009C908E /* Cities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
 		C6D64A6F277EF688009C908E /* CitiesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitiesListViewModel.swift; sourceTree = "<group>"; };
 		C6D64A71277EF6C7009C908E /* ListLocationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListLocationsView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		BC0C49D5277E58250050E93F /* WeatherProjectTestOrion */ = {
 			isa = PBXGroup;
 			children = (
+				C6910C9427954F9E009DE6C8 /* Constants */,
 				C600603827904C8C008E8D36 /* Extensions+Constants */,
 				BCE2406D2785B61100BDE7D6 /* Localizable.strings */,
 				BCE240662785AA1500BDE7D6 /* Helpers */,
@@ -225,6 +228,7 @@
 		C600602F278EE493008E8D36 /* SearchCities */ = {
 			isa = PBXGroup;
 			children = (
+				C6910C9127943634009DE6C8 /* ViewModel */,
 				C6006032278EE4C9008E8D36 /* View */,
 			);
 			path = SearchCities;
@@ -245,12 +249,27 @@
 				C600603927904CA8008E8D36 /* Numbers.swift */,
 				C600603B27904CF8008E8D36 /* Colors.swift */,
 				C600603D27904D41008E8D36 /* Views.swift */,
-				C600603F27904D77008E8D36 /* Strings.swift */,
+				C600603F27904D77008E8D36 /* String+.swift */,
 				C600604127904E3B008E8D36 /* Icons+Images.swift */,
 				C6006033278EE77F008E8D36 /* ConstantsItems.swift */,
 				C6910C8F2791BDC0009DE6C8 /* CitiesStorage.swift */,
 			);
 			path = "Extensions+Constants";
+			sourceTree = "<group>";
+		};
+		C6910C9127943634009DE6C8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C6910C922794364E009DE6C8 /* MapViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C6910C9427954F9E009DE6C8 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		C6D64A69277EF5B2009C908E /* CitiesList */ = {
@@ -433,8 +452,9 @@
 				C600603E27904D41008E8D36 /* Views.swift in Sources */,
 				C600603C27904CF8008E8D36 /* Colors.swift in Sources */,
 				BC0C49FF277E58250050E93F /* DailyWeatherListView.swift in Sources */,
+				C6910C932794364E009DE6C8 /* MapViewModel.swift in Sources */,
 				C6D64A76277F205B009C908E /* Modifiers.swift in Sources */,
-				C600604027904D77008E8D36 /* Strings.swift in Sources */,
+				C600604027904D77008E8D36 /* String+.swift in Sources */,
 				BC0C4A01277E58250050E93F /* HeaderWeatherView.swift in Sources */,
 				C6006034278EE77F008E8D36 /* ConstantsItems.swift in Sources */,
 				C6D64A74277EF6CF009C908E /* CityRowView.swift in Sources */,
@@ -597,6 +617,7 @@
 				DEVELOPMENT_TEAM = CF7ZB6792L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app need your location to show it map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -627,6 +648,7 @@
 				DEVELOPMENT_TEAM = CF7ZB6792L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app need your location to show it map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

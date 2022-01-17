@@ -8,16 +8,11 @@
 import SwiftUI
 import MapKit
 struct SearchCitiesOnMapView: View {
+    @StateObject var mapVM = MapViewModel()
     @State var searchTextFeild = ""
     @State var searchIsEditing = false
     @Environment(\.presentationMode) var presentationMode
-    @State var coordinateRegion = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(
-            latitude: 56.325076446859434,
-            longitude: 43.93714727621532),
-        span: MKCoordinateSpan(
-            latitudeDelta: 0.2,
-            longitudeDelta: 0.2))
+
     var body: some View {
             VStack {
                 if !searchIsEditing {
@@ -45,6 +40,10 @@ struct SearchCitiesOnMapView: View {
                     HStack(alignment: .center) {
                         Image(systemName: iconMagnifyingglass)
                         TextField(Localization.search.localized, text: $searchTextFeild)
+                            .onSubmit {
+                                mapVM.findCity(city: searchTextFeild)
+                                searchIsEditing.toggle()
+                            }
                             .onTapGesture {
                                 searchIsEditing.toggle()
                             }
@@ -78,9 +77,8 @@ struct SearchCitiesOnMapView: View {
                 if !searchIsEditing {
 
                     ZStack(alignment: .trailing) {
-                        Map(coordinateRegion: $coordinateRegion)
+                        Map(coordinateRegion: $mapVM.coordinateRegion, showsUserLocation: true)
                             .ignoresSafeArea(edges: .bottom)
-                            .searchable(text: $searchTextFeild)
                         VStack(spacing: 4) {
                             Group {
                                 Button {
@@ -94,7 +92,7 @@ struct SearchCitiesOnMapView: View {
                                     Image(systemName: iconMinusCircle)
                                 }
                                 Button {
-                                    print("текущая геопозиция")
+                                    print("current location")
                                 } label: {
                                     Image(systemName: iconCurrentLocation)
                                 }
@@ -106,8 +104,15 @@ struct SearchCitiesOnMapView: View {
                         }
                         .padding(.trailing, 16)
                     }
+                    .onAppear {
+                        mapVM.checkIfLocationServicesEnabled()
+                    }
                 }
                 if searchIsEditing {
+                    List(0..<10) { _ in
+                        Text("city")
+                    }
+                    .listStyle(.plain)
                     Spacer()
                 }
 

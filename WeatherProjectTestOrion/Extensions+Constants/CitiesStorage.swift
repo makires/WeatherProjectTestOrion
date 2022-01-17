@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//  все через структуру
 let citiesStorage = [
     "Moscow",
     "Saint Petersburg",

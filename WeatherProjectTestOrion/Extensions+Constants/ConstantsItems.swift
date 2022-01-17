@@ -9,11 +9,12 @@ import Foundation
 import SwiftUI
 
 // MARK: - spacing
+// Magic -
 let spacingGridItemIconForDailyWeatherRow: CGFloat = 10
 let spacingGridItemMaxTemperature: CGFloat = 4
 let spacingDateAndNameDayInDailyWeather: CGFloat = 4
 let spacingGridItemIconWeatherForCityRow: CGFloat = 14
-let spacingItemsMainView: CGFloat = .zero
+let spacingItemsMainView: CGFloat = .zero // будет только в коде - выносить - Magic number - через структуру
 let spacingItemsHeaderWeatherView: CGFloat = 16
 let spacingItemsDetailsForCurrentWeather: CGFloat = 33
 let spacingItemsHourlyCurrentWeatherView: CGFloat = 15

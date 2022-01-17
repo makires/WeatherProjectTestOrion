@@ -12,7 +12,7 @@ let imageMapPin = "mappin"
 
 let heightMappin: CGFloat = 16
 
-// MARK: - icons 
+// MARK: - icons - через энум и структуры
 let iconButtonListBullet = "list.bullet"
 let iconButtonBackToView = "chevron.left"
 let iconButtonActivEditList = "checkmark"
