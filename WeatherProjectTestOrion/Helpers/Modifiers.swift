@@ -13,6 +13,12 @@ struct TitleCity: ViewModifier {
             .font(.system(size: 80, weight: .thin))
     }
 }
+struct TitleCitySheet: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 17, weight: .regular))
+    }
+}
 struct CurrentIcon: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -67,6 +73,20 @@ struct TemperatureCurrentRowListCities: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 34, weight: .regular))
+    }
+
+}
+struct TemperatureCurrentForSheetCity: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 34, weight: .regular))
+    }
+
+}
+struct IconCurrentWeatherForSheetCity: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 24, weight: .regular))
     }
 
 }

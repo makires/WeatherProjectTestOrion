@@ -11,6 +11,9 @@ extension View {
     func fontTitleCity() -> some View {
         modifier(TitleCity())
     }
+    func fontTitleCitySheet() -> some View {
+        modifier(TitleCitySheet())
+    }
     func fontCurrentIcon() -> some View {
         modifier(CurrentIcon())
     }
@@ -24,6 +27,12 @@ extension View {
     }
     func fontCurrentTemperatureRowListCities() -> some View {
         modifier(TemperatureCurrentRowListCities())
+    }
+    func fontTemperatureCurrentForSheetCity() -> some View {
+        modifier(TemperatureCurrentForSheetCity())
+    }
+    func fontIconCurrentWeatherForSheetCity() -> some View {
+        modifier(IconCurrentWeatherForSheetCity())
     }
     func fontDescriptionWeatherRowListCities() -> some View {
         modifier(DescriptionWeatherRowListCities())

@@ -8,37 +8,17 @@
 import SwiftUI
 
 extension Color {
-    // 
     static let mainText = Color("mainText")
-
-    static var mainTextWhite: Color {
-        return Color("mainTextWhite")
-    }
-    static var subText: Color {
-        return Color("subText")
-    }
-    static var measure: Color {
-        return Color("measure")
-    }
-    static var borderCityRow: Color {
-        return Color("borderCityRow")
-    }
-    static var iconWeatherCityRow: Color {
-        return Color("iconWeatherCityRow")
-    }
-    static var showMap: Color {
-        return Color("showMap")
-    }
-    static var popularCityBackground: Color {
-        return Color("popularCitiesBackground")
-    }
-    static var popularCitiesOverlay: Color {
-        return Color("popularCitiesOverlay")
-    }
-    static var buttonDeleteTextField: Color {
-        return Color("buttonDeleteTextField")
-    }
-    static var searchBackground: Color {
-        return Color("searchBackground")
-    }
+    static let mainTextWhite = Color("mainTextWhite")
+    static let subText = Color("subText")
+    static let measure = Color("measure")
+    static let borderCityRow = Color("borderCityRow")
+    static let iconWeatherCityRow = Color("iconWeatherCityRow")
+    static let showMap = Color("showMap")
+    static let popularCityBackground = Color("popularCitiesBackground")
+    static let popularCitiesOverlay = Color("popularCitiesOverlay")
+    static let buttonDeleteTextField = Color("buttonDeleteTextField")
+    static let buttonSheetCancel = Color("buttonSheetCancel")
+    static let searchBackground = Color("searchBackground")
+    static let sheetDescriptionWeather = Color("sheetDescriptionWeather")
 }

@@ -70,12 +70,11 @@ struct SearchCitiesView: View {
                 .padding(.leading, 16)
                 .padding(.top, 16)
             } else {
-                List(citiesStorage.filter({ $0.contains(searchCity)
+                List(CitiesStorage.citiesStorage.filter({ $0.contains(searchCity)
                 }), id: \.self) { city in
                     Text(city)
                         .listRowSeparator(.hidden)
                         .onTapGesture {
-                            print("отправить запрос и сделать город текущим")
                             weatherVM.currentCity = city
                             isShowMainView.toggle()
                         }

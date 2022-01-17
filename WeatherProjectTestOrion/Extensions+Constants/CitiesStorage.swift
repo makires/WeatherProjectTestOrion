@@ -7,27 +7,30 @@
 
 import Foundation
 //  все через структуру
-let citiesStorage = [
-    "Moscow",
-    "Saint Petersburg",
-    "Novosibirsk",
-    "Yekaterinburg",
-    "Kazan",
-    "Nizhny Novgorod",
-    "Chelyabinsk",
-    "Samara",
-    "Omsk",
-    "Rostov-on-Don",
-    "Ufa",
-    "Krasnoyarsk",
-    "Voronezh",
-    "Perm",
-    "Volgograd",
-    "Krasnodar",
-    "Saratov",
-    "Tyumen",
-    "Barnaul",
-    "Irkutsk",
-    "Sochi",
-    "Novokuznetsk"
-]
+struct CitiesStorage {
+    static let citiesStorage = [
+        "Moscow",
+        "Saint Petersburg",
+        "Novosibirsk",
+        "Yekaterinburg",
+        "Kazan",
+        "Nizhny Novgorod",
+        "Chelyabinsk",
+        "Samara",
+        "Omsk",
+        "Rostov-on-Don",
+        "Ufa",
+        "Krasnoyarsk",
+        "Voronezh",
+        "Perm",
+        "Volgograd",
+        "Krasnodar",
+        "Saratov",
+        "Tyumen",
+        "Barnaul",
+        "Irkutsk",
+        "Sochi",
+        "Novokuznetsk"
+    ]
+}
+

@@ -32,6 +32,7 @@ enum Localization: String {
     case search = "SEARCH"
     // MARK: - Buttons
     case cancel = "CANCEL"
+    case add = "ADD"
 }
 extension Localization {
     var localized: String {
