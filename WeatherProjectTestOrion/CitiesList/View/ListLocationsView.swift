@@ -58,7 +58,7 @@ struct ListLocationsView: View {
                 }
             }
             .fullScreenCover(isPresented: $showSearchCities) {
-                SearchCitiesView(cityVM: citiesVM, weatherVM: _weatherVM)
+                SearchCitiesView(citiesVM: citiesVM, weatherVM: _weatherVM)
             }
             .navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.inline)

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchCitiesView: View {
-    @ObservedObject var cityVM: CitiesListViewModel
+    @ObservedObject var citiesVM: CitiesListViewModel
     @EnvironmentObject var weatherVM: WeatherViewModel
     @State var searchCity = ""
     @State var showMap = false
@@ -37,7 +37,7 @@ struct SearchCitiesView: View {
                 .padding(.leading, 16)
 
                 LazyHGrid(rows: gridItems) {
-                    ForEach(cityVM.citiesList, id: \.self) { city in
+                    ForEach(citiesVM.citiesList, id: \.self) { city in
                         Text(city)
                             .font(.footnote)
                             .lineSpacing(18)
@@ -76,6 +76,7 @@ struct SearchCitiesView: View {
                         .listRowSeparator(.hidden)
                         .onTapGesture {
                             weatherVM.currentCity = city
+                            citiesVM.encodeCitiesToStorage(nameCity: city)
                             isShowMainView.toggle()
                         }
                 }
@@ -123,7 +124,7 @@ struct SearchCitiesView_Previews: PreviewProvider {
     @EnvironmentObject static var weatherVM: WeatherViewModel
     static var previews: some View {
         NavigationView {
-            SearchCitiesView(cityVM: CitiesListViewModel(weatherService: WeatherService()), weatherVM: _weatherVM)
+            SearchCitiesView(citiesVM: CitiesListViewModel(weatherService: WeatherService()), weatherVM: _weatherVM)
                 .environmentObject(WeatherViewModel(weatherService: WeatherService()))
         }
     }

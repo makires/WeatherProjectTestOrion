@@ -31,7 +31,17 @@ import SwiftUI
         }
         await getWeather(for: citiesList)
     }
-
+    func encodeCitiesToStorage(nameCity: String) {
+        print("добавить город в массив и закодировать")
+        let decoder = JSONDecoder()
+        if var citiesFromAppStorage = try? decoder.decode([String].self, from: citiesData) {
+            citiesFromAppStorage.append(nameCity)
+            guard let encodedCities = citiesFromAppStorage.encodeArray() else { return }
+            citiesData = encodedCities
+        } else {
+            print("не удалось добавить город в хранилище(decode/encode")
+        }
+    }
     func getWeather(for cities: [String]) async {
         // MARK: - добавить AsyncSequence
         for city in cities {
