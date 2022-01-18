@@ -20,6 +20,13 @@ enum Localization: String {
     case hPa = "H_PA"
 
     // MARK: - Cities Favorites
+    case locate = "LOCATE"
+    case moscow = "MOSCOW"
+    case saintPetersburg = "ST.PETERSBURG"
+    case kaliningrad = "KALININGRAD"
+    case yekaterinburg = "YEKARINBURG"
+    case omsk = "OMSK"
+
     case nizhnyNovgorod = "NIZHNY NOVGOROD"
     case sochi = "SOCHI"
     case novokuznetsk = "NOVOKUZNETSK"

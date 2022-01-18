@@ -33,4 +33,16 @@ struct CitiesStorage {
         "Novokuznetsk"
     ]
 }
-
+enum PopularCitiesStorage: String, CaseIterable {
+    case locate = "LOCATE"
+    case moscow = "MOSCOW"
+    case saintPetersburg = "ST.PETERSBURG"
+    case kaliningrad = "KALININGRAD"
+    case yekaterinburg = "YEKARINBURG"
+    case omsk = "OMSK"
+}
+extension PopularCitiesStorage {
+    var localized: String {
+        return NSLocalizedString(self.rawValue, comment: "")
+    }
+}
