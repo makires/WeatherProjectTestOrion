@@ -53,7 +53,7 @@ struct CityRowView: View {
         VStack(alignment: .leading, spacing: 2) {
             HStack {
                 Text(LocalizedStringKey(cityName))
-                if cityName == weatherVM.currentCity {
+                if LocalizedStringKey(cityName) == LocalizedStringKey(weatherVM.currentCity) {
                     Image(imageMapPin)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -74,7 +74,7 @@ struct CityRowView: View {
 
         Image(systemName: weather.icon)
                 .font(.title)
-                .foregroundColor(Color.iconWeatherCityRow)
+                .foregroundColor(weather.icon == WeatherIcon.clearDay.rawValue ? .yellow : Color.iconWeatherCityRow)
                 .frame(width: 44, height: 44)
             Text(weather.temperatureCurrent)
         }

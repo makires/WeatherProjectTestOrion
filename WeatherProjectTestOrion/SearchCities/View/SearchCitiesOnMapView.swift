@@ -13,9 +13,7 @@ struct SearchCitiesOnMapView: View {
     @State var searchIsEditing = false
     @State var showSheet = false
     @Environment(\.presentationMode) var presentationMode
-    var places = [
-        Place(name: "", coordinate: .init(latitude: 0.0, longitude: 0.0))]
-    
+    @State var city = ""
     var searchField: some View {
         HStack {
             HStack(alignment: .center) {
@@ -25,9 +23,6 @@ struct SearchCitiesOnMapView: View {
                         mapVM.findCity(city: searchTextFeild)
                         searchIsEditing.toggle()
                     }
-//                    .onTapGesture {
-//                        searchIsEditing.toggle()
-//                    }
                 if searchIsEditing {
                 Button {
                     searchTextFeild = ""
@@ -93,7 +88,7 @@ struct SearchCitiesOnMapView: View {
             if showSheet {
             GeometryReader { geometry in
                 ZStack(alignment: .top) {
-                    SheetBottomWeatherView(showSheet: $showSheet, mapVM: mapVM)
+                    SheetBottomWeatherView(cityName: city, showSheet: $showSheet, mapVM: mapVM)
                         VStack {
                             Capsule()
                                 .fill(Color.gray)
@@ -102,42 +97,38 @@ struct SearchCitiesOnMapView: View {
                         }
                         .frame(alignment: .top)
                     }
-                .onAppear(perform: {
-                    Task {
-                        #warning("подправить")
-                        await mapVM.getCurrentWeather(for: mapVM.annotationsMark.first?.name ?? "", locale: "ru")
-                    }
-                })
                 .offset(y: geometry.frame(in: .named("MAP")).height - 150)
             }
             }
-            VStack(spacing: 4) {
-                Group {
-                    Button {
-                        MapDetails.defaultSpan 
-                    } label: {
-                        Image(systemName: iconPlusCircle)
-                    }
-                    Button {
-                        print("уменьшить")
-                    } label: {
-                        Image(systemName: iconMinusCircle)
-                    }
-                    Button {
-                        print("current location")
-                    } label: {
-                        Image(systemName: iconCurrentLocation)
-                    }
-                }
-                .font(.largeTitle)
-                .symbolRenderingMode(.palette)
-                .foregroundStyle(.black, .white)
-                .shadow(radius: 2)
-                
-            }
+            buttonsNavigationMap
             .padding(.trailing, 16)
         }
         .coordinateSpace(name: "MAP")
+    }
+    var buttonsNavigationMap: some View {
+        VStack(spacing: 4) {
+            Group {
+                Button {
+                    MapDetails.defaultSpan
+                } label: {
+                    Image(systemName: iconPlusCircle)
+                }
+                Button {
+                    print("уменьшить")
+                } label: {
+                    Image(systemName: iconMinusCircle)
+                }
+                Button {
+                    print("current location")
+                } label: {
+                    Image(systemName: iconCurrentLocation)
+                }
+            }
+            .font(.largeTitle)
+            .symbolRenderingMode(.palette)
+            .foregroundStyle(.black, .white)
+            .shadow(radius: 2)
+        }
     }
     var body: some View {
             VStack {
@@ -157,8 +148,8 @@ struct SearchCitiesOnMapView: View {
                         Text(city)
                             .onTapGesture {
                                 searchIsEditing = false
+                                self.city = city
                                 showSheet = true
-                                print("запрос вв сетть по городуь\(city)")
                                 mapVM.annotationsMark = []
                                 mapVM.findCity(city: city)
                             }

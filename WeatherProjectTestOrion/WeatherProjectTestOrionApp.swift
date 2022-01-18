@@ -13,6 +13,7 @@ struct WeatherProjectTestOrionApp: App {
         WindowGroup {
             MainView()
                 .environmentObject(WeatherViewModel(weatherService: WeatherService()))
+                .environmentObject(CitiesListViewModel(weatherService: WeatherService()))
         }
     }
 }

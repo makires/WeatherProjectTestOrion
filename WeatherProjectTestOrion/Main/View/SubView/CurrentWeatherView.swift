@@ -26,6 +26,7 @@ struct CurrentWeatherView: View {
             Spacer()
             Image(systemName: weather.icon)
                 .fontCurrentIcon()
+                .foregroundColor(weather.icon == WeatherIcon.clearDay.rawValue ? .yellow : Color.white)
         }
     }
 }
