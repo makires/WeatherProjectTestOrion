@@ -25,7 +25,7 @@ struct SheetBottomWeatherView: View {
             }, label: {
                 Text(Localization.cancel.localized)
             })
-            .foregroundColor(Color.buttonSheetCancel)
+                .foregroundColor(Color.buttonSheetCancel)
             Button(action: {
                 guard let searchedCity = mapVM.annotationsMark.first?.name else {
                     print("не удалось извлечь город с карты")
@@ -52,7 +52,8 @@ struct SheetBottomWeatherView: View {
             Spacer()
             HStack {
                 Image(systemName: weatherVM.weatherCurrent.icon)
-                    .foregroundColor(weatherVM.weatherCurrent.icon == WeatherIcon.clearDay.rawValue ? .yellow : Color.iconWeatherCityRow)
+                    .foregroundColor(weatherVM.weatherCurrent.icon == WeatherIcon.clearDay.rawValue ?
+                                        .yellow : Color.iconWeatherCityRow)
                     .fontIconCurrentWeatherForSheetCity()
                 Text(weatherVM.weatherCurrent.temperatureCurrent)
                     .fontTemperatureCurrentForSheetCity()
@@ -64,11 +65,11 @@ struct SheetBottomWeatherView: View {
         GeometryReader { _ in
             VStack {
                 weatherElements
-                .padding(.horizontal, 16)
+                    .padding(.horizontal, 16)
                 buttonsCancelAdd
-                .padding(.top, 26)
-                .padding(.bottom, 68)
-                .padding(.trailing, 16)
+                    .padding(.top, 26)
+                    .padding(.bottom, 68)
+                    .padding(.trailing, 16)
             }
             .padding(.top, 22)
             .background(.white)

@@ -74,10 +74,10 @@ struct SearchCitiesOnMapView: View {
     }
     var mapView: some View {
         ZStack(alignment: .trailing) {
-            GeometryReader { geometry in
-                let frame = geometry.frame(in: .named("MAP"))
-                
-                Map(coordinateRegion: $mapVM.coordinateRegion, showsUserLocation: true, annotationItems: mapVM.annotationsMark) { item in
+            GeometryReader { _ in
+                Map(coordinateRegion: $mapVM.coordinateRegion,
+                    showsUserLocation: true,
+                    annotationItems: mapVM.annotationsMark) { item in
                     MapMarker(coordinate: item.coordinate)
                 }
                 .ignoresSafeArea(edges: .bottom)
@@ -88,7 +88,8 @@ struct SearchCitiesOnMapView: View {
             if showSheet {
             GeometryReader { geometry in
                 ZStack(alignment: .top) {
-                    SheetBottomWeatherView(cityName: city, showSheet: $showSheet, mapVM: mapVM)
+                    SheetBottomWeatherView(cityName: city,
+                                           showSheet: $showSheet, mapVM: mapVM)
                         VStack {
                             Capsule()
                                 .fill(Color.gray)
@@ -109,7 +110,7 @@ struct SearchCitiesOnMapView: View {
         VStack(spacing: 4) {
             Group {
                 Button {
-                    MapDetails.defaultSpan
+                    print("увеличить")
                 } label: {
                     Image(systemName: iconPlusCircle)
                 }
@@ -136,7 +137,7 @@ struct SearchCitiesOnMapView: View {
                     titleNavigation
                 }
                 searchField
-                    .onChange(of: searchTextFeild) { newValue in
+                    .onChange(of: searchTextFeild) { _ in
                         searchIsEditing = true
                     }
                 if !searchIsEditing {

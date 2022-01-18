@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-// MARK - : modifiers init
+// MARK: - : modifiers init
 extension View {
     func fontTitleCity() -> some View {
         modifier(TitleCity())
