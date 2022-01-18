@@ -14,6 +14,7 @@ struct ListLocationsView: View {
     @Environment(\.locale.identifier) var locale
     @State var editList = false
     @State var showSearchCities = false
+    @State var isShowMainView = false
     var body: some View {
         NavigationView {
             VStack {
@@ -25,6 +26,10 @@ struct ListLocationsView: View {
                                 weather: weather,
                                 editListCities: $editList,
                                 citiesVM: citiesVM)
+                                .onTapGesture {
+                                    weatherVM.currentCity = weather.cityName
+                                    isShowMainView.toggle()
+                                }
                         }
                     }
                 }
@@ -38,6 +43,9 @@ struct ListLocationsView: View {
                     Spacer()
                 }
                 .padding(.leading, 16)
+            }
+            .fullScreenCover(isPresented: $isShowMainView) {
+                MainView()
             }
             .toolbar {
                 ToolbarItem(placement: .navigation) {
