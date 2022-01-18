@@ -34,12 +34,11 @@ import SwiftUI
     func encodeCitiesToStorage(nameCity: String) {
         print("добавить город в массив и закодировать")
         let decoder = JSONDecoder()
-        if var citiesFromAppStorage = try? decoder.decode([String].self, from: citiesData) {
+        guard var citiesFromAppStorage = try? decoder.decode([String].self, from: citiesData) else { return }
+        if !citiesFromAppStorage.contains(nameCity) {
             citiesFromAppStorage.append(nameCity)
             guard let encodedCities = citiesFromAppStorage.encodeArray() else { return }
             citiesData = encodedCities
-        } else {
-            print("не удалось добавить город в хранилище(decode/encode")
         }
     }
     func getWeather(for cities: [String]) async {
