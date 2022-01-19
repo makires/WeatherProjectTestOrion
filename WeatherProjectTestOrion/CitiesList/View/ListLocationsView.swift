@@ -13,8 +13,8 @@ struct ListLocationsView: View {
   @Environment(\.presentationMode) var presentationMode
   @Environment(\.locale.identifier) var locale
   @State var editList = false
-  @State var showSearchCities = false
-  @State var isShowMainView = false
+  @State var showAddCity = false
+  @State var showMainView = false
   var body: some View {
     NavigationView {
       VStack {
@@ -24,18 +24,17 @@ struct ListLocationsView: View {
               CityRowView(
                 cityName: weather.cityName,
                 weather: weather,
-                editListCities: $editList,
-                citiesVM: _citiesVM)
+                editListCities: $editList)
                 .onTapGesture {
                   weatherVM.currentCity = weather.cityName
-                  isShowMainView.toggle()
+                  showMainView.toggle()
                 }
             }
           }
         }
         HStack {
           Button {
-            showSearchCities.toggle()
+            showAddCity.toggle()
           } label: {
             Label(Localization.addLocation.localized, systemImage: iconButtonAddLocation)
               .foregroundColor(.blue)
@@ -44,8 +43,11 @@ struct ListLocationsView: View {
         }
         .padding(.leading, 16)
       }
-      .fullScreenCover(isPresented: $isShowMainView) {
+      .fullScreenCover(isPresented: $showMainView) {
         MainView()
+      }
+      .fullScreenCover(isPresented: $showAddCity) {
+        SearchCitiesView()
       }
       .toolbar {
         ToolbarItem(placement: .navigation) {
@@ -65,32 +67,15 @@ struct ListLocationsView: View {
           }
         }
       }
-      .fullScreenCover(isPresented: $showSearchCities) {
-        SearchCitiesView(citiesVM: _citiesVM, weatherVM: _weatherVM)
-      }
       .navigationBarBackButtonHidden(true)
       .navigationBarTitleDisplayMode(.inline)
       .navigationTitle(Localization.locations.localized)
       .onAppear {
-//        Task {
-//          await citiesVM.getCitiesFromAppStorage()
-        citiesVM.getCitiesFromAppStorage()
-        print("появился список городов", citiesVM.citiesList)
+        print("экран - список городов")
         Task {
-          await citiesVM.getWeather(for: citiesVM.citiesList)
+          await citiesVM.getWeatherForCities()
         }
-//        }
       }
-    }
-  }
-}
-
-struct ListLocationsView_Previews: PreviewProvider {
-  @EnvironmentObject static var weatherVM: WeatherViewModel
-  static var previews: some View {
-    NavigationView {
-      ListLocationsView(weatherVM: _weatherVM)
-        .environmentObject(WeatherViewModel(weatherService: WeatherService()))
     }
   }
 }

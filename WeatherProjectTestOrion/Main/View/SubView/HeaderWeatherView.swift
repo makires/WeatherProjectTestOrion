@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HeaderWeatherView: View {
   @EnvironmentObject var weatherVM: WeatherViewModel
+  @EnvironmentObject var citiesVM: CitiesListViewModel
   @State var showListCities = false
   @Binding var isScrolled: Bool
   var body: some View {
@@ -26,19 +27,15 @@ struct HeaderWeatherView: View {
               .font(.largeTitle)
               .tracking(0.37)
             Spacer()
-            NavigationLink(destination: ListLocationsView( weatherVM: _weatherVM)) {
-              
-            }
             Button {
+              citiesVM.getCitiesFromAppStorage()
               showListCities.toggle()
             } label: {
               Image(systemName: iconButtonListBullet)
             }
-            
           }
           .padding(.horizontal, 16)
           CurrentWeatherView(
-            weatherVM: _weatherVM,
             weather: weatherVM.weatherCurrent)
             .padding(.horizontal, 16)
           Spacer()
@@ -55,8 +52,7 @@ struct HeaderWeatherView: View {
     }
     .foregroundColor(Color.mainTextWhite)
     .fullScreenCover(isPresented: $showListCities) {
-      ListLocationsView(
-        weatherVM: _weatherVM)
+      ListLocationsView()
     }
   }
 }

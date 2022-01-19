@@ -50,7 +50,7 @@ struct WeatherService: WeatherRepositoryProtocol, WeatherRepositoryCoordinatesPr
         .serializingDecodable(APICurrentWeatherModel.self).value
       return weather
     } catch {
-      print("погода вернулась nil")
+      print("погода вернулась nil для города \(parameters["q"])")
       return nil
     }
   }

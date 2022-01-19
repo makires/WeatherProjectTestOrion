@@ -7,25 +7,23 @@
 
 import SwiftUI
 struct MainView: View {
-  @Environment(\.locale) var locale
   @State var isScrolled = false
   @EnvironmentObject var weatherVM: WeatherViewModel
+  @EnvironmentObject var citiesVM: CitiesListViewModel
   var body: some View {
     VStack(spacing: spacingItemsMainView) {
       HeaderWeatherView(
-        weatherVM: _weatherVM,
         isScrolled: $isScrolled)
         .frame(height: isScrolled ? 180 : 280)
       DailyWeatherListView(
-        isScrolled: $isScrolled,
-        weatherVM: _weatherVM)
+        isScrolled: $isScrolled)
     }
     .onAppear {
       print("текущий город на главном экране", weatherVM.currentCity)
+      print("список городов", citiesVM.citiesList)
       Task {
         // MARK: - "если регион стоит как en_RU, то какой запрос делать?"
-        await weatherVM.getAllWeather(for: weatherVM.currentCity,
-                                         locale: locale.identifier.languageResponse)
+        await weatherVM.getAllWeather()
       }
     }
   }

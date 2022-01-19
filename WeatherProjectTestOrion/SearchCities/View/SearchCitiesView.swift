@@ -35,12 +35,14 @@ struct SearchCitiesView: View {
           }
         }
         .padding(.leading, 16)
-        
         LazyHGrid(rows: gridItems) {
-          ForEach(citiesVM.citiesList, id: \.self) { city in
-            Text(city)
+          ForEach(PopularCitiesStorage.storage, id: \.self) { city in
+            Text(LocalizedStringKey(city))
               .onTapGesture {
-                print("популряные города")
+                print("tap popular city", city)
+                  weatherVM.currentCity = city
+                  citiesVM.encodeCitiesToStorage(nameCity: city)
+                isShowMainView.toggle()
               }
               .font(.footnote)
               .lineSpacing(18)
@@ -53,8 +55,6 @@ struct SearchCitiesView: View {
                   .stroke(Color.popularCitiesOverlay, lineWidth: 1))
           }
         }
-        .padding(.leading, 16)
-        
         Divider()
           .padding(.horizontal, 16)
         HStack {
@@ -63,7 +63,6 @@ struct SearchCitiesView: View {
           } label: {
             Text(Localization.showMap.localized)
               .foregroundColor(Color.showMap)
-            
           }
           .fullScreenCover(isPresented: $showMap) {
             SearchCitiesOnMapView()
@@ -73,23 +72,22 @@ struct SearchCitiesView: View {
         .padding(.leading, 16)
         .padding(.top, 16)
       } else {
-//        List(CitiesStorage.citiesStorage.filter({ $0.contains(searchCity) }), id: \.self) { city in
         List(CitiesStorage.citiesStorage.filter({ $0.contains(searchCity) }), id: \.self) { city in
           Text(city)
             .listRowSeparator(.hidden)
             .onTapGesture {
-print("отфильтрованный город")
+              print("отфильтрованный город")
               weatherVM.currentCity = city
               citiesVM.encodeCitiesToStorage(nameCity: city)
               isShowMainView.toggle()
             }
         }
-        .fullScreenCover(isPresented: $isShowMainView) {
-          MainView()
-        }
         .listStyle(.plain)
       }
       Spacer()
+    }
+    .fullScreenCover(isPresented: $isShowMainView) {
+      MainView()
     }
   }
 }
