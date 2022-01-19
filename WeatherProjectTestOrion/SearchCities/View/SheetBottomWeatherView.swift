@@ -73,6 +73,7 @@ struct SheetBottomWeatherView: View {
       .padding(.top, 22)
       .background(.white)
     }
+    .cornerRadius(10)
     .background(Color.yellow.opacity(0.5))
     .fullScreenCover(isPresented: $isShowMainView) {
       MainView()
