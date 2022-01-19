@@ -13,7 +13,7 @@ enum MapDetails {
   static let startingLocation = CLLocationCoordinate2D(
     latitude: 56.325076446859434,
     longitude: 43.93714727621532)
-  static let defaultSpan = MKCoordinateSpan(
+  static var defaultSpan = MKCoordinateSpan(
     latitudeDelta: 0.2,
     longitudeDelta: 0.2)
 }
@@ -32,7 +32,13 @@ enum MapDetails {
   init(weatherService: WeatherRepositoryCoordinatesProtocol) {
     self.weatherService = weatherService
   }
-  
+  func zoomUp() {
+    print("zoom up")
+  }
+  func zoomDown() {
+    print("zoom down")
+
+  }
   func getCurrentWeatherBy(coordinates: String, locale: String) async {
     guard let currentWeatherWithCoordinates = await weatherService.fetchCurrentWeatherByCoordinates(for: coordinates, locale: locale) else { return }
     self.weatherCurrentForSheet = Weather(response: currentWeatherWithCoordinates)
@@ -94,5 +100,8 @@ enum MapDetails {
   func getCurrentLocation(locationManager: CLLocationManager) -> CLLocationCoordinate2D {
     guard let currentLocation = locationManager.location?.coordinate else { return MapDetails.startingLocation}
     return currentLocation
+  }
+  func requestCurrentLocation() {
+    print("запрос текущей погоды")
   }
 }

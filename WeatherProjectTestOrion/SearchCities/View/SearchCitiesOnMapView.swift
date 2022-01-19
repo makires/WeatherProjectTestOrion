@@ -116,17 +116,18 @@ struct SearchCitiesOnMapView: View {
     VStack(spacing: 4) {
       Group {
         Button {
-          print("увеличить")
+          mapVM.zoomUp()
         } label: {
           Image(systemName: iconPlusCircle)
         }
         Button {
-          print("уменьшить")
+          mapVM.zoomDown()
         } label: {
           Image(systemName: iconMinusCircle)
         }
         Button {
           print("current location")
+          mapVM.requestCurrentLocation()
         } label: {
           Image(systemName: iconCurrentLocation)
         }
