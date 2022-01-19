@@ -8,77 +8,75 @@
 import Foundation
 import SwiftUI
 @MainActor class CitiesListViewModel: ObservableObject {
-    var cityTitleStatic = "Nizhny Novgorod"
-    @Published var arrayWeather: [Weather] = []
-    @Published var citiesList: [String] = []
-    @Environment(\.locale.identifier) var locale
-    @AppStorage("cities") var citiesData = [
-        "Nizhny Novgorod",
-        "Kaliningrad",
-        "Yekaterinburg",
-        "Omsk",
-        "Moscow",
-        "Saint Petersburg"].encodeArray()!
-    let weatherService: WeatherRepositoryProtocol
-    init(weatherService: WeatherRepositoryProtocol) {
-        self.weatherService = weatherService
+  var cityTitleStatic = "Nizhny Novgorod"
+  @Published var arrayWeather: [Weather] = []
+  @Published var citiesList: [String] = []
+  @Environment(\.locale.identifier) var locale
+  @AppStorage("cities") var citiesData = [
+    "Nizhny Novgorod",
+    "Kaliningrad",
+    "Yekaterinburg",
+    "Omsk",
+    "Moscow",
+    "Saint Petersburg"].encodeArray()!
+  let weatherService: WeatherRepositoryProtocol
+  init(weatherService: WeatherRepositoryProtocol) {
+    self.weatherService = weatherService
+  }
+//  func getCitiesFromAppStorage() async {
+  func getCitiesFromAppStorage() {
+    let decoder = JSONDecoder()
+    if let citiesFromAppStorage = try? decoder.decode([String].self, from: citiesData) {
+      citiesList = citiesFromAppStorage
     }
-
-    func getCitiesFromAppStorage() async {
-        let decoder = JSONDecoder()
-        if let citiesFromAppStorage = try? decoder.decode([String].self, from: citiesData) {
-            citiesList = citiesFromAppStorage
-        }
-        await getWeather(for: citiesList)
+//    await getWeather(for: citiesList)
+  }
+  func encodeCitiesToStorage(nameCity: String) {
+    print("функция закодировать город")
+    let decoder = JSONDecoder()
+    guard var citiesFromAppStorage = try? decoder.decode([String].self, from: citiesData) else {
+print("не удалось раскодировать хранилище городов")
+      return }
+    if !citiesFromAppStorage.contains(nameCity) {
+      citiesFromAppStorage.append(nameCity)
+      guard let encodedCities = citiesFromAppStorage.encodeArray() else { return }
+      citiesData = encodedCities
     }
-    func encodeCitiesToStorage(nameCity: String) {
-        print("добавить город в массив и закодировать")
-        let decoder = JSONDecoder()
-        guard var citiesFromAppStorage = try? decoder.decode([String].self, from: citiesData) else { return }
-        if !citiesFromAppStorage.contains(nameCity) {
-            citiesFromAppStorage.append(nameCity)
-            guard let encodedCities = citiesFromAppStorage.encodeArray() else { return }
-            citiesData = encodedCities
-        }
+  }
+  func getWeather(for cities: [String]) async {
+    print("запрос погоды в цикле сработал")
+    // MARK: - добавить AsyncSequence
+    for city in cities {
+      guard let apiCurrentWeatherModel = await weatherService.fetchCurrentWeather(
+        for: city,
+           locale: locale.languageResponse) else {
+             print("не удалось получитть текущую погоду от сервера в цикле городов")
+             return
+           }
+      guard let apiForecastWeatherModel = await weatherService.fetchDailyWeather(
+        for: city,
+           locale: locale.languageResponse) else {
+             print("не удалось получитть прогноз по дням от сервера в цикле городов")
+             return
+           }
+      let newWeather = Weather(responseWeather: apiCurrentWeatherModel, responseForecast: apiForecastWeatherModel)
+      self.arrayWeather.append(newWeather)
     }
-    func getWeather(for cities: [String]) async {
-        // MARK: - добавить AsyncSequence
-        for city in cities {
-            guard let apiCurrentWeatherModel = await weatherService.fetchCurrentWeather(
-                for: city,
-                   locale: locale.languageResponse) else {
-                       print("не удалось получитть текущую погоду от сервера в цикле городов")
-                       return
-                   }
-            guard let apiForecastWeatherModel = await weatherService.fetchDailyWeather(
-                for: city,
-                   locale: locale.languageResponse) else {
-                       print("не удалось получитть прогноз по дням от сервера в цикле городов")
-                       return
-                   }
-            let newWeather = Weather(responseWeather: apiCurrentWeatherModel, responseForecast: apiForecastWeatherModel)
-            self.arrayWeather.append(newWeather)
-
-        }
+  }
+  func remove(cityName: String) {
+    if let firstIndex = citiesList.firstIndex(of: cityName) {
+      let cityForRemoveName: String = citiesList[firstIndex]
+      citiesList.remove(at: firstIndex)
+      guard let newCitiesList = citiesList.encodeArray() else {
+        print("не удалось закодировать новый список городов")
+        return
+      }
+      citiesData = newCitiesList
+      if let index = arrayWeather.firstIndex(where: { weather in
+        cityForRemoveName == weather.cityName
+      }) {
+        arrayWeather.remove(at: index)
+      }
     }
-
-    func remove(cityName: String) {
-        if let firstIndex = citiesList.firstIndex(of: cityName) {
-            let cityForRemoveName: String = citiesList[firstIndex]
-            citiesList.remove(at: firstIndex)
-            guard let newCitiesList = citiesList.encodeArray() else {
-                print("не удалось закодировать новый список городов")
-                return
-            }
-            citiesData = newCitiesList
-            if let index = arrayWeather.firstIndex(where: { weather in
-                cityForRemoveName == weather.cityName
-            }) {
-                arrayWeather.remove(at: index)
-            }
-        } else {
-            print("не удалось найти такой город для удаления")
-        }
-    }
-
+  }
 }

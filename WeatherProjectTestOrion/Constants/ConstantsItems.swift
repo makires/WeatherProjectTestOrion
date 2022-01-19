@@ -26,3 +26,7 @@ let widthGridItemMinTemperature: CGFloat = 55
 let widthGridItemIconWeatherForCityRow: CGFloat = 50
 // MARK: - Corner Rdius
 let cornerRadiusCityRowOverlay: CGFloat = 4
+
+enum MagicNumber {
+  
+}

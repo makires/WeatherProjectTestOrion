@@ -8,9 +8,9 @@
 import SwiftUI
 
 extension String {
-    var languageResponse: String {
-        let firstDash = self.firstIndex(of: "_") ?? self.endIndex
-        let firstSymbolsLanguage = self[..<firstDash]
-        return String(firstSymbolsLanguage)
-    }
+  var languageResponse: String {
+    let firstDash = self.firstIndex(of: "_") ?? self.endIndex
+    let firstSymbolsLanguage = self[..<firstDash]
+    return String(firstSymbolsLanguage)
+  }
 }

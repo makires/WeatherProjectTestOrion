@@ -265,7 +265,6 @@
 				C600603D27904D41008E8D36 /* Views.swift */,
 				C600603F27904D77008E8D36 /* String+.swift */,
 				C600604127904E3B008E8D36 /* Icons+Images.swift */,
-				C6006033278EE77F008E8D36 /* ConstantsItems.swift */,
 				C6910C8F2791BDC0009DE6C8 /* CitiesStorage.swift */,
 			);
 			path = "Extensions+Constants";
@@ -282,6 +281,7 @@
 		C6910C9427954F9E009DE6C8 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				C6006033278EE77F008E8D36 /* ConstantsItems.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
