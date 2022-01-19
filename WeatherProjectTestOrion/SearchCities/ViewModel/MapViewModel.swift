@@ -88,7 +88,7 @@ enum MapDetails {
       print("Alert - в доступен отказано, пройдите в настйроки")
     case .authorizedAlways, .authorizedWhenInUse:
       coordinateRegion = MKCoordinateRegion(
-        center: getCurrentLocation(locationManager: locationManager),
+        center: getCurrentLocationForAuthorization(locationManager: locationManager),
         span: MapDetails.defaultSpan)
     @unknown default:
       break
@@ -97,7 +97,7 @@ enum MapDetails {
   func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
     checkLocationAuthorization()
   }
-  func getCurrentLocation(locationManager: CLLocationManager) -> CLLocationCoordinate2D {
+  func getCurrentLocationForAuthorization(locationManager: CLLocationManager) -> CLLocationCoordinate2D {
     guard let currentLocation = locationManager.location?.coordinate else { return MapDetails.startingLocation}
     return currentLocation
   }
