@@ -17,8 +17,8 @@ extension DailyForecats {
       days.append(
         Forecastday(
           dateEpoch: 10,
-          day: Day(maxTemperatureCelcius: 10,
-                   minTemperatureCelcius: 10,
+          day: Day(maxTemperatureCelcius: 33,
+                   minTemperatureCelcius: 33,
                    condition: ConditionWeather(
                     text: "",
                     iconURL: "",

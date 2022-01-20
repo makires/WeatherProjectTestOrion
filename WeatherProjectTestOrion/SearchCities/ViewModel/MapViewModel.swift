@@ -107,13 +107,10 @@ enum MapDetails {
     guard let locationManager = locationManager else {
       return
     }
-    print("запрашиваем геопозицю")
     locationManager.requestLocation()
   }
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    print("делегат-метод обновления позиции")
     if let location = locations.first {
-      print("текущая геопозиция", location)
       coordinateRegion = MKCoordinateRegion(center: location.coordinate, span: MapDetails.defaultSpan)
     }
   }

@@ -12,11 +12,11 @@ struct CurrentWeatherView: View {
   var weather: Weather
   var body: some View {
     HStack {
-      VStack(alignment: .leading, spacing: 0) {
+      VStack(alignment: .leading, spacing: .zero) {
         Text(weather.temperatureCurrent)
           .fontTitleCity()
-          .padding(.bottom, 0)
-        HStack(alignment: .top, spacing: 0) {
+          .padding(.bottom, .zero)
+        HStack(alignment: .top, spacing: .zero) {
           Text(weather.textWeatherCondition)
           Text(Localization.feelsLike.localized)
           Text(weather.feelsLikeTemperature)
@@ -26,7 +26,7 @@ struct CurrentWeatherView: View {
       Spacer()
       Image(systemName: weather.icon)
         .fontCurrentIcon()
-        .foregroundColor(weather.icon == WeatherIcon.clearDay.rawValue ? .yellow : Color.white)
+        .foregroundColor(weather.icon == WeatherIcon.clearDay.rawValue ? .yellow : .white)
     }
   }
 }

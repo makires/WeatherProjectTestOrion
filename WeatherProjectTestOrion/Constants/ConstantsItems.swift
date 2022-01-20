@@ -8,25 +8,42 @@
 import Foundation
 import SwiftUI
 
-// MARK: - spacing
-// Magic -
-let spacingGridItemIconForDailyWeatherRow: CGFloat = 10
-let spacingGridItemMaxTemperature: CGFloat = 4
-let spacingDateAndNameDayInDailyWeather: CGFloat = 4
-let spacingGridItemIconWeatherForCityRow: CGFloat = 14
-let spacingItemsMainView: CGFloat = .zero // будет только в коде - выносить - Magic number - через структуру
-let spacingItemsHeaderWeatherView: CGFloat = 16
-let spacingItemsDetailsForCurrentWeather: CGFloat = 33
-let spacingItemsHourlyCurrentWeatherView: CGFloat = 15
-let spacingItemsMeteorologicalDataView: CGFloat = .zero
-// MARK: - width
-let widthGridItemIcon: CGFloat = 10
-let widthGridItemMaxTemperature: CGFloat = 55
-let widthGridItemMinTemperature: CGFloat = 55
-let widthGridItemIconWeatherForCityRow: CGFloat = 50
-// MARK: - Corner Rdius
-let cornerRadiusCityRowOverlay: CGFloat = 4
+enum Constants {
+  enum WidthGrid {
+    public static let maxTemperature: CGFloat = 55
+    public static let  minTemperature: CGFloat = 40
+  }
+  enum General {
+    public static let roundRectCornerRadius: CGFloat = 4
+  }
+  enum Spacing {
+    public static let dayOfTheWeek: CGFloat = 4
+    public static let headerItems: CGFloat = 16
+    public static let meteoAndHourlyDetails: CGFloat = 33
+    public static let hourly: CGFloat = 15
+  }
+  enum Icon {
+    public static let iconButtonListBullet = "list.bullet"
+    public static let iconButtonBackToView = "chevron.left"
+    public static let iconButtonActivEditList = "checkmark"
+    public static let iconButtonNotActivEditList = "square.and.pencil"
 
-enum MagicNumber {
+    public static let iconButtonAddLocation = "plus.circle.fill"
 
+    public static let iconButtonAdd = "plus"
+
+    public static let iconButtonDelete = "xmark"
+    public static let iconWind = "wind"
+    public static let iconSafari = "safari"
+    public static let iconDrop = "drop"
+    public static let iconPlusCircle = "plus.circle.fill"
+    public static let iconMinusCircle = "minus.circle.fill"
+    public static let iconCurrentLocation = "paperplane.circle.fill"
+    public static let iconButtonDeleteText = "xmark.circle.fill"
+    public static let iconMagnifyingglass = "magnifyingglass"
+  }
+  enum Image {
+    public static let backgroundHeaderWeatherView = "cloudyBackground"
+    public static let imageMapPin = "mappin"
+  }
 }

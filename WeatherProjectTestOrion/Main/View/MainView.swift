@@ -11,7 +11,7 @@ struct MainView: View {
   @EnvironmentObject var weatherVM: WeatherViewModel
   @EnvironmentObject var citiesVM: CitiesListViewModel
   var body: some View {
-    VStack(spacing: spacingItemsMainView) {
+    VStack(spacing: .zero) {
       HeaderWeatherView(
         isScrolled: $isScrolled)
         .frame(height: isScrolled ? 180 : 280)

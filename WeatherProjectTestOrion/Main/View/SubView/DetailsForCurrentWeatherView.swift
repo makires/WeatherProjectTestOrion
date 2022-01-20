@@ -11,7 +11,7 @@ struct DetailsForCurrentWeatherView: View {
   var weather: Weather
   var hourlyCurrentWeather: HourlyCurrentWeather
   var body: some View {
-    HStack(spacing: spacingItemsDetailsForCurrentWeather) {
+    HStack(spacing: Constants.Spacing.meteoAndHourlyDetails) {
       MeteorologicalDataView(weather: weather)
       HourlyCurrentWeatherView(hourlyCurrentWeather: hourlyCurrentWeather)
     }
@@ -27,7 +27,7 @@ struct HourlyCurrentWeatherView: View {
           Text(Localization.now.localized)
           Image(systemName: hourlyCurrentWeather.hours.first?.condition.iconName ?? "")
             .frame(width: 22, height: 22)
-            .padding(.vertical, 3)
+            .padding(.vertical, .third)
           Text(hourlyCurrentWeather.hours.first?.temperatureCelcius.temperatureConverter ?? "")
         }
         ForEach(hourlyCurrentWeather.hours.dropFirst(), id: \.id) { hourItem in
@@ -35,7 +35,7 @@ struct HourlyCurrentWeatherView: View {
             Text("\(hourItem.timeEpoch.formattedHour)")
             Image(systemName: hourItem.condition.iconName)
               .frame(width: 22, height: 22)
-              .padding(.vertical, 3)
+              .padding(.vertical, .third)
             Text(hourItem.temperatureCelcius.temperatureConverter)
           }
         }
@@ -48,25 +48,25 @@ struct MeteorologicalDataView: View {
   let weather: Weather
   var body: some View {
     HStack {
-      VStack(spacing: spacingItemsHourlyCurrentWeatherView) {
-        Image(systemName: iconWind)
-        Image(systemName: iconSafari)
-        Image(systemName: iconDrop)
+      VStack(spacing: Constants.Spacing.hourly) {
+        Image(systemName: Constants.Icon.iconWind)
+        Image(systemName: Constants.Icon.iconSafari)
+        Image(systemName: Constants.Icon.iconDrop)
       }
-      VStack(alignment: .leading, spacing: spacingItemsHourlyCurrentWeatherView) {
-        HStack(spacing: spacingItemsMeteorologicalDataView) {
+      VStack(alignment: .leading, spacing: Constants.Spacing.hourly) {
+        HStack(spacing: .zero) {
           Text(weather.windKph)
           Text(Localization.kmH.localized)
           Text(LocalizedStringKey(weather.windDirection))
-            .foregroundColor(Color.measure)
+            .foregroundColor(.measure)
         }
-        HStack(spacing: spacingItemsMeteorologicalDataView) {
+        HStack(spacing: .zero) {
           Text(weather.pressureHPa)
-          Text(Localization.hPa.localized).foregroundColor(Color.measure)
+          Text(Localization.hPa.localized).foregroundColor(.measure)
         }
-        HStack(spacing: spacingItemsMeteorologicalDataView) {
+        HStack(spacing: .zero) {
           Text(weather.humidity)
-          Text("%").foregroundColor(Color.measure)
+          Text("%").foregroundColor(.measure)
         }
       }
     }

@@ -14,7 +14,6 @@ struct CityRowView: View {
     GridItem()]
   @Binding var editListCities: Bool
   @EnvironmentObject var citiesVM: CitiesListViewModel
-  // MARK: - запрос текущего города по геопозиции
   @EnvironmentObject var weatherVM: WeatherViewModel
   var body: some View {
     VStack {
@@ -25,10 +24,9 @@ struct CityRowView: View {
           Button {
             citiesVM.remove(cityName: cityName)
           } label: {
-            Image(systemName: iconButtonDelete)
+            Image(systemName: Constants.Icon.iconButtonDelete)
               .foregroundColor(.red)
-              .frame(width: 44, height: 44)
-              .padding(EdgeInsets(top: 6, leading: 0, bottom: 6, trailing: 8))
+              .padding(EdgeInsets(top: .main, leading: .zero, bottom: .main, trailing: .x2))
           }
         }
       } else {
@@ -37,36 +35,36 @@ struct CityRowView: View {
           Spacer()
           iconAndCurrentTemperature
         }
-        .padding(.bottom, -8)
+        .padding(.bottom, -.main)
         Divider()
-          .padding(.horizontal, 8)
+          .padding(.horizontal, .main)
         descriptionWeather
       }
     }
     .overlay(
-      RoundedRectangle(cornerRadius: cornerRadiusCityRowOverlay)
+      RoundedRectangle(cornerRadius: Constants.General.roundRectCornerRadius)
         .strokeBorder(Color.borderCityRow))
-    .padding(.horizontal, 16)
-    .padding(.vertical, 4)
+    .padding(.horizontal, .x2)
+    .padding(.vertical, .s2)
   }
   var cityAndRegionName: some View {
     VStack(alignment: .leading, spacing: 2) {
       HStack {
         Text(LocalizedStringKey(cityName))
         if LocalizedStringKey(cityName) == LocalizedStringKey(weatherVM.currentCity) {
-          Image(imageMapPin)
+          Image(Constants.Image.imageMapPin)
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(height: heightMappin)
+            .frame(height: .x2)
         }
       }
       HStack {
         Text(weather.region + ", " + weather.country)
       }
-      .foregroundColor(Color.subText)
+      .foregroundColor(.subText)
       .fontDesciprionConditionWeather()
     }
-    .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 0))
+    .padding(EdgeInsets(top: .main, leading: .main, bottom: .main, trailing: .zero))
   }
 
   var iconAndCurrentTemperature: some View {
@@ -74,13 +72,13 @@ struct CityRowView: View {
 
       Image(systemName: weather.icon)
         .font(.title)
-        .foregroundColor(weather.icon == WeatherIcon.clearDay.rawValue ? .yellow : Color.iconWeatherCityRow)
+        .foregroundColor(weather.icon == WeatherIcon.clearDay.rawValue ? .yellow : .iconWeatherCityRow)
         .frame(width: 44, height: 44)
       Text(weather.temperatureCurrent)
     }
     .frame(width: 120, alignment: .leading)
     .fontCurrentTemperatureRowListCities()
-    .padding(.trailing, 6)
+    .padding(.trailing, .s3)
   }
   var descriptionWeather: some View {
     HStack {
@@ -99,9 +97,9 @@ struct CityRowView: View {
       }
       .fontDescriptionWeatherRowListCities()
     }
-    .padding(.horizontal, 8)
-    .padding(.bottom, 11)
+    .padding(.horizontal, .main)
+    .padding(.bottom, .s6)
     .fontDesciprionConditionWeather()
-    .foregroundColor(Color.subText)
+    .foregroundColor(.subText)
   }
 }

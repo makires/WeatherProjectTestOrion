@@ -18,17 +18,16 @@ struct SheetBottomWeatherView: View {
   @Environment(\.presentationMode) var presentationMode
   @Environment(\.locale) var locale
   var buttonsCancelAdd: some View {
-    HStack(spacing: 32) {
+    HStack(spacing: .x4) {
       Spacer()
       Button(action: {
         showSheet = false
       }, label: {
         Text(Localization.cancel.localized)
       })
-        .foregroundColor(Color.buttonSheetCancel)
+        .foregroundColor(.buttonSheetCancel)
       Button(action: {
         guard let searchedCity = mapVM.annotationsMark.first?.name else { return }
-        print("добавить город в список", searchedCity)
         weatherVM.currentCity = searchedCity
         citiesVM.encodeCitiesToStorage(nameCity: searchedCity)
         isShowMainView.toggle()
@@ -46,13 +45,13 @@ struct SheetBottomWeatherView: View {
              Localization.feelsLike.localized +
              mapVM.weatherCurrentForSheet.feelsLikeTemperature)
           .fontDesciprionConditionWeather()
-          .foregroundColor(Color.sheetDescriptionWeather)
+          .foregroundColor(.sheetDescriptionWeather)
       }
       Spacer()
       HStack {
         Image(systemName: mapVM.weatherCurrentForSheet.icon)
           .foregroundColor(mapVM.weatherCurrentForSheet.icon == WeatherIcon.clearDay.rawValue ?
-                            .yellow : Color.iconWeatherCityRow)
+                            .yellow : .iconWeatherCityRow)
           .fontIconCurrentWeatherForSheetCity()
         Text(mapVM.weatherCurrentForSheet.temperatureCurrent)
           .fontTemperatureCurrentForSheetCity()
@@ -64,17 +63,16 @@ struct SheetBottomWeatherView: View {
     GeometryReader { _ in
       VStack {
         weatherElements
-          .padding(.horizontal, 16)
+          .padding(.horizontal, .x2)
         buttonsCancelAdd
-          .padding(.top, 26)
-          .padding(.bottom, 68)
-          .padding(.trailing, 16)
+          .padding(.top, .x3)
+          .padding(.bottom, .x8)
+          .padding(.trailing, .x2)
       }
-      .padding(.top, 22)
+      .padding(.top, .s11)
       .background(.white)
     }
-    .cornerRadius(10)
-    .background(Color.yellow.opacity(0.5))
+    .cornerRadius(.s5)
     .fullScreenCover(isPresented: $isShowMainView) {
       MainView()
     }

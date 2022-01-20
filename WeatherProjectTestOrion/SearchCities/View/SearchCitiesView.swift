@@ -24,8 +24,8 @@ struct SearchCitiesView: View {
       SearchFieldView(
         searchCity: $searchCity,
         isEditing: $isEditing)
-        .padding(.trailing, 16)
-        .padding(.leading, 8)
+        .padding(.trailing, .x2)
+        .padding(.leading, .main)
       Divider()
       // MARK: - Popular Cities View
       if !isEditing {
@@ -38,16 +38,16 @@ struct SearchCitiesView: View {
             Spacer()
           }
         }
-        .padding(.top, 8)
-        VStack(alignment: .leading, spacing: 16) {
+        .padding(.top, .main)
+          VStack(alignment: .leading, spacing: .x2) {
           HStack {
             HStack {
             Text(weatherVM.currentCity)
                 .foregroundColor(.currentLocation)
-              Image(imageMapPin)
+              Image(Constants.Image.imageMapPin)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(height: heightMappin)
+                .frame(height: .x2)
             }
             .popularCitiesStyle()
             .onTapGesture {
@@ -71,23 +71,23 @@ struct SearchCitiesView: View {
             }
           }
         }
-        .padding(.vertical, 16)
+          .padding(.vertical, .x2)
         Divider()
         HStack {
           Button {
             showMap.toggle()
           } label: {
             Text(Localization.showMap.localized)
-              .foregroundColor(Color.showMap)
+              .foregroundColor(.showMap)
           }
           .fullScreenCover(isPresented: $showMap) {
             SearchCitiesOnMapView()
           }
           Spacer()
         }
-        .padding(.top, 16)
+        .padding(.top, .x2)
       }
-        .padding(.horizontal, 16)
+        .padding(.horizontal, .x2)
       } else {
         List(CitiesStorage.citiesStorage.filter({ $0.contains(searchCity) }), id: \.self) { city in
           Text(city)
@@ -114,7 +114,7 @@ struct SearchFieldView: View {
       Button {
         presentationMode.wrappedValue.dismiss()
       } label: {
-        Image(systemName: iconButtonBackToView)
+        Image(systemName: Constants.Icon.iconButtonBackToView)
           .backToViewButton()
       }
       TextField(
@@ -126,8 +126,8 @@ struct SearchFieldView: View {
       Button {
         searchCity = ""
       } label: {
-        Image(systemName: iconButtonDelete)
-          .padding(10)
+        Image(systemName: Constants.Icon.iconButtonDelete)
+          .padding(.s5)
           .editListCitiesButton()
       }
     }

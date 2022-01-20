@@ -12,18 +12,18 @@ struct DailyWeatherRow: View {
   let gridItems = [
     GridItem(.fixed(8)),
     GridItem(),
-    GridItem(.flexible(minimum: widthGridItemMaxTemperature)),
-    GridItem(alignment: .trailing)]
+    GridItem(.flexible(minimum: Constants.WidthGrid.maxTemperature)),
+    GridItem(.flexible(minimum: Constants.WidthGrid.minTemperature), alignment: .trailing)]
   var body: some View {
     HStack {
-      VStack(alignment: .leading, spacing: spacingDateAndNameDayInDailyWeather) {
+      VStack(alignment: .leading, spacing: Constants.Spacing.dayOfTheWeek) {
         Text(dailyForecast.dateEpoch.formattedDay)
           .tracking(-0.08)
           .fontDateWeather()
-          .foregroundColor(Color.subText)
+          .foregroundColor(.subText)
         Text(dailyForecast.dateEpoch.formattedNameDay)
           .tracking(-0.41)
-          .foregroundColor(Color.mainText)
+          .foregroundColor(.mainText)
           .fontNameDateWeather()
       }
       Spacer()
@@ -36,15 +36,15 @@ struct DailyWeatherRow: View {
         // MARK: - через модификатор все tracking"
         Text(dailyForecast.day.maxTemperatureCelcius.temperatureConverter)
           .tracking(0.35)
-          .foregroundColor(Color.mainText)
+          .foregroundColor(.mainText)
           .fontDailyWeatherRow()
         Text(dailyForecast.day.minTemperatureCelcius.temperatureConverter)
           .tracking(-0.32)
-          .foregroundColor(Color.subText)
+          .foregroundColor(.subText)
           .fontDescriptionWeatherRowListCities()
       }
     }
-    .padding(.vertical, 8)
-    .padding(.horizontal, 16)
+    .padding(.vertical, .main)
+    .padding(.horizontal, .x2)
   }
 }

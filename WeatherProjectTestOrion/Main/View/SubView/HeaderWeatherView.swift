@@ -15,13 +15,13 @@ struct HeaderWeatherView: View {
   var body: some View {
     ZStack {
       GeometryReader { _ in
-        Image(backgroundHeaderWeatherView)
+        Image(Constants.Image.backgroundHeaderWeatherView)
           .resizable()
           .ignoresSafeArea()
           .frame(height: 290)
       }
       GeometryReader { _ in
-        VStack(spacing: spacingItemsHeaderWeatherView) {
+        VStack(spacing: Constants.Spacing.headerItems) {
           HStack {
             Text(LocalizedStringKey(weatherVM.weatherCurrent.cityName))
               .font(.largeTitle)
@@ -31,26 +31,26 @@ struct HeaderWeatherView: View {
               citiesVM.getCitiesFromAppStorage()
               showListCities.toggle()
             } label: {
-              Image(systemName: iconButtonListBullet)
+              Image(systemName: Constants.Icon.iconButtonListBullet)
             }
           }
-          .padding(.horizontal, 16)
+          .padding(.horizontal, .x2)
           CurrentWeatherView(
             weather: weatherVM.weatherCurrent)
-            .padding(.horizontal, 16)
+            .padding(.horizontal, .x2)
           Spacer()
           if !isScrolled {
             DetailsForCurrentWeatherView(
               weather: weatherVM.weatherCurrent,
               hourlyCurrentWeather: weatherVM.weatherHourlyCurrent)
               .fontDesciprionConditionWeather()
-              .offset(y: -16)
-              .padding(.leading, 16)
+              .offset(y: -.x2)
+              .padding(.leading, .x2)
           }
         }
       }
     }
-    .foregroundColor(Color.mainTextWhite)
+    .foregroundColor(.mainTextWhite)
     .fullScreenCover(isPresented: $showListCities) {
       ListLocationsView()
     }

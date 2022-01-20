@@ -17,7 +17,7 @@ struct SearchCitiesOnMapView: View {
   var searchField: some View {
     HStack {
       HStack(alignment: .center) {
-        Image(systemName: iconMagnifyingglass)
+        Image(systemName: Constants.Icon.iconMagnifyingglass)
         TextField(Localization.search.localized, text: $searchTextFeild)
           .onTapGesture {
             searchIsEditing = true
@@ -34,18 +34,18 @@ struct SearchCitiesOnMapView: View {
             searchTextFeild = ""
             searchIsEditing = false
           } label: {
-            Image(systemName: iconButtonDeleteText)
-              .foregroundColor((Color.buttonDeleteTextField))
+            Image(systemName: Constants.Icon.iconButtonDeleteText)
+              .foregroundColor(.buttonDeleteTextField)
           }
-          .padding(.trailing, 6)
+          .padding(.trailing, .main)
         }
       }
-      .padding(.leading, 4)
-      .padding(.vertical, 8)
+      .padding(.leading, .s2)
+      .padding(.vertical, .main)
       .background(
-        RoundedRectangle(cornerRadius: 10)
-          .foregroundColor((Color.searchBackground)))
-      .padding(.horizontal, 16)
+        RoundedRectangle(cornerRadius: .s5)
+          .foregroundColor(.searchBackground))
+      .padding(.horizontal, .x2)
       if searchIsEditing {
         Button {
           searchTextFeild = ""
@@ -53,7 +53,7 @@ struct SearchCitiesOnMapView: View {
         } label: {
           Text(Localization.cancel.localized)
         }
-        .padding(.trailing, 16)
+        .padding(.trailing, .x2)
       }
     }
   }
@@ -62,7 +62,7 @@ struct SearchCitiesOnMapView: View {
       Button {
         presentationMode.wrappedValue.dismiss()
       } label: {
-        Image(systemName: iconButtonBackToView)
+        Image(systemName: Constants.Icon.iconButtonBackToView)
           .backToViewButton()
 
       }
@@ -71,12 +71,12 @@ struct SearchCitiesOnMapView: View {
       Button {
         print("plus")
       } label: {
-        Image(systemName: iconButtonAdd)
+        Image(systemName: Constants.Icon.iconButtonAdd)
           .editListCitiesButton()
       }
     }
-    .padding(.leading, 6)
-    .padding(.trailing, 16)
+    .padding(.leading, .main)
+    .padding(.trailing, .x2)
   }
   var mapView: some View {
     ZStack(alignment: .trailing) {
@@ -100,7 +100,7 @@ struct SearchCitiesOnMapView: View {
               Capsule()
                 .fill(Color.gray)
                 .frame(width: 36, height: 5)
-                .padding(.top, 6)
+                .padding(.top, .s3)
             }
             .frame(alignment: .top)
           }
@@ -108,7 +108,7 @@ struct SearchCitiesOnMapView: View {
         }
       }
       buttonsNavigationMap
-        .padding(.trailing, 16)
+        .padding(.trailing, .x2)
     }
     .coordinateSpace(name: "MAP")
   }
@@ -118,18 +118,17 @@ struct SearchCitiesOnMapView: View {
         Button {
           mapVM.zoomUp()
         } label: {
-          Image(systemName: iconPlusCircle)
+          Image(systemName: Constants.Icon.iconPlusCircle)
         }
         Button {
           mapVM.zoomDown()
         } label: {
-          Image(systemName: iconMinusCircle)
+          Image(systemName: Constants.Icon.iconMinusCircle)
         }
         Button {
-          print("current location")
           mapVM.requestCurrentLocation()
         } label: {
-          Image(systemName: iconCurrentLocation)
+          Image(systemName: Constants.Icon.iconCurrentLocation)
         }
       }
       .font(.largeTitle)

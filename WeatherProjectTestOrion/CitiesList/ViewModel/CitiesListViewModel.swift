@@ -27,7 +27,6 @@ import SwiftUI
     }
   }
   func getWeatherForCities() async {
-    print("список городов для цикла погоды", citiesList)
     await withTaskGroup(of: Weather.self, body: { group in
       for city in citiesList {
         group.addTask(priority: .utility) {
@@ -59,7 +58,6 @@ import SwiftUI
     }
   }
   func encodeCitiesToStorage(nameCity: String) {
-    print("функция закодировать город")
     let decoder = JSONDecoder()
     guard var citiesFromAppStorage = try? decoder.decode([String].self, from: citiesData) else {
       print("не удалось раскодировать хранилище городов")

@@ -101,12 +101,12 @@ struct PopularCitiesStyle: ViewModifier {
     content
       .font(.footnote)
       .lineSpacing(18)
-      .padding(.horizontal, 12)
-      .padding(.vertical, 6)
+      .padding(.horizontal, .s6)
+      .padding(.vertical, .main)
       .background(Color.popularCityBackground)
-      .cornerRadius(16)
+      .cornerRadius(.x2)
       .overlay(
-        RoundedRectangle(cornerRadius: 16)
+        RoundedRectangle(cornerRadius: .x2)
           .stroke(Color.popularCitiesOverlay, lineWidth: 1))
   }
 }

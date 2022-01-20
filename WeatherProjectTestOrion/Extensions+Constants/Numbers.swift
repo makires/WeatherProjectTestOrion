@@ -52,14 +52,3 @@ extension Int {
     return relativeDate
   }
 }
-
-extension Double {
-  var temperatureConverter: String {
-    if Int(self) > 0 {
-      let plusTemperature = "+\(Int(self))°"
-      return plusTemperature
-    } else {
-      return "\(Int(self))°"
-    }
-  }
-}

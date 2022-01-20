@@ -36,12 +36,12 @@ struct ListLocationsView: View {
           Button {
             showAddCity.toggle()
           } label: {
-            Label(Localization.addLocation.localized, systemImage: iconButtonAddLocation)
+            Label(Localization.addLocation.localized, systemImage: Constants.Icon.iconButtonAddLocation)
               .foregroundColor(.blue)
           }
           Spacer()
         }
-        .padding(.leading, 16)
+        .padding(.leading, .x2)
       }
       .fullScreenCover(isPresented: $showMainView) {
         MainView()
@@ -54,7 +54,7 @@ struct ListLocationsView: View {
           Button {
             presentationMode.wrappedValue.dismiss()
           } label: {
-            Image(systemName: iconButtonBackToView)
+            Image(systemName: Constants.Icon.iconButtonBackToView)
               .backToViewButton()
           }
         }
@@ -62,7 +62,7 @@ struct ListLocationsView: View {
           Button {
             editList.toggle()
           } label: {
-            Image(systemName: editList ? iconButtonActivEditList :  iconButtonNotActivEditList)
+            Image(systemName: editList ? Constants.Icon.iconButtonActivEditList :  Constants.Icon.iconButtonNotActivEditList)
               .editListCitiesButton()
           }
         }
@@ -71,7 +71,6 @@ struct ListLocationsView: View {
       .navigationBarTitleDisplayMode(.inline)
       .navigationTitle(Localization.locations.localized)
       .onAppear {
-        print("экран - список городов")
         Task {
           await citiesVM.getWeatherForCities()
         }
