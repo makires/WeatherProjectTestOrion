@@ -49,7 +49,7 @@ struct SearchCitiesOnMapView: View {
       if searchIsEditing {
         Button {
           searchTextFeild = ""
-          searchIsEditing = false
+          presentationMode.wrappedValue.dismiss()
         } label: {
           Text(Localization.cancel.localized)
         }

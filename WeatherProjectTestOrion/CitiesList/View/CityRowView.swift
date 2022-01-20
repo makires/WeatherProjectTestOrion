@@ -70,7 +70,7 @@ struct CityRowView: View {
   }
 
   var iconAndCurrentTemperature: some View {
-    LazyHGrid(rows: gridItems, spacing: 8) {
+    LazyHGrid(rows: gridItems, spacing: 4) {
 
       Image(systemName: weather.icon)
         .font(.title)
@@ -80,7 +80,7 @@ struct CityRowView: View {
     }
     .frame(width: 120, alignment: .leading)
     .fontCurrentTemperatureRowListCities()
-    .padding(.trailing, 4)
+    .padding(.trailing, 6)
   }
   var descriptionWeather: some View {
     HStack {
