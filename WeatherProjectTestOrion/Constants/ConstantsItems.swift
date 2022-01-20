@@ -28,5 +28,5 @@ let widthGridItemIconWeatherForCityRow: CGFloat = 50
 let cornerRadiusCityRowOverlay: CGFloat = 4
 
 enum MagicNumber {
-  
+
 }

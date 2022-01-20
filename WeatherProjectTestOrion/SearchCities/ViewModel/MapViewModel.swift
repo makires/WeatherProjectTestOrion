@@ -40,7 +40,9 @@ enum MapDetails {
 
   }
   func getCurrentWeatherBy(coordinates: String, locale: String) async {
-    guard let currentWeatherWithCoordinates = await weatherService.fetchCurrentWeatherByCoordinates(for: coordinates, locale: locale) else { return }
+    guard let currentWeatherWithCoordinates =
+            await weatherService.fetchCurrentWeatherByCoordinates(for: coordinates,
+                                                                     locale: locale) else { return }
     self.weatherCurrentForSheet = Weather(response: currentWeatherWithCoordinates)
   }
   func converterCoordinates(coordinate: CLLocationCoordinate2D) -> String {

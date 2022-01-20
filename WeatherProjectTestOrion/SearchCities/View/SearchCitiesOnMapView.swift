@@ -64,7 +64,7 @@ struct SearchCitiesOnMapView: View {
       } label: {
         Image(systemName: iconButtonBackToView)
           .backToViewButton()
-        
+
       }
       Text(Localization.locations.localized)
       Spacer()

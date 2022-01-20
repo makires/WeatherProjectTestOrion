@@ -56,5 +56,3 @@ extension View {
     modifier(PopularCitiesStyle())
   }
 }
-
-

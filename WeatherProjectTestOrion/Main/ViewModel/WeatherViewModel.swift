@@ -25,7 +25,8 @@ import SwiftUI
     await getDailyWeather(for: currentCity, locale: locale.languageResponse)
   }
   func getCurrentWeather(for city: String, locale: String) async {
-    guard let currentWeather = await weatherService.fetchCurrentWeather(for: city, locale: locale.languageResponse) else {
+    guard let currentWeather = await weatherService.fetchCurrentWeather(for: city,
+                                                                           locale: locale.languageResponse) else {
       print("текущая погода MainView is failed.")
       return
     }
