@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct SearchCitiesView: View {
+  func changeCurrentCity(city: String) {
+    weatherVM.currentCity = city
+    citiesVM.encodeCitiesToStorage(nameCity: city)
+    isShowMainView.toggle()
+  }
   @EnvironmentObject var citiesVM: CitiesListViewModel
   @EnvironmentObject var weatherVM: WeatherViewModel
   @State var searchCity = ""
   @State var showMap = false
   @State var isEditing = false
   @State var isShowMainView = false
-  let gridItems = [
-    GridItem(.flexible()),
-    GridItem(.flexible())]
   var body: some View {
-    VStack {
+    VStack(alignment: .leading) {
       SearchFieldView(
         searchCity: $searchCity,
         isEditing: $isEditing)
@@ -27,36 +29,50 @@ struct SearchCitiesView: View {
       Divider()
       // MARK: - Popular Cities View
       if !isEditing {
+        Group {
         VStack {
           HStack {
-            Text(Localization.popularCities.localized).tracking(-0.41)
+            Text(Localization.popularCities.localized)
+              .tracking(-0.41)
               .fontPopulareCities()
             Spacer()
           }
         }
-        .padding(.leading, 16)
-        LazyHGrid(rows: gridItems) {
-          ForEach(PopularCitiesStorage.storage, id: \.self) { city in
-            Text(LocalizedStringKey(city))
-              .onTapGesture {
-                print("tap popular city", city)
-                  weatherVM.currentCity = city
-                  citiesVM.encodeCitiesToStorage(nameCity: city)
-                isShowMainView.toggle()
-              }
-              .font(.footnote)
-              .lineSpacing(18)
-              .padding(.horizontal, 12)
-              .padding(.vertical, 6)
-              .background(Color.popularCityBackground)
-              .cornerRadius(16)
-              .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                  .stroke(Color.popularCitiesOverlay, lineWidth: 1))
+        .padding(.top, 8)
+        VStack(alignment: .leading, spacing: 16) {
+          HStack {
+            HStack {
+            Text(weatherVM.currentCity)
+                .foregroundColor(.currentLocation)
+              Image(imageMapPin)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: heightMappin)
+            }
+            .popularCitiesStyle()
+            .onTapGesture {
+              isShowMainView.toggle()
+            }
+            ForEach(0..<2, id: \.self) { index in
+              Text(LocalizedStringKey( PopularCitiesStorage.storage[index] ))
+                .popularCitiesStyle()
+                .onTapGesture {
+                  changeCurrentCity(city: PopularCitiesStorage.storage[index])
+                }
+            }
+          }
+          HStack {
+            ForEach(2..<5, id: \.self) { index in
+              Text(LocalizedStringKey( PopularCitiesStorage.storage[index] ))
+                .popularCitiesStyle()
+                .onTapGesture {
+                  changeCurrentCity(city: PopularCitiesStorage.storage[index])
+                }
+            }
           }
         }
+        .padding(.vertical, 16)
         Divider()
-          .padding(.horizontal, 16)
         HStack {
           Button {
             showMap.toggle()
@@ -69,17 +85,15 @@ struct SearchCitiesView: View {
           }
           Spacer()
         }
-        .padding(.leading, 16)
         .padding(.top, 16)
+      }
+        .padding(.horizontal, 16)
       } else {
         List(CitiesStorage.citiesStorage.filter({ $0.contains(searchCity) }), id: \.self) { city in
           Text(city)
             .listRowSeparator(.hidden)
             .onTapGesture {
-              print("отфильтрованный город")
-              weatherVM.currentCity = city
-              citiesVM.encodeCitiesToStorage(nameCity: city)
-              isShowMainView.toggle()
+              changeCurrentCity(city: city)
             }
         }
         .listStyle(.plain)
@@ -113,7 +127,7 @@ struct SearchFieldView: View {
         searchCity = ""
       } label: {
         Image(systemName: iconButtonDelete)
-          .frame(width: 44, height: 44)
+          .padding(10)
           .editListCitiesButton()
       }
     }

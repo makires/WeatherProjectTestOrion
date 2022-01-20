@@ -52,4 +52,9 @@ extension View {
   func fontPopulareCities() -> some View {
     modifier(PopularCities())
   }
+  func popularCitiesStyle() -> some View {
+    modifier(PopularCitiesStyle())
+  }
 }
+
+

@@ -21,4 +21,6 @@ extension Color {
   static let buttonSheetCancel = Color("buttonSheetCancel")
   static let searchBackground = Color("searchBackground")
   static let sheetDescriptionWeather = Color("sheetDescriptionWeather")
+  static let currentLocation = Color("currentLocation")
+
 }

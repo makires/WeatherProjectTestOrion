@@ -34,10 +34,9 @@ struct CitiesStorage {
 }
 struct PopularCitiesStorage {
   static let storage = [
-    "Locate",
     "Moscow",
-    "Saint Petersburg",
     "Kaliningrad",
+    "Saint Petersburg",
     "Yekaterinburg",
     "Omsk"
   ]

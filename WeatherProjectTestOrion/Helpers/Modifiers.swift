@@ -96,3 +96,17 @@ struct DescriptionWeatherRowListCities: ViewModifier {
       .font(.system(size: 16, weight: .regular))
   }
 }
+struct PopularCitiesStyle: ViewModifier {
+  func body(content: Content) -> some View {
+    content
+      .font(.footnote)
+      .lineSpacing(18)
+      .padding(.horizontal, 12)
+      .padding(.vertical, 6)
+      .background(Color.popularCityBackground)
+      .cornerRadius(16)
+      .overlay(
+        RoundedRectangle(cornerRadius: 16)
+          .stroke(Color.popularCitiesOverlay, lineWidth: 1))
+  }
+}
