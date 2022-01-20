@@ -28,38 +28,41 @@ import SwiftUI
   }
   func getWeatherForCities() async {
     print("список городов для цикла погоды", citiesList)
-    for city in citiesList {
-      async let apiCurrentWeatherModel = weatherService.fetchCurrentWeather(for: city, locale: locale.languageResponse)
-      async let apiForecastWeatherModel = weatherService.fetchDailyWeather(for: city, locale: locale.languageResponse)
-      let currentWeatherFromAPI = await apiCurrentWeatherModel
-      let forecastWeatherFromAPI = await apiForecastWeatherModel
-      guard let currentWeatherFromAPI = currentWeatherFromAPI else {
-        print("не удалось создать Weather в цикле гороодов")
-        return
+    await withTaskGroup(of: Weather.self, body: { group in
+      for city in citiesList {
+        group.addTask(priority: .utility) {
+          async let apiCurrentWeatherModel =
+          self.weatherService.fetchCurrentWeather(for: city, locale: self.locale.languageResponse)
+          async let apiForecastWeatherModel =
+          self.weatherService.fetchDailyWeather(for: city, locale: self.locale.languageResponse)
+          guard let apiCurrentWeatherModel = await apiCurrentWeatherModel,
+                let apiForecastWeatherModel = await apiForecastWeatherModel else {
+                  return Weather() }
+          let newWeather = Weather(responseWeather: apiCurrentWeatherModel, responseForecast: apiForecastWeatherModel)
+          return newWeather
+        }
       }
-      guard let forecastWeatherFromAPI = forecastWeatherFromAPI else {
-        return
+      for await weatherGroup in group {
+        if !arrayWeather.contains(where: { weather in
+          weather.cityName == weatherGroup.cityName
+        }) {
+          arrayWeather.append(weatherGroup)
+        }
       }
-      let newWeather = Weather(responseWeather: currentWeatherFromAPI, responseForecast: forecastWeatherFromAPI)
-      if !self.arrayWeather.contains(where: { weather in
-        weather.cityName == newWeather.cityName
-      }) {
-        self.arrayWeather.append(newWeather)
-      }
-    }
+    })
   }
   func getCitiesFromAppStorage() {
     let decoder = JSONDecoder()
     if let citiesFromAppStorage = try? decoder.decode([String].self, from: citiesData) {
       citiesList = citiesFromAppStorage
-        print("раскодировали список городов: \(citiesList) и опубликовали")
+      print("раскодировали список городов: \(citiesList) и опубликовали")
     }
   }
   func encodeCitiesToStorage(nameCity: String) {
     print("функция закодировать город")
     let decoder = JSONDecoder()
     guard var citiesFromAppStorage = try? decoder.decode([String].self, from: citiesData) else {
-print("не удалось раскодировать хранилище городов")
+      print("не удалось раскодировать хранилище городов")
       return }
     if !citiesFromAppStorage.contains(nameCity) {
       citiesFromAppStorage.append(nameCity)
@@ -67,26 +70,6 @@ print("не удалось раскодировать хранилище гор�
       citiesData = encodedCities
     }
   }
-//  func getWeather(for cities: [String]) async {
-//    print("запрос погоды в цикле сработал")
-//    // MARK: - добавить AsyncSequence
-//    for city in cities {
-//      guard let apiCurrentWeatherModel = await weatherService.fetchCurrentWeather(
-//        for: city,
-//           locale: locale.languageResponse) else {
-//             print("не удалось получитть текущую погоду от сервера в цикле городов")
-//             return
-//           }
-//      guard let apiForecastWeatherModel = await weatherService.fetchDailyWeather(
-//        for: city,
-//           locale: locale.languageResponse) else {
-//             print("не удалось получитть прогноз по дням от сервера в цикле городов")
-//             return
-//           }
-//      let newWeather = Weather(responseWeather: apiCurrentWeatherModel, responseForecast: apiForecastWeatherModel)
-//      self.arrayWeather.append(newWeather)
-//    }
-//  }
   func remove(cityName: String) {
     if let firstIndex = citiesList.firstIndex(of: cityName) {
       let cityForRemoveName: String = citiesList[firstIndex]
