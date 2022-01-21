@@ -41,6 +41,7 @@ struct ListLocationsView: View {
                     Spacer()
                 }
                 .padding(.leading, MagicNumber.x4)
+                .padding(.bottom, MagicNumber.x2)
             }
             .fullScreenCover(isPresented: $showMainView) {
                 MainView()
