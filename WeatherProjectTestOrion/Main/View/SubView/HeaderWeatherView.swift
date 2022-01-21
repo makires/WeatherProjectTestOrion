@@ -15,7 +15,7 @@ struct HeaderWeatherView: View {
     var body: some View {
         ZStack {
             GeometryReader { _ in
-                Image(Images.backgroundHeaderWeatherView)
+              Image(weatherVM.weatherCurrent.icon == WeatherIcon.clearDay.rawValue ? Images.sunnyBackgroundHeaderView : Images.cloudyBackgroundHeaderView)
                     .resizable()
                     .ignoresSafeArea()
                     .frame(height: 290)
@@ -25,7 +25,6 @@ struct HeaderWeatherView: View {
                     HStack {
                         Text(LocalizedStringKey(weatherVM.weatherCurrent.cityName))
                             .font(.largeTitle)
-                            .tracking(0.37)
                         Spacer()
                         Button {
                             citiesVM.getCitiesFromAppStorage()

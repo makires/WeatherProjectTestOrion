@@ -92,11 +92,8 @@ struct CityRowView: View {
                 Text(weather.windKph) + Text(Localization.kmH.localized)
             }
             Spacer()
-            HStack {
                 Text(weather.minTemperatureCelcius + " / " + weather.maxTemperatureCelcius)
-                    .tracking(-0.32)
-            }
-            .fontDescriptionWeatherRowListCities()
+                .minTemperatureText()
         }
         .padding(.horizontal, MagicNumber.x2)
         .padding(.bottom, MagicNumber.x3)

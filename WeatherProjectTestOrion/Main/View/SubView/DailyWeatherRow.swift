@@ -17,14 +17,10 @@ struct DailyWeatherRow: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: MagicNumber.x1) {
-                Text(dailyForecast.dateEpoch.formattedDay)
-                    .tracking(-0.08)
-                    .fontDateWeather()
-                    .foregroundColor(.subText)
+              Text(dailyForecast.dateEpoch.formattedDay)
+                .dateText()
                 Text(dailyForecast.dateEpoch.formattedNameDay)
-                    .tracking(-0.41)
-                    .foregroundColor(.mainText)
-                    .fontNameDateWeather()
+                    .nameDayText()
             }
             Spacer()
             LazyVGrid(columns: gridItems) {
@@ -33,15 +29,10 @@ struct DailyWeatherRow: View {
                     .foregroundStyle(
                         dailyForecast.day.condition.iconName == WeatherIcon.clearDay.rawValue ? .yellow : .blue)
                     .font(.system(size: 17))
-                // MARK: - через модификатор все tracking"
                 Text(dailyForecast.day.maxTemperatureCelcius.temperatureConverter)
-                    .tracking(0.35)
-                    .foregroundColor(.mainText)
-                    .fontDailyWeatherRow()
+                .maxTemperatureText()
                 Text(dailyForecast.day.minTemperatureCelcius.temperatureConverter)
-                    .tracking(-0.32)
-                    .foregroundColor(.subText)
-                    .fontDescriptionWeatherRowListCities()
+                .minTemperatureText()
             }
         }
         .padding(.vertical, MagicNumber.x2)

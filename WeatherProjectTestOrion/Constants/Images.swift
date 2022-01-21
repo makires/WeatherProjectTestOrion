@@ -8,6 +8,7 @@
 import Foundation
 
 enum Images {
-    public static let backgroundHeaderWeatherView = "cloudyBackground"
+    public static let cloudyBackgroundHeaderView = "cloudyBackground"
+    public static let sunnyBackgroundHeaderView = "sunnyBackground"
     public static let imageMapPin = "mappin"
 }

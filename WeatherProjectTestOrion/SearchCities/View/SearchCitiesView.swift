@@ -32,8 +32,7 @@ struct SearchCitiesView: View {
                     VStack {
                         HStack {
                             Text(Localization.popularCities.localized)
-                                .tracking(-0.41)
-                                .fontPopulareCities()
+                                .popularCitiesText()
                             Spacer()
                         }
                     }
