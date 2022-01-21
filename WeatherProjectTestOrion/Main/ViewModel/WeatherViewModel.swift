@@ -24,25 +24,19 @@ import SwiftUI
         await getDailyWeather(for: currentCity, locale: locale.languageResponse)
     }
     func getCurrentWeather(for city: String, locale: String) async {
-        guard let currentWeather = await weatherService.fetchCurrentWeather(for: city,
-                                                                               locale: locale.languageResponse) else {
-            print("текущая погода MainView is failed.")
-            return
-        }
+        guard let currentWeather =
+                await weatherService.fetchCurrentWeather(
+                    for: city, locale:
+                        locale.languageResponse)
+        else { return }
         self.weatherCurrent = Weather(response: currentWeather)
     }
     func getHourlyWeather(for city: String, locale: String) async {
-        guard let hourlyWeather = await weatherService.fetchHourlyWeather(for: city, locale: locale) else {
-            print("часовой прогноз MainView is failed.")
-            return
-        }
+        guard let hourlyWeather = await weatherService.fetchHourlyWeather(for: city, locale: locale) else { return }
         self.weatherHourlyCurrent = HourlyCurrentWeather(response: hourlyWeather)
     }
     func getDailyWeather(for city: String, locale: String) async {
-        guard let dailyWeather = await weatherService.fetchDailyWeather(for: city, locale: locale) else {
-            print("прогноз по дням MainView is failed.")
-            return
-        }
+        guard let dailyWeather = await weatherService.fetchDailyWeather(for: city, locale: locale) else { return }
         self.weatherDailyForecast = DailyForecats(response: dailyWeather)
     }
 }

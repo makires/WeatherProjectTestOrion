@@ -28,7 +28,8 @@ import SwiftUI
                     guard let apiCurrentWeatherModel = await apiCurrentWeatherModel,
                           let apiForecastWeatherModel = await apiForecastWeatherModel else {
                               return Weather() }
-                    let newWeather = Weather(responseWeather: apiCurrentWeatherModel, responseForecast: apiForecastWeatherModel)
+                    let newWeather = Weather(responseWeather: apiCurrentWeatherModel,
+                                             responseForecast: apiForecastWeatherModel)
                     return newWeather
                 }
             }
@@ -45,14 +46,11 @@ import SwiftUI
         let decoder = JSONDecoder()
         if let citiesFromAppStorage = try? decoder.decode([String].self, from: citiesData) {
             citiesList = citiesFromAppStorage
-            print("раскодировали список городов: \(citiesList) и опубликовали")
         }
     }
     func encodeCitiesToStorage(nameCity: String) {
         let decoder = JSONDecoder()
-        guard var citiesFromAppStorage = try? decoder.decode([String].self, from: citiesData) else {
-            print("не удалось раскодировать хранилище городов")
-            return }
+        guard var citiesFromAppStorage = try? decoder.decode([String].self, from: citiesData) else { return }
         if !citiesFromAppStorage.contains(nameCity) {
             citiesFromAppStorage.append(nameCity)
             guard let encodedCities = citiesFromAppStorage.encodeArray() else { return }
@@ -63,10 +61,7 @@ import SwiftUI
         if let firstIndex = citiesList.firstIndex(of: cityName) {
             let cityForRemoveName: String = citiesList[firstIndex]
             citiesList.remove(at: firstIndex)
-            guard let newCitiesList = citiesList.encodeArray() else {
-                print("не удалось закодировать новый список городов")
-                return
-            }
+            guard let newCitiesList = citiesList.encodeArray() else { return }
             citiesData = newCitiesList
             if let index = arrayWeather.firstIndex(where: { weather in
                 cityForRemoveName == weather.cityName
