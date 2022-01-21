@@ -9,41 +9,40 @@ import Foundation
 import SwiftUI
 
 @MainActor class WeatherViewModel: ObservableObject {
-  @AppStorage("currentCity") var currentCity = "Nizhny Novgorod"
-  @Environment(\.locale.identifier) var locale
-  @EnvironmentObject var citiesVM: CitiesListViewModel
-  @Published var weatherCurrent = Weather()
-  @Published var weatherHourlyCurrent = HourlyCurrentWeather()
-  @Published var weatherDailyForecast = DailyForecats()
-  let weatherService: WeatherRepositoryProtocol
-  init(weatherService: WeatherRepositoryProtocol) {
-    self.weatherService = weatherService
-  }
-  func getAllWeather() async {
-    await getCurrentWeather(for: currentCity, locale: locale.languageResponse)
-    await getHourlyWeather(for: currentCity, locale: locale.languageResponse)
-    await getDailyWeather(for: currentCity, locale: locale.languageResponse)
-  }
-  func getCurrentWeather(for city: String, locale: String) async {
-    guard let currentWeather = await weatherService.fetchCurrentWeather(for: city,
-                                                                           locale: locale.languageResponse) else {
-      print("текущая погода MainView is failed.")
-      return
+    @AppStorage("currentCity") var currentCity = "Nizhny Novgorod"
+    @Environment(\.locale.identifier) var locale
+    @Published var weatherCurrent = Weather()
+    @Published var weatherHourlyCurrent = HourlyCurrentWeather()
+    @Published var weatherDailyForecast = DailyForecats()
+    let weatherService: WeatherRepositoryProtocol
+    init(weatherService: WeatherRepositoryProtocol) {
+        self.weatherService = weatherService
     }
-    self.weatherCurrent = Weather(response: currentWeather)
-  }
-  func getHourlyWeather(for city: String, locale: String) async {
-    guard let hourlyWeather = await weatherService.fetchHourlyWeather(for: city, locale: locale) else {
-      print("часовой прогноз MainView is failed.")
-      return
+    func getAllWeather() async {
+        await getCurrentWeather(for: currentCity, locale: locale.languageResponse)
+        await getHourlyWeather(for: currentCity, locale: locale.languageResponse)
+        await getDailyWeather(for: currentCity, locale: locale.languageResponse)
     }
-    self.weatherHourlyCurrent = HourlyCurrentWeather(response: hourlyWeather)
-  }
-  func getDailyWeather(for city: String, locale: String) async {
-    guard let dailyWeather = await weatherService.fetchDailyWeather(for: city, locale: locale) else {
-      print("прогноз по дням MainView is failed.")
-      return
+    func getCurrentWeather(for city: String, locale: String) async {
+        guard let currentWeather = await weatherService.fetchCurrentWeather(for: city,
+                                                                               locale: locale.languageResponse) else {
+            print("текущая погода MainView is failed.")
+            return
+        }
+        self.weatherCurrent = Weather(response: currentWeather)
     }
-    self.weatherDailyForecast = DailyForecats(response: dailyWeather)
-  }
+    func getHourlyWeather(for city: String, locale: String) async {
+        guard let hourlyWeather = await weatherService.fetchHourlyWeather(for: city, locale: locale) else {
+            print("часовой прогноз MainView is failed.")
+            return
+        }
+        self.weatherHourlyCurrent = HourlyCurrentWeather(response: hourlyWeather)
+    }
+    func getDailyWeather(for city: String, locale: String) async {
+        guard let dailyWeather = await weatherService.fetchDailyWeather(for: city, locale: locale) else {
+            print("прогноз по дням MainView is failed.")
+            return
+        }
+        self.weatherDailyForecast = DailyForecats(response: dailyWeather)
+    }
 }

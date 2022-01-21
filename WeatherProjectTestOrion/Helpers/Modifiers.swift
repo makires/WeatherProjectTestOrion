@@ -8,105 +8,121 @@
 import SwiftUI
 
 struct TitleCity: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .font(.system(size: 80, weight: .thin))
-  }
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 80, weight: .thin))
+    }
 }
 struct TitleCitySheet: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .font(.system(size: 17, weight: .regular))
-  }
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 17, weight: .regular))
+    }
 }
 struct CurrentIcon: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .font(.system(size: 78))
-  }
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 78))
+    }
 }
 struct PopularCities: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .font(.system(size: 17, weight: .semibold))
-  }
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 17, weight: .semibold))
+    }
 }
 struct BackMainViewButton: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .foregroundColor(.black)
-      .font(.system(size: 18))
-  }
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(.black)
+            .font(.system(size: 18))
+    }
 }
 struct EditListCitiesButton: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .foregroundColor(.black)
-      .font(.system(size: 16))
-  }
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(.black)
+            .font(.system(size: 16))
+    }
 }
 struct DescriptionConditionWeather: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .font(.system(size: 12, weight: .regular))
-  }
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 12, weight: .regular))
+    }
 }
 struct DateWeather: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .font(.system(size: 13, weight: .regular))
-  }
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 13, weight: .regular))
+    }
 }
 struct NameDateWeather: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .font(.system(size: 17, weight: .regular))
-  }
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 17, weight: .regular))
+    }
 }
 struct DailyWeatherRowModifier: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .font(.system(size: 22, weight: .regular))
-  }
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 22, weight: .regular))
+    }
 }
 struct TemperatureCurrentRowListCities: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .font(.system(size: 34, weight: .regular))
-  }
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 34, weight: .regular))
+    }
 
 }
 struct TemperatureCurrentForSheetCity: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .font(.system(size: 34, weight: .regular))
-  }
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 34, weight: .regular))
+    }
 
 }
 struct IconCurrentWeatherForSheetCity: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .font(.system(size: 24, weight: .regular))
-  }
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 24, weight: .regular))
+    }
 
 }
 struct DescriptionWeatherRowListCities: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .font(.system(size: 16, weight: .regular))
-  }
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 16, weight: .regular))
+    }
 }
 struct PopularCitiesStyle: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .font(.footnote)
-      .lineSpacing(18)
-      .padding(.horizontal, .s6)
-      .padding(.vertical, .main)
-      .background(Color.popularCityBackground)
-      .cornerRadius(.x2)
-      .overlay(
-        RoundedRectangle(cornerRadius: .x2)
-          .stroke(Color.popularCitiesOverlay, lineWidth: 1))
-  }
+    func body(content: Content) -> some View {
+        content
+            .font(.footnote)
+            .lineSpacing(18)
+            .padding(.horizontal, MagicNumber.x3)
+            .padding(.vertical, MagicNumber.x2)
+            .background(Color.popularCityBackground)
+            .cornerRadius(MagicNumber.x4)
+            .overlay(
+                RoundedRectangle(cornerRadius: MagicNumber.x4)
+                    .stroke(Color.popularCitiesOverlay, lineWidth: 1))
+    }
+}
+struct CurrentLocationButtonStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .symbolRenderingMode(.palette)
+            .foregroundStyle(.black, .white)
+            .shadow(radius: MagicNumber.x05)
+    }
+}
+struct CapsuleStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .frame(width: 36, height: 5)
+            .padding(.top, MagicNumber.x2)
+    }
 }
