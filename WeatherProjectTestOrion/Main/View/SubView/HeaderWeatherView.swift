@@ -15,7 +15,8 @@ struct HeaderWeatherView: View {
     var body: some View {
         ZStack {
             GeometryReader { _ in
-              Image(weatherVM.weatherCurrent.icon == WeatherIcon.clearDay.rawValue ? Images.sunnyBackgroundHeaderView : Images.cloudyBackgroundHeaderView)
+              Image(weatherVM.weatherCurrent.icon == WeatherIcon.clearDay.rawValue
+                    ? Images.sunnyBackgroundHeaderView : Images.cloudyBackgroundHeaderView)
                     .resizable()
                     .ignoresSafeArea()
                     .frame(height: 290)

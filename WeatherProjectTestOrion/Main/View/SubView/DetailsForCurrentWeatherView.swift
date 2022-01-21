@@ -26,6 +26,7 @@ struct HourlyCurrentWeatherView: View {
                 VStack {
                     Text(Localization.now.localized)
                     Image(systemName: hourlyCurrentWeather.hours.first?.condition.iconName ?? "")
+                        .foregroundColor(.white)
                         .frame(width: 22, height: 22)
                         .padding(.vertical, MagicNumber.x1)
                     Text(hourlyCurrentWeather.hours.first?.temperatureCelcius.temperatureConverter ?? "")
@@ -34,6 +35,7 @@ struct HourlyCurrentWeatherView: View {
                     VStack {
                         Text("\(hourItem.timeEpoch.formattedHour)")
                         Image(systemName: hourItem.condition.iconName)
+                            .foregroundColor(.white)
                             .frame(width: 22, height: 22)
                             .padding(.vertical, MagicNumber.x1)
                         Text(hourItem.temperatureCelcius.temperatureConverter)
