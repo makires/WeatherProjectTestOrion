@@ -142,11 +142,12 @@ struct SearchCitiesOnMapView: View {
                 Spacer()
             }
         }
+        .alert(item: $mapVM.showAlertData) { _ in
+          Alert(title: Text(mapVM.showAlertData!.title))
+        }
     }
 }
-
-struct SearchCitiesOnMapView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchCitiesOnMapView()
-    }
+struct AlertData: Identifiable {
+  var id = UUID()
+  let title: String
 }

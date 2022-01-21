@@ -12,12 +12,10 @@ import SwiftUI
 // Weatherapi.com
 
 struct WeatherService: WeatherRepositoryProtocol, WeatherRepositoryCoordinatesProtocol {
-    
     private let keyAPI = "5bfb01e8559d40ac92672846211712"
     private let baseURL = "https://api.weatherapi.com/v1"
     private let currentWeatherAPIMethod = "/current.json?"
     private let forecastWeatherAPIMethod = "/forecast.json"
-    
     func fetchCurrentWeatherByCoordinates(for city: String,
                                           locale: String) async -> APICurrentWeatherModel? {
         let url = baseURL + currentWeatherAPIMethod
@@ -54,7 +52,6 @@ struct WeatherService: WeatherRepositoryProtocol, WeatherRepositoryCoordinatesPr
             return nil
         }
     }
-    
     func fetchHourlyWeather(for city: String,
                             locale: String) async -> APIForecastWeatherModel? {
         let url = baseURL + forecastWeatherAPIMethod

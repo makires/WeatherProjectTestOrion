@@ -35,7 +35,6 @@ struct APICurrentWeather: Decodable {
     let feelsLikeTemperature: Double
     let isDay: Int
     let condition: ConditionWeather
-    
     enum CodingKeys: String, CodingKey {
         case temperatureCurrent = "temp_c"
         case pressureHPa = "pressure_mb"
