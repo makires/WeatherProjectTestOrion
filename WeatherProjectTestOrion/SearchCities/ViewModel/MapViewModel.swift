@@ -61,7 +61,7 @@ enum MapDetails {
       self.coordinatesCityForNetwork = self.converterCoordinates(coordinate: place.coordinate)
     } catch {
       self.showAlert = true
-      self.showAlertData = AlertData(title: "Не удалось получить данные от геокодера, \(error)")
+      self.showAlertData = AlertData(title: Localization.geocoderError.localized + error.localizedDescription)
     }
     await getCurrentWeatherBy(coordinates: coordinatesCityForNetwork, locale: locale.identifier)
   }
@@ -71,8 +71,7 @@ enum MapDetails {
       locationManager!.delegate = self
     } else {
       self.showAlert = true
-      self.showAlertData = AlertData(title: "геолокация на устройстве отключена, зайдите в настройки")
-      print("Alert - геолокация на устройстве отключена, зайдите в настройки")
+      self.showAlertData = AlertData(title: Localization.locationOff.localized)
     }
   }
   private func checkLocationAuthorization() {
@@ -86,10 +85,10 @@ enum MapDetails {
       self.showAlert = true
       self.showAlertData = AlertData(
         title:
-          "Геолокация ограничена родительским контролем. Пройдите в настройки.")
+          Localization.errorRestricted.localized)
     case .denied:
       self.showAlert = true
-      self.showAlertData = AlertData(title: "Предоставьте доступк к геолокации, пройдите в настройки")
+      self.showAlertData = AlertData(title: Localization.errorDenied.localized)
     case .authorizedAlways, .authorizedWhenInUse:
       coordinateRegion = MKCoordinateRegion(
         center: getCurrentLocationForAuthorization(locationManager: locationManager),
@@ -117,6 +116,6 @@ enum MapDetails {
     }
   }
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-    print("Ошибка - Failed to find user's location", error.localizedDescription)
+    print(" - Failed to find user's location", error.localizedDescription)
   }
 }

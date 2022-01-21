@@ -26,6 +26,11 @@ enum Localization: String {
     // MARK: - Buttons
     case cancel = "CANCEL"
     case add = "ADD"
+  
+  case errorDenied = "CHECK AUTHORIZATION"
+  case errorRestricted = "CHECK PARENT CONTROL"
+  case locationOff = "LOCATION OFF"
+  case geocoderError = "GEOCODER ERROR"
 }
 extension Localization {
     var localized: String {
