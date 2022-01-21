@@ -10,6 +10,7 @@ import SwiftUI
 struct DailyWeatherListView: View {
     @Binding var isScrolled: Bool
     @EnvironmentObject var weatherVM: WeatherViewModel
+  @Environment(\.colorScheme) var colorScheme
     var body: some View {
         ScrollView {
             ZStack {
@@ -17,9 +18,10 @@ struct DailyWeatherListView: View {
                     ForEach(weatherVM.weatherDailyForecast.days, id: \.id) { day in
                         DailyWeatherRow(dailyForecast: day)
                         Divider()
+                        .foregroundColor(.primary)
                     }
                 }
-                .background(.white)
+                .background(colorScheme == .dark ? .black : .white)
                 GeometryReader { geometry in
                     Color.clear
                         .preference(key: OffsetPreferenceKey.self, value: geometry.frame(in: .named("SCROLL")).origin.y)

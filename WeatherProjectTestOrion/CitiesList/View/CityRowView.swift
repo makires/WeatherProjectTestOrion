@@ -40,7 +40,7 @@ struct CityRowView: View {
                 }
                 .padding(.bottom, -MagicNumber.x2)
                 Divider()
-                    .padding(.horizontal, MagicNumber.x2)
+                .padding(.horizontal, MagicNumber.x2)
                 descriptionWeather
             }
         }
@@ -64,7 +64,7 @@ struct CityRowView: View {
             HStack {
                 Text(weather.region + ", " + weather.country)
             }
-            .foregroundColor(.subText)
+            .foregroundColor(.secondary)
             .fontDesciprionConditionWeather()
         }
         .padding(EdgeInsets(top: MagicNumber.x2, leading: MagicNumber.x2, bottom: MagicNumber.x2, trailing: .zero))
@@ -93,11 +93,12 @@ struct CityRowView: View {
             }
             Spacer()
                 Text(weather.minTemperatureCelcius + " / " + weather.maxTemperatureCelcius)
-                .minTemperatureText()
+//                .minTemperatureText()
+                .foregroundColor(.secondary)
         }
         .padding(.horizontal, MagicNumber.x2)
         .padding(.bottom, MagicNumber.x3)
         .fontDesciprionConditionWeather()
-        .foregroundColor(.subText)
+        .foregroundColor(.secondary)
     }
 }

@@ -12,7 +12,7 @@ extension Text {
   func dateText() -> some View {
     self
       .tracking(-0.08)
-      .foregroundColor(.subText)
+      .foregroundColor(.secondary)
       .modifier(DateWeather())
   }
   func nameDayText() -> some View {

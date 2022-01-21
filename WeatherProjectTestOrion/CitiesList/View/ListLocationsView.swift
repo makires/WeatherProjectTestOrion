@@ -36,7 +36,7 @@ struct ListLocationsView: View {
                         showAddCity.toggle()
                     } label: {
                         Label(Localization.addLocation.localized, systemImage: Icon.iconButtonAddLocation)
-                            .foregroundColor(.blue)
+                        .foregroundColor(.blue)
                     }
                     Spacer()
                 }

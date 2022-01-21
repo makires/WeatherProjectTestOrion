@@ -13,6 +13,7 @@ struct SheetBottomWeatherView: View {
     @Binding var showSheet: Bool
     @ObservedObject var mapVM: MapViewModel
     @State var isShowMainView = false
+  @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var weatherVM: WeatherViewModel
     @EnvironmentObject var citiesVM: CitiesListViewModel
     var buttonsCancelAdd: some View {
@@ -23,7 +24,7 @@ struct SheetBottomWeatherView: View {
             }, label: {
                 Text(Localization.cancel.localized)
             })
-                .foregroundColor(.buttonSheetCancel)
+                .foregroundColor(.secondary)//
             Button(action: {
                 guard let searchedCity = mapVM.annotationsMark.first?.name else { return }
                 weatherVM.currentCity = searchedCity
@@ -68,7 +69,7 @@ struct SheetBottomWeatherView: View {
                     .padding(.trailing, MagicNumber.x4)
             }
             .padding(.top, MagicNumber.x5)
-            .background(.white)
+            .background(colorScheme == .dark ? .black : .white)
         }
         .cornerRadius(MagicNumber.x2)
         .fullScreenCover(isPresented: $isShowMainView) {

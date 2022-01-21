@@ -34,14 +34,14 @@ struct PopularCities: ViewModifier {
 struct BackMainViewButton: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .foregroundColor(.black)
+            .foregroundColor(.primary)
             .font(.system(size: 18))
     }
 }
 struct EditListCitiesButton: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .foregroundColor(.black)
+            .foregroundColor(.primary)
             .font(.system(size: 16))
     }
 }

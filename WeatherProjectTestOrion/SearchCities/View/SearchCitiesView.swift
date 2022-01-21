@@ -27,6 +27,7 @@ struct SearchCitiesView: View {
                 .padding(.trailing, MagicNumber.x4)
                 .padding(.leading, MagicNumber.x2)
             Divider()
+            .foregroundColor(.primary)
             if !isEditing {
                 Group {
                     VStack {
@@ -71,12 +72,13 @@ struct SearchCitiesView: View {
                     }
                     .padding(.vertical, MagicNumber.x4)
                     Divider()
+                    .foregroundColor(.primary)
                     HStack {
                         Button {
                             showMap.toggle()
                         } label: {
                             Text(Localization.showMap.localized)
-                                .foregroundColor(.showMap)
+                                .foregroundColor(.currentLocation)
                         }
                         .fullScreenCover(isPresented: $showMap) {
                             SearchCitiesOnMapView()
