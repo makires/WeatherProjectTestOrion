@@ -24,8 +24,7 @@ struct SearchCitiesView: View {
             SearchFieldView(
                 searchCity: $searchCity,
                 isEditing: $isEditing)
-                .padding(.trailing, MagicNumber.x4)
-                .padding(.leading, MagicNumber.x2)
+            .padding(.horizontal, MagicNumber.x4)
             Divider()
             .foregroundColor(.primary)
             if !isEditing {

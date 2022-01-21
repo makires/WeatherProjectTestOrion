@@ -67,8 +67,7 @@ struct SearchCitiesOnMapView: View {
             Text(Localization.locations.localized)
             Spacer()
         }
-        .padding(.leading, MagicNumber.x2)
-        .padding(.trailing, MagicNumber.x4)
+      .padding(.horizontal, MagicNumber.x4)
     }
     var mapView: some View {
         ZStack(alignment: .trailing) {
