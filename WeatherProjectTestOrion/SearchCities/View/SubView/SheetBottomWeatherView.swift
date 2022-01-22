@@ -13,7 +13,7 @@ struct SheetBottomWeatherView: View {
     @Binding var showSheet: Bool
     @ObservedObject var mapVM: MapViewModel
     @State var isShowMainView = false
-  @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var weatherVM: WeatherViewModel
     @EnvironmentObject var citiesVM: CitiesListViewModel
     var buttonsCancelAdd: some View {
@@ -24,7 +24,7 @@ struct SheetBottomWeatherView: View {
             }, label: {
                 Text(Localization.cancel.localized)
             })
-                .foregroundColor(.secondary)//
+                .foregroundColor(.secondary)
             Button(action: {
                 guard let searchedCity = mapVM.annotationsMark.first?.name else { return }
                 weatherVM.currentCity = searchedCity
@@ -61,19 +61,21 @@ struct SheetBottomWeatherView: View {
     var body: some View {
         GeometryReader { _ in
             VStack {
-                weatherElements
-                    .padding(.horizontal, MagicNumber.x4)
-                buttonsCancelAdd
-                    .padding(.top, MagicNumber.x6)
-                    .padding(.bottom, MagicNumber.x16)
-                    .padding(.trailing, MagicNumber.x4)
+              Capsule()
+                  .fill(Color.gray)
+                  .capsuleStyle()
+              weatherElements
+                .padding(.horizontal, MagicNumber.x4)
+              buttonsCancelAdd
+                .padding(.top, MagicNumber.x6)
+                .padding(.bottom, MagicNumber.x16)
+                .padding(.trailing, MagicNumber.x4)
             }
-            .padding(.top, MagicNumber.x5)
-            .background(colorScheme == .dark ? .black : .white)
-        }
+          }
+        .background(colorScheme == .dark ? .black : .white)
         .cornerRadius(MagicNumber.x2)
         .fullScreenCover(isPresented: $isShowMainView) {
-            MainView()
+          MainView()
         }
     }
 }

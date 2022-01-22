@@ -225,6 +225,15 @@
 			path = SubView;
 			sourceTree = "<group>";
 		};
+		BCA9C71D279C32C0008BDBBE /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				C6006035278EF9BF008E8D36 /* SearchCitiesOnMapView.swift */,
+				BCE3432F279589E00070A85E /* SheetBottomWeatherView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
 		BCE240662785AA1500BDE7D6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,9 +266,8 @@
 		C6006032278EE4C9008E8D36 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BCA9C71D279C32C0008BDBBE /* SubView */,
 				C6006030278EE4BE008E8D36 /* SearchCitiesView.swift */,
-				C6006035278EF9BF008E8D36 /* SearchCitiesOnMapView.swift */,
-				BCE3432F279589E00070A85E /* SheetBottomWeatherView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
