@@ -88,14 +88,15 @@ struct IconCurrentWeatherForSheetCity: ViewModifier {
         content
             .font(.system(size: 24, weight: .regular))
     }
-
 }
+
 struct DescriptionWeatherRowListCities: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 16, weight: .regular))
     }
 }
+
 struct PopularCitiesStyle: ViewModifier {
     func body(content: Content) -> some View {
         content

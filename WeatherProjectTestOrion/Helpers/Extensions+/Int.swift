@@ -43,6 +43,7 @@ extension Int {
         }
     }
 }
+
 extension Int {
     var relativeFormatted: String {
         let formatter = RelativeDateTimeFormatter()

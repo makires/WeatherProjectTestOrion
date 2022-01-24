@@ -10,8 +10,7 @@ import SwiftUI
 struct CityRowView: View {
     var cityName: String
     var weather: Weather
-    let gridItems = [
-        GridItem()]
+    let gridItems = [GridItem()]
     @Binding var editListCities: Bool
     @EnvironmentObject var citiesVM: CitiesListViewModel
     @EnvironmentObject var weatherVM: WeatherViewModel
@@ -50,6 +49,7 @@ struct CityRowView: View {
         .padding(.horizontal, MagicNumber.x4)
         .padding(.vertical, MagicNumber.x1)
     }
+    // subviews folder
     var cityAndRegionName: some View {
         VStack(alignment: .leading, spacing: MagicNumber.x05) {
             HStack {
@@ -75,22 +75,24 @@ struct CityRowView: View {
             Image(systemName: weather.icon)
                 .font(.title)
                 .foregroundColor(weather.icon == WeatherIcon.clearDay.rawValue ? .yellow : .iconWeatherCityRow)
-                .frame(width: 44, height: 44)
+            Spacer()
+            // TODO: - frames
+//                .frame(width: 44, height: 44)
             Text(weather.temperatureCurrent)
         }
-        .frame(width: 120, alignment: .leading)
+        .frame(maxWidth: 120, alignment: .leading)
         .fontCurrentTemperatureRowListCities()
         .padding(.trailing, MagicNumber.x1)
     }
     var descriptionWeather: some View {
         HStack {
-            HStack {
+//            HStack {
                 Text(Localization.humidity.localized)
                 Text(weather.humidity + "%" + " |")
                 Text(LocalizedStringKey(weather.windDirection))
                 Text("|")
                 Text(weather.windKph) + Text(Localization.kmH.localized)
-            }
+//            }
             Spacer()
                 Text(weather.minTemperatureCelcius + " / " + weather.maxTemperatureCelcius)
 //                .minTemperatureText()

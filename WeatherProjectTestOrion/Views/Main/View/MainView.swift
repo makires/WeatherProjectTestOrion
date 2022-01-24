@@ -14,6 +14,7 @@ struct MainView: View {
         VStack(spacing: .zero) {
             HeaderWeatherView(
                 isScrolled: $isScrolled)
+            // constants 
                 .frame(height: isScrolled ? 180 : 280)
                 .animation(.easeOut(duration: 0.3), value: isScrolled)
             DailyWeatherListView(

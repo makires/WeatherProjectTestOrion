@@ -13,6 +13,7 @@ struct DailyForecats {
 extension DailyForecats {
     init(response: APIForecastWeatherModel) {
         days = response.forecast.forecastday
+        //random days 
         for _ in 0..<10 {
             days.append(
                 Forecastday(

@@ -42,12 +42,14 @@ import SwiftUI
             }
         })
     }
+
     func getCitiesFromAppStorage() {
         let decoder = JSONDecoder()
         if let citiesFromAppStorage = try? decoder.decode([String].self, from: citiesData) {
             citiesList = citiesFromAppStorage
         }
     }
+
     func encodeCitiesToStorage(nameCity: String) {
         let decoder = JSONDecoder()
         guard var citiesFromAppStorage = try? decoder.decode([String].self, from: citiesData) else { return }
@@ -57,6 +59,7 @@ import SwiftUI
             citiesData = encodedCities
         }
     }
+    
     func remove(cityName: String) {
         if let firstIndex = citiesList.firstIndex(of: cityName) {
             let cityForRemoveName: String = citiesList[firstIndex]

@@ -17,7 +17,7 @@ struct DetailsForCurrentWeatherView: View {
         }
     }
 }
-
+// separate view
 struct HourlyCurrentWeatherView: View {
     var hourlyCurrentWeather: HourlyCurrentWeather
     var body: some View {
@@ -27,6 +27,7 @@ struct HourlyCurrentWeatherView: View {
                     Text(Localization.now.localized)
                     Image(systemName: hourlyCurrentWeather.hours.first?.condition.iconName ?? "")
                         .foregroundColor(.white)
+                    //проверить числа можно ли убрать
                         .frame(width: 22, height: 22)
                         .padding(.vertical, MagicNumber.x1)
                     Text(hourlyCurrentWeather.hours.first?.temperatureCelcius.temperatureConverter ?? "")
@@ -45,7 +46,7 @@ struct HourlyCurrentWeatherView: View {
         }
     }
 }
-
+// отдельная вью
 struct MeteorologicalDataView: View {
     let weather: Weather
     var body: some View {

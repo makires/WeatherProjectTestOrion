@@ -11,8 +11,8 @@ import SwiftUI
 struct WeatherProjectTestOrionApp: App {
   var body: some Scene {
     WindowGroup {
-//      MainView()
-      SearchCitiesOnMapView()
+      MainView()
+//      SearchCitiesOnMapView()
         .environmentObject(WeatherViewModel(weatherService: WeatherService()))
         .environmentObject(CitiesListViewModel(weatherService: WeatherService()))
     }

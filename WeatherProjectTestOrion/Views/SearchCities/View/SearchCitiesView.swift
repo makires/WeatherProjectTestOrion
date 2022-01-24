@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchCitiesView: View {
+    // into view model
     func changeCurrentCity(city: String) {
         weatherVM.currentCity = city
         citiesVM.encodeCitiesToStorage(nameCity: city)
@@ -27,6 +28,7 @@ struct SearchCitiesView: View {
             .padding(.horizontal, MagicNumber.x4)
             Divider()
             .foregroundColor(.primary)
+            // seprate subview for popular cities
             if !isEditing {
                 Group {
                     VStack {
@@ -51,6 +53,7 @@ struct SearchCitiesView: View {
                             .onTapGesture {
                                 isShowMainView.toggle()
                             }
+                            // числа вынести в константы в шапку
                             ForEach(0..<2, id: \.self) { index in
                                 Text(LocalizedStringKey( PopularCitiesStorage.storage[index] ))
                                     .popularCitiesStyle()
@@ -104,6 +107,7 @@ struct SearchCitiesView: View {
         }
     }
 }
+// в отдельный файл в сабвью папку
 struct SearchFieldView: View {
     @Binding var searchCity: String
     @Binding var isEditing: Bool

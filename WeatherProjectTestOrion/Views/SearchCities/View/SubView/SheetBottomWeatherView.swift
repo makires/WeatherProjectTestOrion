@@ -16,6 +16,7 @@ struct SheetBottomWeatherView: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var weatherVM: WeatherViewModel
     @EnvironmentObject var citiesVM: CitiesListViewModel
+    // subviews
     var buttonsCancelAdd: some View {
         HStack(spacing: MagicNumber.x8) {
             Spacer()

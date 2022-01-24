@@ -11,12 +11,15 @@ extension View {
     func fontTitleCity() -> some View {
         modifier(TitleCity())
     }
+
     func fontTitleCitySheet() -> some View {
         modifier(TitleCitySheet())
     }
+
     func fontCurrentIcon() -> some View {
         modifier(CurrentIcon())
     }
+    
     func fontDesciprionConditionWeather() -> some View {
         modifier(DescriptionConditionWeather())
     }

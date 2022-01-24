@@ -28,7 +28,6 @@ struct DailyWeatherRow: View {
                 Image(systemName: dailyForecast.day.condition.iconName)
                     .foregroundStyle(
                         dailyForecast.day.condition.iconName == WeatherIcon.clearDay.rawValue ? .yellow : .blue)
-                    .font(.system(size: 17))
                 Text(dailyForecast.day.maxTemperatureCelcius.temperatureConverter)
                 .maxTemperatureText()
                 Text(dailyForecast.day.minTemperatureCelcius.temperatureConverter)

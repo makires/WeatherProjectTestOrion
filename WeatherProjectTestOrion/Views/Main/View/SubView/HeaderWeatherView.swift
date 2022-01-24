@@ -19,6 +19,7 @@ struct HeaderWeatherView: View {
                     ? Images.sunnyBackgroundHeaderView : Images.cloudyBackgroundHeaderView)
                     .resizable()
                     .ignoresSafeArea()
+                //constants
                     .frame(height: 290)
             }
             GeometryReader { _ in
@@ -56,4 +57,3 @@ struct HeaderWeatherView: View {
         }
     }
 }
-

@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftUI
-
+// separate to folders
 struct APICurrentWeatherModel: Decodable {
     let location: Location
     let current: APICurrentWeather

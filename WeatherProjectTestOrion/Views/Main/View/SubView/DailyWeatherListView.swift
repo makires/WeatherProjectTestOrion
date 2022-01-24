@@ -10,7 +10,7 @@ import SwiftUI
 struct DailyWeatherListView: View {
     @Binding var isScrolled: Bool
     @EnvironmentObject var weatherVM: WeatherViewModel
-  @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         ScrollView {
             ZStack {
@@ -18,7 +18,7 @@ struct DailyWeatherListView: View {
                     ForEach(weatherVM.weatherDailyForecast.days, id: \.id) { day in
                         DailyWeatherRow(dailyForecast: day)
                         Divider()
-                        .foregroundColor(.primary)
+                            .foregroundColor(.primary)
                     }
                 }
                 .background(colorScheme == .dark ? .black : .white)
