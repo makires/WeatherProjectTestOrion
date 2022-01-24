@@ -12,6 +12,7 @@ import SwiftUI
 
 @MainActor class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
+    let weatherService: WeatherRepositoryCoordinatesProtocol
     @Published var showAlertData: AlertData?
     @Published var showAlert = false
     @Published var coordinateRegion = MKCoordinateRegion(
@@ -22,7 +23,7 @@ import SwiftUI
     @Published var nameCityForSheet = ""
     @Published var weatherCurrentForSheet = Weather()
     @Environment(\.locale) var locale
-    let weatherService: WeatherRepositoryCoordinatesProtocol
+
     init(weatherService: WeatherRepositoryCoordinatesProtocol) {
         self.weatherService = weatherService
     }

@@ -7,6 +7,8 @@
 
 import SwiftUI
 struct MainView: View {
+    let minHeight: CGFloat = 180
+    let maxHeight: CGFloat = 280
     @State var isScrolled = false
     @EnvironmentObject var weatherVM: WeatherViewModel
     @EnvironmentObject var citiesVM: CitiesListViewModel
@@ -14,8 +16,7 @@ struct MainView: View {
         VStack(spacing: .zero) {
             HeaderWeatherView(
                 isScrolled: $isScrolled)
-            // constants 
-                .frame(height: isScrolled ? 180 : 280)
+                .frame(height: isScrolled ? minHeight : maxHeight)
                 .animation(.easeOut(duration: 0.3), value: isScrolled)
             DailyWeatherListView(
                 isScrolled: $isScrolled)

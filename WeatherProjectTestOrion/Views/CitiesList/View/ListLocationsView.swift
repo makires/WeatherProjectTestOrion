@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ListLocationsView: View {
-    @EnvironmentObject var citiesVM: CitiesListViewModel
-    @EnvironmentObject var weatherVM: WeatherViewModel
-    @Environment(\.presentationMode) var presentationMode
     @State var editList = false
     @State var showAddCity = false
     @State var showMainView = false
+    @EnvironmentObject var citiesVM: CitiesListViewModel
+    @EnvironmentObject var weatherVM: WeatherViewModel
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
         NavigationView {
             VStack {
@@ -36,7 +37,7 @@ struct ListLocationsView: View {
                         showAddCity.toggle()
                     } label: {
                         Label(Localization.addLocation.localized, systemImage: Icon.iconButtonAddLocation)
-                        .foregroundColor(.blue)
+                            .foregroundColor(.blue)
                     }
                     Spacer()
                 }

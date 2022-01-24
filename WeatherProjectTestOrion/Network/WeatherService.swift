@@ -9,8 +9,6 @@ import Foundation
 import Alamofire
 import SwiftUI
 
-// Weatherapi.com
-
 struct WeatherService: WeatherRepositoryProtocol, WeatherRepositoryCoordinatesProtocol {
 
     private let keyAPI = "5bfb01e8559d40ac92672846211712"
@@ -31,11 +29,9 @@ struct WeatherService: WeatherRepositoryProtocol, WeatherRepositoryCoordinatesPr
                 .validate()
                 .serializingDecodable(APICurrentWeatherModel.self).value
             return weather
-        } catch {
-            print("погода вернулась nil")
-            return nil
-        }
+        } catch { return nil }
     }
+
     func fetchCurrentWeather(for city: String,
                              locale: String) async -> APICurrentWeatherModel? {
         let url = baseURL + currentWeatherAPIMethod
@@ -66,11 +62,9 @@ struct WeatherService: WeatherRepositoryProtocol, WeatherRepositoryCoordinatesPr
                 .validate()
                 .serializingDecodable(APIForecastWeatherModel.self).value
             return forecast
-        } catch {
-            print("погода вернулась nil")
-            return nil
-        }
+        } catch { return nil }
     }
+
     func fetchDailyWeather(for city: String,
                            locale: String) async -> APIForecastWeatherModel? {
         let url = baseURL + forecastWeatherAPIMethod
@@ -85,9 +79,6 @@ struct WeatherService: WeatherRepositoryProtocol, WeatherRepositoryCoordinatesPr
                 .validate()
                 .serializingDecodable(APIForecastWeatherModel.self).value
             return forecastDaily
-        } catch {
-            print("погода вернулась nil")
-            return nil
-        }
+        } catch { return nil }
     }
 }

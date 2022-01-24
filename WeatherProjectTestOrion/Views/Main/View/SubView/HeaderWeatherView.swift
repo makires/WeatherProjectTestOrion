@@ -12,6 +12,7 @@ struct HeaderWeatherView: View {
     @EnvironmentObject var citiesVM: CitiesListViewModel
     @State var showListCities = false
     @Binding var isScrolled: Bool
+    let heightBackground: CGFloat = 290
     var body: some View {
         ZStack {
             GeometryReader { _ in
@@ -19,8 +20,7 @@ struct HeaderWeatherView: View {
                     ? Images.sunnyBackgroundHeaderView : Images.cloudyBackgroundHeaderView)
                     .resizable()
                     .ignoresSafeArea()
-                //constants
-                    .frame(height: 290)
+                    .frame(height: heightBackground)
             }
             GeometryReader { _ in
                 VStack(spacing: MagicNumber.x4) {

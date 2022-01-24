@@ -8,12 +8,12 @@
 import Foundation
 
 extension Array where Element == String {
-  func encodeArray() -> Data? {
-    let encoder = JSONEncoder()
-    if let encoded = try? encoder.encode(self) {
-      return encoded
-    } else {
-      return nil
+    func encodeArray() -> Data? {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(self) {
+            return encoded
+        } else {
+            return nil
+        }
     }
-  }
 }

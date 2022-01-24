@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct CitiesStorage {
     static let citiesStorage = [
         "Moscow",

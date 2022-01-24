@@ -8,15 +8,17 @@
 import Foundation
 import SwiftUI
 @MainActor class CitiesListViewModel: ObservableObject {
+    let weatherService: WeatherRepositoryProtocol
     @Published var arrayWeather: [Weather] = []
     @Published var citiesList: [String] = []
     @Environment(\.locale.identifier) var locale
     @AppStorage("cities") var citiesData = [
         "Nizhny Novgorod"].encodeArray()!
-    let weatherService: WeatherRepositoryProtocol
+
     init(weatherService: WeatherRepositoryProtocol) {
         self.weatherService = weatherService
     }
+
     func getWeatherForCities() async {
         await withTaskGroup(of: Weather.self, body: { group in
             for city in citiesList {
@@ -59,7 +61,7 @@ import SwiftUI
             citiesData = encodedCities
         }
     }
-    
+
     func remove(cityName: String) {
         if let firstIndex = citiesList.firstIndex(of: cityName) {
             let cityForRemoveName: String = citiesList[firstIndex]

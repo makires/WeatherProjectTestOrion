@@ -23,6 +23,7 @@ struct Weather: Identifiable {
     var minTemperatureCelcius = ""
     var maxTemperatureCelcius = ""
 }
+
 extension Weather {
     init(response: APICurrentWeatherModel) {
         cityName = response.location.cityName
@@ -38,6 +39,7 @@ extension Weather {
         country = response.location.country
     }
 }
+
 extension Weather {
     init(responseWeather: APICurrentWeatherModel, responseForecast: APIForecastWeatherModel) {
         cityName = responseWeather.location.cityName

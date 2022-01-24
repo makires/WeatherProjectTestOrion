@@ -13,24 +13,28 @@ struct TitleCity: ViewModifier {
             .font(.system(size: 80, weight: .thin))
     }
 }
+
 struct TitleCitySheet: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 17, weight: .regular))
     }
 }
+
 struct CurrentIcon: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 78))
     }
 }
+
 struct PopularCities: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 17, weight: .semibold))
     }
 }
+
 struct BackMainViewButton: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -38,6 +42,7 @@ struct BackMainViewButton: ViewModifier {
             .font(.system(size: 18))
     }
 }
+
 struct EditListCitiesButton: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -45,30 +50,35 @@ struct EditListCitiesButton: ViewModifier {
             .font(.system(size: 16))
     }
 }
+
 struct DescriptionConditionWeather: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 12, weight: .regular))
     }
 }
+
 struct DateWeather: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 13, weight: .regular))
     }
 }
+
 struct NameDateWeather: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 17, weight: .regular))
     }
 }
+
 struct DailyWeatherRowModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 22, weight: .regular))
     }
 }
+
 struct TemperatureCurrentRowListCities: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -76,6 +86,7 @@ struct TemperatureCurrentRowListCities: ViewModifier {
     }
 
 }
+
 struct TemperatureCurrentForSheetCity: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -83,6 +94,7 @@ struct TemperatureCurrentForSheetCity: ViewModifier {
     }
 
 }
+
 struct IconCurrentWeatherForSheetCity: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -111,6 +123,7 @@ struct PopularCitiesStyle: ViewModifier {
                     .stroke(Color.popularCitiesOverlay, lineWidth: 1))
     }
 }
+
 struct CurrentLocationButtonStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -120,6 +133,7 @@ struct CurrentLocationButtonStyle: ViewModifier {
             .shadow(radius: MagicNumber.x05)
     }
 }
+
 struct CapsuleStyle: ViewModifier {
     func body(content: Content) -> some View {
         content

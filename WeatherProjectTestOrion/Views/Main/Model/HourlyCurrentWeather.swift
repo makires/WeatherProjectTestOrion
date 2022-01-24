@@ -24,6 +24,7 @@ struct HourlyCurrentWeather {
         return hoursForShow
     }
 }
+
 extension HourlyCurrentWeather {
     init(response: APIForecastWeatherModel) {
         hours = createCurrentHours(response: response)
