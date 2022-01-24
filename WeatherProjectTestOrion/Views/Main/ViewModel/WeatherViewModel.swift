@@ -10,7 +10,6 @@ import SwiftUI
 
 @MainActor class WeatherViewModel: ObservableObject {
     @AppStorage("currentCity") var currentCity = "Nizhny Novgorod"
-    @Environment(\.locale.identifier) var locale
     @Published var weatherCurrent = Weather()
     @Published var weatherHourlyCurrent = HourlyCurrentWeather()
     @Published var weatherDailyForecast = DailyForecats()
@@ -21,27 +20,26 @@ import SwiftUI
     }
 
     func getAllWeather() async {
-        await getCurrentWeather(for: currentCity, locale: locale.languageResponse)
-        await getHourlyWeather(for: currentCity, locale: locale.languageResponse)
-        await getDailyWeather(for: currentCity, locale: locale.languageResponse)
+        await getCurrentWeather(for: currentCity)
+        await getHourlyWeather(for: currentCity)
+        await getDailyWeather(for: currentCity)
     }
 
-    func getCurrentWeather(for city: String, locale: String) async {
+    func getCurrentWeather(for city: String) async {
         guard let currentWeather =
                 await weatherService.fetchCurrentWeather(
-                    for: city, locale:
-                        locale.languageResponse)
+                    for: city)
         else { return }
         self.weatherCurrent = Weather(response: currentWeather)
     }
 
-    func getHourlyWeather(for city: String, locale: String) async {
-        guard let hourlyWeather = await weatherService.fetchHourlyWeather(for: city, locale: locale) else { return }
+    func getHourlyWeather(for city: String) async {
+        guard let hourlyWeather = await weatherService.fetchHourlyWeather(for: city) else { return }
         self.weatherHourlyCurrent = HourlyCurrentWeather(response: hourlyWeather)
     }
 
-    func getDailyWeather(for city: String, locale: String) async {
-        guard let dailyWeather = await weatherService.fetchDailyWeather(for: city, locale: locale) else { return }
+    func getDailyWeather(for city: String) async {
+        guard let dailyWeather = await weatherService.fetchDailyWeather(for: city) else { return }
         self.weatherDailyForecast = DailyForecats(response: dailyWeather)
     }
 }

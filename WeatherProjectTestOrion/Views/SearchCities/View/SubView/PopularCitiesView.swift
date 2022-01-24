@@ -28,7 +28,7 @@ struct PopularCitiesView: View {
             VStack(alignment: .leading, spacing: MagicNumber.x4) {
                 HStack {
                     HStack {
-                        Text(weatherVM.currentCity)
+                        Text(LocalizedStringKey(weatherVM.currentCity))
                             .foregroundColor(.currentLocation)
                         Image(Images.imageMapPin)
                             .resizable()

@@ -8,11 +8,11 @@
 import Foundation
 
 protocol WeatherRepositoryProtocol {
-    func fetchCurrentWeather(for city: String, locale: String) async -> APICurrentWeatherModel?
-    func fetchHourlyWeather(for city: String, locale: String) async -> APIForecastWeatherModel?
-    func fetchDailyWeather(for city: String, locale: String) async -> APIForecastWeatherModel?
+    func fetchCurrentWeather(for city: String) async -> APICurrentWeatherModel?
+    func fetchHourlyWeather(for city: String) async -> APIForecastWeatherModel?
+    func fetchDailyWeather(for city: String) async -> APIForecastWeatherModel?
 }
 
 protocol WeatherRepositoryCoordinatesProtocol {
-    func fetchCurrentWeatherByCoordinates(for city: String, locale: String) async -> APICurrentWeatherModel?
+    func fetchCurrentWeatherByCoordinates(for city: String) async -> APICurrentWeatherModel?
 }

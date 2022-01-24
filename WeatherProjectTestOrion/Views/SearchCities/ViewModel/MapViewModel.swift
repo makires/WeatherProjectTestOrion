@@ -22,16 +22,14 @@ import SwiftUI
     @Published var coordinatesCityForNetwork = ""
     @Published var nameCityForSheet = ""
     @Published var weatherCurrentForSheet = Weather()
-    @Environment(\.locale) var locale
 
     init(weatherService: WeatherRepositoryCoordinatesProtocol) {
         self.weatherService = weatherService
     }
 
-    func getCurrentWeatherBy(coordinates: String, locale: String) async {
+    func getCurrentWeatherBy(coordinates: String) async {
         guard let currentWeatherWithCoordinates =
-                await weatherService.fetchCurrentWeatherByCoordinates(for: coordinates,
-                                                                         locale: locale) else { return }
+                await weatherService.fetchCurrentWeatherByCoordinates(for: coordinates) else { return }
         self.weatherCurrentForSheet = Weather(response: currentWeatherWithCoordinates)
     }
 
@@ -59,7 +57,7 @@ import SwiftUI
             self.showAlert = true
             self.showAlertData = AlertData(title: Localization.geocoderError.localized + error.localizedDescription)
         }
-        await getCurrentWeatherBy(coordinates: coordinatesCityForNetwork, locale: locale.identifier)
+        await getCurrentWeatherBy(coordinates: coordinatesCityForNetwork)
     }
 
     func checkIfLocationServicesEnabled() {

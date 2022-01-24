@@ -11,7 +11,6 @@ import SwiftUI
     let weatherService: WeatherRepositoryProtocol
     @Published var arrayWeather: [Weather] = []
     @Published var citiesList: [String] = []
-    @Environment(\.locale.identifier) var locale
     @AppStorage("cities") var citiesData = [
         "Nizhny Novgorod"].encodeArray()!
 
@@ -24,9 +23,9 @@ import SwiftUI
             for city in citiesList {
                 group.addTask(priority: .utility) {
                     async let apiCurrentWeatherModel =
-                    self.weatherService.fetchCurrentWeather(for: city, locale: self.locale.languageResponse)
+                    self.weatherService.fetchCurrentWeather(for: city)
                     async let apiForecastWeatherModel =
-                    self.weatherService.fetchDailyWeather(for: city, locale: self.locale.languageResponse)
+                    self.weatherService.fetchDailyWeather(for: city)
                     guard let apiCurrentWeatherModel = await apiCurrentWeatherModel,
                           let apiForecastWeatherModel = await apiForecastWeatherModel else {
                               return Weather() }

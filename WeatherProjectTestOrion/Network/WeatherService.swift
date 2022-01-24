@@ -16,13 +16,12 @@ struct WeatherService: WeatherRepositoryProtocol, WeatherRepositoryCoordinatesPr
     private let currentWeatherAPIMethod = "/current.json?"
     private let forecastWeatherAPIMethod = "/forecast.json"
 
-    func fetchCurrentWeatherByCoordinates(for city: String,
-                                          locale: String) async -> APICurrentWeatherModel? {
+    func fetchCurrentWeatherByCoordinates(for city: String) async -> APICurrentWeatherModel? {
         let url = baseURL + currentWeatherAPIMethod
         let parameters = [
             "q": city,
             "key": keyAPI,
-            "lang": locale
+            "lang": String(Locale.preferredLanguages[0].prefix(2))
         ]
         do {
             let weather = try await AF.request(url, method: .get, parameters: parameters)
@@ -32,13 +31,12 @@ struct WeatherService: WeatherRepositoryProtocol, WeatherRepositoryCoordinatesPr
         } catch { return nil }
     }
 
-    func fetchCurrentWeather(for city: String,
-                             locale: String) async -> APICurrentWeatherModel? {
+    func fetchCurrentWeather(for city: String) async -> APICurrentWeatherModel? {
         let url = baseURL + currentWeatherAPIMethod
         let parameters = [
             "q": city,
             "key": keyAPI,
-            "lang": locale
+            "lang": String(Locale.preferredLanguages[0].prefix(2))
         ]
         do {
             let weather = try await AF.request(url, method: .get, parameters: parameters)
@@ -48,14 +46,13 @@ struct WeatherService: WeatherRepositoryProtocol, WeatherRepositoryCoordinatesPr
         } catch { return nil }
     }
 
-    func fetchHourlyWeather(for city: String,
-                            locale: String) async -> APIForecastWeatherModel? {
+    func fetchHourlyWeather(for city: String) async -> APIForecastWeatherModel? {
         let url = baseURL + forecastWeatherAPIMethod
         let parameters: [String: Any] = [
             "q": city,
             "key": keyAPI,
             "days": "",
-            "lang": locale
+            "lang": String(Locale.preferredLanguages[0].prefix(2))
         ]
         do {
             let forecast = try await AF.request(url, method: .get, parameters: parameters)
@@ -65,14 +62,13 @@ struct WeatherService: WeatherRepositoryProtocol, WeatherRepositoryCoordinatesPr
         } catch { return nil }
     }
 
-    func fetchDailyWeather(for city: String,
-                           locale: String) async -> APIForecastWeatherModel? {
+    func fetchDailyWeather(for city: String) async -> APIForecastWeatherModel? {
         let url = baseURL + forecastWeatherAPIMethod
         let parameters: [String: Any] = [
             "q": city,
             "key": keyAPI,
             "days": 5,
-            "lang": locale
+            "lang": String(Locale.preferredLanguages[0].prefix(2))
         ]
         do {
             let forecastDaily = try await AF.request(url, method: .get, parameters: parameters)
