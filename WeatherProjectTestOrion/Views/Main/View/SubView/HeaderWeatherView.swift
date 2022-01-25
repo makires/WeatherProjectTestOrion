@@ -53,7 +53,7 @@ struct HeaderWeatherView: View {
         }
         .foregroundColor(.mainTextWhite)
         .fullScreenCover(isPresented: $showListCities) {
-            ListLocationsView()
+          ViewFactory.makeView(typeView: .list)
         }
     }
 }

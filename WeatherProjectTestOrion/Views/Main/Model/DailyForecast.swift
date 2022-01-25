@@ -22,7 +22,6 @@ extension DailyForecats {
                              minTemperatureCelcius: .random(in: (0..<30)),
                              condition: ConditionWeather(
                                 text: "",
-                                iconURL: "",
                                 code: 1001)),
                     hour: [Hour]()))
         }

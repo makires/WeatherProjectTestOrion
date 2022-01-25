@@ -5,7 +5,6 @@
 //  Created by Tatyana Ilvutikova on 16.01.2022.
 //
 
-import Foundation
 import CoreLocation
 import MapKit
 import SwiftUI

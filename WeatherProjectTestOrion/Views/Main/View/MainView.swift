@@ -11,6 +11,7 @@ struct MainView: View {
     let maxHeight: CGFloat = 280
     @State var isScrolled = false
     @ObservedObject var weatherVM: WeatherViewModel
+    @ObservedObject var citiesVM: CitiesListViewModel
     var body: some View {
         VStack(spacing: .zero) {
             HeaderWeatherView(
@@ -18,6 +19,7 @@ struct MainView: View {
                 .frame(height: isScrolled ? minHeight : maxHeight)
                 .animation(.easeOut(duration: 0.3), value: isScrolled)
                 .environmentObject(weatherVM)
+                .environmentObject(citiesVM)
             DailyWeatherListView(
                 isScrolled: $isScrolled)
                 .environmentObject(weatherVM)

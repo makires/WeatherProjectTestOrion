@@ -11,22 +11,21 @@ struct CurrentWeatherView: View {
     @EnvironmentObject var weatherVM: WeatherViewModel
     var weather: Weather
     var body: some View {
+      VStack {
         HStack {
-            VStack(alignment: .leading, spacing: .zero) {
-                Text(weather.temperatureCurrent)
-                    .fontTitleCity()
-                    .padding(.bottom, .zero)
-                HStack(alignment: .top, spacing: .zero) {
-                    Text(weather.textWeatherCondition)
-                    Text(Localization.feelsLike.localized)
-                    Text(weather.feelsLikeTemperature)
-                }
-                .fontDesciprionConditionWeather()
-            }
-            Spacer()
-            Image(systemName: weather.icon)
-                .fontCurrentIcon()
-                .foregroundColor(weather.icon == WeatherIcon.clearDay.rawValue ? .yellow : .white)
+          Text(weather.temperatureCurrent)
+              .fontTitleCity()
+              .padding(.bottom, .zero)
+          Spacer()
+          Image(systemName: weather.icon)
+              .fontCurrentIcon()
+              .foregroundColor(weather.icon == WeatherIcon.clearDay.rawValue ? .yellow : .white)
         }
+        HStack {
+          Text(weather.textWeatherCondition + Localization.feelsLike.localized + weather.feelsLikeTemperature)
+            .fontDesciprionConditionWeather()
+          Spacer()
+        }
+      }
     }
 }

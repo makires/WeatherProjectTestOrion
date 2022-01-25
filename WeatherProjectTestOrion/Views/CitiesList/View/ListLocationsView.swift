@@ -48,7 +48,7 @@ struct ListLocationsView: View {
                 ViewFactory.makeView(typeView: .main)
             }
             .fullScreenCover(isPresented: $showAddCity) {
-                SearchCitiesView()
+              ViewFactory.makeView(typeView: .search)
             }
             .toolbar {
                 ToolbarItem(placement: .navigation) {

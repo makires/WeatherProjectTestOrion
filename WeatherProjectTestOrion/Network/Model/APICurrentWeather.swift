@@ -57,11 +57,9 @@ enum WindDirection: String, Decodable {
 
 struct ConditionWeather: Decodable {
     let text: String
-    let iconURL: String
     let code: Int
     enum CodingKeys: String, CodingKey {
         case text
-        case iconURL = "icon"
         case code
     }
 }
@@ -82,7 +80,7 @@ enum WeatherIcon: String {
     case hail = "cloud.hail.fill"
     case bolt = "cloud.bolt.fill"
     case boltDay = "cloud.sun.bolt.fill"
-    case other = "bolt"
+    case other = "thermometer.sun"
 }
 
 extension ConditionWeather {

@@ -10,7 +10,8 @@ import SwiftUI
 struct MainViewBuilder {
 
     @MainActor static func view() -> some View {
-        let viewModel = WeatherViewModel(weatherService: DIContainer.shared.weatherService)
-        return MainView(weatherVM: viewModel)
+        let viewModelWeather = WeatherViewModel(weatherService: DIContainer.shared.weatherService)
+        let viewModelWeatherCities = CitiesListViewModel(weatherService: DIContainer.shared.weatherService)
+        return MainView(weatherVM: viewModelWeather, citiesVM: viewModelWeatherCities)
     }
 }

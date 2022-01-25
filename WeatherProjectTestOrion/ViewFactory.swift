@@ -16,15 +16,11 @@ struct ViewFactory {
     @MainActor @ViewBuilder static func makeView(typeView: TypeView) -> some View {
     switch typeView {
     case .main:
-        return MainViewBuilder.view()
+      MainViewBuilder.view()
     case .list:
-      let citiesListView = ListLocationsView()
-        return MainViewBuilder.view()
-
+      CitiesListViewBuilder.view()
     case .search:
-      let searchCities = SearchCitiesView()
-        return MainViewBuilder.view()
-
+      SearchCitiesViewBuilder.view()
     }
   }
 }

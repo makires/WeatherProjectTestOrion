@@ -17,7 +17,7 @@ struct Weather: Identifiable {
     var humidity  = ""
     var feelsLikeTemperature  = ""
     var textWeatherCondition = ""
-    var icon = ""
+    var icon = WeatherIcon.other.rawValue
     var region = ""
     var country = ""
     var minTemperatureCelcius = ""
