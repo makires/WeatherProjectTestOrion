@@ -113,8 +113,8 @@ struct PopularCitiesStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.footnote)
-            .lineSpacing(18)
-            .padding(.horizontal, MagicNumber.x3)
+            .lineSpacing(8)
+            .padding(.horizontal, MagicNumber.x2)
             .padding(.vertical, MagicNumber.x2)
             .background(Color.popularCityBackground)
             .cornerRadius(MagicNumber.x4)
