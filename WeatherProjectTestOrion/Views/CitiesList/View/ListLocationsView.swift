@@ -45,7 +45,7 @@ struct ListLocationsView: View {
                 .padding(.bottom, MagicNumber.x2)
             }
             .fullScreenCover(isPresented: $showMainView) {
-                MainView()
+                ViewFactory.makeView(typeView: .main)
             }
             .fullScreenCover(isPresented: $showAddCity) {
                 SearchCitiesView()

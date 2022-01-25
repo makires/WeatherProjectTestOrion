@@ -41,7 +41,7 @@ struct SearchCitiesView: View {
             Spacer()
         }
         .fullScreenCover(isPresented: $isShowMainView) {
-            MainView()
+            ViewFactory.makeView(typeView: .main)
         }
     }
 }

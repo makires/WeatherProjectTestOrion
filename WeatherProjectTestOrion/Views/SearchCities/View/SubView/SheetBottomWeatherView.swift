@@ -34,7 +34,7 @@ struct SheetBottomWeatherView: View {
         .background(colorScheme == .dark ? .black : .white)
         .cornerRadius(MagicNumber.x2)
         .fullScreenCover(isPresented: $isShowMainView) {
-            MainView()
+            ViewFactory.makeView(typeView: .main)
         }
     }
 }

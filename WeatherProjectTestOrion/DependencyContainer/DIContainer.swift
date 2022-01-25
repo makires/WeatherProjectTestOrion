@@ -8,6 +8,6 @@
 import Foundation
 
 struct DIContainer {
-  static let shared = DIContainer()
-  let weatherService =  WeatherService()
+    static let shared = DIContainer()
+    let weatherService =  WeatherService()
 }
