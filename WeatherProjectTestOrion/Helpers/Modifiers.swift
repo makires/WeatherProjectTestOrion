@@ -113,16 +113,14 @@ struct PopularCitiesStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.footnote)
-        // constants
-            .lineSpacing(8)
+            .lineSpacing(MagicNumber.x2)
             .padding(.horizontal, MagicNumber.x2)
             .padding(.vertical, MagicNumber.x2)
             .background(Color.popularCityBackground)
             .cornerRadius(MagicNumber.x4)
             .overlay(
                 RoundedRectangle(cornerRadius: MagicNumber.x4)
-                //  constants
-                    .stroke(Color.popularCitiesOverlay, lineWidth: 1))
+                    .stroke(Color.popularCitiesOverlay, lineWidth: MagicNumber.x02))
     }
 }
 

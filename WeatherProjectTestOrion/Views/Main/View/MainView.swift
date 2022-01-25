@@ -12,6 +12,7 @@ struct MainView: View {
     @State var isScrolled = false
     @ObservedObject var weatherVM: WeatherViewModel
     @ObservedObject var citiesVM: CitiesListViewModel
+    
     var body: some View {
         VStack(spacing: .zero) {
             HeaderWeatherView(

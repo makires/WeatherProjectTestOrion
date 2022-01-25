@@ -8,19 +8,21 @@
 import SwiftUI
 
 struct ViewFactory {
-  enum TypeView {
-    case main
-    case list
-    case search
-  }
-    @MainActor @ViewBuilder static func makeView(typeView: TypeView) -> some View {
-    switch typeView {
-    case .main:
-      MainViewBuilder.view()
-    case .list:
-      CitiesListViewBuilder.view()
-    case .search:
-      SearchCitiesViewBuilder.view()
+    
+    enum TypeView {
+        case main
+        case list
+        case search
     }
-  }
+    
+    @MainActor @ViewBuilder static func makeView(typeView: TypeView) -> some View {
+        switch typeView {
+        case .main:
+            MainViewBuilder.view()
+        case .list:
+            CitiesListViewBuilder.view()
+        case .search:
+            SearchCitiesViewBuilder.view()
+        }
+    }
 }

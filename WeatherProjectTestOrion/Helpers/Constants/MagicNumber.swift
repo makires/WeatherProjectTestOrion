@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct MagicNumber {
+    static let x02: CGFloat = 1
     static let x05: CGFloat = 2
     static let x1: CGFloat = 4
     static let x2: CGFloat = 8
