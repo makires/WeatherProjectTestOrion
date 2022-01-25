@@ -12,8 +12,8 @@ struct WeatherProjectTestOrionApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .environmentObject(WeatherViewModel(weatherService: WeatherService()))
-                .environmentObject(CitiesListViewModel(weatherService: WeatherService()))
+            .environmentObject(WeatherViewModel(weatherService: DIContainer.shared.weatherService))
+            .environmentObject(CitiesListViewModel(weatherService: DIContainer.shared.weatherService))
         }
     }
 }
