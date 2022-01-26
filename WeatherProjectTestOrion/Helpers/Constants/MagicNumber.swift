@@ -19,4 +19,6 @@ struct MagicNumber {
     static let x6: CGFloat = 24
     static let x8: CGFloat = 32
     static let x16: CGFloat = 64
+    static let x32: CGFloat = 128
+
 }

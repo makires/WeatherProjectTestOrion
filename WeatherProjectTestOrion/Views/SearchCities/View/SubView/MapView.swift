@@ -11,7 +11,7 @@ import MapKit
 struct MapView: View {
     @ObservedObject var mapVM: MapViewModel
     @Binding var changedHeight: CGFloat
-
+    
     var body: some View {
         ZStack {
             Map(coordinateRegion: $mapVM.coordinateRegion,
@@ -20,9 +20,9 @@ struct MapView: View {
                 MapMarker(coordinate: item.coordinate)
             }
             ButtonCurrentLocation(mapVM: mapVM)
-                .padding(.trailing, MagicNumber.x4)
+            .padding(.trailing, MagicNumber.x5)
         }
-        .ignoresSafeArea(edges: .bottom)
+        .ignoresSafeArea(edges: [.horizontal, .bottom])
         .onAppear {
             mapVM.checkIfLocationServicesEnabled()
         }
