@@ -58,6 +58,7 @@ enum WindDirection: String, Decodable {
 struct ConditionWeather: Decodable {
     let text: String
     let code: Int
+  
     enum CodingKeys: String, CodingKey {
         case text
         case code

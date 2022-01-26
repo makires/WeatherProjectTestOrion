@@ -36,7 +36,7 @@ import SwiftUI
             }
             for await weatherGroup in group {
                 if !arrayWeather.contains(where: { weather in
-                    weather.cityName == weatherGroup.cityName
+                  weather.cityName == weatherGroup.cityName
                 }) {
                     arrayWeather.append(weatherGroup)
                 }
@@ -68,7 +68,7 @@ import SwiftUI
             guard let newCitiesList = citiesList.encodeArray() else { return }
             citiesData = newCitiesList
             if let index = arrayWeather.firstIndex(where: { weather in
-                cityForRemoveName == weather.cityName
+                cityForRemoveName == weather.cityName || weather.cityName == ""
             }) {
                 arrayWeather.remove(at: index)
             }

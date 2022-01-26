@@ -11,6 +11,7 @@ struct CityAndRegionNames: View {
     var cityName: String
     var weather: Weather
     @EnvironmentObject var weatherVM: WeatherViewModel
+  
     var body: some View {
         VStack(alignment: .leading, spacing: MagicNumber.x05) {
             HStack {

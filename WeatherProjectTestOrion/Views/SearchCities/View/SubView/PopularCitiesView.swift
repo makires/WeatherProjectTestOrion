@@ -15,6 +15,7 @@ struct PopularCitiesView: View {
     let lastCityFirstRow = 2
     let firstCitySecondRow = 2
     let lastCitySecondRow = 5
+  
     var body: some View {
         Group {
             VStack {

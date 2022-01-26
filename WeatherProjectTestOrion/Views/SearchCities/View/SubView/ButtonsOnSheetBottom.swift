@@ -13,6 +13,7 @@ struct ButtonsOnSheetBottom: View {
     @ObservedObject var mapVM: MapViewModel
     @EnvironmentObject var citiesVM: CitiesListViewModel
     @EnvironmentObject var weatherVM: WeatherViewModel
+  
     var body: some View {
         HStack(spacing: MagicNumber.x8) {
             Spacer()

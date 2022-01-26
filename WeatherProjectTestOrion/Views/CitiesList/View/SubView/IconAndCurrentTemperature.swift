@@ -11,6 +11,7 @@ struct IconAndCurrentTemperature: View {
     var weather: Weather
     let maxWidth: CGFloat = 120
     let gridItems = [GridItem()]
+  
     var body: some View {
         LazyHGrid(rows: gridItems, spacing: MagicNumber.x1) {
             Image(systemName: weather.icon)

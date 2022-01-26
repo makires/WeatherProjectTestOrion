@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct CitiesListViewBuilder {
-  
-  @MainActor static func view() -> some View {
-    return ListLocationsView()
-  }
+    @MainActor static func view() -> some View {
+      return ListLocationsView()
+    }
 }

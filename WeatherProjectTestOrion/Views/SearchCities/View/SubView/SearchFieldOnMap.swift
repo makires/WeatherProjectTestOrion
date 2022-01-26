@@ -13,6 +13,7 @@ struct SearchFieldOnMap: View {
     @Binding var showSheet: Bool
     @ObservedObject var mapVM: MapViewModel
     @Environment(\.presentationMode) var presentationMode
+  
     var body: some View {
         HStack {
             HStack {

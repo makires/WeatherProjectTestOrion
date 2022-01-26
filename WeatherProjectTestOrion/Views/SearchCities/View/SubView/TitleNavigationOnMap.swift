@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TitleNavigationOnMap: View {
     @Environment(\.presentationMode) var presentationMode
+  
     var body: some View {
         HStack {
             Button {

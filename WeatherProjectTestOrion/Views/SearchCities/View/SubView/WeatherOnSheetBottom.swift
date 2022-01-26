@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WeatherOnSheetBottom: View {
     @ObservedObject var mapVM: MapViewModel
+  
     var body: some View {
         HStack {
             VStack(alignment: .leading) {

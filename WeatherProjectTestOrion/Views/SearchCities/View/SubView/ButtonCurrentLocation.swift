@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ButtonCurrentLocation: View {
     @ObservedObject var mapVM: MapViewModel
+  
     var body: some View {
         VStack {
             Spacer()

@@ -11,6 +11,7 @@ struct SearchFieldView: View {
     @Binding var searchCity: String
     @Binding var isEditing: Bool
     @Environment(\.presentationMode) var presentationMode
+  
     var body: some View {
         HStack {
             Button {
