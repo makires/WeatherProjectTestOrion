@@ -11,7 +11,7 @@ import SwiftUI
 struct WeatherProjectTestOrionApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            ViewFactory.makeView(typeView: .main)
         }
     }
 }
