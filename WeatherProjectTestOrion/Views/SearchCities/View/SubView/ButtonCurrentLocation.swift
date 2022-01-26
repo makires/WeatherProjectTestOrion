@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ButtonCurrentLocation: View {
     @ObservedObject var mapVM: MapViewModel
-  
+
     var body: some View {
         VStack {
             Spacer()
             HStack {
-                Spacer()
+              Spacer()
                 Button {
                     mapVM.requestCurrentLocation()
                 } label: {

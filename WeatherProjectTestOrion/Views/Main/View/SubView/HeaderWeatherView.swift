@@ -20,6 +20,7 @@ struct HeaderWeatherView: View {
                 Image(weatherVM.weatherCurrent.icon == WeatherIcon.clearDay.rawValue
                       ? Images.sunnyBackgroundHeaderView : Images.cloudyBackgroundHeaderView)
                     .resizable()
+                    .aspectRatio(contentMode: .fill)
                     .overlay(colorScheme == .dark ? Color.black.opacity(0.5) : Color.clear)
                     .ignoresSafeArea()
                     .frame(height: heightBackground)
